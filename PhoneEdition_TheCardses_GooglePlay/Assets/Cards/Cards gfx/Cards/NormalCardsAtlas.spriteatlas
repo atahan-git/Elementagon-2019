@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: NormalCardsAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 4096
+      textureCompression: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: cca6175dc2d170f4aa59f302b8dfeed1, type: 3}
+    - {fileID: 2800000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+    - {fileID: 2800000, guid: b6e0845f4bfd4f64dbabc7742f02cec1, type: 3}
+    - {fileID: 2800000, guid: f1825e88f9601b04184f04c5aff0dc28, type: 3}
+    - {fileID: 2800000, guid: d108c7b0d1233d54394ef50cbf960e0d, type: 3}
+    - {fileID: 2800000, guid: 35a30b7249488e545bb9fa2158ca1b65, type: 3}
+    - {fileID: 2800000, guid: 0a5d1a2f9da6cda40b1be7eb9f7fab23, type: 3}
+    - {fileID: 2800000, guid: 9e472e9d7b6d4164b904c73b764f3357, type: 3}
+    - {fileID: 2800000, guid: 38d9d600e4516de46b943f315a376d00, type: 3}
+    - {fileID: 2800000, guid: 993a183f0b87b484c9fe6f97092845a6, type: 3}
+    - {fileID: 2800000, guid: 9a1282cbda542894ba850aa30e0516fb, type: 3}
+    - {fileID: 2800000, guid: f0a8fd58c2053ca45ac0cf95bf3264d0, type: 3}
+    - {fileID: 2800000, guid: 501d67abb8aaac34da55fb417d17fbe0, type: 3}
+    - {fileID: 2800000, guid: 747d418a201d30a4c8f67127ad7b514f, type: 3}
+    - {fileID: 2800000, guid: feacd199871508c4cb51bb335b0db80d, type: 3}
+    - {fileID: 2800000, guid: 68091dc5a90a18745b5a6e7a63945326, type: 3}
+    - {fileID: 2800000, guid: d355d8fca1cd386479a4cf24bbeed5d6, type: 3}
+    - {fileID: 2800000, guid: e514c3e21d5488e4c8678511d88298a7, type: 3}
+    - {fileID: 2800000, guid: 996a9f46f801a8445b30afae8c508a64, type: 3}
+    - {fileID: 2800000, guid: 598a354b20ccd97498104a73ba8bc683, type: 3}
+    - {fileID: 2800000, guid: a4c1a90d68ceb2549bd5229fa17d106f, type: 3}
+    - {fileID: 2800000, guid: f18de09def7548d4d83e77974b8f760a, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 38d9d600e4516de46b943f315a376d00, type: 3}
+  - {fileID: 21300000, guid: d108c7b0d1233d54394ef50cbf960e0d, type: 3}
+  - {fileID: 21300000, guid: 35a30b7249488e545bb9fa2158ca1b65, type: 3}
+  - {fileID: 21300000, guid: e514c3e21d5488e4c8678511d88298a7, type: 3}
+  - {fileID: 21300000, guid: 68091dc5a90a18745b5a6e7a63945326, type: 3}
+  - {fileID: 21300000, guid: 996a9f46f801a8445b30afae8c508a64, type: 3}
+  - {fileID: 21300000, guid: f0a8fd58c2053ca45ac0cf95bf3264d0, type: 3}
+  - {fileID: 21300000, guid: f1825e88f9601b04184f04c5aff0dc28, type: 3}
+  - {fileID: 21300000, guid: feacd199871508c4cb51bb335b0db80d, type: 3}
+  - {fileID: 21300000, guid: 747d418a201d30a4c8f67127ad7b514f, type: 3}
+  - {fileID: 21300000, guid: 598a354b20ccd97498104a73ba8bc683, type: 3}
+  - {fileID: 21300000, guid: 501d67abb8aaac34da55fb417d17fbe0, type: 3}
+  - {fileID: 21300000, guid: 9a1282cbda542894ba850aa30e0516fb, type: 3}
+  - {fileID: 21300000, guid: d355d8fca1cd386479a4cf24bbeed5d6, type: 3}
+  - {fileID: 21300000, guid: a4c1a90d68ceb2549bd5229fa17d106f, type: 3}
+  - {fileID: 21300000, guid: cca6175dc2d170f4aa59f302b8dfeed1, type: 3}
+  - {fileID: 21300000, guid: f18de09def7548d4d83e77974b8f760a, type: 3}
+  - {fileID: 21300000, guid: 9e472e9d7b6d4164b904c73b764f3357, type: 3}
+  - {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  - {fileID: 21300000, guid: 0a5d1a2f9da6cda40b1be7eb9f7fab23, type: 3}
+  - {fileID: 21300000, guid: 993a183f0b87b484c9fe6f97092845a6, type: 3}
+  - {fileID: 21300000, guid: b6e0845f4bfd4f64dbabc7742f02cec1, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Ice
+  - Earth
+  - Earth maybe
+  - shadow dragon ADVANCED
+  - poison dragon ADVANCED
+  - Trap Card
+  - light dragon ADVANCED
+  - Default card front - Copy
+  - Poison
+  - nether dragon ADVANCED
+  - Trap Card 1
+  - Nether
+  - Light
+  - Shadow
+  - Card-back - Copy (2)
+  - card border
+  - card front
+  - fire_breathing_dragon_by_sandara-d56vmyu V2
+  - Card-back
+  - Fire
+  - ice dragon croppede
+  - Card-back - Copy
+  m_Tag: NormalCardsAtlas
+  m_IsVariant: 0

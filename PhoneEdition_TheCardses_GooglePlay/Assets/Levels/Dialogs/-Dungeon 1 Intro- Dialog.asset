@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -Dungeon 1 Intro- Dialog
+  m_EditorClassIdentifier: 
+  dialogName: Dungeon 1 Intro
+  dialogs:
+  - tag: 
+    text: "Ilk zindan\u0131n\u0131za ho\u015F geldiniz evlatlar"
+    clearImage: 0
+    image: {fileID: 21300000, guid: aaffdfa413d5a26498cd2b67a37871bd, type: 3}
+    bigSpriteAction: 01000000
+    bigSpriteSlot: 02000000
+    bigSprite:
+    - {fileID: 21300000, guid: d06c8fe74840d4b4fb334661689382c1, type: 3}
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Di\u011Fer b\xF6l\xFCmlerin aksine bu b\xF6l\xFCmde birlikte sava\u015Fman\u0131z
+      gerekecek."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "10 kart e\u015Fle\u015Ftirmede ba\u015Far\u0131lar!"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

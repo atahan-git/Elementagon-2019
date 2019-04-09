@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -Level 1 elf nob reiz- Dialog
+  m_EditorClassIdentifier: 
+  dialogName: Level 1 elf nob reiz
+  dialogs:
+  - tag: 
+    text: "<i>Kahraman</i> nas\u0131l da 1 elf reizle ba\u015F edemedin?"
+    clearImage: 0
+    image: {fileID: 21300000, guid: aaffdfa413d5a26498cd2b67a37871bd, type: 3}
+    bigSpriteAction: 00000000
+    bigSpriteSlot: 02000000
+    bigSprite:
+    - {fileID: 21300000, guid: 84d4678a0ca1aac4ebe767d22518fda5, type: 3}
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Ben burda 5 dane \xF6ld\xFCrm\xFC\u015Fem sen daha 1 dane bo\u015F bo\u015F
+      tak\u0131l\u0131yon."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Bak ahanda b\xF6yle bi atta\u015F topu atacan yok olacak elf reiz. <trigger=0>"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Hadi \u015Fimdi bitirdik i\u015Fimizi yola devam. <trigger=1>"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

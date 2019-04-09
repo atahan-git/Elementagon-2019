@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e95c64906b8c0f40baa44470ab27937, type: 3}
+  m_Name: Gfx_Def
+  m_EditorClassIdentifier: 
+  isSpriteBased: 0
+  cardSprites:
+  - {fileID: 21300000, guid: f1825e88f9601b04184f04c5aff0dc28, type: 3}
+  - {fileID: 21300000, guid: d108c7b0d1233d54394ef50cbf960e0d, type: 3}
+  - {fileID: 21300000, guid: 0a5d1a2f9da6cda40b1be7eb9f7fab23, type: 3}
+  - {fileID: 21300000, guid: 38d9d600e4516de46b943f315a376d00, type: 3}
+  - {fileID: 21300000, guid: 9a1282cbda542894ba850aa30e0516fb, type: 3}
+  - {fileID: 21300000, guid: 501d67abb8aaac34da55fb417d17fbe0, type: 3}
+  - {fileID: 21300000, guid: feacd199871508c4cb51bb335b0db80d, type: 3}
+  - {fileID: 21300000, guid: d355d8fca1cd386479a4cf24bbeed5d6, type: 3}
+  - {fileID: 21300000, guid: 35a30b7249488e545bb9fa2158ca1b65, type: 3}
+  - {fileID: 21300000, guid: 9e472e9d7b6d4164b904c73b764f3357, type: 3}
+  - {fileID: 21300000, guid: 993a183f0b87b484c9fe6f97092845a6, type: 3}
+  - {fileID: 21300000, guid: f0a8fd58c2053ca45ac0cf95bf3264d0, type: 3}
+  - {fileID: 21300000, guid: 747d418a201d30a4c8f67127ad7b514f, type: 3}
+  - {fileID: 21300000, guid: 68091dc5a90a18745b5a6e7a63945326, type: 3}
+  - {fileID: 21300000, guid: e514c3e21d5488e4c8678511d88298a7, type: 3}
+  - {fileID: 21300000, guid: 996a9f46f801a8445b30afae8c508a64, type: 3}
+  cardAnimations:
+  - {fileID: 11400000, guid: 6d07c9e75e77c9a4e953e78ac4a20fd0, type: 2}
+  - {fileID: 11400000, guid: 8f9b105ecb7f10d4bbceb394708c875e, type: 2}
+  - {fileID: 11400000, guid: 0bb2285ea7c8ffa4cb87b1352e329f45, type: 2}
+  - {fileID: 11400000, guid: ad967197885d6994682224ab7d61dbd3, type: 2}
+  - {fileID: 11400000, guid: d106a2bcfe09e8041854cacd11de331b, type: 2}
+  - {fileID: 11400000, guid: e2eb5aa2e6e73a04e8bd585a80e470da, type: 2}
+  - {fileID: 11400000, guid: 2f5c0bcfb496b3f4aa61b24da2d07e30, type: 2}
+  - {fileID: 11400000, guid: 7eac04368187a0b419c91b9d3ce4160b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  card: {fileID: 163096, guid: 9078591e8cbd8164cb29471d98ff3b35, type: 2}
+  getEffectPrefab: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 2}
+  revealEffect: {fileID: 1654067491967056, guid: 0846a7d3cf759e74ea7db7f21ff57593,
+    type: 2}
+  posionProtectEffect: {fileID: 0}
+  selectEffects:
+  - {fileID: 0}
+  - {fileID: 146378, guid: 4cdb1d671527161438d36ffa28f1cf4e, type: 2}
+  - {fileID: 159882, guid: 6caba5279032d3c49917c7143004e382, type: 2}
+  - {fileID: 131656, guid: a6662d8c3bb6b3445b7919fadd449de5, type: 2}
+  - {fileID: 101756, guid: 9ce9c6a80539eff47bbc9c635c3bbdbe, type: 2}
+  - {fileID: 1999705537942520, guid: 37f36d6237a9e1c4991698bc14fe30e5, type: 2}
+  - {fileID: 1466250910633632, guid: cf90acc9796d435439e3b3cdb1715d64, type: 2}
+  - {fileID: 1235938587650184, guid: f344f307f5a4b2d40beadcccb686d179, type: 2}
+  npcScoreboard: {fileID: 1000013345891158, guid: 1a1c6c0f9c47f2e4998120be3c7f7c3a,
+    type: 2}
+  onCard_SelectEffect: {fileID: 0}
+  onScoreBoard_SelectEffect: {fileID: 0}
+  onEnemySbs_SelectEffect: {fileID: 0}
+  onCard_MatchEffectBetweenCards: {fileID: 0}
+  onScoreBoard_MatchEffectBetweenCards: {fileID: 1905986045333420, guid: 3879cd1f5d7c8824490c374cb0e8e35f,
+    type: 2}
+  onEnemySbs_MatchEffectBetweenCards: {fileID: 0}
+  onCard_MatchEffect: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 2}
+  onScoreBoard_MatchEffect: {fileID: 0}
+  onEnemySbs_MatchEffect: {fileID: 0}

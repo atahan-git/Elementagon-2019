@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a88e4db4bfe45604480a3c5d23d91674
+timeCreated: 1474462747
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - prefab: {fileID: 1000013345891158, guid: 1a1c6c0f9c47f2e4998120be3c7f7c3a, type: 2}
+  - myPlayerScript: {instanceID: 0}
+  - dragonPrefab: {fileID: 1000013261594514, guid: feecf784dc3baa242a92b22686cbf9f1,
+      type: 2}
+  - parentDragon: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

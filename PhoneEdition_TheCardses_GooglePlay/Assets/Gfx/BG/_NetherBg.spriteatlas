@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: _NetherBg
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 4096
+      textureCompression: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: dc4c9aa0764571b4cbf60bca2c1a2bf3, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1e6f2e00d02a7d146bb53068d17a4764, type: 3}
+  - {fileID: 21300000, guid: 19b51c104843942479aa19e740b479cc, type: 3}
+  - {fileID: 21300000, guid: 3af8aa50c25758543b4365d2047c26af, type: 3}
+  - {fileID: 21300000, guid: eb8301802f6d95144bc1d539df11c248, type: 3}
+  - {fileID: 21300000, guid: b41f7480d23e55c42bae7d6a553e9f56, type: 3}
+  - {fileID: 21300000, guid: 078ed1b086ecf6d499ab219c7fbf475b, type: 3}
+  - {fileID: 21300000, guid: aa4faae0b5108d149ab1ccd7fe837c28, type: 3}
+  - {fileID: 21300000, guid: 1e77c0f0c77c21048a6a4679b0db4e0b, type: 3}
+  - {fileID: 21300000, guid: 60648df0a42765742bcb2606943bc51f, type: 3}
+  - {fileID: 21300000, guid: 9aaf66211c7e53b48a851343cf00de57, type: 3}
+  - {fileID: 21300000, guid: 06331d217ae23974ab5fe469b8027926, type: 3}
+  - {fileID: 21300000, guid: 21a8ce415aca14f4b93066c053a31068, type: 3}
+  - {fileID: 21300000, guid: d6075d61179d0b147a7ca575a9fde06d, type: 3}
+  - {fileID: 21300000, guid: f47de4710f85db3488277d4c56398ff8, type: 3}
+  - {fileID: 21300000, guid: 4343b191ea6e60f4faa04f5a8876061b, type: 3}
+  - {fileID: 21300000, guid: 62f707e1533d67940838d9dd8f0f9a65, type: 3}
+  - {fileID: 21300000, guid: 47ef47e16f48c7a49818294f8713b53e, type: 3}
+  - {fileID: 21300000, guid: 0e3fccf199a4e5340b4eec62954306ee, type: 3}
+  - {fileID: 21300000, guid: b8f79ef1b1d98724299050bd615334fd, type: 3}
+  - {fileID: 21300000, guid: 7510e3022d40e454e9cf8c56c26df3a2, type: 3}
+  - {fileID: 21300000, guid: 25428412e9f182e4ba73dcfcb5faefa1, type: 3}
+  - {fileID: 21300000, guid: 54d0284230734e241893883582520ebb, type: 3}
+  - {fileID: 21300000, guid: 62181982d99d2394c8b32c9a39ff311e, type: 3}
+  - {fileID: 21300000, guid: 031ee5e2eff792a459a1afcd0fa124b6, type: 3}
+  - {fileID: 21300000, guid: 2bf2152307b41c145ad80ce5071d02f9, type: 3}
+  - {fileID: 21300000, guid: c9eb4253b1d38004382fbeebacc33756, type: 3}
+  - {fileID: 21300000, guid: 37fef314bcf93b54ab1a70dbaea210ff, type: 3}
+  - {fileID: 21300000, guid: 12b7d614d9012d44e83ea05f2bdbb7c4, type: 3}
+  - {fileID: 21300000, guid: 55211c24ef870f541b3d8d7c29d030a1, type: 3}
+  - {fileID: 21300000, guid: c7e32644011b9d54e9daca6ac4e1e8d5, type: 3}
+  - {fileID: 21300000, guid: 265031640be6f8f48a7aa841f7f5b295, type: 3}
+  - {fileID: 21300000, guid: aba79974b0be39e448578df69444e1fb, type: 3}
+  - {fileID: 21300000, guid: a4b86f842b500a442a253bc9781412ec, type: 3}
+  - {fileID: 21300000, guid: 3b8b51a4c4331094aa3d80309be1ccd3, type: 3}
+  - {fileID: 21300000, guid: 5c0448b4079764441bb4c868d17ce1f6, type: 3}
+  - {fileID: 21300000, guid: 9e2d31f42b4ebd14e88b7088b95e0811, type: 3}
+  - {fileID: 21300000, guid: ee477e15f6989ec4eb9b948a488678f0, type: 3}
+  - {fileID: 21300000, guid: 2b287b253f479114e98c2162fa604e99, type: 3}
+  - {fileID: 21300000, guid: ebdcf2351d401a5409202dd9c1d3096b, type: 3}
+  - {fileID: 21300000, guid: 73f4a4352bdbc9240867a469199948ca, type: 3}
+  - {fileID: 21300000, guid: 43ee52551d9ba3b429c0f7384aa28635, type: 3}
+  - {fileID: 21300000, guid: 5d7d5085943c5d54e9cf061efe8023c8, type: 3}
+  - {fileID: 21300000, guid: 5cf27d952f4c43b4f9d405964804b2be, type: 3}
+  - {fileID: 21300000, guid: 03e21ca50922de248a7f3453aa8f8258, type: 3}
+  - {fileID: 21300000, guid: 891aa3b537dfec4459813a4036aa2243, type: 3}
+  - {fileID: 21300000, guid: 4d4493f5e3c24b541ab71d319901d2c3, type: 3}
+  - {fileID: 21300000, guid: 6ce2da0685a4bdc4189a5641c2763eca, type: 3}
+  - {fileID: 21300000, guid: 4bb57d56c9437aa4ea4ce98a037ba726, type: 3}
+  - {fileID: 21300000, guid: 02fea376ef0d09248b36d90845e1d874, type: 3}
+  - {fileID: 21300000, guid: 394739763459fbe43aacd0f7902bf20d, type: 3}
+  - {fileID: 21300000, guid: 58d9d38662c818c40a49a0fac0d5356d, type: 3}
+  - {fileID: 21300000, guid: df58be96359cdea4cbc3c4befd17311b, type: 3}
+  - {fileID: 21300000, guid: 1fcb7ec6d8d6356479c081687d32f8b3, type: 3}
+  - {fileID: 21300000, guid: 71054ce69b912864f86a8d9690fb9a05, type: 3}
+  - {fileID: 21300000, guid: 5ea6ee2754647844da765185e45f436f, type: 3}
+  - {fileID: 21300000, guid: 1066f9679d229be4b95db6ff2060a041, type: 3}
+  - {fileID: 21300000, guid: 55e00077424aa0c4a8cbb05790e8c47e, type: 3}
+  - {fileID: 21300000, guid: 0833827710c955c448758822a02741c8, type: 3}
+  - {fileID: 21300000, guid: ad3bf2777464e9a4d99a78c3941ee1a8, type: 3}
+  - {fileID: 21300000, guid: e8acdb7715522d04cb8cbfe1b3bb0752, type: 3}
+  - {fileID: 21300000, guid: 7a74b0b7b409c7145b3c33e3381b7b73, type: 3}
+  - {fileID: 21300000, guid: f97ca2b77b6039347be95ec23e833235, type: 3}
+  - {fileID: 21300000, guid: a12ce9c7af44f5147848dfd861af23fb, type: 3}
+  - {fileID: 21300000, guid: 6490bbc7a6eaaa241ab3d61a010177cc, type: 3}
+  - {fileID: 21300000, guid: 987b0fd775a9b4b4f9abce6ba9b4bb65, type: 3}
+  - {fileID: 21300000, guid: 143238e7ab28b1c4f96058b4dc63d07d, type: 3}
+  - {fileID: 21300000, guid: 0f7398e7c9a9f1349b527b7d418fdc52, type: 3}
+  - {fileID: 21300000, guid: b8ffb828c9c9c1246af83f54f680bced, type: 3}
+  - {fileID: 21300000, guid: 80fa3e78d0834ff48a779361a8ddf2dc, type: 3}
+  - {fileID: 21300000, guid: e15cff495f0749c4eb1a144abd42adc2, type: 3}
+  - {fileID: 21300000, guid: 5a62236958c9c7b4aad793e27db54aa8, type: 3}
+  - {fileID: 21300000, guid: 983892a92d7b26f4c8317adf8cab33ab, type: 3}
+  - {fileID: 21300000, guid: ffd8b15a67e0ebf42bbf81b440880072, type: 3}
+  - {fileID: 21300000, guid: decdb85a9f1230043900ad514733463f, type: 3}
+  - {fileID: 21300000, guid: f811847a947ed264fbea319e3113a718, type: 3}
+  - {fileID: 21300000, guid: fedf94aab4373884584e7d2b3ae3009c, type: 3}
+  - {fileID: 21300000, guid: c3bd5eba666d9014a888585155efa7cf, type: 3}
+  - {fileID: 21300000, guid: 14bf84ea04f9ed8478048115b7fb4c42, type: 3}
+  - {fileID: 21300000, guid: b5325bfab9cb8134aaf998d6c8ee205a, type: 3}
+  - {fileID: 21300000, guid: 78fa1d0bcf77d934eaf1dd70a648612c, type: 3}
+  - {fileID: 21300000, guid: 3466621b18839ec4c92f9cd1934c7062, type: 3}
+  - {fileID: 21300000, guid: f5bf6b1b846a4f143b3e210324668edd, type: 3}
+  - {fileID: 21300000, guid: f011de4bdfaee9047b0772a48d63b9f0, type: 3}
+  - {fileID: 21300000, guid: 9190a66bcbe3a0b4282bf06d026f0458, type: 3}
+  - {fileID: 21300000, guid: d632417be5aeef14093938fe9340b451, type: 3}
+  - {fileID: 21300000, guid: 7d12247bcb9f69441bddfcd39bbf56ff, type: 3}
+  - {fileID: 21300000, guid: ad1e3a9ba76f8384d82cb22f2509da92, type: 3}
+  - {fileID: 21300000, guid: 0a071c9bfbe24664fbf8b1a1246a0495, type: 3}
+  - {fileID: 21300000, guid: 881102cb73aea5140af173749432ad79, type: 3}
+  - {fileID: 21300000, guid: 19dd4adbc6520ea47ba796bcae8f815e, type: 3}
+  - {fileID: 21300000, guid: c536b2fb74f40d64693d4dece6707967, type: 3}
+  - {fileID: 21300000, guid: 45c1a31c8d798c34cb89467e08fc4739, type: 3}
+  - {fileID: 21300000, guid: 1403b72c666be9b4bbc826a9433d7b60, type: 3}
+  - {fileID: 21300000, guid: 9805d93c4493cf34191fd928045ba0bf, type: 3}
+  - {fileID: 21300000, guid: 9900375c15a42fe4aab533c2fd274bf3, type: 3}
+  - {fileID: 21300000, guid: cdb2a36c3ac19b846b79636a64880fd6, type: 3}
+  - {fileID: 21300000, guid: d2387f7cebc2fab429a4dec6b1e83589, type: 3}
+  - {fileID: 21300000, guid: 01a4ff7c8e6ee8342a934fb204468776, type: 3}
+  - {fileID: 21300000, guid: 4142868c941dc3e4f9bfc67cbe9d74be, type: 3}
+  - {fileID: 21300000, guid: 6b7272ac2d965014ca59a0a510bf0063, type: 3}
+  - {fileID: 21300000, guid: e901f9fce37525448aa0e442a53bde33, type: 3}
+  - {fileID: 21300000, guid: d828741daa14047479ac505e2f934c2d, type: 3}
+  - {fileID: 21300000, guid: fc956d6d4bb707b44aafaeed8b672fae, type: 3}
+  - {fileID: 21300000, guid: 0917a48dd06a9874381a5e44e258ad35, type: 3}
+  - {fileID: 21300000, guid: 7e4fa99d2d94e3948a58ae0add704643, type: 3}
+  - {fileID: 21300000, guid: 60e18bbdfdebaed46890e3391a15d760, type: 3}
+  - {fileID: 21300000, guid: 020bffbd9016b3840bff44894014b7aa, type: 3}
+  - {fileID: 21300000, guid: b86fb0ddaffd3ac46bde41e2de60dadd, type: 3}
+  - {fileID: 21300000, guid: b0119afdc32a719418de9717dbcccb83, type: 3}
+  - {fileID: 21300000, guid: 4376a75ee7349814facd49744e2d86c9, type: 3}
+  - {fileID: 21300000, guid: a147ea9e89413454580e18446572cafe, type: 3}
+  - {fileID: 21300000, guid: 69514daee50815641b33ec3768bc8ec2, type: 3}
+  - {fileID: 21300000, guid: cd5d0aee37e959f45b9d4ab2af314f45, type: 3}
+  - {fileID: 21300000, guid: a75a2c1f600049742bd87f4365f98d63, type: 3}
+  - {fileID: 21300000, guid: 9118d13f7ff38894e85bfaa37360512d, type: 3}
+  - {fileID: 21300000, guid: 964c163fd3d4c2f47a1b8ac0cc0c95ec, type: 3}
+  - {fileID: 21300000, guid: f5d8d65f36e9152469ca9ae18cfb5348, type: 3}
+  - {fileID: 21300000, guid: bb78486f83f3323449d6e002d1e6feff, type: 3}
+  - {fileID: 21300000, guid: 7a5b48cf426337949bb864eb062a7b21, type: 3}
+  - {fileID: 21300000, guid: bf41cacf3457ae043a1a523e9e29d168, type: 3}
+  - {fileID: 21300000, guid: bfe6a3df2ea02f24fbb4c9f59e9f6251, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Nether Dragon Board_00091
+  - Nether Dragon Board_00056
+  - Nether Dragon Board_00086
+  - Nether Dragon Board_00036
+  - Nether Dragon Board_00103
+  - Nether Dragon Board_00117
+  - Nether Dragon Board_00019
+  - Nether Dragon Board_00055
+  - Nether Dragon Board_00074
+  - Nether Dragon Board_00082
+  - Nether Dragon Board_00084
+  - Nether Dragon Board_00081
+  - Nether Dragon Board_00018
+  - Nether Dragon Board_00027
+  - Nether Dragon Board_00051
+  - Nether Dragon Board_00005
+  - Nether Dragon Board_00089
+  - Nether Dragon Board_00042
+  - Nether Dragon Board_00033
+  - Nether Dragon Board_00021
+  - Nether Dragon Board_00069
+  - Nether Dragon Board_00052
+  - Nether Dragon Board_00040
+  - Nether Dragon Board_00113
+  - Nether Dragon Board_00104
+  - Nether Dragon Board_00048
+  - Nether Dragon Board_00085
+  - Nether Dragon Board_00096
+  - Nether Dragon Board_00049
+  - Nether Dragon Board_00099
+  - Nether Dragon Board_00015
+  - Nether Dragon Board_00038
+  - Nether Dragon Board_00063
+  - Nether Dragon Board_00059
+  - Nether Dragon Board_00031
+  - Nether Dragon Board_00009
+  - Nether Dragon Board_00072
+  - Nether Dragon Board_00101
+  - Nether Dragon Board_00053
+  - Nether Dragon Board_00090
+  - Nether Dragon Board_00119
+  - Nether Dragon Board_00032
+  - Nether Dragon Board_00064
+  - Nether Dragon Board_00030
+  - Nether Dragon Board_00024
+  - Nether Dragon Board_00076
+  - Nether Dragon Board_00116
+  - Nether Dragon Board_00004
+  - Nether Dragon Board_00011
+  - Nether Dragon Board_00006
+  - Nether Dragon Board_00071
+  - Nether Dragon Board_00097
+  - Nether Dragon Board_00079
+  - Nether Dragon Board_00112
+  - Nether Dragon Board_00022
+  - Nether Dragon Board_00075
+  - Nether Dragon Board_00050
+  - Nether Dragon Board_00000
+  - Nether Dragon Board_00012
+  - Nether Dragon Board_00034
+  - Nether Dragon Board_00043
+  - Nether Dragon Board_00107
+  - Nether Dragon Board_00070
+  - Nether Dragon Board_00062
+  - Nether Dragon Board_00017
+  - Nether Dragon Board_00047
+  - Nether Dragon Board_00088
+  - Nether Dragon Board_00023
+  - Nether Dragon Board_00020
+  - Nether Dragon Board_00028
+  - Nether Dragon Board_00044
+  - Nether Dragon Board_00057
+  - Nether Dragon Board_00111
+  - Nether Dragon Board_00068
+  - Nether Dragon Board_00014
+  - Nether Dragon Board_00037
+  - Nether Dragon Board_00008
+  - Nether Dragon Board_00110
+  - Nether Dragon Board_00026
+  - Nether Dragon Board_00106
+  - Nether Dragon Board_00001
+  - Nether Dragon Board_00007
+  - Nether Dragon Board_00100
+  - Nether Dragon Board_00115
+  - Nether Dragon Board_00016
+  - Nether Dragon Board_00065
+  - Nether Dragon Board_00029
+  - Nether Dragon Board_00092
+  - Nether Dragon Board_00083
+  - Nether Dragon Board_00035
+  - Nether Dragon Board_00025
+  - Nether Dragon Board_00058
+  - Nether Dragon Board_00061
+  - Nether Dragon Board_00077
+  - Nether Dragon Board_00066
+  - Nether Dragon Board_00118
+  - Nether Dragon Board_00120
+  - Nether Dragon Board_00078
+  - Nether Dragon Board_00108
+  - Nether Dragon Board_00010
+  - Nether Dragon Board_00002
+  - Nether Dragon Board_00098
+  - Nether Dragon Board_00109
+  - Nether Dragon Board_00102
+  - Nether Dragon Board_00073
+  - Nether Dragon Board_00054
+  - Nether Dragon Board_00060
+  - Nether Dragon Board_00039
+  - Nether Dragon Board_00045
+  - Nether Dragon Board_00087
+  - Nether Dragon Board_00046
+  - Nether Dragon Board_00095
+  - Nether Dragon Board_00105
+  - Nether Dragon Board_00080
+  - Nether Dragon Board_00041
+  - Nether Dragon Board_00003
+  - Nether Dragon Board_00114
+  - Nether Dragon Board_00067
+  - Nether Dragon Board_00013
+  - Nether Dragon Board_00093
+  - Nether Dragon Board_00094
+  m_Tag: _NetherBg
+  m_IsVariant: 0

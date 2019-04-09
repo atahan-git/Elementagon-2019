@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: _PoisonBg
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 4096
+      textureCompression: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: a905dedc191d81a4da98a49cbc6fc163, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 58956f0084c98ee4fbebeddb75245356, type: 3}
+  - {fileID: 21300000, guid: 0e32ad40177db364ea57b6de76b03618, type: 3}
+  - {fileID: 21300000, guid: eaa057c0b7d191340a3468a2f9b49b1c, type: 3}
+  - {fileID: 21300000, guid: dbe0a9013426df94db05bcd2eaa140c0, type: 3}
+  - {fileID: 21300000, guid: 4b7f52118d1497442ac6690e20393b92, type: 3}
+  - {fileID: 21300000, guid: c33efc41dbc9ff246a469b9ad223d2c4, type: 3}
+  - {fileID: 21300000, guid: d9a58281421c5ec49a056eb5ec001d3a, type: 3}
+  - {fileID: 21300000, guid: f0c462d15c09edb49923d274a42e9855, type: 3}
+  - {fileID: 21300000, guid: 4c62f7f1f097537498795fd36744f9d2, type: 3}
+  - {fileID: 21300000, guid: 69d1102261be2384cb35aff2cc792c23, type: 3}
+  - {fileID: 21300000, guid: 90f1a022ad013db47bd40f5d1534cb81, type: 3}
+  - {fileID: 21300000, guid: 6b5e6542b8b30ce4e8520556b28581a1, type: 3}
+  - {fileID: 21300000, guid: 57bf80f2c4eccc947af6010e8fb4be0f, type: 3}
+  - {fileID: 21300000, guid: f42d5c03aaa012e4682180eba2965e61, type: 3}
+  - {fileID: 21300000, guid: 375fb633d8974f14a8bd74f98e1ba5f1, type: 3}
+  - {fileID: 21300000, guid: d8debb53b9c92554a9d9b192b1d7365d, type: 3}
+  - {fileID: 21300000, guid: efeb0bc39b013a24e979e128f26c0311, type: 3}
+  - {fileID: 21300000, guid: 7b6da5840e1b07f49bcf28f5823ceb03, type: 3}
+  - {fileID: 21300000, guid: 0144469470789e04ab44c887e1cb3bb6, type: 3}
+  - {fileID: 21300000, guid: 559636d4392cfb446bfbb7a5e6740bf8, type: 3}
+  - {fileID: 21300000, guid: 3a87ca154fcaf9c4f950b091fe102484, type: 3}
+  - {fileID: 21300000, guid: a0953bd5996c4c34e9a1be982c8636d5, type: 3}
+  - {fileID: 21300000, guid: a331fdd530eb50441a90e6a3823ea70c, type: 3}
+  - {fileID: 21300000, guid: e6a9d3e5ae9ef7d43a5b7c656e424051, type: 3}
+  - {fileID: 21300000, guid: bab53466ec9842447af51dc2f88b3a39, type: 3}
+  - {fileID: 21300000, guid: a5ab3f1707d8ba940b2f268edcdf817f, type: 3}
+  - {fileID: 21300000, guid: fa0026370b8ebad40b593b0e33e80e07, type: 3}
+  - {fileID: 21300000, guid: cc971aa701c0912469edc41e35c2f9af, type: 3}
+  - {fileID: 21300000, guid: 138b0ad797734be4fba43bc2113536b8, type: 3}
+  - {fileID: 21300000, guid: b29582e76a1188546b24cd6e194f29fa, type: 3}
+  - {fileID: 21300000, guid: 4cf19d18604acb94dad416e7e174d10b, type: 3}
+  - {fileID: 21300000, guid: 520ef43800b12ab42a0769e3ff4554a8, type: 3}
+  - {fileID: 21300000, guid: 82cabd38cbcb07a46811f969d1e3b2f9, type: 3}
+  - {fileID: 21300000, guid: 53d2186888fcaf44496cbacb1993a05f, type: 3}
+  - {fileID: 21300000, guid: 83c2c5c8bd29a1e45850db17097af231, type: 3}
+  - {fileID: 21300000, guid: 28d47d192610c6b478940382e9344756, type: 3}
+  - {fileID: 21300000, guid: f622dc59bcb9b7c4883096c528ab90aa, type: 3}
+  - {fileID: 21300000, guid: 225f5ed9ea7d74049b07777b1b062e42, type: 3}
+  - {fileID: 21300000, guid: c975802ab1dbc3e4d91a4534bb8af9ad, type: 3}
+  - {fileID: 21300000, guid: ad685acadd2f5a84f862d81a024d619e, type: 3}
+  - {fileID: 21300000, guid: 46a462daa5dc5f14d881242b68768fe2, type: 3}
+  - {fileID: 21300000, guid: ae8415ea01a5eb74f8a5ea36c52e8704, type: 3}
+  - {fileID: 21300000, guid: 9c590dfa489ae6043ac29eda164d2a3f, type: 3}
+  - {fileID: 21300000, guid: f85b83bbe6f1f9a418e1f721d2b3faaa, type: 3}
+  - {fileID: 21300000, guid: 167935cb626331e47be227c9da682de4, type: 3}
+  - {fileID: 21300000, guid: 80197bfba5573b04aa04de8b2b8994ff, type: 3}
+  - {fileID: 21300000, guid: 8eb1054c73412ea4fba2d5c751773c38, type: 3}
+  - {fileID: 21300000, guid: 695d905c105249d4593c6d4c1e31fe0d, type: 3}
+  - {fileID: 21300000, guid: d8078f6c2ea9a374aa0325e3c8934459, type: 3}
+  - {fileID: 21300000, guid: 93d45c8c139575943b26c87abac3eb58, type: 3}
+  - {fileID: 21300000, guid: d945cddc66021714abfcf7d35f41d3ef, type: 3}
+  - {fileID: 21300000, guid: de7309bdafd5fee4f80b16b81e2c9365, type: 3}
+  - {fileID: 21300000, guid: efe75cfd3ec488742b6b717ccb8a8963, type: 3}
+  - {fileID: 21300000, guid: 19e6374ef59c7c8418c7eae6711aed9f, type: 3}
+  - {fileID: 21300000, guid: ca81968e963ad33438a62866aa8194bf, type: 3}
+  - {fileID: 21300000, guid: ae9c170f1f88a3a40b26913bd30de360, type: 3}
+  - {fileID: 21300000, guid: 61f89a0ffa240ed409c4ddddf0c2cdb4, type: 3}
+  - {fileID: 21300000, guid: 8fdc691fa0c1ae743a37e1019e0e9b61, type: 3}
+  - {fileID: 21300000, guid: b1ea8c8f67ccbd247ae633bcaee885b7, type: 3}
+  - {fileID: 21300000, guid: 3b414dcff7dbc1642a3345ab9632b08e, type: 3}
+  - {fileID: 21300000, guid: b33b8def93420a747b35cc316a10ba86, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Poison Dragon Board_00030
+  - Poison Dragon Board_00005
+  - Poison Dragon Board_00026
+  - Poison Dragon Board_00043
+  - Poison Dragon Board_00012
+  - Poison Dragon Board_00050
+  - Poison Dragon Board_00025
+  - Poison Dragon Board_00011
+  - Poison Dragon Board_00058
+  - Poison Dragon Board_00049
+  - Poison Dragon Board_00010
+  - Poison Dragon Board_00054
+  - Poison Dragon Board_00034
+  - Poison Dragon Board_00045
+  - Poison Dragon Board_00040
+  - Poison Dragon Board_00031
+  - Poison Dragon Board_00039
+  - Poison Dragon Board_00016
+  - Poison Dragon Board_00046
+  - Poison Dragon Board_00022
+  - Poison Dragon Board_00014
+  - Poison Dragon Board_00044
+  - Poison Dragon Board_00001
+  - Poison Dragon Board_00008
+  - Poison Dragon Board_00052
+  - Poison Dragon Board_00024
+  - Poison Dragon Board_00028
+  - Poison Dragon Board_00006
+  - Poison Dragon Board_00009
+  - Poison Dragon Board_00057
+  - Poison Dragon Board_00015
+  - Poison Dragon Board_00033
+  - Poison Dragon Board_00029
+  - Poison Dragon Board_00048
+  - Poison Dragon Board_00000
+  - Poison Dragon Board_00027
+  - Poison Dragon Board_00037
+  - Poison Dragon Board_00003
+  - Poison Dragon Board_00053
+  - Poison Dragon Board_00002
+  - Poison Dragon Board_00023
+  - Poison Dragon Board_00042
+  - Poison Dragon Board_00059
+  - Poison Dragon Board_00013
+  - Poison Dragon Board_00007
+  - Poison Dragon Board_00038
+  - Poison Dragon Board_00055
+  - Poison Dragon Board_00032
+  - Poison Dragon Board_00047
+  - Poison Dragon Board_00019
+  - Poison Dragon Board_00018
+  - Poison Dragon Board_00036
+  - Poison Dragon Board_00056
+  - Poison Dragon Board_00035
+  - Poison Dragon Board_00051
+  - Poison Dragon Board_00021
+  - Poison Dragon Board_00041
+  - Poison Dragon Board_00004
+  - Poison Dragon Board_00020
+  - Poison Dragon Board_00060
+  - Poison Dragon Board_00017
+  m_Tag: _PoisonBg
+  m_IsVariant: 0

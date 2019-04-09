@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -Introduction- Dialog
+  m_EditorClassIdentifier: 
+  dialogName: Introduction
+  isSkipable: 0
+  dialogs:
+  - tag: 
+    text: "Mavi Kale'ye ho\u015F geldin <i>Kahraman</i>. <delay=0.3>\nSana biraz etraf\u0131
+      tan\u0131tay\u0131m."
+    clearImage: 0
+    image: {fileID: 21300000, guid: 6fe8c07fb3f35a34d9863a6d48cc8208, type: 3}
+    bigSpriteAction: 00000000
+    bigSpriteSlot: 02000000
+    bigSprite:
+    - {fileID: 21300000, guid: 2e5a888643d942e4788cbca508f767a3, type: 3}
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "<trigger=0>Bunlar ejderha ka\u011F\u0131tlar\u0131. "
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Evrendeki 7 ejderha g\xFCc\xFCn\xFC simgeliyorlar."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Onlar\u0131 e\u015Fle\u015Ftirerek puan kazan\u0131yorsun.<wait=click><trigger=1>"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Tabii her zaman i\u015F bu kadar basit olmuyor."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Seni bekleyen bir s\xFCr\xFC zorluk var. \u015Eimdi ilk karakterini yaratmak
+      i\xE7in Doran'\u0131n yan\u0131na git."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: <trigger=2>
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

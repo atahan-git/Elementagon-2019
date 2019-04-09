@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -Doran- Dialog
+  m_EditorClassIdentifier: 
+  dialogName: Doran
+  isSkipable: 0
+  dialogs:
+  - tag: 
+    text: "Ho\u015Fgeldin <i>Kahraman</i>. Kral Noarin gelece\u011Finden haberdar
+      etmi\u015Fti."
+    clearImage: 0
+    image: {fileID: 21300000, guid: aaffdfa413d5a26498cd2b67a37871bd, type: 3}
+    bigSpriteAction: 00000000
+    bigSpriteSlot: 02000000
+    bigSprite:
+    - {fileID: 21300000, guid: 84d4678a0ca1aac4ebe767d22518fda5, type: 3}
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Burada i\xE7inde bizim gibi <b>Ya\u015Fam G\xFCc\xFC</b> bulunanlara <i>Kahraman</i>
+      diyorlar. <delay=0.5>Onlar ejderha g\xFC\xE7lerini kullanabiliyor."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Ba\u015Flang\u0131\xE7 olarak sana iki tane g\xFC\xE7 \xF6neriyorum. Hangisini
+      se\xE7ece\u011Fine karar verdikten sonra tekrar g\xF6r\xFC\u015F\xFCr\xFCz.<wait=click><trigger=0>"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Art\u0131k ejderha g\xFCc\xFCn\xFC kulanabilirsin. <delay=0.5>Tabii sen
+      daha yeni ba\u015Flad\u0131\u011F\u0131n i\xE7in kullan\u0131rken bu kadar g\xFC\xE7l\xFC
+      olmayacaks\u0131n.<delay=1>\nG\xFCc\xFCn\xFC de\u011Fi\u015Ftirmek veya geli\u015Ftirmek
+      i\xE7in buraya tekrar gelebilirsin.<wait=click><trigger=1>"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

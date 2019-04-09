@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc662e584dd7b7448bbc9ee86b536e6, type: 3}
+  m_Name: 5 Poison Daggers
+  m_EditorClassIdentifier: 
+  ID: 5
+  elementalType: 6
+  name: "Zehir B\u0131\xE7aklar\u0131"
+  sprite: {fileID: 21300000, guid: 2a9333838199db84ebb7cf3940496fdb, type: 3}
+  cardSprite: {fileID: 0}
+  description: 3 kart zehirle.
+  durability: 1
+  myType: 6
+  power: 3
+  amount: 1
+  chargeReq: 00000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000000000000000

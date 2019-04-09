@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Hidirellez
+  m_EditorClassIdentifier: 
+  id: -1
+  PresetName: "H\u0131d\u0131rellez"
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  levelCards:
+  - {fileID: 11400000, guid: 4798bdddcb992dd4e9d05de725b88d4b, type: 2}
+  - {fileID: 11400000, guid: 70a8fb06afae61c40a5f8f5811d6310a, type: 2}
+  - {fileID: 11400000, guid: 16a3bbe3ee21449438da89848b838505, type: 2}
+  - {fileID: 11400000, guid: ea29453d03540de4dbf47ae272e058f9, type: 2}
+  - {fileID: 11400000, guid: d30f8461c918a9a4d98b5b536994865f, type: 2}
+  - {fileID: 11400000, guid: 4d4fd00a04db92a4db0f8ad580fb2c77, type: 2}
+  - {fileID: 11400000, guid: 2c1468dfee22bce41a07e422a4ad9ae2, type: 2}
+  defaultSpawnChance: 7
+  customSpawnChances: []
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  cardReOpenTime: 15
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  objectiveText: 
+  timer: -1
+  turns: -1
+  scoreReach: 10
+  killAllNPC: 0
+  canCombo: 1
+  myGameType: 0
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: "H\u0131d\u0131rellez"
+  levelName: "H\u0131d\u0131rellez"
+  levelDescription: wowowo
+  startingText: wowowo
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  bgAnimation: {fileID: 0}
+  bgSprite: {fileID: 21300000, guid: b335ff1a9f331014888870a6e7ddd0c4, type: 3}
+  levelIntroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 0}
+  customObject: {fileID: 0}
+  autoSetUpBoard: 1
+  defaultDropChance: 1
+  possibleDrops: []
+  customDropChances: []
+  itemTypesStartIndex: 7
+  myNPC: {fileID: 0}
+  npcSpawnCount: 1
+  npcSpawnDelay: 10
+  nextStage: {fileID: 0}

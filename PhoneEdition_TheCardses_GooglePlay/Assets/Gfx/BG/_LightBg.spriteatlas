@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: _LightBg
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 4096
+      textureCompression: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 9717eb52738e55c4fbb915716c91ec7a, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 93eefe807c14aee40ab1e3d9cad2ce6b, type: 3}
+  - {fileID: 21300000, guid: f7894e906fb18f34f98a20404579f9f2, type: 3}
+  - {fileID: 21300000, guid: ba9977b060d11a344909d0c8b4caf75b, type: 3}
+  - {fileID: 21300000, guid: fa155ad07a6c40f4484e2e67e49ec30b, type: 3}
+  - {fileID: 21300000, guid: a34b824128e61d144b1f119cecc09fee, type: 3}
+  - {fileID: 21300000, guid: 90540a410c85f874192511c988f3f122, type: 3}
+  - {fileID: 21300000, guid: 4069a151b02cce84f8679188c456e7b5, type: 3}
+  - {fileID: 21300000, guid: fd7e7361f34300246b96229febe72c9c, type: 3}
+  - {fileID: 21300000, guid: aab6d461806a0954c98891902bc3ccbe, type: 3}
+  - {fileID: 21300000, guid: 00732071e732ca24c9a5a1816bea488b, type: 3}
+  - {fileID: 21300000, guid: 6ffc457146c81e14fab535622061228e, type: 3}
+  - {fileID: 21300000, guid: e28d1ea1bbaf0c64790f1ed8896af56b, type: 3}
+  - {fileID: 21300000, guid: d8d74cb1edb06ad4d91c8e72e950d3e6, type: 3}
+  - {fileID: 21300000, guid: bc4623c1ec0d9b240a533c6e08b847fa, type: 3}
+  - {fileID: 21300000, guid: 1a325712939b23e4ca3112ec92278833, type: 3}
+  - {fileID: 21300000, guid: 951c6d22d5e9c79429f5fe38d250a251, type: 3}
+  - {fileID: 21300000, guid: 4358d1524e8c9a043865144a22e79966, type: 3}
+  - {fileID: 21300000, guid: 1379d2625e7093e4ba4a201d6dcb222a, type: 3}
+  - {fileID: 21300000, guid: ad92b78293ed5aa47805dd333efa4f38, type: 3}
+  - {fileID: 21300000, guid: 66662c82459274b4c98de8e37f16bc27, type: 3}
+  - {fileID: 21300000, guid: 9cfd6c8201119ac4daf9d539c09d25d9, type: 3}
+  - {fileID: 21300000, guid: 879db1a2b13fd244399098510aaa328b, type: 3}
+  - {fileID: 21300000, guid: b96b18d282c06d74fa00bc45bf9f50de, type: 3}
+  - {fileID: 21300000, guid: fe2141f27272886428377e0c57831841, type: 3}
+  - {fileID: 21300000, guid: 3b91d14368949cb439b8abb32fad12a2, type: 3}
+  - {fileID: 21300000, guid: 1ff10953b2e5914489a32472ba45ea3f, type: 3}
+  - {fileID: 21300000, guid: 2df04953c2b98dd448d42e7d0d9f5e7c, type: 3}
+  - {fileID: 21300000, guid: 2d36aff37a11d0548a0f39df7082a397, type: 3}
+  - {fileID: 21300000, guid: eb25d104410d99341aeff1c891c07818, type: 3}
+  - {fileID: 21300000, guid: ce871e140bdf2484da96ec917b552fc3, type: 3}
+  - {fileID: 21300000, guid: 95cc292428fc25d49ad25bf3f2028247, type: 3}
+  - {fileID: 21300000, guid: ed9dc05460664f54a8f7f6c08b563a5d, type: 3}
+  - {fileID: 21300000, guid: 2b8efa94727acc54a9311dfcb295e874, type: 3}
+  - {fileID: 21300000, guid: baa7fbc435e53b64ab0eb37f6e250c8f, type: 3}
+  - {fileID: 21300000, guid: a245afd437f24da4da46594131e33225, type: 3}
+  - {fileID: 21300000, guid: 9065fff4844386d4c9d503b2395b1530, type: 3}
+  - {fileID: 21300000, guid: 38f9082511b93d34f8408122fc3f1b6a, type: 3}
+  - {fileID: 21300000, guid: 2d9eae45533530543866b311af74218e, type: 3}
+  - {fileID: 21300000, guid: fd155555390ea9747a0cc0b531548c7b, type: 3}
+  - {fileID: 21300000, guid: a1ebaa95a5809e346b6ac661fc79883d, type: 3}
+  - {fileID: 21300000, guid: f96a3ba552c3a8b40b6a3c463714b67e, type: 3}
+  - {fileID: 21300000, guid: 9c3c8bc5de56fe14da19bc01b72d679a, type: 3}
+  - {fileID: 21300000, guid: 73bde816474c868479e6f6e38edabb8c, type: 3}
+  - {fileID: 21300000, guid: 591c1a26621eb5144907ccf39358b1f7, type: 3}
+  - {fileID: 21300000, guid: 6937f54693c1d6246be6752445d4f111, type: 3}
+  - {fileID: 21300000, guid: 37b17f764edde7145a23114d888ab299, type: 3}
+  - {fileID: 21300000, guid: 7ccc2b86780dd59409a8d8648a885464, type: 3}
+  - {fileID: 21300000, guid: 0ec5a3c673ad68b46b4d31a734a8e835, type: 3}
+  - {fileID: 21300000, guid: bec2a2d6061ae8a49b63155c3657d1aa, type: 3}
+  - {fileID: 21300000, guid: cfb3950788893e248a35adbd8c64a3e4, type: 3}
+  - {fileID: 21300000, guid: 368a0a07d8985674d88d6988691ff22a, type: 3}
+  - {fileID: 21300000, guid: 1b5aac074d34ed74abfcc31014d04e10, type: 3}
+  - {fileID: 21300000, guid: dd7cfc17d6413a0419e4fc6043ce04b4, type: 3}
+  - {fileID: 21300000, guid: 001bdf27118584949872bedc7d1cf77d, type: 3}
+  - {fileID: 21300000, guid: 8edb5337734ea89489358688db7fc1c2, type: 3}
+  - {fileID: 21300000, guid: 5a178a371420fa84f9cb3fc2f537862c, type: 3}
+  - {fileID: 21300000, guid: c858e957bef5bbb479459a062aad133c, type: 3}
+  - {fileID: 21300000, guid: 1b75ce875a804ec4d857e6cdc9085d47, type: 3}
+  - {fileID: 21300000, guid: b55d5997f9897ab4fb4b8118bbbf44ea, type: 3}
+  - {fileID: 21300000, guid: c08a93a79b8ad824aaf30c4895685eb0, type: 3}
+  - {fileID: 21300000, guid: 0de7b2b7964ed4d4e9bd89fe6d234592, type: 3}
+  - {fileID: 21300000, guid: 25c6ece70279ca045808e3d4c79e8021, type: 3}
+  - {fileID: 21300000, guid: 5864d7f7dbe00a6448635247628af464, type: 3}
+  - {fileID: 21300000, guid: 2945d91897c703a4f8ffd12b9794958a, type: 3}
+  - {fileID: 21300000, guid: 95d7bb58b411cea44bca34eb93323f8a, type: 3}
+  - {fileID: 21300000, guid: eb9bb1687b80d614d87606e7be726167, type: 3}
+  - {fileID: 21300000, guid: e98374681fbb77e4793951b07cb4cd2b, type: 3}
+  - {fileID: 21300000, guid: bf1468d8bf1413942b774836f3f79437, type: 3}
+  - {fileID: 21300000, guid: 6416d309f0f640d4bb4546afcfbc244c, type: 3}
+  - {fileID: 21300000, guid: cb12442986f929e4c8dba88e6461c37e, type: 3}
+  - {fileID: 21300000, guid: 90c1de69c66893b4182001f54642e516, type: 3}
+  - {fileID: 21300000, guid: 83fc2c79cbfd4634d825b1529ea8c522, type: 3}
+  - {fileID: 21300000, guid: bcd51199c0de97d44855e3ecf5bc226d, type: 3}
+  - {fileID: 21300000, guid: b9dc3c9980cdee04bb535e38900b7d09, type: 3}
+  - {fileID: 21300000, guid: 536817c9049095940a3b9c5d1528a3f9, type: 3}
+  - {fileID: 21300000, guid: 131238c9168311a4e9b5d3007ae5d936, type: 3}
+  - {fileID: 21300000, guid: 04973ff965306534fafb85b66597b6d3, type: 3}
+  - {fileID: 21300000, guid: 635be42a8849d7a479c3759c59a60ec7, type: 3}
+  - {fileID: 21300000, guid: 25c0662a72b92a14f972d84550ac4572, type: 3}
+  - {fileID: 21300000, guid: 9087f82a7ba49214995439f5574cb651, type: 3}
+  - {fileID: 21300000, guid: 97e8aa2a0e9ccfa4e92a7caeee0d3b9e, type: 3}
+  - {fileID: 21300000, guid: fd54725a5291f314b9081f26c5c22377, type: 3}
+  - {fileID: 21300000, guid: 04577f6abc9fb924297a223ea9e6621d, type: 3}
+  - {fileID: 21300000, guid: 71bba58a196954547bf9ad801e06fb43, type: 3}
+  - {fileID: 21300000, guid: 99d0168a5df2be54daf4c42eb67c410f, type: 3}
+  - {fileID: 21300000, guid: ec21f2bab28e9ad4f833db6634d2407d, type: 3}
+  - {fileID: 21300000, guid: 9ea66cea89d6b4f4293f3ef36b44765d, type: 3}
+  - {fileID: 21300000, guid: e5783e0b4cd611942ae8bfd11c152de8, type: 3}
+  - {fileID: 21300000, guid: cc94422b87be0324aa1350bb65a3048b, type: 3}
+  - {fileID: 21300000, guid: ac2b862ba95c2294bb5c24d89ac6e353, type: 3}
+  - {fileID: 21300000, guid: 5eada67b623c28d44b52053229ae8a52, type: 3}
+  - {fileID: 21300000, guid: 3a1d5c8bf28365346aecbd8d2b2c6415, type: 3}
+  - {fileID: 21300000, guid: bab297bb0ae806243b5acbca860da4b0, type: 3}
+  - {fileID: 21300000, guid: c9df79bbf9598b440b011bf480123171, type: 3}
+  - {fileID: 21300000, guid: 2c3a28cbf9f180646b67ff0a95f919bf, type: 3}
+  - {fileID: 21300000, guid: a03b29eb34610d4488d178e3727e1cff, type: 3}
+  - {fileID: 21300000, guid: 07a7b9eb7cf0f784ca087d1d9573d66c, type: 3}
+  - {fileID: 21300000, guid: d2327f7cad8586c49b2e44051c562c49, type: 3}
+  - {fileID: 21300000, guid: 7294e49c2515ffc499bd95f5feef2bff, type: 3}
+  - {fileID: 21300000, guid: 331364cc564ea6b49bb49cbfe6b2acd7, type: 3}
+  - {fileID: 21300000, guid: 896556cc6eed5364db5219febc08720f, type: 3}
+  - {fileID: 21300000, guid: ac73b4ec01d6dc1418783ece4429d52e, type: 3}
+  - {fileID: 21300000, guid: f2dcdd0d2d42c1c4bb198bee6fb27492, type: 3}
+  - {fileID: 21300000, guid: 1d0ba03d869dd6f4f82c6ea264261d75, type: 3}
+  - {fileID: 21300000, guid: 5a02ef5d4b79a3f4988315060959af70, type: 3}
+  - {fileID: 21300000, guid: ae26917df787ff649b513666c15f5127, type: 3}
+  - {fileID: 21300000, guid: 8648708da11d775458d212954bb1398f, type: 3}
+  - {fileID: 21300000, guid: bfeb538d0add4c14ba2f985aacac5f1c, type: 3}
+  - {fileID: 21300000, guid: e569be8d156451c4a8565b364032b226, type: 3}
+  - {fileID: 21300000, guid: 1623fe8d96a9da54395c422cbca1832c, type: 3}
+  - {fileID: 21300000, guid: f0f9a9ad8819e8549bc57c608a70453f, type: 3}
+  - {fileID: 21300000, guid: ea5bd9fd75ca5434caf122a50838d10e, type: 3}
+  - {fileID: 21300000, guid: 5ce79f1e945437b47ae58729164709d4, type: 3}
+  - {fileID: 21300000, guid: 73c1e74ea78a1bd40a604ff3bf769577, type: 3}
+  - {fileID: 21300000, guid: 832118defd6801f4b9e76613839c9215, type: 3}
+  - {fileID: 21300000, guid: c4b3132ff32784e458635767e08c8687, type: 3}
+  - {fileID: 21300000, guid: 2304b06f1cc5ba34b8a564466e5aa2e7, type: 3}
+  - {fileID: 21300000, guid: dd59a09f679980e4da4a5e8fa7b9465e, type: 3}
+  - {fileID: 21300000, guid: efd4c8bf83e68784d94edcaf697e5cd2, type: 3}
+  - {fileID: 21300000, guid: ae226ebf7b723454cbf8375c4faa9215, type: 3}
+  - {fileID: 21300000, guid: 163f18ff7cb83cd4b81acb681617a99f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Light Dragon Board_00060
+  - Light Dragon Board_00043
+  - Light Dragon Board_00034
+  - Light Dragon Board_00083
+  - Light Dragon Board_00027
+  - Light Dragon Board_00010
+  - Light Dragon Board_00019
+  - Light Dragon Board_00101
+  - Light Dragon Board_00073
+  - Light Dragon Board_00020
+  - Light Dragon Board_00111
+  - Light Dragon Board_00089
+  - Light Dragon Board_00000
+  - Light Dragon Board_00076
+  - Light Dragon Board_00098
+  - Light Dragon Board_00061
+  - Light Dragon Board_00054
+  - Light Dragon Board_00036
+  - Light Dragon Board_00074
+  - Light Dragon Board_00028
+  - Light Dragon Board_00065
+  - Light Dragon Board_00068
+  - Light Dragon Board_00113
+  - Light Dragon Board_00045
+  - Light Dragon Board_00075
+  - Light Dragon Board_00056
+  - Light Dragon Board_00082
+  - Light Dragon Board_00062
+  - Light Dragon Board_00046
+  - Light Dragon Board_00013
+  - Light Dragon Board_00023
+  - Light Dragon Board_00102
+  - Light Dragon Board_00104
+  - Light Dragon Board_00005
+  - Light Dragon Board_00094
+  - Light Dragon Board_00069
+  - Light Dragon Board_00066
+  - Light Dragon Board_00081
+  - Light Dragon Board_00105
+  - Light Dragon Board_00093
+  - Light Dragon Board_00095
+  - Light Dragon Board_00063
+  - Light Dragon Board_00106
+  - Light Dragon Board_00018
+  - Light Dragon Board_00006
+  - Light Dragon Board_00033
+  - Light Dragon Board_00084
+  - Light Dragon Board_00053
+  - Light Dragon Board_00035
+  - Light Dragon Board_00029
+  - Light Dragon Board_00077
+  - Light Dragon Board_00109
+  - Light Dragon Board_00038
+  - Light Dragon Board_00017
+  - Light Dragon Board_00070
+  - Light Dragon Board_00014
+  - Light Dragon Board_00120
+  - Light Dragon Board_00119
+  - Light Dragon Board_00030
+  - Light Dragon Board_00090
+  - Light Dragon Board_00002
+  - Light Dragon Board_00052
+  - Light Dragon Board_00092
+  - Light Dragon Board_00096
+  - Light Dragon Board_00007
+  - Light Dragon Board_00001
+  - Light Dragon Board_00107
+  - Light Dragon Board_00108
+  - Light Dragon Board_00118
+  - Light Dragon Board_00072
+  - Light Dragon Board_00112
+  - Light Dragon Board_00114
+  - Light Dragon Board_00004
+  - Light Dragon Board_00022
+  - Light Dragon Board_00064
+  - Light Dragon Board_00097
+  - Light Dragon Board_00085
+  - Light Dragon Board_00040
+  - Light Dragon Board_00031
+  - Light Dragon Board_00117
+  - Light Dragon Board_00015
+  - Light Dragon Board_00087
+  - Light Dragon Board_00025
+  - Light Dragon Board_00008
+  - Light Dragon Board_00009
+  - Light Dragon Board_00003
+  - Light Dragon Board_00026
+  - Light Dragon Board_00080
+  - Light Dragon Board_00059
+  - Light Dragon Board_00021
+  - Light Dragon Board_00037
+  - Light Dragon Board_00079
+  - Light Dragon Board_00039
+  - Light Dragon Board_00116
+  - Light Dragon Board_00012
+  - Light Dragon Board_00067
+  - Light Dragon Board_00041
+  - Light Dragon Board_00050
+  - Light Dragon Board_00100
+  - Light Dragon Board_00049
+  - Light Dragon Board_00071
+  - Light Dragon Board_00047
+  - Light Dragon Board_00011
+  - Light Dragon Board_00099
+  - Light Dragon Board_00044
+  - Light Dragon Board_00042
+  - Light Dragon Board_00078
+  - Light Dragon Board_00032
+  - Light Dragon Board_00058
+  - Light Dragon Board_00016
+  - Light Dragon Board_00024
+  - Light Dragon Board_00110
+  - Light Dragon Board_00115
+  - Light Dragon Board_00051
+  - Light Dragon Board_00048
+  - Light Dragon Board_00103
+  - Light Dragon Board_00055
+  - Light Dragon Board_00057
+  - Light Dragon Board_00088
+  - Light Dragon Board_00091
+  - Light Dragon Board_00086
+  m_Tag: _LightBg
+  m_IsVariant: 0

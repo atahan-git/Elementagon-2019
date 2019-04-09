@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ddb21caa616c0488b6c8eded113fc8, type: 3}
+  m_Name: 2 Poison Potion
+  m_EditorClassIdentifier: 
+  ID: 2
+  elementalType: 6
+  name: "Zehir \u0130ksiri"
+  sprite: {fileID: 21300000, guid: fcb7031f3acbc1047b4ae7d8c9af01d0, type: 3}
+  cardSprite: {fileID: 0}
+  description: 10 hasar ver.
+  durability: 0
+  myType: 3
+  amount: 10

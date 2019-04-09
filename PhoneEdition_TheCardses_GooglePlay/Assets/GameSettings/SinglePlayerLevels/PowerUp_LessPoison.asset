@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbcd5f2a985fd9419fd59dbee67104c, type: 3}
+  m_Name: PowerUp_LessPoison
+  m_EditorClassIdentifier: 
+  earth_activeCount: 7
+  earth_checkSpeed: 0.35
+  ice_activeTime: 14
+  light_activeTime: 14
+  poison_activeTime: 2
+  poison_checkSpeed: 4
+  poison_damage: 2
+  poison_combo: 2
+  shadow_activeTime: 4
+  shadow_activeCount: 7

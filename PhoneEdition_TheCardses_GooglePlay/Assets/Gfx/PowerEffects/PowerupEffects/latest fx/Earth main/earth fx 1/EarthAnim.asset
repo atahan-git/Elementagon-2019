@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a638bf146a5ff749846bedb9374fe2d, type: 3}
+  m_Name: EarthAnim
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: b293e00bb7faf014ba62cd16375756b0, type: 3}
+  - {fileID: 21300000, guid: 9f12fb1ab1f70ff4486c9a5c63533f80, type: 3}
+  - {fileID: 21300000, guid: 70e762552eec99742b3145988c776957, type: 3}
+  - {fileID: 21300000, guid: ed4b28e6094d5f7498f7d6d07075dfeb, type: 3}
+  - {fileID: 21300000, guid: 9869e8f093d035c43a7c9278cd44b165, type: 3}
+  - {fileID: 21300000, guid: 07003afe9313a4c469a789e3fd6e8ebe, type: 3}
+  - {fileID: 21300000, guid: a806666ce23f30a49a188c34b9cd4859, type: 3}
+  - {fileID: 21300000, guid: 2e5166a555c2bcd408c89f010d352088, type: 3}
+  - {fileID: 21300000, guid: 89c286a86801cf14cbe2e6cc0c2fc657, type: 3}
+  - {fileID: 21300000, guid: 978ad21544529f943bd8c120ce35f209, type: 3}
+  - {fileID: 21300000, guid: 7987e523524aca941a4425f7f80b18a4, type: 3}
+  - {fileID: 21300000, guid: 52ad5a3835a51a2468fcdfa639d13748, type: 3}
+  - {fileID: 21300000, guid: 1ce588ee31f6e8b4094319bbad63475d, type: 3}
+  - {fileID: 21300000, guid: 75ccbbda89bbd6f4ea0245222ebba33b, type: 3}
+  - {fileID: 21300000, guid: ecfaea8c84727c84fab5dee54aab18ad, type: 3}
+  - {fileID: 21300000, guid: 4f876fcccda97744bacc1888d8e449e1, type: 3}
+  - {fileID: 21300000, guid: d51ace532a162c242819757d45dc2615, type: 3}
+  - {fileID: 21300000, guid: 630245bfde009204e9fcf3193b4929a0, type: 3}
+  spritePerSecond: 24

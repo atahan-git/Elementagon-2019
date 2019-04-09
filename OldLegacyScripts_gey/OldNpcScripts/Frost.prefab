@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1652662271982390}
+  m_IsPrefabAsset: 1
+--- !u!1 &1652662271982390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4065318040613728}
+  - component: {fileID: 114424104908267200}
+  m_Layer: 0
+  m_Name: Frost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4065318040613728
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652662271982390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114424104908267200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652662271982390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cded36e4d1cfe442a7884efd3763f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstActivateTime: 5
+  minTime: 5
+  maxTime: 10
+  factiveSelectTime: 7
+  minSelectTime: 0.5
+  maxSelectTime: 1
+  checkTime: 0.5
+  AIStrength: 0.5
+  poisonImmune: 0
+  isActive: 1
+  type: 2
+  mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  normalSelectEffect: {fileID: 1463174521301990, guid: 520d1c005a0c1b74295233f8cbfb5b59,
+    type: 2}
+  SelectorObject: {fileID: 21300000, guid: 27bb21e1f0902b14c8438eee7dd42f66, type: 3}
+  isGoToPosActive: 0
+  normal_mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  freezeTime: 7
+  freezeInterval: {x: 15, y: 20}
+  pickSettings: {x: 0.6, y: 1.2, z: 0.3}

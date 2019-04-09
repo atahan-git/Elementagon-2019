@@ -1,0 +1,289 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: _IceBg
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 4096
+      textureCompression: 1
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: c81877eae96b1414aad863d36508149d, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4043d650e17d80a40ac8c0c027f31772, type: 3}
+  - {fileID: 21300000, guid: 72a57ca00845e9241926ec067513f862, type: 3}
+  - {fileID: 21300000, guid: 2de12fa0cf198dc4580b2c047b1aaa48, type: 3}
+  - {fileID: 21300000, guid: 42e339e021575f54aaaa0361a39d3bcb, type: 3}
+  - {fileID: 21300000, guid: 0c225fe0bee6e65439ca39d3551ed1b4, type: 3}
+  - {fileID: 21300000, guid: e0e2d011febf73e4d8868bf8c17a99d8, type: 3}
+  - {fileID: 21300000, guid: 66b538115cda1c74f9cf7592310d5b99, type: 3}
+  - {fileID: 21300000, guid: 46ef5a21cec83f944a1882cf23f17d58, type: 3}
+  - {fileID: 21300000, guid: 8218613154864f5459c3946bc32fe215, type: 3}
+  - {fileID: 21300000, guid: fe679671a6436d64fb31f4653182175a, type: 3}
+  - {fileID: 21300000, guid: 1dd73181d53cb244cae8c3eabc900a5d, type: 3}
+  - {fileID: 21300000, guid: 37be7b81156c3b448b6c45854ea2defe, type: 3}
+  - {fileID: 21300000, guid: 0d2c5be1fe797574981b098938c72dc8, type: 3}
+  - {fileID: 21300000, guid: 73d6663268800ae46980468b7421c22f, type: 3}
+  - {fileID: 21300000, guid: abfd4452c3f2b0246ab39f8ebbc0493d, type: 3}
+  - {fileID: 21300000, guid: ea424a52f8468e84bb59f6bcd824d1be, type: 3}
+  - {fileID: 21300000, guid: f8d3418287b9a0141a37efbd0c742d69, type: 3}
+  - {fileID: 21300000, guid: 79b844922fbfb8747aaffc4adb30c36c, type: 3}
+  - {fileID: 21300000, guid: 35acdc921bc753347ab0a3635b4a2f4e, type: 3}
+  - {fileID: 21300000, guid: 8ac88223d57acb445ad9e53e06f6a352, type: 3}
+  - {fileID: 21300000, guid: f1c7d0535f778ea43830cedd0d729a5a, type: 3}
+  - {fileID: 21300000, guid: ada8c853baf411347be4996879bbfa9e, type: 3}
+  - {fileID: 21300000, guid: 1a20ad5373554cc4b9cdf28bb7fbf081, type: 3}
+  - {fileID: 21300000, guid: a0af11739b206e84a82c38d2b05e145e, type: 3}
+  - {fileID: 21300000, guid: 1a354193ff4bb004382b7c0ad4414785, type: 3}
+  - {fileID: 21300000, guid: a6a84193f746b9a4a8820a05dc9ea2b1, type: 3}
+  - {fileID: 21300000, guid: b04e13a3171f02a4090403df7dd5ea1f, type: 3}
+  - {fileID: 21300000, guid: fb934ca3c3932454fbad582d8811f5d7, type: 3}
+  - {fileID: 21300000, guid: 2eb130b364e6ec94598cf09fd4a7e390, type: 3}
+  - {fileID: 21300000, guid: 0cde13c37a6c647438d2718d1ff1afa5, type: 3}
+  - {fileID: 21300000, guid: ec75a7d31752682428dec70bfb1a4258, type: 3}
+  - {fileID: 21300000, guid: a4cf7a24801771f47974faae2cc492c8, type: 3}
+  - {fileID: 21300000, guid: 09598f64a8197904fbe1ef64ee2526a4, type: 3}
+  - {fileID: 21300000, guid: 9cb67e746618d0841a982110b62c8f50, type: 3}
+  - {fileID: 21300000, guid: 17167c8449e6d804582271ae0b76b4de, type: 3}
+  - {fileID: 21300000, guid: d2cf58b4f5c57ae4695d63746476979a, type: 3}
+  - {fileID: 21300000, guid: 7d3087c4a4ba0734a9ca4bfea674b46f, type: 3}
+  - {fileID: 21300000, guid: 79247715cd0eac94b809efd86ce9d290, type: 3}
+  - {fileID: 21300000, guid: 61b1252515c9ad348af51f0c7127f479, type: 3}
+  - {fileID: 21300000, guid: a3311a75544635743b025acf0e416e23, type: 3}
+  - {fileID: 21300000, guid: be4ffc85097705e41ad16d02654aa522, type: 3}
+  - {fileID: 21300000, guid: 580fa6a5194c8ca448199804ae0c5b08, type: 3}
+  - {fileID: 21300000, guid: e17bfeb56677173478372c8ec0ebdc7a, type: 3}
+  - {fileID: 21300000, guid: 90c5f5d52ed5012418735c027266f78f, type: 3}
+  - {fileID: 21300000, guid: 76170626a56e5104f911038d0b381f1f, type: 3}
+  - {fileID: 21300000, guid: e3f76836fc552134ea32658548069357, type: 3}
+  - {fileID: 21300000, guid: 858d2746607323f45bb484f523d23d88, type: 3}
+  - {fileID: 21300000, guid: b9aff2865ab4423468639c224dccb827, type: 3}
+  - {fileID: 21300000, guid: 36a833864284e9b41b7c2923240f5cb3, type: 3}
+  - {fileID: 21300000, guid: 990c69a637a188d4f923ff8735fccbb4, type: 3}
+  - {fileID: 21300000, guid: 65f01cb634daf4447aefe63ca0292fc6, type: 3}
+  - {fileID: 21300000, guid: 649f070761fc8c244aadddf9f742ac4d, type: 3}
+  - {fileID: 21300000, guid: f83a6c27910e1034b84b3f120c415450, type: 3}
+  - {fileID: 21300000, guid: 23815d27cf997b0499f3d09ee8872b97, type: 3}
+  - {fileID: 21300000, guid: 5c609e678e8360644a1d779f8182012f, type: 3}
+  - {fileID: 21300000, guid: d63b4c974d95f784d95a8f7a5f34dc6f, type: 3}
+  - {fileID: 21300000, guid: 39ca9dd781b6ec544be29c1a893b7d97, type: 3}
+  - {fileID: 21300000, guid: 620602e7a0edaf74ba25ba3bcda61e6f, type: 3}
+  - {fileID: 21300000, guid: 86d481083b78b1f499ce07f63dfcb294, type: 3}
+  - {fileID: 21300000, guid: 133699082272f434cb608737428cd383, type: 3}
+  - {fileID: 21300000, guid: 8d8e3d480cec3bc49beecd36656541c6, type: 3}
+  - {fileID: 21300000, guid: 56b38d487217ac241977658f9ee94b0f, type: 3}
+  - {fileID: 21300000, guid: 63ce7a58984a67d4e8073f1d84913222, type: 3}
+  - {fileID: 21300000, guid: e7affc58edaf37a41959ffe2999c395d, type: 3}
+  - {fileID: 21300000, guid: d23a357892b7dd34e8c41be790cbd41d, type: 3}
+  - {fileID: 21300000, guid: 309342a8b09a5994a9b095d5af9fe348, type: 3}
+  - {fileID: 21300000, guid: a57c3bc8e0ac6824b8734c0061ceaf9c, type: 3}
+  - {fileID: 21300000, guid: d762eec89457d4a448befc2bd51c4b2c, type: 3}
+  - {fileID: 21300000, guid: 49f224d8bbc972f40b25751696b34b8d, type: 3}
+  - {fileID: 21300000, guid: 3c1c89d8862faca4e86ab9fef5da7790, type: 3}
+  - {fileID: 21300000, guid: e36d56e8e2c18db4f944210821144660, type: 3}
+  - {fileID: 21300000, guid: 25207409ffd592a42aabeece335f9438, type: 3}
+  - {fileID: 21300000, guid: c190db0992596ac4a9ccf6ac5bbc1254, type: 3}
+  - {fileID: 21300000, guid: 90a231191b01d11469c7057aba4e9cf1, type: 3}
+  - {fileID: 21300000, guid: 6b239d29410f455458226fe38942da9e, type: 3}
+  - {fileID: 21300000, guid: 76339e29667da7144bae93b814303cc1, type: 3}
+  - {fileID: 21300000, guid: fcc3f069f3109b345b7968be207a29a7, type: 3}
+  - {fileID: 21300000, guid: ccbf1c69965110643ba67fecdf9a6c01, type: 3}
+  - {fileID: 21300000, guid: 5b92a4992fa46474ba4f548aa9319e64, type: 3}
+  - {fileID: 21300000, guid: 92ce3f99af4a84d4585792d0de4e3ae0, type: 3}
+  - {fileID: 21300000, guid: c9c611a988b0e5a459384d720ceaca6b, type: 3}
+  - {fileID: 21300000, guid: 2eb297b95e26c1349af35b7cb906d07e, type: 3}
+  - {fileID: 21300000, guid: 860a12c96ff71c648b90be7991911743, type: 3}
+  - {fileID: 21300000, guid: 63edf9c933481fe46960d09cffb0cc0b, type: 3}
+  - {fileID: 21300000, guid: 1cec46d9722e3294780a6cfa721d77a7, type: 3}
+  - {fileID: 21300000, guid: 51b6f3e98d89ae34080b6941a1cc10ee, type: 3}
+  - {fileID: 21300000, guid: ed21e51aea2ccae4eb4411f793ad3a8a, type: 3}
+  - {fileID: 21300000, guid: 8b7f5b7add2a30a43bf698825ba3d618, type: 3}
+  - {fileID: 21300000, guid: 3d5c62caf93bb214c92a3e01b2128dd1, type: 3}
+  - {fileID: 21300000, guid: 483180da5bd4ea847ad2b669e15f3b0e, type: 3}
+  - {fileID: 21300000, guid: fd2a7dfa52b86894e8a6d067358a4063, type: 3}
+  - {fileID: 21300000, guid: 9683b96b1223ac440909370136ef947e, type: 3}
+  - {fileID: 21300000, guid: 2d6de48b2da05e942ab917841fa12a9b, type: 3}
+  - {fileID: 21300000, guid: 1aebd7ab88509f64e99bfa4742f72ace, type: 3}
+  - {fileID: 21300000, guid: 87ebc08ce8cf662449958ce6cab74c9b, type: 3}
+  - {fileID: 21300000, guid: ddae04ac2c08ed74cbed79350c3659ad, type: 3}
+  - {fileID: 21300000, guid: b00e20bce5ec6a0439da60d8a98cced9, type: 3}
+  - {fileID: 21300000, guid: 0f1b7abc11da5ba43bea2851de0a6a14, type: 3}
+  - {fileID: 21300000, guid: 06d46fdcc5183b14b87fef7d8e338dbe, type: 3}
+  - {fileID: 21300000, guid: a0021c1d291ffe742a9bb245e563720b, type: 3}
+  - {fileID: 21300000, guid: 3757d62d429b4604d8d5f19d1e10ccd9, type: 3}
+  - {fileID: 21300000, guid: e03e626d84c452c4a96a877bb1c734db, type: 3}
+  - {fileID: 21300000, guid: e8a5a38d22383864ebeca2fa62a85ad4, type: 3}
+  - {fileID: 21300000, guid: 1b14b2ad094d9834bafbeff76298f3e6, type: 3}
+  - {fileID: 21300000, guid: 0e7d02cdca4c8c5418594c2c8d181d94, type: 3}
+  - {fileID: 21300000, guid: f4d6a00eba732464f98c6534a3c25265, type: 3}
+  - {fileID: 21300000, guid: 55bb970e97e3e394fbbd44c22ef48451, type: 3}
+  - {fileID: 21300000, guid: 30a4161e2aa30484f8a78e8943667268, type: 3}
+  - {fileID: 21300000, guid: 62c0dd1e3d90c0941b18e5f41978fff6, type: 3}
+  - {fileID: 21300000, guid: 2522d86e72449d244950610e603a58bd, type: 3}
+  - {fileID: 21300000, guid: 658db2ae5069a3a48aa1f450156935b0, type: 3}
+  - {fileID: 21300000, guid: c50a360f79f6e8e4aacbc88d44c15aef, type: 3}
+  - {fileID: 21300000, guid: 308b4a0f9f1bf424c9a4c1eae1952556, type: 3}
+  - {fileID: 21300000, guid: 4969ff0f5e17c744abaa7037f95b534e, type: 3}
+  - {fileID: 21300000, guid: 834dc32ffc62d5b44b3d70b487e776de, type: 3}
+  - {fileID: 21300000, guid: 3350152f297aca34ca320412d28d53be, type: 3}
+  - {fileID: 21300000, guid: 1dea1a3f9c464d146af812495fbdc3a9, type: 3}
+  - {fileID: 21300000, guid: ae58458fa43c774458b37ef5864a29d1, type: 3}
+  - {fileID: 21300000, guid: 2f881a9fb783cab4ca88f3a8ab4eb7e7, type: 3}
+  - {fileID: 21300000, guid: 3623ceaf872c86c44a2aadf4f942b49f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Ice Dragon Board_00040
+  - Ice Dragon Board_00102
+  - Ice Dragon Board_00002
+  - Ice Dragon Board_00033
+  - Ice Dragon Board_00010
+  - Ice Dragon Board_00043
+  - Ice Dragon Board_00006
+  - Ice Dragon Board_00079
+  - Ice Dragon Board_00103
+  - Ice Dragon Board_00084
+  - Ice Dragon Board_00004
+  - Ice Dragon Board_00112
+  - Ice Dragon Board_00009
+  - Ice Dragon Board_00066
+  - Ice Dragon Board_00029
+  - Ice Dragon Board_00068
+  - Ice Dragon Board_00047
+  - Ice Dragon Board_00108
+  - Ice Dragon Board_00005
+  - Ice Dragon Board_00076
+  - Ice Dragon Board_00080
+  - Ice Dragon Board_00113
+  - Ice Dragon Board_00074
+  - Ice Dragon Board_00037
+  - Ice Dragon Board_00028
+  - Ice Dragon Board_00065
+  - Ice Dragon Board_00073
+  - Ice Dragon Board_00086
+  - Ice Dragon Board_00083
+  - Ice Dragon Board_00085
+  - Ice Dragon Board_00026
+  - Ice Dragon Board_00021
+  - Ice Dragon Board_00017
+  - Ice Dragon Board_00062
+  - Ice Dragon Board_00015
+  - Ice Dragon Board_00057
+  - Ice Dragon Board_00104
+  - Ice Dragon Board_00110
+  - Ice Dragon Board_00050
+  - Ice Dragon Board_00107
+  - Ice Dragon Board_00078
+  - Ice Dragon Board_00058
+  - Ice Dragon Board_00022
+  - Ice Dragon Board_00094
+  - Ice Dragon Board_00091
+  - Ice Dragon Board_00020
+  - Ice Dragon Board_00000
+  - Ice Dragon Board_00052
+  - Ice Dragon Board_00117
+  - Ice Dragon Board_00012
+  - Ice Dragon Board_00035
+  - Ice Dragon Board_00055
+  - Ice Dragon Board_00088
+  - Ice Dragon Board_00071
+  - Ice Dragon Board_00049
+  - Ice Dragon Board_00042
+  - Ice Dragon Board_00072
+  - Ice Dragon Board_00008
+  - Ice Dragon Board_00060
+  - Ice Dragon Board_00082
+  - Ice Dragon Board_00001
+  - Ice Dragon Board_00119
+  - Ice Dragon Board_00036
+  - Ice Dragon Board_00093
+  - Ice Dragon Board_00048
+  - Ice Dragon Board_00115
+  - Ice Dragon Board_00105
+  - Ice Dragon Board_00100
+  - Ice Dragon Board_00109
+  - Ice Dragon Board_00025
+  - Ice Dragon Board_00019
+  - Ice Dragon Board_00014
+  - Ice Dragon Board_00101
+  - Ice Dragon Board_00098
+  - Ice Dragon Board_00067
+  - Ice Dragon Board_00081
+  - Ice Dragon Board_00099
+  - Ice Dragon Board_00039
+  - Ice Dragon Board_00070
+  - Ice Dragon Board_00003
+  - Ice Dragon Board_00054
+  - Ice Dragon Board_00011
+  - Ice Dragon Board_00118
+  - Ice Dragon Board_00097
+  - Ice Dragon Board_00027
+  - Ice Dragon Board_00090
+  - Ice Dragon Board_00030
+  - Ice Dragon Board_00075
+  - Ice Dragon Board_00046
+  - Ice Dragon Board_00016
+  - Ice Dragon Board_00031
+  - Ice Dragon Board_00041
+  - Ice Dragon Board_00045
+  - Ice Dragon Board_00038
+  - Ice Dragon Board_00018
+  - Ice Dragon Board_00034
+  - Ice Dragon Board_00095
+  - Ice Dragon Board_00061
+  - Ice Dragon Board_00064
+  - Ice Dragon Board_00059
+  - Ice Dragon Board_00056
+  - Ice Dragon Board_00114
+  - Ice Dragon Board_00111
+  - Ice Dragon Board_00051
+  - Ice Dragon Board_00106
+  - Ice Dragon Board_00087
+  - Ice Dragon Board_00007
+  - Ice Dragon Board_00096
+  - Ice Dragon Board_00092
+  - Ice Dragon Board_00063
+  - Ice Dragon Board_00013
+  - Ice Dragon Board_00044
+  - Ice Dragon Board_00053
+  - Ice Dragon Board_00116
+  - Ice Dragon Board_00069
+  - Ice Dragon Board_00089
+  - Ice Dragon Board_00023
+  - Ice Dragon Board_00032
+  - Ice Dragon Board_00024
+  - Ice Dragon Board_00077
+  m_Tag: _IceBg
+  m_IsVariant: 0

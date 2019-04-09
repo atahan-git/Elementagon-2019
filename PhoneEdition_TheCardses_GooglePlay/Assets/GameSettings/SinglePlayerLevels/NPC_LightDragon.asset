@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1becadf1f3324ba4bb5e160a1a563c19, type: 3}
+  m_Name: NPC_LightDragon
+  m_EditorClassIdentifier: 
+  isNPC: 1
+  npcId: 10
+  npcName: Light Dragon
+  npcObject: {fileID: 1278523984505852, guid: ef94604637a38fc4c86dc4f5d8ce3661, type: 2}

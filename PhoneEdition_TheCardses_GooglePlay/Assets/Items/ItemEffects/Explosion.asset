@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a638bf146a5ff749846bedb9374fe2d, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 9f61598f710f7cf4cb673be23257d817, type: 3}
+  - {fileID: 21300000, guid: 862c076a14471894783cbf98ee719cd8, type: 3}
+  - {fileID: 21300000, guid: 6e99f0476004a6e4ba6f036df13a88c6, type: 3}
+  - {fileID: 21300000, guid: 5ae0744e90fe8c949b6834685a21b2e7, type: 3}
+  - {fileID: 21300000, guid: 195e4fd2004db084f8b8fd0f1f16bea0, type: 3}
+  - {fileID: 21300000, guid: bbe5c6de2cd31ee4a8514513916ab60a, type: 3}
+  - {fileID: 21300000, guid: 4504b135da929bb42ad810640ecbb871, type: 3}
+  - {fileID: 21300000, guid: dbdf2add6f094e542879d647c07063a6, type: 3}
+  - {fileID: 21300000, guid: 84ca00c88e1f36c478d3e9b620e857fd, type: 3}
+  - {fileID: 21300000, guid: 4938fd366531c204d8137bf5d377a2c7, type: 3}
+  - {fileID: 21300000, guid: 74d666ec3de1e7c458ae31919e7b3d4d, type: 3}
+  - {fileID: 21300000, guid: a89766e7a9f69fd40beb9dbd803f901c, type: 3}
+  - {fileID: 21300000, guid: a970ee806f7940042b446c4bb8755dff, type: 3}
+  - {fileID: 21300000, guid: 01d76550658c5f54db122f891af7dc32, type: 3}
+  - {fileID: 21300000, guid: 2ee0e3730241725478f2f3fee7701cc9, type: 3}
+  spritePerSecond: 24

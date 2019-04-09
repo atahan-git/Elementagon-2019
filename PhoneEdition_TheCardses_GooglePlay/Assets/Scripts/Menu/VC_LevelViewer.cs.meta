@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: bb195f02d4f5c964f9667f2bb2233db5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - myViewPanel: {instanceID: 0}
+  - levelName: {instanceID: 0}
+  - levelDesc: {instanceID: 0}
+  - playerCountParent: {instanceID: 0}
+  - allyPrefab: {fileID: 1181854965030782, guid: a50eca768b4913048bb58b4e4c081323,
+      type: 2}
+  - enemyPrefab: {fileID: 1698557477651870, guid: 360575b870c933e4892af27aeac77e81,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1164335789616624}
+  m_IsPrefabAsset: 1
+--- !u!1 &1164335789616624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4874677821504976}
+  - component: {fileID: 114620256329417178}
+  m_Layer: 0
+  m_Name: Flame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4874677821504976
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164335789616624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114620256329417178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164335789616624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780e512fcadcbcf49a079c2217d18fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstActivateTime: 5
+  minTime: 5
+  maxTime: 10
+  factiveSelectTime: 7
+  minSelectTime: 0.5
+  maxSelectTime: 1
+  checkTime: 0.5
+  AIStrength: 0.5
+  poisonImmune: 0
+  isActive: 1
+  type: 2
+  mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  normalSelectEffect: {fileID: 0}
+  SelectorObject: {fileID: 21300000, guid: 1e2b478bb0d810d40a14f2282667aa87, type: 3}
+  isGoToPosActive: 0
+  normal_mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  activatePrefab: {fileID: 1495670603235672, guid: 1cdc5051fdcae4442adfd0ddaa9c18d6,
+    type: 2}
+  activateTime: {x: 5, y: 10}

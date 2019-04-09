@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1501376105859210}
+  m_IsPrefabAsset: 1
+--- !u!1 &1501376105859210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4862579809215362}
+  - component: {fileID: 114062666509317606}
+  m_Layer: 0
+  m_Name: Plague
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4862579809215362
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501376105859210}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114062666509317606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1501376105859210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4232e61ca392849852a6e5289d789b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstActivateTime: 5
+  minTime: 5
+  maxTime: 10
+  factiveSelectTime: 7
+  minSelectTime: 0.5
+  maxSelectTime: 1
+  checkTime: 0.5
+  AIStrength: 0.5
+  poisonImmune: 0
+  isActive: 1
+  type: 2
+  mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  normalSelectEffect: {fileID: 1162733134425660, guid: 53c2815043477e44795cd750692f1437,
+    type: 2}
+  SelectorObject: {fileID: 21300000, guid: c0ab4880886dbee4cb876a6056bab958, type: 3}
+  isGoToPosActive: 0
+  normal_mem_Cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  poisonSelectEfect: {fileID: 1466028087845238, guid: a54b7e962f44d954683a4e5630f9bc22,
+    type: 2}
+  maxActivePoison: 3
+  poisonInterval: {x: 5, y: 10}
