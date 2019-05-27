@@ -7,7 +7,7 @@ public class ScoreBoardManager : MonoBehaviour {
 
 	public static ScoreBoardManager s;
 
-	public int[,] allScores = new int[6, 15]; //0-3 player scores, 4-5 team scores, 3 is enemy score in modes that have enemies
+	public int[,] allScores = new int[6, 32]; //0-3 player scores, 4-5 team scores, 3 is enemy score in modes that have enemies
 
 	public int npcid { get { return DataHandler.NPCInteger; } }
 
@@ -16,6 +16,7 @@ public class ScoreBoardManager : MonoBehaviour {
 	//[HideInInspector]
 	public GameObject[] scoreBoards = new GameObject[6];
 	public Transform[] scoreGetTargets = new Transform[6];
+	public Transform[] powerGetTargets = new Transform[2];
 
 	public Transform indicatorParent;
 
@@ -29,7 +30,7 @@ public class ScoreBoardManager : MonoBehaviour {
 		logText = DataLogger.s;
 		try {
 			scoreBoards = new GameObject[6];
-			allScores = new int[6, 15];
+			allScores = new int[6, 32];
 			for (int i = 0; i < scoreBoards.Length; i++) {
 				scoreBoards[i] = null;
 			}
@@ -203,7 +204,7 @@ public class ScoreBoardManager : MonoBehaviour {
 		allScores[id, scoreType] += toAdd;
 		allScores[id, scoreType] = (int)Mathf.Clamp (allScores[id, scoreType], 0, Mathf.Infinity);
 
-		if (scoreType != 0) {
+		if (scoreType != 0 && scoreType <= 7) {
 			allScores[id, 0] += toAdd;
 			allScores[id, 0] = (int)Mathf.Clamp (allScores[id, 0], 0, Mathf.Infinity);
 		}

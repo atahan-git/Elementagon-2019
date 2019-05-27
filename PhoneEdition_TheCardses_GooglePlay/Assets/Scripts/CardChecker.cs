@@ -10,10 +10,6 @@ public class CardChecker : MonoBehaviour {
 	void Start () {
 		s = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
 
 	public void CheckCards (List<IndividualCard> cardsToCheck, bool isInstant) {
 		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.ToArray().Clone ();
@@ -70,7 +66,7 @@ public class CardChecker : MonoBehaviour {
 										if (cardsToCheck [k].isPoison) {
 											PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [k], "cardchecker");
 											//PowerUpManager.s.ChoosePoisonCard (cardsToCheck [l]);
-											ScoreBoardManager.s.AddScore (myPlayerinteger, 0, -GS.a.powerUpSettings.poison_combo, false);
+											ScoreBoardManager.s.AddScore (myPlayerinteger, 0, -GS.a.powerUpSettings.poison_combo, false); //this is just poison score
 										} else {
 
 											//actual score adding happens here
@@ -91,9 +87,9 @@ public class CardChecker : MonoBehaviour {
 						}
 					}
 
-					//check for poison
+					//normal poison alert - just one poison card
 					if (cardsToCheck [l].isPoison) {
-						PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [l], "cardchecker");
+						PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [l], "cardchecker"); //this is just poison score
 					}
 				}
 			}

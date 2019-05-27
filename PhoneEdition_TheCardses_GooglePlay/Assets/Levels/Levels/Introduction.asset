@@ -4,26 +4,18 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
   m_Name: Introduction
   m_EditorClassIdentifier: 
-  id: -1
+  id: 12
   PresetName: Introduction
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
-  levelCards:
-  - {fileID: 11400000, guid: 4798bdddcb992dd4e9d05de725b88d4b, type: 2}
-  - {fileID: 11400000, guid: 70a8fb06afae61c40a5f8f5811d6310a, type: 2}
-  - {fileID: 11400000, guid: 16a3bbe3ee21449438da89848b838505, type: 2}
-  - {fileID: 11400000, guid: ea29453d03540de4dbf47ae272e058f9, type: 2}
-  - {fileID: 11400000, guid: d30f8461c918a9a4d98b5b536994865f, type: 2}
-  - {fileID: 11400000, guid: 4d4fd00a04db92a4db0f8ad580fb2c77, type: 2}
-  - {fileID: 11400000, guid: 2c1468dfee22bce41a07e422a4ad9ae2, type: 2}
-  defaultSpawnChance: 7
-  customSpawnChances: []
+  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
@@ -47,7 +39,7 @@ MonoBehaviour:
   levelIntroDialog: {fileID: 11400000, guid: 766520ad4fb72a342ae190a1230331b4, type: 2}
   levelOutroDialog: {fileID: 0}
   customObject: {fileID: 1883392723245400, guid: 319fc20b2b8eddd408300906ac359983,
-    type: 2}
+    type: 3}
   autoSetUpBoard: 1
   defaultDropChance: 1
   possibleDrops: []

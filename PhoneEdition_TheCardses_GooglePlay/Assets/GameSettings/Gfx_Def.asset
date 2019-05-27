@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -29,6 +30,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 68091dc5a90a18745b5a6e7a63945326, type: 3}
   - {fileID: 21300000, guid: e514c3e21d5488e4c8678511d88298a7, type: 3}
   - {fileID: 21300000, guid: 996a9f46f801a8445b30afae8c508a64, type: 3}
+  - {fileID: 21300000, guid: 25404540f32c861409ee63db56034ddc, type: 3}
+  - {fileID: 21300000, guid: f8c5341dbf23d5f4ba3aefd3213e6203, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardAnimations:
   - {fileID: 11400000, guid: 6d07c9e75e77c9a4e953e78ac4a20fd0, type: 2}
   - {fileID: 11400000, guid: 8f9b105ecb7f10d4bbceb394708c875e, type: 2}
@@ -46,29 +63,45 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  card: {fileID: 163096, guid: 9078591e8cbd8164cb29471d98ff3b35, type: 2}
-  getEffectPrefab: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  card: {fileID: 163096, guid: 9078591e8cbd8164cb29471d98ff3b35, type: 3}
+  getEffectPrefab: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 3}
   revealEffect: {fileID: 1654067491967056, guid: 0846a7d3cf759e74ea7db7f21ff57593,
-    type: 2}
+    type: 3}
   posionProtectEffect: {fileID: 0}
   selectEffects:
   - {fileID: 0}
-  - {fileID: 146378, guid: 4cdb1d671527161438d36ffa28f1cf4e, type: 2}
-  - {fileID: 159882, guid: 6caba5279032d3c49917c7143004e382, type: 2}
-  - {fileID: 131656, guid: a6662d8c3bb6b3445b7919fadd449de5, type: 2}
-  - {fileID: 101756, guid: 9ce9c6a80539eff47bbc9c635c3bbdbe, type: 2}
-  - {fileID: 1999705537942520, guid: 37f36d6237a9e1c4991698bc14fe30e5, type: 2}
-  - {fileID: 1466250910633632, guid: cf90acc9796d435439e3b3cdb1715d64, type: 2}
-  - {fileID: 1235938587650184, guid: f344f307f5a4b2d40beadcccb686d179, type: 2}
+  - {fileID: 146378, guid: 4cdb1d671527161438d36ffa28f1cf4e, type: 3}
+  - {fileID: 159882, guid: 6caba5279032d3c49917c7143004e382, type: 3}
+  - {fileID: 131656, guid: a6662d8c3bb6b3445b7919fadd449de5, type: 3}
+  - {fileID: 101756, guid: 9ce9c6a80539eff47bbc9c635c3bbdbe, type: 3}
+  - {fileID: 1999705537942520, guid: 37f36d6237a9e1c4991698bc14fe30e5, type: 3}
+  - {fileID: 1466250910633632, guid: cf90acc9796d435439e3b3cdb1715d64, type: 3}
+  - {fileID: 1235938587650184, guid: f344f307f5a4b2d40beadcccb686d179, type: 3}
   npcScoreboard: {fileID: 1000013345891158, guid: 1a1c6c0f9c47f2e4998120be3c7f7c3a,
-    type: 2}
+    type: 3}
   onCard_SelectEffect: {fileID: 0}
   onScoreBoard_SelectEffect: {fileID: 0}
   onEnemySbs_SelectEffect: {fileID: 0}
   onCard_MatchEffectBetweenCards: {fileID: 0}
   onScoreBoard_MatchEffectBetweenCards: {fileID: 1905986045333420, guid: 3879cd1f5d7c8824490c374cb0e8e35f,
-    type: 2}
+    type: 3}
   onEnemySbs_MatchEffectBetweenCards: {fileID: 0}
-  onCard_MatchEffect: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 2}
+  onCard_MatchEffect: {fileID: 143876, guid: b9212b2297277784cbd7592b401eb9e4, type: 3}
   onScoreBoard_MatchEffect: {fileID: 0}
   onEnemySbs_MatchEffect: {fileID: 0}

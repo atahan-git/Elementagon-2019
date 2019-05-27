@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -14,11 +15,7 @@ MonoBehaviour:
   id: 7
   PresetName: Level 4
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
-  levelCards:
-  - {fileID: 11400000, guid: aae2da1da01275c45a23e797e89fe370, type: 2}
-  - {fileID: 11400000, guid: 9436f63871f238f48b310d76e4080e46, type: 2}
-  defaultSpawnChance: 7
-  customSpawnChances: []
+  cardSet: {fileID: 11400000, guid: 9fa4c4404d569264cbff5b2e9e72a550, type: 2}
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
@@ -48,7 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7709e3114ac5e3d478cde0ba51d646a7, type: 2}
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 114479504210421352, guid: d5c880d319f1f0d42ac67b43fb1d3287, type: 2}
+  myNPC: {fileID: 114479504210421352, guid: d5c880d319f1f0d42ac67b43fb1d3287, type: 3}
   npcSpawnCount: 1
   npcSpawnDelay: 10
   nextStage: {fileID: 0}

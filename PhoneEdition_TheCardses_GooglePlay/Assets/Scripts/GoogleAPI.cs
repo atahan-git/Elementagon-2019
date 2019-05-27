@@ -49,7 +49,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		//lobbyGUI.SetActive (false);
 		//ChangePlayerCount (0);
 
-		DataLogger.LogMessage("Initialising");
+		DataLogger.LogMessage("Google API Initialising");
 		try{
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
 				.WithInvitationDelegate(ReceiveInvitaion)
@@ -63,9 +63,9 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 		//GameObject.FindObjectOfType<MPMenu> ().GetComponent<MPMenu> ().GirisYapildiMi (Social.localUser.authenticated);
 		}catch{
-			DataLogger.LogMessage ("Initialization Failure, Please Restart the Game");
+			DataLogger.LogMessage ("Google API Initialization Failure, Please restart the game");
 		}
-		DataLogger.LogMessage("Initialization Successful");
+		DataLogger.LogMessage("Google API Initialization Successful");
 
 		if (Application.internetReachability != NetworkReachability.NotReachable) {
 			if (!PlayGamesPlatform.Instance.localUser.authenticated) {

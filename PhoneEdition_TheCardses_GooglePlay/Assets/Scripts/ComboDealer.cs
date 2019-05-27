@@ -29,7 +29,7 @@ public class ComboDealer : MonoBehaviour {
 		/*if (myCardType < GS.a.cardSettings.cardScores.Length)
 			CardMatchCoolEffect.s.MatchTwo (myPlayerinteger, cardsToCheck[k], cardsToCheck[l], GS.a.cardSettings.cardScores[myCardType]);*/
 
-		int cardType = card1.cBase.cardType;
+		int cardType = card1.cBase.elementType;
 
 		//print ("Adding with combo check");
 		if (!card1.cBase.isItem) {

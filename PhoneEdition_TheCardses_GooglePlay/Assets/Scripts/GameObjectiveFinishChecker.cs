@@ -20,7 +20,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 	void Awake () {
 		s = this;
-		ActiveNPCS.Clear ();
+		ActiveNPCS.Clear (); //this freaks me out... what if we leave older npcs alive somehow?
 		isFinished = false;
 
 		//print ("Checker " +gameObject.name);
@@ -151,6 +151,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 		DataLogger.LogMessage ("Game Finished >" + DataHandler.s.myPlayerInteger.ToString() + " - " + id.ToString());
 		isFinished = true;
+		isGamePlaying = false;
 		finisherId = id;
 		LocalPlayerController.isActive = false;
 

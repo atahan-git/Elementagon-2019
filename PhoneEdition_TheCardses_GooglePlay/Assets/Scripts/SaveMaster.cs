@@ -37,6 +37,10 @@ public class SaveMaster : MonoBehaviour {
 			return true;
 
 		int levelId = GS.s.GetGameModeId (levelObject);
+		if (levelId == -1) {
+			DataLogger.LogError ("Unregistered level: " + levelObject.name);
+			return false;
+		}
 		if (levelId < s.mySave.levelsCompleted.Length) {
 			if (s.mySave.levelsCompleted[levelId]) {
 				return true;
@@ -152,7 +156,7 @@ public class SaveMaster : MonoBehaviour {
 [Serializable]
 public class SaveData {
 	public string saveName = "default";
-	public bool[] levelsCompleted = new bool[15];
+	public bool[] levelsCompleted = new bool[100];
 
 	public SaveEquipment[] myEquipments = new SaveEquipment[0];
 	public SaveIngredient[] myIngredients = new SaveIngredient[0];

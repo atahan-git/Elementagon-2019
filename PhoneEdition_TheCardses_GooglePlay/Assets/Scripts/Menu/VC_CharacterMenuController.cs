@@ -61,7 +61,7 @@ public class VC_CharacterMenuController : ViewController {
 		itemList.SetActive (false);
 	}
 
-	public void ItemListSelect (int type) {
+	public void OpenItemList (int type) {
 		Clear ();
 
 		switch(type) {

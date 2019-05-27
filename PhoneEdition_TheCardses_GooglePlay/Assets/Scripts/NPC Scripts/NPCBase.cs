@@ -52,7 +52,11 @@ public abstract class NPCBase : MonoBehaviour {
 	public IndividualCard myCurrentOccupation;
 	bool isSpawned = false;
 
+	public enum UnKillableTypes { Stun, Invulnerable }
+	public UnKillableTypes myUnkillableType = UnKillableTypes.Stun;
 	public GameObject unkillableEffect;
+	public bool isStunned = false;
+	public float stunTime = 5f;
 	//-----------------------------------------------------------------------------------------------Main Functions
 	public virtual void Spawn () {
 		Spawn (Random.Range (0, CardHandler.s.allCards.GetLength (1)));
@@ -111,6 +115,10 @@ public abstract class NPCBase : MonoBehaviour {
 	public virtual void Die () {
 		if (!isKillable) {
 			Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);
+			if (myUnkillableType == UnKillableTypes.Stun) {
+				isStunned = true;
+				Invoke ("UnStun", stunTime);
+			}
 			return;
 		}
 
@@ -124,6 +132,10 @@ public abstract class NPCBase : MonoBehaviour {
 		CancelInvoke ();
 		CardChecker.s.CheckCards (DataHandler.NPCInteger, mem_Cards, true);
 		Destroy (gameObject);
+	}
+
+	void UnStun () {
+		isStunned = false;
 	}
 
 	//-----------------------------------------------------------------------------------------------Helper Functions
@@ -191,8 +203,8 @@ public abstract class NPCBase : MonoBehaviour {
 		Vector3 endPos = to.transform.position + cardOffset;
 
 		while (Vector3.Distance(transform.position, endPos) > 0.01f) {
-
-			transform.position = Vector3.Lerp (transform.position, endPos, Time.deltaTime * 20f);
+			if(!isStunned)
+				transform.position = Vector3.Lerp (transform.position, endPos, Time.deltaTime * 20f);
 
 			yield return null;
 		}
@@ -206,7 +218,7 @@ public abstract class NPCBase : MonoBehaviour {
 	}
 
 	protected bool CanTargetSpot (IndividualCard myCard) {
-		if (myCard.isTargeted == false && !myCard.cBase.isItem)
+		if (myCard.isTargeted == false && !myCard.cBase.isItem && myCard.cBase.elementType <= 7)
 			return true;
 		else
 			return false;

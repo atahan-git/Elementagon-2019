@@ -39,14 +39,14 @@ public class DialogTree : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
 #if UNITY_EDITOR
-		if (Application.isEditor) {
+		if (Application.isEditor && !Application.isPlaying) {
 			dialogs = GetComponentsInChildren<Dialog> ();
 
 			gameObject.name = "-"+ dialogName + "- Dialog";
 
 			int n = 0;
 			foreach (Dialog myPoint in dialogs) {
-				UnityEditor.PrefabUtility.DisconnectPrefabInstance (myPoint);
+				PrefabUtility.UnpackPrefabInstance (myPoint.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
 				if (!(myPoint.myTag == "" || myPoint.myTag == " ")) {
 					myPoint.gameObject.name = "Dialog " + n + " - " + myPoint.myTag;
 				} else {

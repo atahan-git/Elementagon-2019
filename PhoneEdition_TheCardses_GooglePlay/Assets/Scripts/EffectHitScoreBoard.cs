@@ -62,7 +62,7 @@ public class EffectHitScoreBoard : BetweenCardsEffect {
 
 
 
-	public override void SetUp (int playerID, IndividualCard card1, IndividualCard card2) {
+	public override void SetUp (int playerID, bool isPowerUp, IndividualCard card1, IndividualCard card2) {
 		AlignBetweenCards (card1, card2, AlignMode.position);
 
 		unifier1.transform.position = card1.transform.position - Vector3.forward * 0.1f;
@@ -72,7 +72,14 @@ public class EffectHitScoreBoard : BetweenCardsEffect {
 		aUnifier = 2 * deltaUnifier / (uniTimer * uniTimer);
 		vUnifier = 0;
 
-		target = ScoreBoardManager.s.scoreGetTargets[playerID];
+		List<Transform> targets = new List<Transform> ();
+		if (!isPowerUp) {
+			targets.Add (ScoreBoardManager.s.scoreGetTargets[playerID]);
+		} else {
+			targets.Add (ScoreBoardManager.s.powerGetTargets[0]);
+			targets.Add (ScoreBoardManager.s.powerGetTargets[0]);
+		}
+		target = targets[Random.Range(0,targets.Count)];
 
 		float deltax = target.position.x - transform.position.x;
 		float deltay = target.position.y - transform.position.y;

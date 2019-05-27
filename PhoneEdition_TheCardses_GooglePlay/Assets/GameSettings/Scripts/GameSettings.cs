@@ -18,12 +18,8 @@ public class GameSettings : ScriptableObject {
 	[HideInInspector]
 	public CardData[] cards;
 
-	[SerializeField]
-	CardBase[] levelCards;
+	public CardSets cardSet;
 
-	public float defaultSpawnChance = 7f;
-	[Tooltip ("if left zero or null the default drop chance will be used")]
-	public float[] customSpawnChances = new float[0];
 
 	public struct CardData {
 		public CardBase cBase;
@@ -33,14 +29,14 @@ public class GameSettings : ScriptableObject {
 	public CardBase defCard;
 
 	public void SetUpCards () {
-		cards = new CardData[levelCards.Length + possibleDrops.Length];
+		cards = new CardData[cardSet.cards.Length + possibleDrops.Length];
 
-		float[] chances = new float[levelCards.Length];
-		customSpawnChances.CopyTo (chances, 0);
+		float[] chances = new float[cardSet.cards.Length];
+		cardSet.customSpawnChances.CopyTo (chances, 0);
 
 		for (int i = 0; i < chances.Length; i++) {
-			chances[i] = chances[i] == 0 ? defaultSpawnChance : chances[i];
-			cards[i] = new CardData (levelCards[i], chances[i]);
+			chances[i] = chances[i] == 0 ? cardSet.defaultSpawnChance : chances[i];
+			cards[i] = new CardData (cardSet.cards[i], chances[i]);
 		}
 
 		GenerateItemCards ();
@@ -61,7 +57,8 @@ public class GameSettings : ScriptableObject {
 
 	[Header ("Gameplay Settings")]
 
-	
+	public GameObjectiveTypes myGameObjectiveType = GameObjectiveTypes.Standard;
+	public enum GameObjectiveTypes { Standard, Haggle, Health }
 
 	[Tooltip ("Leave empty if you want it to be auto generated based on the other settings")]
 	public string objectiveText = "";
@@ -125,7 +122,7 @@ public class GameSettings : ScriptableObject {
 	public int itemTypesStartIndex = 7;
 
 	void GenerateItemCards () {
-		itemTypesStartIndex = levelCards.Length;
+		itemTypesStartIndex = cardSet.cards.Length;
 
 		float[] chances = new float[possibleDrops.Length];
 		customDropChances.CopyTo (chances,0);

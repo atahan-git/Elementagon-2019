@@ -317,7 +317,7 @@ public class IndividualCard : MonoBehaviour {
 		if (fx != null) {
 			GameObject myFx = Instantiate (fx);
 			if (myFx.GetComponent<BetweenCardsEffect> () != null)
-				myFx.GetComponent<BetweenCardsEffect> ().SetUp (playerID, card1, card2);
+				myFx.GetComponent<BetweenCardsEffect> ().SetUp (playerID, card1.cBase.elementType > 7, card1, card2);
 			if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
 				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (card1.cBase.elementType);
 		}
@@ -352,7 +352,7 @@ public class IndividualCard : MonoBehaviour {
 
 
 public abstract class BetweenCardsEffect : MonoBehaviour {
-	public abstract void SetUp (int playerID, IndividualCard card1, IndividualCard card2);
+	public abstract void SetUp (int playerID, bool isPowerUp, IndividualCard card1, IndividualCard card2);
 
 	public enum AlignMode { position, rotation, both };
 	protected void AlignBetweenCards (IndividualCard card1, IndividualCard card2, AlignMode mode) {

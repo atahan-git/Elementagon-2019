@@ -30,12 +30,12 @@ public class CharacterStuffController : MonoBehaviour {
 	}
 
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	public int[] curEquipmentChargeReq = new int[16];
+	public int[] curEquipmentChargeReq = new int[32];
 	public int maxEquipmentCharge;
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	public int[] PowerChargeReq = new int[16];
+	public int[] PowerChargeReq = new int[32];
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	public int[] curPowerChargeReq = new int[16];
+	public int[] curPowerChargeReq = new int[32];
 	
 	public int maxPowerCharge;
 
@@ -50,7 +50,7 @@ public class CharacterStuffController : MonoBehaviour {
 			}
 
 			if (InventoryMaster.s.elementLevel > 0) {
-				PowerChargeReq[InventoryMaster.s.selectedElement + 1] = InventoryMaster.s.elementLevel;
+				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = InventoryMaster.s.elementLevel;
 				maxPowerCharge = InventoryMaster.s.elementLevel;
 				powerButton.SetUp (GS.a.gfxs.cardSprites[InventoryMaster.s.selectedElement + 1 + 7], maxPowerCharge, "Power", InventoryMaster.s.selectedElement + 1);
 				isActivePower = true;
@@ -91,6 +91,7 @@ public class CharacterStuffController : MonoBehaviour {
 	}
 
 	public void ScoreAdded (int scoreType) {
+		print ("Score added: " + scoreType.ToString ());
 		if (isHijacked)
 			return;
 
@@ -110,8 +111,8 @@ public class CharacterStuffController : MonoBehaviour {
 	}
 
 	public void InstantActivate () {
-		curEquipmentChargeReq = new int[16];
-		curPowerChargeReq = new int[16];
+		curEquipmentChargeReq = new int[32];
+		curPowerChargeReq = new int[32];
 		UpdateChargeReqs ();
 	}
 

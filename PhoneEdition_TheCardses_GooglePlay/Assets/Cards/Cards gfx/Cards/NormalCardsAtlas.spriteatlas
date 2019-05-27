@@ -4,7 +4,8 @@
 SpriteAtlas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: NormalCardsAtlas
   m_EditorData:
     serializedVersion: 2
@@ -62,6 +63,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 598a354b20ccd97498104a73ba8bc683, type: 3}
     - {fileID: 2800000, guid: a4c1a90d68ceb2549bd5229fa17d106f, type: 3}
     - {fileID: 2800000, guid: f18de09def7548d4d83e77974b8f760a, type: 3}
+    totalSpriteSurfaceArea: 2970600
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
