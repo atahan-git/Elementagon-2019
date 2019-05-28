@@ -58,7 +58,9 @@ public class GameSettings : ScriptableObject {
 	[Header ("Gameplay Settings")]
 
 	public GameObjectiveTypes myGameObjectiveType = GameObjectiveTypes.Standard;
+	public GameType myGameType = GameType.Singleplayer;
 	public enum GameObjectiveTypes { Standard, Haggle, Health }
+	public enum GameType { Singleplayer, Two_Coop, OneVOne, TwoVTwo, Three_FreeForAll, Four_FreeForAll };
 
 	[Tooltip ("Leave empty if you want it to be auto generated based on the other settings")]
 	public string objectiveText = "";
@@ -71,10 +73,7 @@ public class GameSettings : ScriptableObject {
 
 	public bool canCombo = true;
 
-	public enum GameType { Singleplayer, Two_Coop, OneVOne , TwoVTwo,Three_FreeForAll, Four_FreeForAll };
-	[Header ("Game Type Settings")]
 
-	public GameType myGameType = GameType.Singleplayer;
 
 
 	[Header ("Power Up Settings")]

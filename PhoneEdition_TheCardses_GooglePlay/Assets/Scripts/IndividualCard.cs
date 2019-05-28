@@ -75,7 +75,7 @@ public class IndividualCard : MonoBehaviour {
 		if (myOccupants.Count > 0) {
 			foreach (NPCBase npc in myOccupants) {
 				if (npc != null)
-					npc.Die ();
+					npc.Die (false);
 			}
 		}
 	}

@@ -27,6 +27,7 @@ public class DataHandler : MonoBehaviour {
 	const char a_player = 'A';
 	const char a_cardtype = 'C';
 	const char a_power = 'P';
+	const char a_npc = 'N';
 	const char a_score = 'S';
 	const char a_def = 'D';
 	const char a_netcorrect = 'F'; //f for fix
@@ -284,6 +285,48 @@ public class DataHandler : MonoBehaviour {
 	}
 
 
+	const char npc_spawn = 'S';    //NPCManager.ActionType.Spawn;
+	const char npc_goto = 'G'; //NPCManager.ActionType.GoToPos;
+	const char npc_select = 'C';  //NPCManager.ActionType.SelectCard;
+	const char npc_activate = 'A';  //NPCManager.ActionType.Activate;
+	const char npc_die = 'D';  //NPCManager.ActionType.Die;
+	public void SendNPCAction (int x, int y, int index, NPCManager.ActionType action, int data) {
+
+		List<byte> toSend = new List<byte> ();
+
+		toSend.AddRange (System.BitConverter.GetBytes ((short)x));
+		toSend.AddRange (System.BitConverter.GetBytes ((short)y));
+
+		toSend.AddRange (System.BitConverter.GetBytes ((short)index));
+		toSend.AddRange (System.BitConverter.GetBytes ((short)data));
+
+		switch (action) {
+		case NPCManager.ActionType.Spawn:
+			toSend.Add ((byte)npc_spawn);
+			break;
+		case NPCManager.ActionType.GoToPos:
+			toSend.Add ((byte)npc_goto);
+			break;
+		case NPCManager.ActionType.SelectCard:
+			toSend.Add ((byte)npc_select);
+			break;
+		case NPCManager.ActionType.Activate:
+			toSend.Add ((byte)npc_activate);
+			break;
+		case NPCManager.ActionType.Die:
+			toSend.Add ((byte)npc_die);
+			break;
+		default:
+			DataLogger.LogError ("Unknown action type: " + action.ToString () + " can't send multiplayer data");
+			return;
+		}
+
+
+
+		SendData (a_npc, toSend.ToArray ());
+	}
+
+
 	public void SendScore (char player, int scoreType, int totalScore, bool isDelayed) {
 		try {
 			List<byte> toSend = new List<byte> ();
@@ -515,6 +558,9 @@ public class DataHandler : MonoBehaviour {
 			case a_power:
 				ReceivePowerUpAction (data);
 				break;
+			case a_npc:
+				ReceiveNPCAction (data);
+				break;
 			case a_score:
 				ReceiveScore (data);
 				break;
@@ -674,6 +720,70 @@ public class DataHandler : MonoBehaviour {
 		PowerUpManager.s.ReceiveEnemyPowerUpActions (player, x, y, type, id, power, amount, action);
 	}
 
+	void ReceiveNPCAction (byte[] data) {
+
+		int player = 4;
+		char playerChar;
+		int x;
+		int y;
+		int index;
+		int _data;
+		NPCManager.ActionType action;
+
+
+		playerChar = (char)data[1];
+
+		switch (playerChar) {
+		case p_blue:
+			player = 0;
+			break;
+		case p_red:
+			player = 1;
+			break;
+		case p_green:
+			player = 2;
+			break;
+		case p_yellow:
+			player = 3;
+			break;
+		default:
+			DataLogger.LogError ("Unknown player char");
+			break;
+		}
+
+
+		x = System.BitConverter.ToInt16 (data, 2);
+		y = System.BitConverter.ToInt16 (data, 2 + 2);
+		index = System.BitConverter.ToInt16 (data, 2 + 2 + 2);
+		_data = System.BitConverter.ToInt16 (data, 2 + 2 + 2 + 2);
+		char pAction = (char)data[2 + 2 + 2 + 2 + 2];
+		
+		switch (pAction) {
+		case npc_spawn:
+			action = NPCManager.ActionType.Activate;
+			break;
+		case npc_goto:
+			action = NPCManager.ActionType.GoToPos;
+			break;
+		case npc_select:
+			action = NPCManager.ActionType.SelectCard;
+			break;
+		case npc_activate:
+			action = NPCManager.ActionType.Activate;
+			break;
+		case npc_die:
+			action = NPCManager.ActionType.Die;
+			break;
+		default:
+			//Error
+			action = NPCManager.ActionType.Die;
+			DataLogger.LogError ("Unknow NPC action type detected: " + pAction.ToString ());
+			break;
+		}
+
+		NPCManager.s.ReceiveNPCAction (x, y, index, action, _data);
+	}
+
 	public void ReceiveScore (byte [] data) {
 		char player;
 		int scoreType;
@@ -810,6 +920,7 @@ public class DataHandler : MonoBehaviour {
 			//these will unselect the card from respective places
 			LocalPlayerController.s.ReceiveNetworkCorrection(myCard);
 			PowerUpManager.s.ReceiveNetworkCorrection(myCard);
+			NPCManager.s.ReceiveNetworkCorrection (myCard);
 
 		} catch (Exception e) {
 			DataLogger.LogMessage (e.Message + " - " + e.StackTrace);

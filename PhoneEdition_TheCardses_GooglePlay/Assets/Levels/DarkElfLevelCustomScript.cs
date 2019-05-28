@@ -63,7 +63,7 @@ public class DarkElfLevelCustomScript : MonoBehaviour {
 			if (p is PowerUp_MatchArea) {
 				p.power = 4;
 				p.amount = 1;
-				p.Activate (GameObjectiveFinishChecker.s.ActiveNPCS[0].myCurrentOccupation);
+				p.Activate (NPCManager.s.ActiveNPCS[0].myCurrentOccupation);
 			}
 		}
 		

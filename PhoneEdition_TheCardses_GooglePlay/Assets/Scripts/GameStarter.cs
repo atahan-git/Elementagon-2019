@@ -28,8 +28,6 @@ public class GameStarter : MonoBehaviour {
 	public bool[] readyPlayers = new bool[0];
 	bool isWaitingForPlayers = false;
 
-	public Transform npcStartPos;
-
 	void Awake (){
 		s = this;
 		try {
@@ -85,15 +83,6 @@ public class GameStarter : MonoBehaviour {
 			Instantiate (GS.a.customObject);
 
 		DataLogger.LogMessage ("GameStarter setup complete");
-	}
-
-	void SpawnNPC () {
-		NPCBase myNPC = Instantiate (GS.a.myNPC.gameObject, npcStartPos.position, Quaternion.identity).GetComponent<NPCBase> ();
-		myNPC.transform.localScale = new Vector3 (1, 1, 1) * GS.a.gridSettings.scaleMultiplier;
-		myNPC.Spawn ();
-		GS.a.npcSpawnCount--;
-		if (GS.a.npcSpawnCount != 0 && !GameObjectiveFinishChecker.s.isFinished)
-			Invoke ("SpawnNPC", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
 	}
 
 	void LateBegin () {
@@ -194,7 +183,7 @@ public class GameStarter : MonoBehaviour {
 				}
 			}*/
 			if (GS.a.isNPCEnabled) {
-				SpawnNPC ();
+				NPCManager.s.SpawnNPCPeriodic ();
 			}
 
 		} catch (System.Exception e) {

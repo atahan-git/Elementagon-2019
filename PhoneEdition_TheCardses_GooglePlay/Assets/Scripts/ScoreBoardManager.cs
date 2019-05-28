@@ -36,7 +36,7 @@ public class ScoreBoardManager : MonoBehaviour {
 			}
 			SetUpPlayerScoreboardPanels ();
 
-			DelayedScoreboard.s.UpdateScore (0, false);
+			SmartScoreboard.s.UpdateScore (0, false);
 		} catch (System.Exception e) {
 			DataLogger.LogError ("Scoreboard creation failed error: ",e);
 		}
@@ -105,16 +105,16 @@ public class ScoreBoardManager : MonoBehaviour {
 		case GameSettings.GameType.OneVOne:
 		case GameSettings.GameType.Three_FreeForAll:
 		case GameSettings.GameType.Four_FreeForAll:
-			DelayedScoreboard.s.myPlayer = DataHandler.s.myPlayerInteger;
+			SmartScoreboard.s.myPlayer = DataHandler.s.myPlayerInteger;
 			break;
 		case GameSettings.GameType.Two_Coop:
-			DelayedScoreboard.s.myPlayer = 4;
+			SmartScoreboard.s.myPlayer = 4;
 			break;
 		case GameSettings.GameType.TwoVTwo:
 			if (DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1) {
-				DelayedScoreboard.s.myPlayer = 4;
+				SmartScoreboard.s.myPlayer = 4;
 			} else {
-				DelayedScoreboard.s.myPlayer = 5;
+				SmartScoreboard.s.myPlayer = 5;
 			}
 			break;
 		}
@@ -132,7 +132,7 @@ public class ScoreBoardManager : MonoBehaviour {
 				scoreGetTargets[i] = scoreBoards[i].transform.Find ("Score Get Target");
 			}
 		}
-		scoreGetTargets[DataHandler.s.myPlayerInteger] = DelayedScoreboard.s.transform.Find ("Score Get Target");
+		scoreGetTargets[DataHandler.s.myPlayerInteger] = SmartScoreboard.s.transform.Find ("Score Get Target");
 	}
 
 	void UpdatePanels () {
@@ -215,8 +215,8 @@ public class ScoreBoardManager : MonoBehaviour {
 
 	void UpdateSBoard (int id, bool isDelayed) {
 
-		if (id == DelayedScoreboard.s.myPlayer)
-			DelayedScoreboard.s.UpdateScore (allScores[id, 0], isDelayed);
+		//if (id == SmartScoreboard.s.myPlayer)
+		SmartScoreboard.s.UpdateScore (allScores[SmartScoreboard.s.myPlayer, 0], isDelayed);
 
 		GameObject sBoard = scoreBoards[id];
 		if (sBoard != null) {

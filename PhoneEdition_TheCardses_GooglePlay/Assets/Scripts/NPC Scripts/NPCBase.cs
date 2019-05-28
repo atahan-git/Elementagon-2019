@@ -57,39 +57,24 @@ public abstract class NPCBase : MonoBehaviour {
 	public GameObject unkillableEffect;
 	public bool isStunned = false;
 	public float stunTime = 5f;
-	//-----------------------------------------------------------------------------------------------Main Functions
-	public virtual void Spawn () {
-		Spawn (Random.Range (0, CardHandler.s.allCards.GetLength (1)));
-	}
 
-	public virtual void Spawn (int y) {
+	public GameObject selectionDeniedEffect;
+	//-----------------------------------------------------------------------------------------------Main Functions
+
+	public virtual void Spawn (IndividualCard myCard) {
 		if (!isSpawned) {
-			GameObjectiveFinishChecker.s.ActiveNPCS.Add (this);
 			isSpawned = true;
 		}
-		StartCoroutine (MoveToStartPos(y));
+		
+		myCard.myOccupants.Add (this);
+		StopAllCoroutines ();
+		StartCoroutine (MoveToStartPos(myCard));
 	}
 
-	IEnumerator MoveToStartPos (int y) {
-		int x = 0;
-		IndividualCard myCard = CardHandler.s.allCards[x, y];
-		int trials = 0;
-		while (myCard.myOccupants.Count > (Mathf.FloorToInt(trials/CardHandler.s.allCards.Length) + 1)) {
-			x++;
-			if (x > CardHandler.s.allCards.GetLength (0)) {
-				x = 0;
-				y++;
-				if (y > CardHandler.s.allCards.GetLength (1)) {
-					y = 0;
-				}
-			}
-			myCard = CardHandler.s.allCards[x, y];
-			trials++;
-		}
-
-		myCard.myOccupants.Add(this);
-
-		transform.position = CardHandler.s.allCards[0, y].transform.position + cardOffset +cardOffset + cardOffset+ startingPositionOffset;
+	IEnumerator MoveToStartPos (IndividualCard myCard) {
+		//come back to this sometime to comment this section please!
+		
+		transform.position = myCard.transform.position + cardOffset +cardOffset + cardOffset+ startingPositionOffset;
 		Vector3 endPos = myCard.transform.position + cardOffset;
 
 		while (Vector3.Distance (transform.position, endPos) > 0.01f) {
@@ -102,7 +87,8 @@ public abstract class NPCBase : MonoBehaviour {
 
 		myCurrentOccupation = myCard;
 
-		StartCoroutine (MainLoop());
+		if (DataHandler.s.myPlayerInteger == 0)
+			StartCoroutine (MainLoop ());
 	}
 
 	private void Update () {
@@ -112,8 +98,9 @@ public abstract class NPCBase : MonoBehaviour {
 
 	public abstract IEnumerator MainLoop ();
 
-	public virtual void Die () {
-		if (!isKillable) {
+	public virtual void Die (bool isForced) {
+		SendNPCAction (-1, -1, NPCManager.ActionType.Die, isForced ? 1 : 0);
+		if (!isKillable && !isForced) {
 			Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);
 			if (myUnkillableType == UnKillableTypes.Stun) {
 				isStunned = true;
@@ -124,7 +111,7 @@ public abstract class NPCBase : MonoBehaviour {
 
 		Instantiate (diePrefab, transform.position, transform.rotation);
 		if (isSpawned) {
-			GameObjectiveFinishChecker.s.ActiveNPCS.Remove (this);
+			NPCManager.s.ActiveNPCS.Remove (this);
 			isSpawned = false;
 		}
 
@@ -144,8 +131,13 @@ public abstract class NPCBase : MonoBehaviour {
 		return Random.value < AIStrength;
 	}
 
-
 	protected IEnumerator MoveToPosition (IndividualCard to) {
+		if (DataHandler.s.myPlayerInteger == 0)
+			SendNPCAction (to.x, to.y, NPCManager.ActionType.GoToPos, -1);
+		yield return MoveToPositionCoroutine (to);
+	}
+
+	IEnumerator MoveToPositionCoroutine (IndividualCard to) {
 		if (to == null) {
 			yield return new WaitForSeconds (1f);
 		}
@@ -247,6 +239,10 @@ public abstract class NPCBase : MonoBehaviour {
 	protected void Select (IndividualCard card) {
 		if (card == null)
 			return;
+
+		if (DataHandler.s.myPlayerInteger == 0)
+			SendNPCAction (card.x, card.y, NPCManager.ActionType.SelectCard, -1);
+
 		card.isTargeted = false;
 		if (card.isSelectable) {
 			card.SelectCard (DataHandler.NPCInteger);
@@ -254,13 +250,17 @@ public abstract class NPCBase : MonoBehaviour {
 			mem_Cards.Add (card);
 			if (selectPrefab != null)
 				card.selectedEffect = (GameObject)Instantiate (selectPrefab.gameObject, card.transform.position, Quaternion.identity);
+		} else {
+			Instantiate (selectionDeniedEffect, transform.position, selectionDeniedEffect.transform.rotation);
 		}
 	}
 
-	protected void Select (IndividualCard card, bool isActivateEffectToo) {
-		Select (card);
+	protected void Activate (IndividualCard card) {
 
-		if (isActivateEffectToo && activatePrefab != null) {
+		if (DataHandler.s.myPlayerInteger == 0)
+			SendNPCAction (card.x, card.y, NPCManager.ActionType.Activate, -1);
+
+		if (activatePrefab != null) {
 			activateEffect = Instantiate (activatePrefab, card.transform.position, Quaternion.identity);
 			/*if (activateEffect.GetComponent<ElementalTypeSpriteColorChanger> () != null)
 				activateEffect.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (elementalType);*/
@@ -367,4 +367,36 @@ public abstract class NPCBase : MonoBehaviour {
 
 	//-----------------------------------------------------------------------------------------------Networking
 
+	public void ReceiveNPCAction (IndividualCard card, NPCManager.ActionType action, int data) {
+		try {
+			switch (action) {
+			case NPCManager.ActionType.Die:
+				Die (data == 1);
+				break;
+			case NPCManager.ActionType.SelectCard:
+				Select (card);
+				break;
+			case NPCManager.ActionType.Activate:
+				Activate (card);
+				break;
+			case NPCManager.ActionType.GoToPos:
+				StartCoroutine (MoveToPosition (card));
+				break;
+			default:
+				DataLogger.LogError ("Unrecognized power up action PUF");
+				break;
+			}
+		} catch (System.Exception e) {
+			DataLogger.LogError (this.name, e);
+		}
+	}
+
+	public void ReceiveNetworkCorrection (IndividualCard myCard) {
+		if (mem_Cards.Remove (myCard))
+			myCard.DestroySelectedEfect ();
+	}
+
+	public void SendNPCAction (int x, int y, NPCManager.ActionType action, int data) {
+		NPCManager.s.SendNPCAction (x, y, this, action, data);
+	}
 }
