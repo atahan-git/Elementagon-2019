@@ -48,11 +48,9 @@ public class NPCManager : MonoBehaviour {
 
 		NPCBase myNPC = SpawnNPCAtLocation (myCard);
 
-		ActiveNPCS.Add (myNPC);
-
 		GS.a.npcSpawnCount--;
 		if (GS.a.npcSpawnCount != 0 && !GameObjectiveFinishChecker.s.isFinished)
-			Invoke ("SpawnNPC", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
+			Invoke ("SpawnNPCPeriodic", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
 	}
 
 	NPCBase SpawnNPCAtLocation (IndividualCard myCard) {
@@ -60,10 +58,19 @@ public class NPCManager : MonoBehaviour {
 		myNPC.transform.localScale = new Vector3 (1, 1, 1) * GS.a.gridSettings.scaleMultiplier;
 		myNPC.Spawn (myCard);
 
-		if (DataHandler.s.myPlayerInteger == 0)
+		if (DataHandler.s.myPlayerInteger == 0) {
+			ActiveNPCS.Add (myNPC);
 			SendNPCAction (myCard.x, myCard.y, myNPC.GetComponent<NPCBase> (), ActionType.Spawn, -1);
+		}
 
 		return myNPC;
+	}
+
+	public void StopAllNPCs () {
+		foreach (NPCBase npc in ActiveNPCS) {
+			npc.StopAllCoroutines ();
+			npc.CancelInvoke ();
+		}
 	}
 
 

@@ -6,6 +6,8 @@ public class InventoryMaster : MonoBehaviour {
 
 	public static InventoryMaster s;
 
+	public bool cheatInventory = false;
+
 	public List<InventoryEquipment> myEquipments = new List<InventoryEquipment> ();
 	public List<InventoryIngredient> myIngredients = new List<InventoryIngredient> ();
 	public List<InventoryPotion> myPotions = new List<InventoryPotion> ();
@@ -25,8 +27,8 @@ public class InventoryMaster : MonoBehaviour {
 		}
 	}
 
-	public bool cheatInventory = false;
 
+	[Tooltip ("//0-7 = dragons\n//---------------------------\n//0 = Earth Dragon\n//1 = Fire Dragon\n//2 = Ice Dragon\n//3 = Light Dragon\n//4 = Nether Dragon\n//5 = Poison Dragon\n//6 = Shadow Dragon\n//---------------------------")]
 	public int selectedElement = -1;
 	public int elementLevel = 0;
 
@@ -279,6 +281,7 @@ public class InventoryMaster : MonoBehaviour {
 }
 
 
+
 public static class ArrayConverters {
 	public static SaveData.SaveEquipment[] ConvertToSave (this InventoryMaster.InventoryEquipment[] InvArr) {
 		SaveData.SaveEquipment[] SavArr = new SaveData.SaveEquipment[InvArr.Length];
@@ -335,6 +338,17 @@ public static class ArrayConverters {
 
 		for (int i = 0; i < SavArr.Length; i++) {
 			InvArr[i] = SavArr[i].ConvertToInventory ();
+		}
+
+		return InvArr;
+	}
+
+
+	public static InventoryMaster.InventoryPotion[] ConvertToInventory (this Potion[] SavArr) {
+		InventoryMaster.InventoryPotion[] InvArr = new InventoryMaster.InventoryPotion[SavArr.Length];
+
+		for (int i = 0; i < SavArr.Length; i++) {
+			InvArr[i] = new InventoryMaster.InventoryPotion (SavArr[i], 1);
 		}
 
 		return InvArr;

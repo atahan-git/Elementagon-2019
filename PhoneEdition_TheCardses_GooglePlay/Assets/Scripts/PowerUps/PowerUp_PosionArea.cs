@@ -1,34 +1,45 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-class PowerUp_PosionArea : PowerUp_Active_Instant {
+class PowerUp_PosionArea : PowerUp_Active_Select {
+	public float poisonWaitAmount = 1f;
+
 	public override void Enable (int _elementalType, int _power, float _amount) {
 		base.Enable (_elementalType, _power, _amount);
 
-		StartCoroutine (_Enable(power,amount));
+		HookSelf (true);
 	}
 
-	IEnumerator _Enable (int power, float amount) {
-		yield return new WaitForSeconds (0.4f);
+	//Power level mapping ->
+	/* 1->1
+	 * 2->3
+	 * 3->5
+	 * 4->7
+	 */
+	public override void Activate (IndividualCard myCard) {
+		base.Activate (myCard);
 
-		List<IndividualCard> myCards = GetRandomizedSelectabeCardList ();
-		power = Mathf.Clamp (power, 0, myCards.Count);
+		StartCoroutine (_Activate (myCard, 1 + ((power-1) * 2), amount));
+	}
 
-		for (int i = 0; i < power; i++) {
-			if (myCards[i].isRevealed) {
-				power++;
-				if (power > myCards.Count) {
-					break;
-				} else {
-					continue;
-				}
-			}
-			print ("Revealing: " + myCards[i].x.ToString () + " - " + myCards[i].y.ToString ());
-			Reveal (myCards[i], amount);
-			yield return new WaitForSeconds (0.05f);
+	IEnumerator _Activate (IndividualCard myCard, int _power, float _amount) {
+
+		yield return new WaitForSeconds (0.1f);
+
+		for (int i = 0; i < _power; i++) {
+			Select (GetAreaSequence (myCard, i, _power));
+			if (i % 4 == 0)
+				yield return new WaitForSeconds (0.03f);
 		}
 
-		Disable ();
+		PoisonSelectedCards ();
+
+		UnSelectSelectedCards (poisonWaitAmount + (0.05f * _power));
+
+		amount--;
+		if (amount <= 0) {
+			Disable ();
+		}
 	}
 }

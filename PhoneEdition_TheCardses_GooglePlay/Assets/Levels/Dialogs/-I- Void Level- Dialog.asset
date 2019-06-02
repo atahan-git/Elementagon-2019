@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -I- Void Level- Dialog
+  m_EditorClassIdentifier: 
+  dialogName: I- Void Level
+  isSkipable: 1
+  dialogs:
+  - tag: 
+    text: "Evet evlat sonunda gemi yolculu\u011Funu tamamlad\u0131k! <delay=0.5> Acaba
+      \u015Fimdi ilerlerken kar\u015F\u0131m\u0131za ne \xE7\u0131k\u0131cak."
+    clearImage: 0
+    image: {fileID: 21300000, guid: aaffdfa413d5a26498cd2b67a37871bd, type: 3}
+    bigSpriteAction: 0000000000000000
+    bigSpriteSlot: 0200000000000000
+    bigSprite:
+    - {fileID: 21300000, guid: 84d4678a0ca1aac4ebe767d22518fda5, type: 3}
+    - {fileID: 21300000, guid: 37c6052d66b9bd84c86ec7e4633893e7, type: 3}
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Olamaz evlat karada <b>void canavar\u0131</b> var! Hemen onu yenmek i\xE7in
+      b\xFCy\xFC g\xFCc\xFC toplamal\u0131s\u0131n!"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Peki b\xFCy\xFCc\xFC dede amca baba bu void cenavar\u0131 nab\u0131y\u0131
+      ki b\xF6yle?"
+    clearImage: 0
+    image: {fileID: 21300000, guid: e23cd62116988a54e978c402a0c84d11, type: 3}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Benim gitmem laz\u0131m evlat sen sadece onun sana dokunmas\u0131na izin
+      verme! <delay=0.5> Bayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy!"
+    clearImage: 0
+    image: {fileID: 21300000, guid: aaffdfa413d5a26498cd2b67a37871bd, type: 3}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

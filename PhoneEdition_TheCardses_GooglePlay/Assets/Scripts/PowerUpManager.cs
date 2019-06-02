@@ -111,7 +111,9 @@ public class PowerUpManager : MonoBehaviour {
 
 	//there exists only unselect, so unselect this card if we were selecting it wrongly
 	public void ReceiveNetworkCorrection (IndividualCard myCard){
-		activePUp.ReceiveNetworkCorrection (myCard);
+		foreach (PowerUpBase pup in equipmentPUps) {
+			pup.ReceiveNetworkCorrection (myCard);
+		}
 	}
 
 	public void SendPowerUpAction (int x, int y, PUpTypes pUpType, int id, int power, float amount, ActionType action) {

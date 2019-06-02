@@ -152,8 +152,38 @@ public abstract class PowerUpBase : MonoBehaviour {
 		DataHandler.s.SendPlayerAction (card.x, card.y, CardHandler.CardActions.UnSelect);
 	}
 
+	protected void UnSelectSelectedCards () {
+		foreach (IndividualCard card in mem_Cards) {
+			card.UnSelectCard ();
+			DataHandler.s.SendPlayerAction (card.x, card.y, CardHandler.CardActions.UnSelect);
+		}
+		mem_Cards = new List<IndividualCard> ();
+	}
+
+	protected void UnSelectSelectedCards (float timer) {
+		StartCoroutine (UnSelectSelectedCards (mem_Cards.ToArray (), timer));
+		mem_Cards = new List<IndividualCard> ();
+	}
+
+	IEnumerator UnSelectSelectedCards (IndividualCard[] cards, float timer) {
+		yield return new WaitForSeconds (timer);
+
+		foreach (IndividualCard card in cards) {
+			card.UnSelectCard ();
+			DataHandler.s.SendPlayerAction (card.x, card.y, CardHandler.CardActions.UnSelect);
+		}
+	}
+
 	protected void NetherReset (IndividualCard card) {
+		//the card itself will send nether reset action across the network
 		card.NetherReset ();
+	}
+
+	protected void PoisonSelectedCards () {
+		//the card itself will send its poison status across the network
+		foreach (IndividualCard card in mem_Cards) {
+			card.PoisonCard ();
+		}
 	}
 
 	protected void PoisonProtect (IndividualCard card) {
@@ -212,8 +242,6 @@ public abstract class PowerUpBase : MonoBehaviour {
 
 		int xLength = CardHandler.s.allCards.GetLength (0);
 		int offset = Mathf.FloorToInt (power / 2f);
-
-
 
 		if (xLength > start.x + offset - lineId && start.x + offset - lineId >= 0)
 			return CardHandler.s.allCards[start.x + offset - lineId, start.y];

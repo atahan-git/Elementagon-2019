@@ -17,7 +17,7 @@ class PowerUp_MatchArea : PowerUp_Active_Select {
 	 */
 	public override void Activate (IndividualCard myCard) {
 		base.Activate (myCard);
-
+		
 		StartCoroutine (_Activate (myCard, 1 + (power * 2), amount));
 	}
 	

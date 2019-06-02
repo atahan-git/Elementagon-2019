@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0614ed99e9dfd74288e949f874b5970, type: 3}
   m_Name: CardSet_swordandShield
   m_EditorClassIdentifier: 
+  poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
   cards:
   - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
   - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}

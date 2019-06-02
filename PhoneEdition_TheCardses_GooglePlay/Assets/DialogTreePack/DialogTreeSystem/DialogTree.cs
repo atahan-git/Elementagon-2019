@@ -46,7 +46,7 @@ public class DialogTree : MonoBehaviour {
 
 			int n = 0;
 			foreach (Dialog myPoint in dialogs) {
-				PrefabUtility.UnpackPrefabInstance (myPoint.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+				//PrefabUtility.UnpackPrefabInstance (myPoint.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
 				if (!(myPoint.myTag == "" || myPoint.myTag == " ")) {
 					myPoint.gameObject.name = "Dialog " + n + " - " + myPoint.myTag;
 				} else {

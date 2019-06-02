@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardSet", menuName = "GameSettings/CardSet", order = 10)]
 public class CardSets : ScriptableObject {
 
+	public const int utilityCardsNumber = 1;
+
+	public CardBase poisonCard;
+
 	public CardBase[] cards;
 
 	[Space]

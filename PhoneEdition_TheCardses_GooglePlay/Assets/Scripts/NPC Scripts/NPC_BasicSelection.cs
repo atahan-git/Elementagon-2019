@@ -32,6 +32,9 @@ public class NPC_BasicSelection : NPCBase {
 					continue;
 			}
 
+			if (SelectedCardCount < 1)
+				continue;
+
 			bool targetSet = false;
 			if (ShouldIDecideCorrectly ()) {
 				do {

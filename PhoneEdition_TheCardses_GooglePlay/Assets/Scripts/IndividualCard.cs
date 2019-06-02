@@ -47,6 +47,8 @@ public class IndividualCard : MonoBehaviour {
 	public bool isSelectable = true;
 	[HideInInspector]
 	public bool isUnselectable = true;
+	[HideInInspector]
+	public int currentSelectingPlayer = -1;
 
     //Animator anim;
     CardAnimator anim;
@@ -88,6 +90,7 @@ public class IndividualCard : MonoBehaviour {
 		anim.SetOpenState (true);
 		isSelectable = false;
 		isUnselectable = true;
+		currentSelectingPlayer = playerID;
 		//CancelInvoke ();
 
 		cardState = DataHandler.cardStates.open;
@@ -131,6 +134,7 @@ public class IndividualCard : MonoBehaviour {
 			anim.SetOpenState (false);
 			isSelectable = true;
 			isUnselectable = false;
+			currentSelectingPlayer = -1;
 			DestroySelectedEfect ();
 
 			cardState = DataHandler.cardStates.close;
@@ -168,6 +172,7 @@ public class IndividualCard : MonoBehaviour {
 		//anim.SetOpenState (true);
 		isSelectable = false;
 		isUnselectable = false;
+		currentSelectingPlayer = -1;
 		_isPoison = false;
 		DestroySelectedEfect ();
 		Invoke ("ReOpenCard", GS.a.cardReOpenTime);
@@ -197,6 +202,7 @@ public class IndividualCard : MonoBehaviour {
 		DestroySelectedEfect ();
 		isSelectable = false;
 		isUnselectable = false;
+		currentSelectingPlayer = -1;
 		_isPoison = false;
 		anim.TriggerJustRotate ();
 		Invoke ("RandomizeCardType", 0.35f);
@@ -211,6 +217,7 @@ public class IndividualCard : MonoBehaviour {
 		anim.SetOpenState (false);
 		isSelectable = false;
 		isUnselectable = false;
+		currentSelectingPlayer = -1;
 		_isPoison = false;
 		DestroySelectedEfect ();
 		Invoke ("RandomizeCardType", 0.35f);
@@ -241,6 +248,16 @@ public class IndividualCard : MonoBehaviour {
 
 	public void PoisonProtect () {
 
+	}
+
+	public void PoisonCard () {
+		isPoison = true;
+		int poisonType = GS.a.cards.Length - 1;
+
+		if (DataHandler.s.myPlayerInteger != 0) {
+			DataHandler.s.SendCardType (x, y, poisonType);
+		}
+		UpdateCardType (poisonType);
 	}
 
 	//-----------------------------------------Utility Functions

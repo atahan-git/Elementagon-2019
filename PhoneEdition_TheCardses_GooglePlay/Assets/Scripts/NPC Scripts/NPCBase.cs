@@ -26,9 +26,9 @@ public abstract class NPCBase : MonoBehaviour {
 	Vector3 startingPositionOffset = new Vector3 (-2f, 0, 0);
 	//--------------------------------
 
-
+	[Tooltip ("The time between moving each card, smaller = faster")]
 	public float movementSpeed = 0.2f;
-	[Tooltip("What percent of selections should match")]
+	[Tooltip ("What percent of selections should match")]
 	public float AIStrength = 0.5f;
 	public bool poisonImmune = false;
 
@@ -59,22 +59,24 @@ public abstract class NPCBase : MonoBehaviour {
 	public float stunTime = 5f;
 
 	public GameObject selectionDeniedEffect;
+	public GameObject selectionTooManyDeniedEffect;
+	public GameObject selectionHintEffect;
 	//-----------------------------------------------------------------------------------------------Main Functions
 
 	public virtual void Spawn (IndividualCard myCard) {
 		if (!isSpawned) {
 			isSpawned = true;
 		}
-		
+
 		myCard.myOccupants.Add (this);
 		StopAllCoroutines ();
-		StartCoroutine (MoveToStartPos(myCard));
+		StartCoroutine (MoveToStartPos (myCard));
 	}
 
 	IEnumerator MoveToStartPos (IndividualCard myCard) {
 		//come back to this sometime to comment this section please!
-		
-		transform.position = myCard.transform.position + cardOffset +cardOffset + cardOffset+ startingPositionOffset;
+
+		transform.position = myCard.transform.position + cardOffset + cardOffset + cardOffset + startingPositionOffset;
 		Vector3 endPos = myCard.transform.position + cardOffset;
 
 		while (Vector3.Distance (transform.position, endPos) > 0.01f) {
@@ -101,7 +103,8 @@ public abstract class NPCBase : MonoBehaviour {
 	public virtual void Die (bool isForced) {
 		SendNPCAction (-1, -1, NPCManager.ActionType.Die, isForced ? 1 : 0);
 		if (!isKillable && !isForced) {
-			Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);
+			if (unkillableEffect != null)
+				Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);
 			if (myUnkillableType == UnKillableTypes.Stun) {
 				isStunned = true;
 				Invoke ("UnStun", stunTime);
@@ -109,7 +112,8 @@ public abstract class NPCBase : MonoBehaviour {
 			return;
 		}
 
-		Instantiate (diePrefab, transform.position, transform.rotation);
+		if (diePrefab != null)
+			Instantiate (diePrefab, transform.position, transform.rotation);
 		if (isSpawned) {
 			NPCManager.s.ActiveNPCS.Remove (this);
 			isSpawned = false;
@@ -132,9 +136,16 @@ public abstract class NPCBase : MonoBehaviour {
 	}
 
 	protected IEnumerator MoveToPosition (IndividualCard to) {
-		if (DataHandler.s.myPlayerInteger == 0)
-			SendNPCAction (to.x, to.y, NPCManager.ActionType.GoToPos, -1);
-		yield return MoveToPositionCoroutine (to);
+		if (to == null) {
+			yield return null;
+		} else {
+			if (DataHandler.s.myPlayerInteger == 0)
+				SendNPCAction (to.x, to.y, NPCManager.ActionType.GoToPos, -1);
+
+			if (selectionHintEffect != null)
+				Instantiate (selectionHintEffect, to.transform.position, selectionHintEffect.transform.rotation);
+			yield return MoveToPositionCoroutine (to);
+		}
 	}
 
 	IEnumerator MoveToPositionCoroutine (IndividualCard to) {
@@ -194,8 +205,8 @@ public abstract class NPCBase : MonoBehaviour {
 		//Vector3 startPos = from.transform.position + cardOffset;
 		Vector3 endPos = to.transform.position + cardOffset;
 
-		while (Vector3.Distance(transform.position, endPos) > 0.01f) {
-			if(!isStunned)
+		while (Vector3.Distance (transform.position, endPos) > 0.01f) {
+			if (!isStunned)
 				transform.position = Vector3.Lerp (transform.position, endPos, Time.deltaTime * 20f);
 
 			yield return null;
@@ -203,7 +214,7 @@ public abstract class NPCBase : MonoBehaviour {
 
 		transform.position = endPos;
 
-		from.myOccupants.Remove(this);
+		from.myOccupants.Remove (this);
 		to.myOccupants.Add (this);
 		myCurrentOccupation = to;
 		yield return null;
@@ -220,8 +231,12 @@ public abstract class NPCBase : MonoBehaviour {
 		return Random.Range (1f - timeRandomPercent, 1f + timeRandomPercent);
 	}
 
+	protected List<IndividualCard> GetAllCards () {
+		return CardHandler.s.GetAllCards ();
+	}
+
 	protected List<IndividualCard> GetRandomizedMoveableCardList () {
-		List < IndividualCard > l = CardHandler.s.GetRandomizedSelectabeCardList ().FindAll (s => CanTargetSpot (s));
+		List<IndividualCard> l = CardHandler.s.GetRandomizedSelectabeCardList ().FindAll (s => CanTargetSpot (s));
 
 		if (l.Count == 0)
 			l.Add (null);
@@ -236,6 +251,7 @@ public abstract class NPCBase : MonoBehaviour {
 			return null;
 	}
 
+	int denyCount = 0;
 	protected void Select (IndividualCard card) {
 		if (card == null)
 			return;
@@ -249,10 +265,23 @@ public abstract class NPCBase : MonoBehaviour {
 			//SendAction (card.x, card.y, power, amount, PowerUpManager.ActionType.SelectCard);
 			mem_Cards.Add (card);
 			if (selectPrefab != null)
-				card.selectedEffect = (GameObject)Instantiate (selectPrefab.gameObject, card.transform.position, Quaternion.identity);
+				card.selectedEffect = Instantiate (selectPrefab.gameObject, card.transform.position, Quaternion.identity);
+
+			denyCount = 0;
 		} else {
-			Instantiate (selectionDeniedEffect, transform.position, selectionDeniedEffect.transform.rotation);
+			if (selectionDeniedEffect != null)
+				Instantiate (selectionDeniedEffect, transform.position, selectionDeniedEffect.transform.rotation);
+			denyCount++;
+
+			if (denyCount == 3 || (denyCount > 3 && Random.value > 0.5f)) {
+				Invoke ("TooManyDeniesEffect", 1f);
+			}
 		}
+	}
+
+	void TooManyDeniesEffect () {
+		if (selectionTooManyDeniedEffect != null)
+			Instantiate (selectionTooManyDeniedEffect, transform.position, selectionTooManyDeniedEffect.transform.rotation);
 	}
 
 	protected void Activate (IndividualCard card) {
@@ -289,7 +318,7 @@ public abstract class NPCBase : MonoBehaviour {
 		yield return new WaitForSeconds (delay);
 		CardChecker.s.CheckCards (DataHandler.NPCInteger, _mem_Cards, false);
 	}
-	
+
 
 
 	//Line Sequence

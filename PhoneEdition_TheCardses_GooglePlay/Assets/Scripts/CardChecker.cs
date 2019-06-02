@@ -12,33 +12,18 @@ public class CardChecker : MonoBehaviour {
 	}
 
 	public void CheckCards (List<IndividualCard> cardsToCheck, bool isInstant) {
-		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.ToArray().Clone ();
-
-		//empty our original array
-		EmptyArray (cardsToCheck);
-
-		if (isInstant) {
-			CheckCards (DataHandler.s.myPlayerInteger, _cardsToCheck);
-		} else {
-			StartCoroutine (CheckCardsCOROT (DataHandler.s.myPlayerInteger, _cardsToCheck));
-		}
+		CheckCards (DataHandler.s.myPlayerInteger, cardsToCheck, isInstant);
 	}
 
 	public void CheckCards (IndividualCard[] cardsToCheck, bool isInstant) {
-		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.Clone ();
-
-		//empty our original array
-		EmptyArray (cardsToCheck);
-
-		if (isInstant) {
-			CheckCards (DataHandler.s.myPlayerInteger, _cardsToCheck);
-		} else {
-			StartCoroutine (CheckCardsCOROT (DataHandler.s.myPlayerInteger, _cardsToCheck));
-		}
+		CheckCards (DataHandler.s.myPlayerInteger, new List<IndividualCard> (cardsToCheck), isInstant);
 	}
 
 	public void CheckCards (int playerId,List<IndividualCard> cardsToCheck, bool isInstant) {
 		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.ToArray ().Clone ();
+
+		if (playerId == DataHandler.s.myPlayerInteger)
+			GameObjectiveFinishChecker.s.turnCount++;
 
 		//empty our original array
 		EmptyArray (cardsToCheck);

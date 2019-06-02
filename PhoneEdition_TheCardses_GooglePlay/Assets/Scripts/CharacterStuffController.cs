@@ -44,23 +44,25 @@ public class CharacterStuffController : MonoBehaviour {
 			return;
 
 		try {
-			foreach (InventoryMaster.InventoryPotion myItem in InventoryMaster.s.myPotions) {
+			foreach (InventoryMaster.InventoryPotion myItem in GS.a.overridePotions ? GS.a.potions.ConvertToInventory() : InventoryMaster.s.myPotions.ToArray()) {
 				if (myItem != null)
-					((GameObject)Instantiate (gridItem, potionsParent.transform)).GetComponent<ItemGridDisplay> ().SetUp (myItem);
+					Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (myItem);
 			}
 
-			if (InventoryMaster.s.elementLevel > 0) {
-				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = InventoryMaster.s.elementLevel;
-				maxPowerCharge = InventoryMaster.s.elementLevel;
-				powerButton.SetUp (GS.a.gfxs.cardSprites[InventoryMaster.s.selectedElement + 1 + 7], maxPowerCharge, "Power", InventoryMaster.s.selectedElement + 1);
+			int elementLevel = GS.a.overridePower ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
+			int selectedElement = GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
+			if (elementLevel > 0) {
+				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = elementLevel;
+				maxPowerCharge = elementLevel;
+				powerButton.SetUp (GS.a.gfxs.cardSprites[selectedElement + 1 + 7], maxPowerCharge, "Power", selectedElement + 1);
 				isActivePower = true;
 			} else {
 				powerButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
 				isActivePower = false;
 			}
-
-			if (InventoryMaster.s.activeEquipment != null) {
-				myEquipment = (Equipment)InventoryMaster.s.activeEquipment.item;
+			InventoryMaster.InventoryEquipment myEq = (GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
+			if (myEq != null) {
+				myEquipment = (Equipment)myEq.item;
 				maxEquipmentCharge = AddUpIntArray (myEquipment.chargeReq);
 				equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.elementalType);
 				isActiveEquipment = true;
@@ -142,9 +144,9 @@ public class CharacterStuffController : MonoBehaviour {
 
 		if (equipmentButton.canActivate) {
 			isLastActivePower = false;
+			Equipment myEq = (Equipment)(GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment).item;
 			if (!DataLogger.isDebugMode)
-				((Equipment)InventoryMaster.s.activeEquipment.item).chargeReq.CopyTo (curEquipmentChargeReq, 0);
-			Equipment myEq = (Equipment)InventoryMaster.s.activeEquipment.item;
+				(myEq).chargeReq.CopyTo (curEquipmentChargeReq, 0);
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
 				(int)myEq.myType, 
 				myEq.elementalType, 
@@ -171,9 +173,9 @@ public class CharacterStuffController : MonoBehaviour {
 			if (!DataLogger.isDebugMode)
 				PowerChargeReq.CopyTo (curPowerChargeReq, 0);
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
-				ConverElementToType(InventoryMaster.s.selectedElement), 
-				InventoryMaster.s.selectedElement + 1, 
-				InventoryMaster.s.elementLevel, 1);
+				ConverElementToType(GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement),
+				(GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement) + 1,
+				GS.a.overridePower ? GS.a.elementLevel : InventoryMaster.s.elementLevel, 1);
 		}
 	}
 
@@ -220,8 +222,13 @@ public class CharacterStuffController : MonoBehaviour {
 	public void ActivatePotion (InventoryMaster.InventoryItem theItem) {
 		if (isHijacked)
 			return;
-
-		InventoryMaster.s.Remove (theItem);
+		if (!GS.a.overridePotions)
+			InventoryMaster.s.Remove (theItem);
+		else {
+			List<Potion> myPotions = new List<Potion> (GS.a.potions);
+			myPotions.Remove ((Potion)theItem.item);
+			GS.a.potions = myPotions.ToArray ();
+		}
 	}
 
 

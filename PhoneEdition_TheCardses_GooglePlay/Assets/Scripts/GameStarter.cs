@@ -71,6 +71,7 @@ public class GameStarter : MonoBehaviour {
 			break;
 		}
 
+
 		if (readyPlayersInOtherStage.Length >= 0) {
 			readyPlayersInOtherStage.CopyTo (readyPlayers, 0);
 		}

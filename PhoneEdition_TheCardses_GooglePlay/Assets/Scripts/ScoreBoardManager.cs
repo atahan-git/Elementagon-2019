@@ -31,6 +31,14 @@ public class ScoreBoardManager : MonoBehaviour {
 		try {
 			scoreBoards = new GameObject[6];
 			allScores = new int[6, 32];
+
+			switch (GS.a.myGameObjectiveType) {
+			case GameSettings.GameObjectiveTypes.Health:
+				for (int i = 0; i < 6; i++)
+					ScoreBoardManager.s.allScores[i, 0] = GS.a.scoreReach;
+				break;
+			}
+
 			for (int i = 0; i < scoreBoards.Length; i++) {
 				scoreBoards[i] = null;
 			}

@@ -29,7 +29,7 @@ public class GameSettings : ScriptableObject {
 	public CardBase defCard;
 
 	public void SetUpCards () {
-		cards = new CardData[cardSet.cards.Length + possibleDrops.Length];
+		cards = new CardData[cardSet.cards.Length + possibleDrops.Length + CardSets.utilityCardsNumber];
 
 		float[] chances = new float[cardSet.cards.Length];
 		cardSet.customSpawnChances.CopyTo (chances, 0);
@@ -41,7 +41,10 @@ public class GameSettings : ScriptableObject {
 
 		GenerateItemCards ();
 
+		cards[cards.Length-1] = new CardData (cardSet.poisonCard, 0);
+
 		for (int i = 0; i < cards.Length; i++) {
+			Debug.Log (i);
 			cards[i].cBase.cardType = i;
 		}
 	}
@@ -136,7 +139,7 @@ public class GameSettings : ScriptableObject {
 	}
 
 
-	//npc spawning is handled by game starter
+	//npc spawning is handled by game starter & NPC manager
 	[Header ("NPC Settings")]
 	public NPCBase myNPC;
 	public bool isNPCEnabled {
@@ -146,6 +149,19 @@ public class GameSettings : ScriptableObject {
 	public int npcSpawnCount = 1;
 	[Tooltip("Use -1 to spawn when the other one dies (not implemented yet)")]
 	public float npcSpawnDelay = 10f;
+
+
+	[Header ("Player stuff override Settings")]
+	public bool overrideEquipment;
+	public Equipment equipment;
+
+	public bool overridePotions;
+	public Potion[] potions;
+
+	public bool overridePower;
+	[Tooltip ("//0-7 = dragons\n//---------------------------\n//0 = Earth Dragon\n//1 = Fire Dragon\n//2 = Ice Dragon\n//3 = Light Dragon\n//4 = Nether Dragon\n//5 = Poison Dragon\n//6 = Shadow Dragon\n//---------------------------")]
+	public int selectedElement = -1;
+	public int elementLevel = 0;
 
 	[Header ("Compound Level Settings")]
 	public GameSettings nextStage;

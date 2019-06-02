@@ -1,5 +1,7 @@
-finish migrating level system
-add multiplayer level start thingy
-add easy to access small levels
-
 add character data to make custom chars in levels possible
+
+finish rest of the pups
+add a way to unlock all pups
+add a console for cheats?
+
+start doing the story

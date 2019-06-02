@@ -14,6 +14,15 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 	public Text timerText;
 	public float timer = 0f;
 
+	int _turncount = 0;
+	public int turnCount {
+		get { return _turncount; }
+		set {
+			_turncount = value;
+			CheckReach ();
+		}
+	}
+
 	public Text objectiveText;
 
 	void Awake () {
@@ -27,32 +36,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 		timerText.text = minutes + ":" + seconds;
 
-		string objectiveString = GS.a.objectiveText;
-
-		if (objectiveString == "") {
-			switch (GS.a.myGameObjectiveType) {
-			default:
-			case GameSettings.GameObjectiveTypes.Standard:
-				objectiveString = "Reach " + GS.a.scoreReach.ToString () + " score";
-				break;
-			case GameSettings.GameObjectiveTypes.Haggle:
-				objectiveString = "Haggle your way to " + GS.a.scoreReach.ToString () + " coins";
-				break;
-			case GameSettings.GameObjectiveTypes.Health:
-				objectiveString = "Kill your enemy before you die";
-				break;
-			}
-
-			if (GS.a.timer > 0) {
-				objectiveString += ", before the timer runs out";
-				isTimed = true;
-				timer = GS.a.timer;
-			}
-			if (GS.a.turns > 0)
-				objectiveString += ", under " + GS.a.turns.ToString () + " turns";
-		}
-
-		objectiveText.text = objectiveString;
+		UpdateObjectiveText ();
 	}
 
 	public void StartGame () {
@@ -66,7 +50,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 			if (isTimed && timer <= 0) {
 				timer = 0;
-				EndGame (4);
+				EndGame (5);
 			}
 
 			string minutes = Mathf.Floor (timer / 60).ToString ("00");
@@ -101,6 +85,36 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 		EndGame (i);
 	}
 
+	void UpdateObjectiveText () {
+		string objectiveString = GS.a.objectiveText;
+
+		if (objectiveString == "") {
+			switch (GS.a.myGameObjectiveType) {
+			default:
+			case GameSettings.GameObjectiveTypes.Standard:
+				objectiveString = "Reach " + GS.a.scoreReach.ToString () + " score";
+				break;
+			case GameSettings.GameObjectiveTypes.Haggle:
+				objectiveString = "Haggle your way to " + GS.a.scoreReach.ToString () + "+" + ScoreBoardManager.s.allScores[3, 0].ToString () + " coins";
+				if (GS.a.myGameType != GameSettings.GameType.Singleplayer)
+					DataLogger.LogError ("Implement finish checker counter for single player!");
+				break;
+			case GameSettings.GameObjectiveTypes.Health:
+				objectiveString = "Kill your enemy before you die";
+				break;
+			}
+
+			if (GS.a.timer > 0) {
+				objectiveString += ", before the timer runs out";
+				isTimed = true;
+				timer = GS.a.timer;
+			}
+			if (GS.a.turns > 0)
+				objectiveString += ", under " + turnCount.ToString () + "/" + GS.a.turns.ToString () + " turns";
+		}
+		objectiveText.text = objectiveString;
+	}
+
 	public void CheckReach (){
 		if (!isFinished && isGamePlaying) {
 
@@ -110,111 +124,124 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 			//print ("Checking reach: " + i.ToString () + " -> " + myArray[0].ToString ());
 
-			if (GS.a.scoreReach <= 0)
-				return;
+			UpdateObjectiveText ();
 
-			try {
-				switch (GS.a.myGameObjectiveType) {
-				default:
-				case GameSettings.GameObjectiveTypes.Standard:
-					switch (GS.a.myGameType) {
-					case GameSettings.GameType.Singleplayer:
-					case GameSettings.GameType.OneVOne:
-					case GameSettings.GameType.Three_FreeForAll:
-					case GameSettings.GameType.Four_FreeForAll:
-						for (int i = 0; i < ScoreBoardManager.s.allScores.GetLength (0); i++) {
-							if (ScoreBoardManager.s.allScores[i, 0] >= GS.a.scoreReach) {
-								EndGame (i);
+			if (GS.a.scoreReach > 0) {
+				try {
+					switch (GS.a.myGameObjectiveType) {
+					default:
+					case GameSettings.GameObjectiveTypes.Standard:
+						switch (GS.a.myGameType) {
+						case GameSettings.GameType.Singleplayer:
+						case GameSettings.GameType.OneVOne:
+						case GameSettings.GameType.Three_FreeForAll:
+						case GameSettings.GameType.Four_FreeForAll:
+							for (int i = 0; i < ScoreBoardManager.s.allScores.GetLength (0); i++) {
+								if (ScoreBoardManager.s.allScores[i, 0] >= GS.a.scoreReach) {
+									EndGame (i);
+									return;
+								}
+							}
+							break;
+						case GameSettings.GameType.Two_Coop:
+						case GameSettings.GameType.TwoVTwo:
+							if (ScoreBoardManager.s.allScores[4, 0] >= GS.a.scoreReach) {
+								EndGame (4);
 								return;
 							}
+							if (ScoreBoardManager.s.allScores[5, 0] >= GS.a.scoreReach) {
+								EndGame (5);
+								return;
+							}
+							break;
 						}
 						break;
-					case GameSettings.GameType.Two_Coop:
-					case GameSettings.GameType.TwoVTwo:
-						if (ScoreBoardManager.s.allScores[4, 0] >= GS.a.scoreReach) {
-							EndGame (4);
-							return;
-						}
-						if (ScoreBoardManager.s.allScores[5, 0] >= GS.a.scoreReach) {
-							EndGame (5);
-							return;
-						}
-						break;
-					}
-					break;
-				case GameSettings.GameObjectiveTypes.Haggle:
-					switch (GS.a.myGameType) {
-					case GameSettings.GameType.Singleplayer:
-						if (ScoreBoardManager.s.allScores[0, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[3, 0]) {
-							EndGame (0);
-							return;
-						}
-						break;
-					case GameSettings.GameType.OneVOne:
-							if (ScoreBoardManager.s.allScores[0, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[1,0]) {
+					case GameSettings.GameObjectiveTypes.Haggle:
+						switch (GS.a.myGameType) {
+						case GameSettings.GameType.Singleplayer:
+							if (ScoreBoardManager.s.allScores[0, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[3, 0]) {
 								EndGame (0);
 								return;
 							}
-						break;
-					case GameSettings.GameType.Two_Coop:
-					case GameSettings.GameType.TwoVTwo:
-						if (ScoreBoardManager.s.allScores[4, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[5, 0]) {
-							EndGame (4);
-							return;
+							break;
+						case GameSettings.GameType.OneVOne:
+							if (ScoreBoardManager.s.allScores[0, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[1, 0]) {
+								EndGame (0);
+								return;
+							}
+							break;
+						case GameSettings.GameType.Two_Coop:
+						case GameSettings.GameType.TwoVTwo:
+							if (ScoreBoardManager.s.allScores[4, 0] >= GS.a.scoreReach + ScoreBoardManager.s.allScores[5, 0]) {
+								EndGame (4);
+								return;
+							}
+							break;
+						case GameSettings.GameType.Three_FreeForAll:
+						case GameSettings.GameType.Four_FreeForAll:
+							DataLogger.LogError ("This Game type is not supported! " + GS.a.myGameObjectiveType.ToString () + " - " + GS.a.myGameType.ToString ());
+							break;
 						}
 						break;
-					case GameSettings.GameType.Three_FreeForAll:
-					case GameSettings.GameType.Four_FreeForAll:
-						DataLogger.LogError ("This Game type is not supported! " + GS.a.myGameObjectiveType.ToString() + " - " + GS.a.myGameType.ToString());
+					case GameSettings.GameObjectiveTypes.Health:
+						switch (GS.a.myGameType) {
+						case GameSettings.GameType.Singleplayer:
+							if (ScoreBoardManager.s.allScores[0, 0] <= 0) {
+								EndGame (3);
+								return;
+							}
+							if (ScoreBoardManager.s.allScores[3, 0] <= 0) {
+								EndGame (0);
+								return;
+							}
+							break;
+						case GameSettings.GameType.OneVOne:
+							if (ScoreBoardManager.s.allScores[0, 0] <= 0) {
+								EndGame (1);
+								return;
+							}
+							if (ScoreBoardManager.s.allScores[1, 0] <= 0) {
+								EndGame (0);
+								return;
+							}
+							break;
+						case GameSettings.GameType.Two_Coop:
+						case GameSettings.GameType.TwoVTwo:
+							if (ScoreBoardManager.s.allScores[4, 0] <= 0) {
+								EndGame (5);
+								return;
+							}
+							if (ScoreBoardManager.s.allScores[5, 0] <= 0) {
+								EndGame (4);
+								return;
+							}
+							break;
+						case GameSettings.GameType.Three_FreeForAll:
+						case GameSettings.GameType.Four_FreeForAll:
+							DataLogger.LogError ("This Game type is not supported! " + GS.a.myGameObjectiveType.ToString () + " - " + GS.a.myGameType.ToString ());
+							break;
+						}
 						break;
+
 					}
-					break;
-				case GameSettings.GameObjectiveTypes.Health:
+				} catch (System.Exception e) {
+					DataLogger.LogMessage ("Problem Checking Score: " + GS.a.myGameType + " - " + e.Message + " - " + e.StackTrace);
+				}
+			}
+
+
+			if (GS.a.turns > 0) {
+				if (turnCount >= GS.a.turns) {
 					switch (GS.a.myGameType) {
 					case GameSettings.GameType.Singleplayer:
-						if (ScoreBoardManager.s.allScores[0, 0] <= 0) {
-							EndGame (3);
-							return;
-						}
-						if (ScoreBoardManager.s.allScores[3, 0] <= 0) {
-							EndGame (0);
-							return;
-						}
-						break;
-					case GameSettings.GameType.OneVOne:
-						if (ScoreBoardManager.s.allScores[0, 0] <= 0) {
-							EndGame (1);
-							return;
-						}
-						if (ScoreBoardManager.s.allScores[1, 0] <= 0) {
-							EndGame (0);
-							return;
-						}
-						break;
-					case GameSettings.GameType.Two_Coop:
-					case GameSettings.GameType.TwoVTwo:
-						if (ScoreBoardManager.s.allScores[4, 0] <= 0) {
-							EndGame (5);
-							return;
-						}
-						if (ScoreBoardManager.s.allScores[5, 0] <= 0) {
-							EndGame (4);
-							return;
-						}
-						break;
-					case GameSettings.GameType.Three_FreeForAll:
-					case GameSettings.GameType.Four_FreeForAll:
-						DataLogger.LogError ("This Game type is not supported! " + GS.a.myGameObjectiveType.ToString () + " - " + GS.a.myGameType.ToString ());
+						EndGame (5);
+						return;
+					default:
+						Debug.LogError ("Turn Limit not implemented for game type: " + GS.a.myGameType.ToString());
 						break;
 					}
-					break;
-
 				}
-			} catch (System.Exception e) {
-				DataLogger.LogMessage ("Problem Checking Score: " + GS.a.myGameType + " - " + e.Message + " - " + e.StackTrace);
 			}
-			//}
-
 		}
 	}
 
@@ -229,6 +256,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 		finisherId = id;
 		LocalPlayerController.isActive = false;
 
+		NPCManager.s.StopAllNPCs ();
 		
 		bool isWon = false;
 

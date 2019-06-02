@@ -171,6 +171,15 @@ public class CardHandler : MonoBehaviour {
 		allCards [x, y].UpdateCardType (type);
 	}
 
+	public List<IndividualCard> GetAllCards () {
+		List<IndividualCard> myList = new List<IndividualCard> ();
+		foreach (IndividualCard myCard in allCards) {
+			myList.Add (myCard);
+		}
+
+		return myList;
+	}
+
 	public List<IndividualCard> GetOccupiedOrSelectableCards () {
 		List<IndividualCard> myList = new List<IndividualCard> ();
 		foreach (IndividualCard myCard in allCards) {

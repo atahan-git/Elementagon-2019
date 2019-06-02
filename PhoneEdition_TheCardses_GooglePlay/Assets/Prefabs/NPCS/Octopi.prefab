@@ -143,4 +143,8 @@ MonoBehaviour:
   stunTime: 5
   selectionDeniedEffect: {fileID: 1797926292880366, guid: 0a5e61dfa282ea74388f48bcddfae3a0,
     type: 3}
+  selectionTooManyDeniedEffect: {fileID: 1797926292880366, guid: 240d76430f36d3d4f89f39249b2ff827,
+    type: 3}
+  selectionHintEffect: {fileID: 1797926292880366, guid: 483529696b4021e4f9e05d58c89107c2,
+    type: 3}
   cardSelectTime: 4
