@@ -1,5 +1,3 @@
-add character data to make custom chars in levels possible
-
 finish rest of the pups
 add a way to unlock all pups
 add a console for cheats?
