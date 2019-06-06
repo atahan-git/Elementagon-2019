@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Level 6 - Turn Limited
+  m_EditorClassIdentifier: 
+  id: 10
+  PresetName: Level 5
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  cardReOpenTime: 15
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  myGameObjectiveType: 0
+  myGameType: 0
+  objectiveText: 
+  timer: -1
+  turns: 30
+  scoreReach: 15
+  killAllNPC: 0
+  canCombo: 1
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: 5
+  levelName: Level 5
+  levelDescription: "Void canavar\u0131yla m\xFCcadele et"
+  startingText: void void void void
+  startingImage: {fileID: 21300000, guid: 747d418a201d30a4c8f67127ad7b514f, type: 3}
+  bgAnimation: {fileID: 0}
+  bgSprite: {fileID: 0}
+  levelIntroDialog: {fileID: 11400000, guid: baed7d07dadaef748a746b8916c22d1a, type: 2}
+  levelOutroDialog: {fileID: 11400000, guid: 22f2f7aca76b8a941829714d3f94d0fd, type: 2}
+  customObject: {fileID: 0}
+  autoSetUpBoard: 1
+  defaultDropChance: 1
+  possibleDrops:
+  - {fileID: 11400000, guid: 7c6ec498843c71447bc2e6973ff22e22, type: 2}
+  customDropChances: []
+  itemTypesStartIndex: 7
+  myNPC: {fileID: 8876237364972709611, guid: cb4edc0f564180e4ca39981eb5c155b8, type: 3}
+  npcSpawnCount: 1
+  npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
+  nextStage: {fileID: 0}

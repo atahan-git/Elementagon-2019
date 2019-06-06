@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Dungeon 1-2
+  m_Name: level 15
   m_EditorClassIdentifier: 
-  id: 9
+  id: 0
   PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
@@ -21,23 +21,24 @@ MonoBehaviour:
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
-  objectiveText: "10 tane ate\u015F veya buz e\u015Fle\u015Ftir"
+  myGameObjectiveType: 0
+  myGameType: 0
+  objectiveText: 
   timer: -1
   turns: -1
-  scoreReach: 10
+  scoreReach: 30
   killAllNPC: 0
   canCombo: 1
-  myGameType: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: D1-2
-  levelName: Dungeon 1-2
-  levelDescription: 
-  startingText: "10 tane ate\u015F veya buz e\u015Fle\u015Ftir!"
-  startingImage: {fileID: 21300000, guid: 7780cf4e6414db74782a4e9d3e64dee9, type: 3}
-  bgAnimation: {fileID: 11400000, guid: e11ee468300a7b24ba153a7ed226a45d, type: 2}
+  levelShortName: 1
+  levelName: Level 1
+  levelDescription: Level 1
+  startingText: Level 1
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
   levelIntroDialog: {fileID: 0}
-  levelOutroDialog: {fileID: 11400000, guid: 4743256f6a3b7c243b8412a886841d21, type: 2}
+  levelOutroDialog: {fileID: 0}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
   defaultDropChance: 1
@@ -47,4 +48,11 @@ MonoBehaviour:
   myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 1
+  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  overridePotions: 0
+  potions: []
+  overridePower: 1
+  selectedElement: 1
+  elementLevel: 4
   nextStage: {fileID: 0}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Level 6 - Turn Limited
+  m_Name: Level 5 - Void Attacker
   m_EditorClassIdentifier: 
   id: 10
   PresetName: Level 5
@@ -23,9 +23,9 @@ MonoBehaviour:
     type: 2}
   myGameObjectiveType: 0
   myGameType: 0
-  objectiveText: 
-  timer: -1
-  turns: 30
+  objectiveText: Don't let the enemy near your selected cards!
+  timer: 120
+  turns: -1
   scoreReach: 15
   killAllNPC: 0
   canCombo: 1
@@ -49,4 +49,11 @@ MonoBehaviour:
   myNPC: {fileID: 8876237364972709611, guid: cb4edc0f564180e4ca39981eb5c155b8, type: 3}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
   nextStage: {fileID: 0}

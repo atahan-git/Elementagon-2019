@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Dungeon 2
+  m_Name: level 14
   m_EditorClassIdentifier: 
-  id: 9
+  id: 0
   PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
@@ -22,19 +22,19 @@ MonoBehaviour:
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
   myGameObjectiveType: 0
-  myGameType: 1
+  myGameType: 0
   objectiveText: 
   timer: -1
   turns: -1
-  scoreReach: 20
+  scoreReach: 30
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: D2
-  levelName: Dungeon 2
-  levelDescription: This level is multiplayer AND has NPCs!
-  startingText: 
-  startingImage: {fileID: 21300000, guid: 3cce9ea103f651c45abf8dc120602cbc, type: 3}
+  levelShortName: 1
+  levelName: Level 1
+  levelDescription: Level 1
+  startingText: Level 1
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
   levelIntroDialog: {fileID: 0}
@@ -42,11 +42,17 @@ MonoBehaviour:
   customObject: {fileID: 0}
   autoSetUpBoard: 1
   defaultDropChance: 1
-  possibleDrops:
-  - {fileID: 11400000, guid: 7709e3114ac5e3d478cde0ba51d646a7, type: 2}
+  possibleDrops: []
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 114479504210421352, guid: d5c880d319f1f0d42ac67b43fb1d3287, type: 3}
-  npcSpawnCount: -1
+  myNPC: {fileID: 0}
+  npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 1
+  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  overridePotions: 0
+  potions: []
+  overridePower: 1
+  selectedElement: 1
+  elementLevel: 4
   nextStage: {fileID: 0}

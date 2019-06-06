@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Level 5 - Void Attacker
+  m_Name: level 24
   m_EditorClassIdentifier: 
-  id: 10
-  PresetName: Level 5
+  id: 0
+  PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
@@ -23,30 +23,36 @@ MonoBehaviour:
     type: 2}
   myGameObjectiveType: 0
   myGameType: 0
-  objectiveText: Don't let the enemy near your selected cards!
-  timer: 120
+  objectiveText: 
+  timer: -1
   turns: -1
-  scoreReach: 15
+  scoreReach: 30
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 5
-  levelName: Level 5
-  levelDescription: "Void canavar\u0131yla m\xFCcadele et"
-  startingText: void void void void
-  startingImage: {fileID: 21300000, guid: 747d418a201d30a4c8f67127ad7b514f, type: 3}
+  levelShortName: 1
+  levelName: Level 1
+  levelDescription: Level 1
+  startingText: Level 1
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
-  levelIntroDialog: {fileID: 11400000, guid: baed7d07dadaef748a746b8916c22d1a, type: 2}
-  levelOutroDialog: {fileID: 11400000, guid: 22f2f7aca76b8a941829714d3f94d0fd, type: 2}
+  levelIntroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 0}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
   defaultDropChance: 1
-  possibleDrops:
-  - {fileID: 11400000, guid: 7c6ec498843c71447bc2e6973ff22e22, type: 2}
+  possibleDrops: []
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 8876237364972709611, guid: cb4edc0f564180e4ca39981eb5c155b8, type: 3}
+  myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 1
+  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  overridePotions: 0
+  potions: []
+  overridePower: 1
+  selectedElement: 1
+  elementLevel: 4
   nextStage: {fileID: 0}

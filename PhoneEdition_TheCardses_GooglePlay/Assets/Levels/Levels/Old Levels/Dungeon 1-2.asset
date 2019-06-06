@@ -10,43 +10,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Level 4 - Shield and Sword
+  m_Name: Dungeon 1-2
   m_EditorClassIdentifier: 
-  id: 7
-  PresetName: Level 4
+  id: 9
+  PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
-  cardSet: {fileID: 11400000, guid: 9fa4c4404d569264cbff5b2e9e72a550, type: 2}
+  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
-  myGameObjectiveType: 2
-  myGameType: 0
-  objectiveText: 
+  myGameObjectiveType: 0
+  myGameType: 1
+  objectiveText: "10 tane ate\u015F veya buz e\u015Fle\u015Ftir"
   timer: -1
   turns: -1
-  scoreReach: 20
+  scoreReach: 10
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 4
-  levelName: Level 4
-  levelDescription: Shield and Swords just becuase
-  startingText: Use the stuff
-  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
-  bgAnimation: {fileID: 0}
+  levelShortName: D1-2
+  levelName: Dungeon 1-2
+  levelDescription: 
+  startingText: "10 tane ate\u015F veya buz e\u015Fle\u015Ftir!"
+  startingImage: {fileID: 21300000, guid: 7780cf4e6414db74782a4e9d3e64dee9, type: 3}
+  bgAnimation: {fileID: 11400000, guid: e11ee468300a7b24ba153a7ed226a45d, type: 2}
   bgSprite: {fileID: 0}
   levelIntroDialog: {fileID: 0}
-  levelOutroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 11400000, guid: 4743256f6a3b7c243b8412a886841d21, type: 2}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
   defaultDropChance: 1
-  possibleDrops:
-  - {fileID: 11400000, guid: 7709e3114ac5e3d478cde0ba51d646a7, type: 2}
+  possibleDrops: []
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 114479504210421352, guid: d5c880d319f1f0d42ac67b43fb1d3287, type: 3}
+  myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
   nextStage: {fileID: 0}

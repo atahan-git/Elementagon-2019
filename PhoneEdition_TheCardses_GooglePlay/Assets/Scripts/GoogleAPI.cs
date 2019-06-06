@@ -17,7 +17,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	public static int gameMode = 0;
 
 	public static GoogleAPI s;
-	public List<Participant> participants = new List<Participant>();
+	public List<Participant> participants = new List<Participant> ();
 
 	public DataLogger logText;
 
@@ -27,8 +27,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	public bool searchingForGame = false;
 
 	// Use this for initialization
-	void Awake () 
-	{
+	void Awake () {
 		if (s != null && s != this) {
 			Destroy (this.gameObject);
 			return;
@@ -41,31 +40,30 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		DontDestroyOnLoad (this.gameObject);
 	}
 
-	void Start () 
-	{	
+	void Start () {
 		logText = DataLogger.s;
 
 		//RTClient = PlayGamesPlatform.Instance.RealTime;
 		//lobbyGUI.SetActive (false);
 		//ChangePlayerCount (0);
 
-		DataLogger.LogMessage("Google API Initialising");
-		try{
-		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-				.WithInvitationDelegate(ReceiveInvitaion)
-				.EnableSavedGames()
-				.Build();
+		DataLogger.LogMessage ("Google API Initialising");
+		try {
+			PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder ()
+					.WithInvitationDelegate (ReceiveInvitaion)
+					.EnableSavedGames ()
+					.Build ();
 
-		PlayGamesPlatform.InitializeInstance(config);
-		PlayGamesPlatform.DebugLogEnabled = true;
-		//DataLogger.LogMessage("debug enabled");
-		PlayGamesPlatform.Activate();
+			PlayGamesPlatform.InitializeInstance (config);
+			PlayGamesPlatform.DebugLogEnabled = true;
+			//DataLogger.LogMessage("debug enabled");
+			PlayGamesPlatform.Activate ();
 
-		//GameObject.FindObjectOfType<MPMenu> ().GetComponent<MPMenu> ().GirisYapildiMi (Social.localUser.authenticated);
-		}catch{
-			DataLogger.LogMessage ("Google API Initialization Failure, Please restart the game");
+			//GameObject.FindObjectOfType<MPMenu> ().GetComponent<MPMenu> ().GirisYapildiMi (Social.localUser.authenticated);
+		} catch {
+			DataLogger.LogError ("Google API Initialization Failure, Please restart the game");
 		}
-		DataLogger.LogMessage("Google API Initialization Successful");
+		DataLogger.LogMessage ("Google API Initialization Successful");
 
 		if (Application.internetReachability != NetworkReachability.NotReachable) {
 			if (!PlayGamesPlatform.Instance.localUser.authenticated) {
@@ -75,25 +73,22 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 		//Invoke("ShowSelectUI",2f);
 	}
-	
 
-	public List<Participant> GetParticipants()
-	{
+
+	public List<Participant> GetParticipants () {
 		return PlayGamesPlatform.Instance.RealTime.GetConnectedParticipants ();
 	}
 
 
-	public Participant GetPbyID (string participantID) 
-	{
+	public Participant GetPbyID (string participantID) {
 		return PlayGamesPlatform.Instance.RealTime.GetParticipant (participantID);
 	}
 
-	public Participant GetSelf ()
-	{
+	public Participant GetSelf () {
 		return PlayGamesPlatform.Instance.RealTime.GetSelf ();
 	}
 
-	int n= 1;
+	int n = 1;
 	bool isLoggingin = false;
 	public void Login () {
 		if (isLoggingin)
@@ -169,7 +164,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 				gameMode = GameVariant;
 				PlayGamesPlatform.Instance.RealTime.CreateWithInvitationScreen ((uint)(playerCount - 1), (uint)(playerCount - 1), (uint)GameVariant, this);
 				if (!showingWaitingRoom) {
-					PlayGamesPlatform.Instance.RealTime.ShowWaitingRoomUI();
+					PlayGamesPlatform.Instance.RealTime.ShowWaitingRoomUI ();
 					showingWaitingRoom = true;
 				}
 			} catch {
@@ -181,12 +176,12 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		VC_MultiplayerMenuController.s.UpdateMenu ();
 	}
 
-	public void AcceptInvitation (){
+	public void AcceptInvitation () {
 		PlayGamesPlatform.Instance.RealTime.AcceptFromInbox (this);
 	}
 
 	Invitation mIncomingInvitation = null;
-	public void ReceiveInvitaion (Invitation invitation, bool shouldAutoAccept){
+	public void ReceiveInvitaion (Invitation invitation, bool shouldAutoAccept) {
 		DataLogger.LogMessage ("Received Invitation");
 		shouldAutoAccept = true;
 		if (shouldAutoAccept) {
@@ -198,9 +193,9 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 			gameMode = invitation.Variant;
 			if (gameMode == -1)
 				gameMode = 0;
-			PlayGamesPlatform.Instance.RealTime.AcceptInvitation(invitation.InvitationId, this);
+			PlayGamesPlatform.Instance.RealTime.AcceptInvitation (invitation.InvitationId, this);
 			if (!showingWaitingRoom) {
-				PlayGamesPlatform.Instance.RealTime.ShowWaitingRoomUI();
+				PlayGamesPlatform.Instance.RealTime.ShowWaitingRoomUI ();
 				showingWaitingRoom = true;
 			}
 		} else {
@@ -212,7 +207,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	}
 
 
-	public void CancelMatchSearch (){
+	public void CancelMatchSearch () {
 		PlayGamesPlatform.Instance.RealTime.LeaveRoom ();
 		DataLogger.LogMessage ("Game Search Canceled");
 
@@ -242,7 +237,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 			DataLogger.LogMessage ("no internet",true);
 			*/
 		//DataLogger.LogMessage(GetSelf ().ParticipantId.ToString();
-		isOnline = PlayGamesPlatform.Instance.IsAuthenticated();
+		isOnline = PlayGamesPlatform.Instance.IsAuthenticated ();
 
 		if (oldOn != isOnline) {
 			oldOn = isOnline;
@@ -256,19 +251,17 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		}
 	}
 
-	public void OnRoomConnected(bool success) {
-		DataLogger.LogMessage("OnRoomConnected");
-		if (success) 
-		{
+	public void OnRoomConnected (bool success) {
+		DataLogger.LogMessage ("OnRoomConnected");
+		if (success) {
 			gameInProgress = true;
 			searchingForGame = false;
 			VC_MultiplayerMenuController.SetSearchingPanelState (true);
-			DataLogger.LogMessage("Room Connection Successful");
+			DataLogger.LogMessage ("Room Connection Successful");
 			participants = GetParticipants ();
 			SceneMaster.s.LoadPlayingLevel (gameMode);
-		} else 
-		{
-			DataLogger.LogMessage("Room Connection Failure");
+		} else {
+			DataLogger.LogMessage ("Room Connection Failure");
 			PlayGamesPlatform.Instance.RealTime.LeaveRoom ();
 		}
 	}
@@ -276,9 +269,9 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 	private bool showingWaitingRoom = false;
 
-	public void OnRoomSetupProgress(float progress) {
+	public void OnRoomSetupProgress (float progress) {
 		// show the default waiting room.
-		
+
 
 		if (progress == 20) {
 			if (!showingWaitingRoom) {
@@ -299,30 +292,30 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	}
 
 	public void OnParticipantLeft (Participant participant) {
-		DataLogger.LogMessage(participant.DisplayName + " Left");
+		DataLogger.LogMessage (participant.DisplayName + " Left");
 		PlayGamesPlatform.Instance.RealTime.LeaveRoom ();
 	}
 
-	public void OnPeersConnected(string[] participantIds) {
+	public void OnPeersConnected (string[] participantIds) {
 		foreach (string participant in participantIds) {
-			DataLogger.LogMessage(participant + " Joined");
+			DataLogger.LogMessage (participant + " Joined");
 		}
 		//PlayGamesPlatform.Instance.RealTime.LeaveRoom ();
 	}
 
-	public void OnPeersDisconnected(string[] participantIds) {
+	public void OnPeersDisconnected (string[] participantIds) {
 		foreach (string participant in participantIds) {
-			DataLogger.LogMessage(participant + " Disconnected");
+			DataLogger.LogMessage (participant + " Disconnected");
 		}
 		PlayGamesPlatform.Instance.RealTime.LeaveRoom ();
 	}
 
 	public void Exit () {
-		PlayGamesPlatform.Instance.SignOut();
+		PlayGamesPlatform.Instance.SignOut ();
 	}
 
-	public void OnLeftRoom() {
-		DataLogger.LogMessage("Left Room");
+	public void OnLeftRoom () {
+		DataLogger.LogMessage ("Left Room");
 
 		showingWaitingRoom = false;
 		canPlay = true;
@@ -348,7 +341,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 			//Login ();
 			//MultiplayerMenuController.s.UpdateMenu ();
-		} 
+		}
 
 		// (do NOT call PlayGamesPlatform.Instance.RealTime.LeaveRoom() here --
 		// you have already left the room!)
@@ -357,39 +350,39 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 
 
-	public delegate void ReceiveMessage (byte[]data);
+	public delegate void ReceiveMessage (byte[] data);
 	public ReceiveMessage myReceiver;
 
-	public void OnRealTimeMessageReceived(bool isReliable, string senderId, byte[] data) {
-		DataLogger.LogMessage("Data received " + ((char)data [0]).ToString ());
-		try{
-			DataHandler.s.ReceiveData(data);
+	public void OnRealTimeMessageReceived (bool isReliable, string senderId, byte[] data) {
+		DataLogger.LogMessage ("Data received " + ((char)data[0]).ToString ());
+		try {
+			DataHandler.s.ReceiveData (data);
 			//DataLogger.LogMessage("Data processing begun " + ((char)data [0]).ToString());
 		} catch (Exception e) {
 			//DataLogger.LogMessage ("Data processing failed " + myCommand.ToString (), true);
-			DataLogger.LogError ("Data process failed " + ((char)data[0]).ToString (),e);
+			DataLogger.LogError ("Data process failed " + ((char)data[0]).ToString (), e);
 		}
 	}
 
 	public bool isOnline = false;
-	public void SendMessage (byte[] data){
+	public void SendMessage (byte[] data) {
 		if (isOnline) {
 			try {
 				PlayGamesPlatform.Instance.RealTime.SendMessageToAll (true, data);
-				DataLogger.LogMessage ("Data send " + ((char)data [0]).ToString ());
+				DataLogger.LogMessage ("Data send " + ((char)data[0]).ToString ());
 			} catch (System.Exception e) {
-				DataLogger.LogError ("Data failed to send " + ((char)data[0]).ToString () ,e);
+				DataLogger.LogError ("Data failed to send " + ((char)data[0]).ToString (), e);
 			}
 		} else {
 			//DataLogger.LogMessage ("We are offline",true);
 		}
 	}
 
-	public void SendMessage (int playerID,byte[] data) {
+	public void SendMessage (int playerID, byte[] data) {
 		if (isOnline) {
 			try {
 				PlayGamesPlatform.Instance.RealTime.SendMessage (true, GetParticipants ()[playerID].ParticipantId, data);
-				DataLogger.LogMessage ("Data send to player: " + playerID.ToString() + " - " + ((char)data[0]).ToString ());
+				DataLogger.LogMessage ("Data send to player: " + playerID.ToString () + " - " + ((char)data[0]).ToString ());
 			} catch (System.Exception e) {
 				DataLogger.LogError ("Data failed to send " + ((char)data[0]).ToString (), e);
 			}
@@ -413,7 +406,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 
 
 
-	void ShowSelectUI() {
+	void ShowSelectUI () {
 		DataLogger.LogError ("show is called");
 		int maxNumToDisplay = 5;
 		bool allowCreateNew = false;
@@ -440,13 +433,13 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		}
 	}
 
-	void OpenSavedGame(string filename) {
+	void OpenSavedGame (string filename) {
 		ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-		savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
+		savedGameClient.OpenWithAutomaticConflictResolution (filename, DataSource.ReadCacheOrNetwork,
 			ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
 	}
 
-	public void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game) {
+	public void OnSavedGameOpened (SavedGameRequestStatus status, ISavedGameMetadata game) {
 		if (status == SavedGameRequestStatus.Success) {
 			// handle reading or writing of saved game.
 		} else {
@@ -457,21 +450,21 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	void SaveGame (ISavedGameMetadata game, byte[] savedData, TimeSpan totalPlaytime) {
 		ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
 
-		SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+		SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder ();
 		builder = builder
-			.WithUpdatedPlayedTime(totalPlaytime)
-			.WithUpdatedDescription("Saved game at " + System.DateTime.Now);
+			.WithUpdatedPlayedTime (totalPlaytime)
+			.WithUpdatedDescription ("Saved game at " + System.DateTime.Now);
 		savedImage = getScreenshot ();
 		if (savedImage != null) {
 			// This assumes that savedImage is an instance of Texture2D
 			// and that you have already called a function equivalent to
 			// getScreenshot() to set savedImage
 			// NOTE: see sample definition of getScreenshot() method below
-			byte[] pngData = savedImage.EncodeToPNG();
-			builder = builder.WithUpdatedPngCoverImage(pngData);
+			byte[] pngData = savedImage.EncodeToPNG ();
+			builder = builder.WithUpdatedPngCoverImage (pngData);
 		}
-		SavedGameMetadataUpdate updatedMetadata = builder.Build();
-		savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
+		SavedGameMetadataUpdate updatedMetadata = builder.Build ();
+		savedGameClient.CommitUpdate (game, updatedMetadata, savedData, OnSavedGameWritten);
 	}
 
 	public void OnSavedGameWritten (SavedGameRequestStatus status, ISavedGameMetadata game) {
@@ -482,21 +475,21 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		}
 	}
 
-	public Texture2D getScreenshot() {
+	public Texture2D getScreenshot () {
 		// Create a 2D texture that is 1024x700 pixels from which the PNG will be
 		// extracted
-		Texture2D screenShot = new Texture2D(1024, 700);
+		Texture2D screenShot = new Texture2D (1024, 700);
 
 		// Takes the screenshot from top left hand corner of screen and maps to top
 		// left hand corner of screenShot texture
-		screenShot.ReadPixels(
-			new Rect(0, 0, Screen.width, (Screen.width/1024)*700), 0, 0);
+		screenShot.ReadPixels (
+			new Rect (0, 0, Screen.width, (Screen.width / 1024) * 700), 0, 0);
 		return screenShot;
 	}
 
 	void LoadGameData (ISavedGameMetadata game) {
 		ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-		savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
+		savedGameClient.ReadBinaryData (game, OnSavedGameDataRead);
 	}
 
 	public void OnSavedGameDataRead (SavedGameRequestStatus status, byte[] data) {
@@ -510,14 +503,14 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 	void DeleteGameData (string filename) {
 		// Open the file to get the metadata.
 		ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-		savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
+		savedGameClient.OpenWithAutomaticConflictResolution (filename, DataSource.ReadCacheOrNetwork,
 			ConflictResolutionStrategy.UseLongestPlaytime, DeleteSavedGame);
 	}
 
-	public void DeleteSavedGame(SavedGameRequestStatus status, ISavedGameMetadata game) {
+	public void DeleteSavedGame (SavedGameRequestStatus status, ISavedGameMetadata game) {
 		if (status == SavedGameRequestStatus.Success) {
 			ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-			savedGameClient.Delete(game);
+			savedGameClient.Delete (game);
 		} else {
 			// handle error
 		}

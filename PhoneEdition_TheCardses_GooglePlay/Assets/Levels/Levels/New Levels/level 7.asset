@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Level 1 - dark elfses
+  m_Name: level 7
   m_EditorClassIdentifier: 
-  id: 4
+  id: 0
   PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
@@ -21,32 +21,38 @@ MonoBehaviour:
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
-  objectiveText: "Dark Elf'i \xF6ld\xFCr."
+  myGameObjectiveType: 0
+  myGameType: 0
+  objectiveText: 
   timer: -1
   turns: -1
-  scoreReach: -1
-  killAllNPC: 1
-  canCombo: 0
-  myGameType: 0
+  scoreReach: 30
+  killAllNPC: 0
+  canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
   levelShortName: 1
   levelName: Level 1
-  levelDescription: "Elf diyar\u0131na gitmek i\xE7in gemiye ula\u015F."
-  startingText: "Dark Elf'le sava\u015F!"
-  startingImage: {fileID: 21300000, guid: bc520ffb47ecaf543b00d269356f5b38, type: 3}
+  levelDescription: Level 1
+  startingText: Level 1
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
-  levelIntroDialog: {fileID: 11400000, guid: caf993a864dda3942a1eb05ee0148e08, type: 2}
-  levelOutroDialog: {fileID: 11400000, guid: 43a0763fb66ff064cbb4ee9ca718494f, type: 2}
-  customObject: {fileID: 1018250615473690, guid: 2ac02c0bdb48d5640b7f184959036f5e,
-    type: 3}
+  levelIntroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 0}
+  customObject: {fileID: 0}
   autoSetUpBoard: 1
-  defaultDropChance: 0
-  possibleDrops:
-  - {fileID: 11400000, guid: a17dc6b0530b7fa4ebe0a59d58016e7c, type: 2}
+  defaultDropChance: 1
+  possibleDrops: []
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 114377181578352854, guid: 5cd70e04159a6fb4a8a4a104f4a2b6df, type: 3}
+  myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 1
+  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  overridePotions: 0
+  potions: []
+  overridePower: 1
+  selectedElement: 1
+  elementLevel: 4
   nextStage: {fileID: 0}

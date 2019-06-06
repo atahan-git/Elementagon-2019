@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: "Level 2 - Pazarl\u0131k Reiz"
+  m_Name: level 12
   m_EditorClassIdentifier: 
-  id: 5
-  PresetName: Level 2
+  id: 0
+  PresetName: Level 1
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
@@ -21,31 +21,38 @@ MonoBehaviour:
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
-  myGameObjectiveType: 1
+  myGameObjectiveType: 0
   myGameType: 0
   objectiveText: 
-  timer: 120
+  timer: -1
   turns: -1
-  scoreReach: 10
+  scoreReach: 30
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 2
-  levelName: Level 2
-  levelDescription: "Elf diyar\u0131na gitmek i\xE7in gemiye bin."
-  startingText: "Pazarl\u0131\u011F\u0131 kazan!"
+  levelShortName: 1
+  levelName: Level 1
+  levelDescription: Level 1
+  startingText: Level 1
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
-  levelIntroDialog: {fileID: 11400000, guid: 6383a60b06960e442a091ad6e478fc2b, type: 2}
-  levelOutroDialog: {fileID: 11400000, guid: f912785f20d739c47a81c0a33659d002, type: 2}
+  levelIntroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 0}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
   defaultDropChance: 1
   possibleDrops: []
   customDropChances: []
   itemTypesStartIndex: 7
-  myNPC: {fileID: 114479504210421352, guid: 9ee4334f97064554ab047c5db0d75bd1, type: 3}
+  myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 1
+  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  overridePotions: 0
+  potions: []
+  overridePower: 1
+  selectedElement: 1
+  elementLevel: 4
   nextStage: {fileID: 0}

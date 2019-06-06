@@ -72,6 +72,7 @@ MonoBehaviour:
   _isPoison: 0
   isSelectable: 0
   isUnselectable: 1
+  currentSelectingPlayer: -1
   myFront: {fileID: 114612343354865122}
   myBack: {fileID: 21282196}
   cardState: 1

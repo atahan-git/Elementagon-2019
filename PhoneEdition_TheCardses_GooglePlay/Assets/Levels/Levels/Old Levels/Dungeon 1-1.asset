@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Dungeon 1-1
+  m_EditorClassIdentifier: 
+  id: 8
+  PresetName: Dungeon 1-1
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  cardReOpenTime: 15
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  myGameObjectiveType: 0
+  myGameType: 1
+  objectiveText: 
+  timer: -1
+  turns: -1
+  scoreReach: 10
+  killAllNPC: 0
+  canCombo: 1
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: D1
+  levelName: Dungeon 1
+  levelDescription: Test dungeon
+  startingText: "10 Skora ula\u015F!"
+  startingImage: {fileID: 21300000, guid: 7780cf4e6414db74782a4e9d3e64dee9, type: 3}
+  bgAnimation: {fileID: 11400000, guid: 7898246d86605f747b6a4c60df477438, type: 2}
+  bgSprite: {fileID: 0}
+  levelIntroDialog: {fileID: 11400000, guid: 3dd767ee9f26dd34c8faa901b8439f40, type: 2}
+  levelOutroDialog: {fileID: 11400000, guid: bcefc0454ea32c34290adfd3ce57e088, type: 2}
+  customObject: {fileID: 0}
+  autoSetUpBoard: 1
+  defaultDropChance: 1
+  possibleDrops: []
+  customDropChances: []
+  itemTypesStartIndex: 7
+  myNPC: {fileID: 0}
+  npcSpawnCount: 1
+  npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
+  nextStage: {fileID: 11400000, guid: 0513836ae4e73cf4488f69e08ccb62bd, type: 2}

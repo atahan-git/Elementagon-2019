@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Level 1 - dark elfses
+  m_EditorClassIdentifier: 
+  id: 4
+  PresetName: Level 1
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  cardReOpenTime: 15
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  myGameObjectiveType: 0
+  myGameType: 0
+  objectiveText: "Dark Elf'i \xF6ld\xFCr."
+  timer: -1
+  turns: -1
+  scoreReach: -1
+  killAllNPC: 1
+  canCombo: 0
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: 1
+  levelName: Level 1
+  levelDescription: "Elf diyar\u0131na gitmek i\xE7in gemiye ula\u015F."
+  startingText: "Dark Elf'le sava\u015F!"
+  startingImage: {fileID: 21300000, guid: bc520ffb47ecaf543b00d269356f5b38, type: 3}
+  bgAnimation: {fileID: 0}
+  bgSprite: {fileID: 0}
+  levelIntroDialog: {fileID: 11400000, guid: caf993a864dda3942a1eb05ee0148e08, type: 2}
+  levelOutroDialog: {fileID: 11400000, guid: 43a0763fb66ff064cbb4ee9ca718494f, type: 2}
+  customObject: {fileID: 1018250615473690, guid: 2ac02c0bdb48d5640b7f184959036f5e,
+    type: 3}
+  autoSetUpBoard: 1
+  defaultDropChance: 0
+  possibleDrops:
+  - {fileID: 11400000, guid: a17dc6b0530b7fa4ebe0a59d58016e7c, type: 2}
+  customDropChances: []
+  itemTypesStartIndex: 7
+  myNPC: {fileID: 114377181578352854, guid: 5cd70e04159a6fb4a8a4a104f4a2b6df, type: 3}
+  npcSpawnCount: 1
+  npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
+  nextStage: {fileID: 0}
