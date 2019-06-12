@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: level 23
   m_EditorClassIdentifier: 
   id: 0
-  PresetName: Level 1
+  PresetName: Level 23
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
-  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
@@ -30,10 +29,10 @@ MonoBehaviour:
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 1
-  levelName: Level 1
-  levelDescription: Level 1
-  startingText: Level 1
+  levelShortName: 23
+  levelName: Level 23
+  levelDescription: Level 23
+  startingText: Level 23
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
@@ -41,18 +40,22 @@ MonoBehaviour:
   levelOutroDialog: {fileID: 0}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
-  defaultDropChance: 1
-  possibleDrops: []
-  customDropChances: []
-  itemTypesStartIndex: 7
-  myNPC: {fileID: 0}
+  dropChance: 1
+  farmModeDifficulty: 1
+  possibleDropsDGrade:
+  - {fileID: 11400000, guid: b528a8cef504fd44eb7f1cf3ad4c4ea7, type: 2}
+  possibleDropsCGrade: []
+  possibleDropsBGrade: []
+  possibleDropsAGrade:
+  - {fileID: 11400000, guid: dbd8d5a26b80c54408abf4bf86c34293, type: 2}
+  myNPC: {fileID: 416830497657552861, guid: b2465e735af047b47885cc17fcd6e76d, type: 3}
   npcSpawnCount: 1
-  npcSpawnDelay: 10
-  overrideEquipment: 1
-  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  npcSpawnDelay: 5
+  overrideEquipment: 0
+  equipment: {fileID: 0}
   overridePotions: 0
   potions: []
-  overridePower: 1
+  overridePower: 0
   selectedElement: 1
   elementLevel: 4
   nextStage: {fileID: 0}

@@ -22,7 +22,8 @@ public class NPC_BasicSelection : NPCBase {
 				curTarget = GetRandomizedMoveableCardList ()[0];
 				yield return MoveToPosition (curTarget);
 
-				Select (curTarget);
+				if (!Select (curTarget))
+					Denied ();
 
 				yield return new WaitForSeconds (selectWaitTime);
 
@@ -61,7 +62,8 @@ public class NPC_BasicSelection : NPCBase {
 
 			yield return MoveToPosition (curTarget);
 
-			Select (curTarget);
+			if (!Select (curTarget))
+				Denied ();
 
 			if (curTarget == null)
 				continue;

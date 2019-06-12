@@ -312,10 +312,13 @@ public abstract class PowerUpBase : MonoBehaviour {
 		networkActiveEffect = Instantiate (activatePrefab, card.transform.position, Quaternion.identity);
 	}
 
+	public virtual void NetworkedEnable (int player, int _power, float _amount) {}
+	public virtual void NetworkedDisable (int player, int _power, float _amount) {}
+
 	//-----------------------------------------------------------------------------------------------Networking
 
 	GameObject[] networkedIndicators = new GameObject[4];
-	public void ReceiveAction (int player, IndividualCard card, int power, float amount, PowerUpManager.ActionType action) {
+	public void ReceiveAction (int player, IndividualCard card, int _power, float _amount, PowerUpManager.ActionType action) {
 		try {
 			switch (action) {
 			case PowerUpManager.ActionType.Enable:
@@ -323,9 +326,10 @@ public abstract class PowerUpBase : MonoBehaviour {
 					networkedIndicators[player] = (GameObject)Instantiate (indicatorScoreboardPrefab, ScoreBoardManager.s.scoreBoards[player].transform);
 					networkedIndicators[player].transform.ResetTransformation ();
 				}
+				NetworkedEnable (player, _power, _amount);
 				break;
 			case PowerUpManager.ActionType.Activate:
-				NetworkedActivate (player, card, power, amount);
+				NetworkedActivate (player, card, _power, _amount);
 				break;
 			case PowerUpManager.ActionType.SelectCard:
 				if (card.isSelectable) {
@@ -338,6 +342,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 				if (networkedIndicators[player] != null)
 					networkedIndicators[player].GetComponent<DisableAndDestroy> ().Engage ();
 				networkedIndicators[player] = null;
+				NetworkedDisable (player, _power, _amount);
 				break;
 			default:
 				DataLogger.LogError ("Unrecognized power up action PUF");
@@ -418,7 +423,21 @@ public abstract class PowerUp_Active_Select : PowerUpBase, IActivatable, ICardSe
 	}
 }
 
-public abstract class PowerUp_Active_Effect : PowerUpBase, IActivatable, IIndicator, IPeriodic {
+public abstract class PowerUp_Active_Effect : PowerUpBase, IActivatable, IIndicator {
+	public override void Enable (int _elementalType, int _power, float _amount) {
+		base.Enable (_elementalType, _power, _amount);
+
+		CharacterStuffController.s.SetActiveButtonState (_amount, _amount, false, true);
+	}
+
+	public override void Disable () {
+		base.Disable ();
+
+		CharacterStuffController.s.SetActiveButtonState (-1, -1, false, false);
+	}
+}
+
+public abstract class PowerUp_Active_Periodic : PowerUpBase, IActivatable, IIndicator, IPeriodic {
 	public override void Enable (int _elementalType, int _power, float _amount) {
 		base.Enable (_elementalType, _power, _amount);
 	}

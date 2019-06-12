@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: level 18
   m_EditorClassIdentifier: 
   id: 0
-  PresetName: Level 1
+  PresetName: Level 18
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
-  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
@@ -24,16 +23,16 @@ MonoBehaviour:
   myGameObjectiveType: 0
   myGameType: 0
   objectiveText: 
-  timer: -1
+  timer: 25
   turns: -1
-  scoreReach: 30
+  scoreReach: 20
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 1
-  levelName: Level 1
-  levelDescription: Level 1
-  startingText: Level 1
+  levelShortName: 18
+  levelName: Level 18
+  levelDescription: Level 18
+  startingText: Level 18
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}
@@ -41,18 +40,21 @@ MonoBehaviour:
   levelOutroDialog: {fileID: 0}
   customObject: {fileID: 0}
   autoSetUpBoard: 1
-  defaultDropChance: 1
-  possibleDrops: []
-  customDropChances: []
-  itemTypesStartIndex: 7
+  dropChance: 1
+  farmModeDifficulty: 1
+  possibleDropsDGrade:
+  - {fileID: 11400000, guid: bdeaf07fff52e2742ad587fcc237ba51, type: 2}
+  possibleDropsCGrade: []
+  possibleDropsBGrade: []
+  possibleDropsAGrade: []
   myNPC: {fileID: 0}
   npcSpawnCount: 1
-  npcSpawnDelay: 10
-  overrideEquipment: 1
-  equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
+  npcSpawnDelay: 5
+  overrideEquipment: 0
+  equipment: {fileID: 0}
   overridePotions: 0
   potions: []
-  overridePower: 1
+  overridePower: 0
   selectedElement: 1
   elementLevel: 4
   nextStage: {fileID: 0}

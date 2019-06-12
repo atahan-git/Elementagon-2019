@@ -50,7 +50,10 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 			if (isTimed && timer <= 0) {
 				timer = 0;
-				EndGame (5);
+				if (GS.a.myGameObjectiveType != GameSettings.GameObjectiveTypes.Farm)
+					EndGame (5);
+				else
+					EndGame (4);
 			}
 
 			string minutes = Mathf.Floor (timer / 60).ToString ("00");
@@ -101,6 +104,9 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 				break;
 			case GameSettings.GameObjectiveTypes.Health:
 				objectiveString = "Kill your enemy before you die";
+				break;
+			case GameSettings.GameObjectiveTypes.Farm:
+				objectiveString = "Get score and collect items";
 				break;
 			}
 

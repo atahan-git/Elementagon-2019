@@ -92,7 +92,7 @@ public class GS : MonoBehaviour {
 			activeGameMode = debugMode.PresetName;
 			a = debugMode.Copy();
 			isDebug = false;
-			a.SetUpCards ();
+			CardTypeRandomizer.s.Initialize ();
 		}
 	}
 		

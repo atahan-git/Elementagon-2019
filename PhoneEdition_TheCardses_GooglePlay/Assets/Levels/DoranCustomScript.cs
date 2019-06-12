@@ -35,7 +35,8 @@ public class DoranCustomScript : MonoBehaviour {
 	}
 
 	public void SetUpButtons () {
-		Destroy (DownPanelReferenceHolder.s.items);
+		Destroy (DownPanelReferenceHolder.s.potions);
+		Destroy (DownPanelReferenceHolder.s.equipments);
 		Destroy (DownPanelReferenceHolder.s.objective.transform.GetChild (0).gameObject);
 		Destroy (DownPanelReferenceHolder.s.backToMenu);
 

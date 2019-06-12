@@ -4,15 +4,17 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c53d8c25eb0457642809d52dad5d729c, type: 3}
-  m_Name: "\xC7ilek \xC7ay\u0131 recipe"
+  m_Name: 1 Sword recipe
   m_EditorClassIdentifier: 
   requiredItems:
-  - {fileID: 11400000, guid: bdeaf07fff52e2742ad587fcc237ba51, type: 2}
-  requiredAmounts: 02000000
-  resultingItem: {fileID: 11400000, guid: cf8ee69f3e482cd46be797e10a37cfde, type: 2}
+  - {fileID: 11400000, guid: 5e09b6e8b8f582043a40300b9a0f9f2b, type: 2}
+  - {fileID: 11400000, guid: 1ab32f507b0feb142ba92c2109c875e1, type: 2}
+  requiredAmounts: 0100000001000000
+  resultingItem: {fileID: 11400000, guid: a17dc6b0530b7fa4ebe0a59d58016e7c, type: 2}
   resultingAmount: 1

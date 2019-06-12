@@ -164,7 +164,13 @@ public class ScoreBoardManager : MonoBehaviour {
 		AddScore (playerInt, scoreType, toAdd, isDelayed, true);
 	}
 
+	public delegate void AddScoreDelegate (int playerInt, int scoreType, int toAdd, bool isDelayed, bool careGameTypes);
+	public AddScoreDelegate AddScoreHook;
+
 	public void AddScore (int playerInt, int scoreType, int toAdd, bool isDelayed, bool careGameTypes) {
+		if (AddScoreHook != null)
+			AddScoreHook.Invoke (playerInt, scoreType, toAdd, isDelayed, careGameTypes);
+
 		isDelayed = false;
 		char player = DataHandler.s.toChar (playerInt);
 
@@ -178,10 +184,6 @@ public class ScoreBoardManager : MonoBehaviour {
 			case GameSettings.GameType.Four_FreeForAll:
 				break;
 			case GameSettings.GameType.Two_Coop:
-				AddToScoreArray (4, scoreType, toAdd, isDelayed);
-				DataHandler.s.SendScore (DataHandler.s.toChar (4), scoreType, allScores[4, scoreType], isDelayed);
-				DataHandler.s.SendScore (DataHandler.s.toChar (4), 0, allScores[4, 0], isDelayed);
-				break;
 			case GameSettings.GameType.TwoVTwo:
 				if (playerInt == 0 || playerInt == 1) {
 					AddToScoreArray (4, scoreType, toAdd, isDelayed);

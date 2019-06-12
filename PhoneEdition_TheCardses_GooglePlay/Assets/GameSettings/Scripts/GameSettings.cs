@@ -15,39 +15,8 @@ public class GameSettings : ScriptableObject {
 	public GridSettings gridSettings;
 
 	[Space]
-	[HideInInspector]
-	public CardData[] cards;
 
 	public CardSets cardSet;
-
-
-	public struct CardData {
-		public CardBase cBase;
-		public float chance;
-		public CardData (CardBase b, float c) { cBase = b; chance = c; }
-	}
-	public CardBase defCard;
-
-	public void SetUpCards () {
-		cards = new CardData[cardSet.cards.Length + possibleDrops.Length + CardSets.utilityCardsNumber];
-
-		float[] chances = new float[cardSet.cards.Length];
-		cardSet.customSpawnChances.CopyTo (chances, 0);
-
-		for (int i = 0; i < chances.Length; i++) {
-			chances[i] = chances[i] == 0 ? cardSet.defaultSpawnChance : chances[i];
-			cards[i] = new CardData (cardSet.cards[i], chances[i]);
-		}
-
-		GenerateItemCards ();
-
-		cards[cards.Length-1] = new CardData (cardSet.poisonCard, 0);
-
-		for (int i = 0; i < cards.Length; i++) {
-			Debug.Log (i);
-			cards[i].cBase.cardType = i;
-		}
-	}
 
 	public float cardReOpenTime = 15f;
 
@@ -62,7 +31,7 @@ public class GameSettings : ScriptableObject {
 
 	public GameObjectiveTypes myGameObjectiveType = GameObjectiveTypes.Standard;
 	public GameType myGameType = GameType.Singleplayer;
-	public enum GameObjectiveTypes { Standard, Haggle, Health }
+	public enum GameObjectiveTypes { Standard, Haggle, Health, Farm }
 	public enum GameType { Singleplayer, Two_Coop, OneVOne, TwoVTwo, Three_FreeForAll, Four_FreeForAll };
 
 	[Tooltip ("Leave empty if you want it to be auto generated based on the other settings")]
@@ -115,28 +84,19 @@ public class GameSettings : ScriptableObject {
 	public bool autoSetUpBoard = true;
 
 	[Header ("Item Drop Settings")]
-	[Tooltip ("Every new card has a x chance to be the item card, normal cards have 7 chance")]
-	public float defaultDropChance = 1f;
-	public ItemBase[] possibleDrops = new ItemBase[0];
-	[Tooltip("if left zero or null the default drop chance will be used")]
-	public float[] customDropChances = new float[0];
-	[HideInInspector]
-	public int itemTypesStartIndex = 7;
 
-	void GenerateItemCards () {
-		itemTypesStartIndex = cardSet.cards.Length;
-
-		float[] chances = new float[possibleDrops.Length];
-		customDropChances.CopyTo (chances,0);
-
-		for (int i = 0; i < possibleDrops.Length; i++) {
-			chances[i] = chances[i] == 0 ? defaultDropChance : chances[i];
-			cards[itemTypesStartIndex + i] = new CardData(Instantiate(defCard), chances[i]);
-			cards[itemTypesStartIndex + i].cBase.mySprite = possibleDrops[i].cardSprite != null ? possibleDrops[i].cardSprite : possibleDrops[i].sprite;
-			cards[itemTypesStartIndex + i].cBase.myAnim = null;
-			cards[itemTypesStartIndex + i].cBase.myItem = possibleDrops[i];
-		}
-	}
+	[Tooltip ("Every new card has a x% chance to be an item card, with 100 meaning all cards in the level being a item card")]
+	public float dropChance = 1f;
+	[Tooltip ("Every 10*difficulty scores the chance of the higher grade item drops double also drop chance doubles")]
+	public float farmModeDifficulty = 1f;
+	[Tooltip ("Has 70% chance to drop")]
+	public ItemBase[] possibleDropsDGrade = new ItemBase[0];
+	[Tooltip ("Has 18% chance to drop")]
+	public ItemBase[] possibleDropsCGrade = new ItemBase[0];
+	[Tooltip ("Has 9% chance to drop")]
+	public ItemBase[] possibleDropsBGrade = new ItemBase[0];
+	[Tooltip ("Has 3% chance to drop")]
+	public ItemBase[] possibleDropsAGrade = new ItemBase[0];
 
 
 	//npc spawning is handled by game starter & NPC manager
@@ -148,7 +108,7 @@ public class GameSettings : ScriptableObject {
 	[Tooltip("Use -1 for unlimited spawns")]
 	public int npcSpawnCount = 1;
 	[Tooltip("Use -1 to spawn when the other one dies (not implemented yet)")]
-	public float npcSpawnDelay = 10f;
+	public float npcSpawnDelay = 5f;
 
 
 	[Header ("Player stuff override Settings")]

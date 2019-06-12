@@ -47,7 +47,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		//lobbyGUI.SetActive (false);
 		//ChangePlayerCount (0);
 
-		DataLogger.LogMessage ("Google API Initialising");
+		DataLogger.LogMessage ("Google API Initializing");
 		try {
 			PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder ()
 					.WithInvitationDelegate (ReceiveInvitaion)

@@ -889,13 +889,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5d8a15078a6494299adc193b822a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheatInventory: 0
   myEquipments: []
   myIngredients: []
   myPotions: []
   _activeEquipment:
     item: {fileID: 0}
     chargesLeft: 0
-  cheatInventory: 0
   selectedElement: -1
   elementLevel: 0
   allEquipments:
@@ -908,9 +908,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18812aca559fd28499593e69bea15383, type: 2}
   - {fileID: 11400000, guid: 7ffaec7f57bff8b41b9012da6a53cab3, type: 2}
   - {fileID: 11400000, guid: a17dc6b0530b7fa4ebe0a59d58016e7c, type: 2}
+  - {fileID: 11400000, guid: 8ca11848fffa33446a928b6443070372, type: 2}
   allIngredients:
   - {fileID: 11400000, guid: bdeaf07fff52e2742ad587fcc237ba51, type: 2}
   - {fileID: 11400000, guid: 7709e3114ac5e3d478cde0ba51d646a7, type: 2}
+  - {fileID: 11400000, guid: 7c6ec498843c71447bc2e6973ff22e22, type: 2}
+  - {fileID: 11400000, guid: 5e09b6e8b8f582043a40300b9a0f9f2b, type: 2}
+  - {fileID: 11400000, guid: d38c1e9b0d0612842ac46a3233309de7, type: 2}
+  - {fileID: 11400000, guid: 1ab32f507b0feb142ba92c2109c875e1, type: 2}
+  - {fileID: 11400000, guid: b528a8cef504fd44eb7f1cf3ad4c4ea7, type: 2}
+  - {fileID: 11400000, guid: dbd8d5a26b80c54408abf4bf86c34293, type: 2}
   allPotions:
   - {fileID: 11400000, guid: c19d515f693a4d24c96fe6d082a5b2bf, type: 2}
   - {fileID: 11400000, guid: 51f70f27b86547d4487b4b1038c3b483, type: 2}
@@ -920,6 +927,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf8ee69f3e482cd46be797e10a37cfde, type: 2}
   allRecipes:
   - {fileID: 11400000, guid: 343004a9e5a831e41b9126dea8f471cd, type: 2}
+  - {fileID: 11400000, guid: 30adba9de435ffa4e805aaba1c7295c3, type: 2}
+  - {fileID: 11400000, guid: f941e1e18d97d7844a0c332705fc2224, type: 2}
+  - {fileID: 11400000, guid: 991e650ab13ab4a429bfd5e7f19086cc, type: 2}
+  - {fileID: 11400000, guid: 1d717fbfc498d9743badf77b99469765, type: 2}
 --- !u!1 &1439943244996722
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1005,8 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1517793755062146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1155,8 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1650207639483150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,17 +1335,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114193200034994700}
@@ -1863,17 +1881,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114465875622508202}

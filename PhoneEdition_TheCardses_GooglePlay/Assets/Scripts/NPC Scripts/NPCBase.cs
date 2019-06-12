@@ -33,8 +33,6 @@ public abstract class NPCBase : MonoBehaviour {
 	public bool poisonImmune = false;
 
 
-	public int power = 1;
-
 	[SerializeField]
 	[Tooltip ("Spawns over card and gets destroyed after a while")]
 	private GameObject activatePrefab;
@@ -252,9 +250,9 @@ public abstract class NPCBase : MonoBehaviour {
 	}
 
 	int denyCount = 0;
-	protected void Select (IndividualCard card) {
+	protected bool Select (IndividualCard card) {
 		if (card == null)
-			return;
+			return false;
 
 		if (DataHandler.s.myPlayerInteger == 0)
 			SendNPCAction (card.x, card.y, NPCManager.ActionType.SelectCard, -1);
@@ -268,14 +266,19 @@ public abstract class NPCBase : MonoBehaviour {
 				card.selectedEffect = Instantiate (selectPrefab.gameObject, card.transform.position, Quaternion.identity);
 
 			denyCount = 0;
+			return true;
 		} else {
-			if (selectionDeniedEffect != null)
-				Instantiate (selectionDeniedEffect, transform.position, selectionDeniedEffect.transform.rotation);
-			denyCount++;
+			return false;
+		}
+	}
 
-			if (denyCount == 3 || (denyCount > 3 && Random.value > 0.5f)) {
-				Invoke ("TooManyDeniesEffect", 1f);
-			}
+	protected void Denied () {
+		if (selectionDeniedEffect != null)
+			Instantiate (selectionDeniedEffect, transform.position, selectionDeniedEffect.transform.rotation);
+		denyCount++;
+
+		if (denyCount == 3 || (denyCount > 3 && Random.value > 0.5f)) {
+			Invoke ("TooManyDeniesEffect", 1f);
 		}
 	}
 

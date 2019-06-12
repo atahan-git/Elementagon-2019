@@ -53,7 +53,7 @@ public class GameStarter : MonoBehaviour {
 		else if (GS.a.bgSprite != null)
 			myBg.SetSprite (GS.a.bgSprite);
 
-		GS.a.SetUpCards ();
+		CardTypeRandomizer.s.Initialize ();
 
 		Invoke ("LateBegin", 0.1f);
 

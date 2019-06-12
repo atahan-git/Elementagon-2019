@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DarkElfLevelCustomScript : MonoBehaviour {
 
-
+	/*
 	// Use this for initialization
 	void Start () {
 		if (InventoryMaster.s.myEquipments.Count > 0) {
@@ -36,13 +36,13 @@ public class DarkElfLevelCustomScript : MonoBehaviour {
 
 	public void ItemGainedDialogEnded () {
 		ItemGainedScreen.s.ShowGainedItem (InventoryMaster.s.myEquipments[0].item);
-	}*/
+	}*
 
 	public void EquipItemGained () {
 		/*if (isSelfInvoke) {
 			isSelfInvoke = false;
 			return;
-		}*/
+		}*
 		InventoryMaster.s.EquipItem(InventoryMaster.s.myEquipments[0]);
 	}
 
@@ -71,5 +71,5 @@ public class DarkElfLevelCustomScript : MonoBehaviour {
 
 	public void Finish () {
 		GameObjectiveFinishChecker.s.EndGame (0);
-	}
+	}*/
 }

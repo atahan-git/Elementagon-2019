@@ -252,7 +252,7 @@ public class IndividualCard : MonoBehaviour {
 
 	public void PoisonCard () {
 		isPoison = true;
-		int poisonType = GS.a.cards.Length - 1;
+		int poisonType = CardSets.posionTypeInt;
 
 		if (DataHandler.s.myPlayerInteger != 0) {
 			DataHandler.s.SendCardType (x, y, poisonType);
@@ -275,8 +275,8 @@ public class IndividualCard : MonoBehaviour {
 		CardBase theBase = cBase;
 
 		if (theBase == null) {
-			theBase = GS.a.defCard;
-			//Debug.LogError ("The card " + x.ToString() + "," + y.ToString() + " is missing its cardBase!");
+			theBase = GS.a.cardSet.defCard;
+			Debug.LogError ("The card " + x.ToString() + "," + y.ToString() + " is missing its cardBase!");
 		}
 
 		if (theBase.isAnimated) {
@@ -287,9 +287,9 @@ public class IndividualCard : MonoBehaviour {
 	}
 
 	public void UpdateCardType (int type) {
-		   
-		cBase = GS.a.cards[type].cBase;
-		CancelInvoke("RandomizeCardType");
+
+		cBase = CardTypeRandomizer.s.allCards[type];
+		CancelInvoke ("RandomizeCardType");
 
 		if (DataHandler.s.myPlayerInteger == 0) {
 			//DataLogger.LogMessage ("Master Card Type Send");
@@ -304,22 +304,9 @@ public class IndividualCard : MonoBehaviour {
 		isUnselectable = true;
 	}
 
-	static float[] myChanceArray;
+
 	public void RandomizeCardType () {
-		   
-		int type = 0;
-
-		if (myChanceArray == null) {
-			myChanceArray = new float[GS.a.cards.Length];
-
-			for (int i = 0; i < GS.a.cards.Length; i++) {
-				myChanceArray[i] = GS.a.cards[i].chance;
-			}
-		}
-
-		type = RandFuncs.Sample (myChanceArray);
-
-		UpdateCardType (type);   
+		UpdateCardType (CardTypeRandomizer.s.GiveRandomCardType());   
 	}
 
 	void SpawnEffect (GameObject fx,int playerID) {
