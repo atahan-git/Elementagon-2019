@@ -20,7 +20,7 @@ namespace GooglePlayGames.BasicApi.Nearby
     using System.Collections.Generic;
 
     // move this inside IMessageListener and IDiscoveryListener are always declared.
-    #if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
+    #if UNITY_ANDROID
 
     public interface INearbyConnectionClient
     {
@@ -55,10 +55,6 @@ namespace GooglePlayGames.BasicApi.Nearby
         void DisconnectFromEndpoint(string remoteEndpointId);
 
         void StopAllConnections();
-
-        string LocalEndpointId();
-
-        string LocalDeviceId();
 
         string GetAppBundleId();
 

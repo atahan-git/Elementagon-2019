@@ -14,9 +14,7 @@
 //    limitations under the License.
 // </copyright>
 
-#if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
-
-
+#if UNITY_ANDROID
 namespace GooglePlayGames.Native.Cwrapper
 {
     internal static class Status
@@ -77,27 +75,7 @@ namespace GooglePlayGames.Native.Cwrapper
             ERROR_MATCH_OUT_OF_DATE = -11,
             ERROR_REAL_TIME_ROOM_NOT_JOINED = -17,
         }
-
-        internal enum QuestAcceptStatus
-        {
-            VALID = 1,
-            ERROR_INTERNAL = -2,
-            ERROR_NOT_AUTHORIZED = -3,
-            ERROR_TIMEOUT = -5,
-            ERROR_QUEST_NO_LONGER_AVAILABLE = -13,
-            ERROR_QUEST_NOT_STARTED = -14,
-        }
-
-        internal enum QuestClaimMilestoneStatus
-        {
-            VALID = 1,
-            ERROR_INTERNAL = -2,
-            ERROR_NOT_AUTHORIZED = -3,
-            ERROR_TIMEOUT = -5,
-            ERROR_MILESTONE_ALREADY_CLAIMED = -15,
-            ERROR_MILESTONE_CLAIM_FAILED = -16,
-        }
-
+            
         internal enum CommonErrorStatus
         {
             ERROR_INTERNAL = -2,
@@ -115,4 +93,5 @@ namespace GooglePlayGames.Native.Cwrapper
         }
     }
 }
-#endif // (UNITY_ANDROID || UNITY_IPHONE)
+#endif //UNITY_ANDROID
+

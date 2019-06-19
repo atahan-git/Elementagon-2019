@@ -17,6 +17,7 @@ public class DialogDisplayer : MonoBehaviour {
 	public GameObject dialogParent;
 
 	public float dialogShowSpeed = 0.03f;
+	float curDialogShowSpeed = 0.03f; //used to set 0 to fastforward text
 	[SerializeField]
 	bool isShowing = false;
 	[SerializeField]
@@ -51,7 +52,7 @@ public class DialogDisplayer : MonoBehaviour {
 	private void Update () {
 		timeSinceLastSkip += Time.deltaTime;
 
-		if (timeSinceLastSkip > 2f) {
+		if (timeSinceLastSkip > 1.5f) {
 			timeSinceLastSkip = 0;
 			skipCounter = 0;
 		}
@@ -139,7 +140,15 @@ public class DialogDisplayer : MonoBehaviour {
 						DataLogger.LogError ("Can't parse delay value: " + values[1]);
 					}
 
-					yield return new WaitForSeconds (waitSeconds);
+					curDialogShowSpeed = dialogShowSpeed;
+					float timer = 0;
+					while (timer < waitSeconds) {
+						timer += Time.deltaTime;
+						if (curDialogShowSpeed == 0f)
+							break;
+						yield return null;
+					}
+					curDialogShowSpeed = dialogShowSpeed;
 					break;
 				case "wait":
 					switch (values[1]) {
@@ -176,7 +185,8 @@ public class DialogDisplayer : MonoBehaviour {
 
 				myText.text = _text;
 
-				yield return new WaitForSeconds (dialogShowSpeed);
+				if(curDialogShowSpeed != 0f)
+					yield return new WaitForSeconds (curDialogShowSpeed);
 			}
 			
 		}
@@ -187,6 +197,7 @@ public class DialogDisplayer : MonoBehaviour {
 	}
 
 	void FinishShowingText () {
+		curDialogShowSpeed = dialogShowSpeed;
 		StopAllCoroutines ();
 		myText.text = curText;
 		isShowing = false;
@@ -218,7 +229,7 @@ public class DialogDisplayer : MonoBehaviour {
 				}
 				if (myParts[i].Contains ("trigger")) {
 					shouldRemove = true;
-					canSkip = false;
+					//canSkip = false;
 				}
 
 				if (shouldRemove) {
@@ -275,7 +286,8 @@ public class DialogDisplayer : MonoBehaviour {
 	public void NextDialog () {
 		if (isShowing) {
 			if (canSkip) {
-				FinishShowingText ();
+				//FinishShowingText ();
+				curDialogShowSpeed = 0f;
 				skipCounter++;
 				timeSinceLastSkip = 0;
 			}

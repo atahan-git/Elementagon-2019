@@ -45,9 +45,6 @@ public class GameSettings : ScriptableObject {
 
 	public bool canCombo = true;
 
-
-
-
 	[Header ("Power Up Settings")]
 
 	public PowerUpSettings powerUpSettings;

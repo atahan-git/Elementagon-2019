@@ -29,7 +29,7 @@ public class ComboDealer : MonoBehaviour {
 		/*if (myCardType < GS.a.cardSettings.cardScores.Length)
 			CardMatchCoolEffect.s.MatchTwo (myPlayerinteger, cardsToCheck[k], cardsToCheck[l], GS.a.cardSettings.cardScores[myCardType]);*/
 
-		int cardType = card1.cBase.elementType;
+		int elementalType = card1.cBase.elementType;
 
 		//print ("Adding with combo check");
 		if (!card1.cBase.isItem) {
@@ -41,11 +41,11 @@ public class ComboDealer : MonoBehaviour {
 				bool isSame = false;
 
 				if (scoreToAdd == 0 && enemyScoreToAdd == 0) {
-					lastCardType = cardType;
+					lastCardType = elementalType;
 					return;
 				}
 
-				if (cardType != lastCardType) {
+				if (elementalType != lastCardType) {
 					scoreToAdd *= comboCount;
 					enemyScoreToAdd *= comboCount;
 				} else {
@@ -71,7 +71,7 @@ public class ComboDealer : MonoBehaviour {
 					}
 				}
 
-				lastCardType = cardType;
+				lastCardType = elementalType;
 				comboCount++;
 			}
 
@@ -80,12 +80,12 @@ public class ComboDealer : MonoBehaviour {
 				DelayedScoreboard.s.UpdateScoreReach ();
 			}*/
 			if (scoreToAdd != 0)
-				ScoreBoardManager.s.AddScore (playerId, cardType, scoreToAdd, isdelayed);
+				ScoreBoardManager.s.AddScore (playerId, elementalType, scoreToAdd, isdelayed);
 			else
 				Tutorial_FirstTimeStuff.NoPointCards ();
 
 			if (enemyScoreToAdd != 0) {
-				ScoreBoardManager.s.AddScoreToOthers (playerId, cardType, enemyScoreToAdd, isdelayed);
+				ScoreBoardManager.s.AddScoreToOthers (playerId, elementalType, enemyScoreToAdd, isdelayed);
 			}
 		} else {
 			//we didnt get a card, but an item

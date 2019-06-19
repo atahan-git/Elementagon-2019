@@ -15,7 +15,7 @@ public class ElementSelector : MonoBehaviour {
 	bool valLock = false;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		s = this;
 
 		for (int i = 0; i < 7; i++) {

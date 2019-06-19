@@ -219,7 +219,7 @@ public abstract class NPCBase : MonoBehaviour {
 	}
 
 	protected bool CanTargetSpot (IndividualCard myCard) {
-		if (myCard.isTargeted == false && !myCard.cBase.isItem && myCard.cBase.elementType <= 7)
+		if (myCard.isTargeted == false && !myCard.cBase.isItem && myCard.cBase.isAITargetable)
 			return true;
 		else
 			return false;

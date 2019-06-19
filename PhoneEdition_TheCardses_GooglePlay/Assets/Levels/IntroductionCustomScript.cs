@@ -15,8 +15,8 @@ public class IntroductionCustomScript : MonoBehaviour {
 		DialogTree.s.myCustomTriggers[2] += EndLevel;
 
 		myPanel.SetActive (false);
-		GameObject dialogScreen = GameObject.Find ("Dialog Screen");
-		dialogScreen.GetComponent<Image> ().color = new Color (1, 1, 1, 0);
+		GameObject dialogScreen = DialogDisplayer.s.gameObject;
+		dialogScreen.GetComponentInChildren<Image> ().color = new Color (1, 1, 1, 0);
 	}
 
 	public void ShowSevenDragons () {
@@ -67,8 +67,8 @@ public class IntroductionCustomScript : MonoBehaviour {
 				mycard.isSelectable = false;
 		}
 
-		CardHandler.s.UpdateCardType (4, 1, 1);
-		CardHandler.s.UpdateCardType (5, 1, 1);
+		CardHandler.s.UpdateCardType (4, 1, CardSets.UtilityCardsCount + 1);
+		CardHandler.s.UpdateCardType (5, 1, CardSets.UtilityCardsCount + 1);
 
 		yield return new WaitUntil (() => ScoreBoardManager.s.allScores[0, 0] > 0);
 

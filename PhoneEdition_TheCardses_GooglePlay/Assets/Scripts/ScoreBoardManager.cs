@@ -152,29 +152,29 @@ public class ScoreBoardManager : MonoBehaviour {
 		}
 	}
 
-	public void AddScoreToOthers (int playerInt, int scoreType, int toAdd, bool isDelayed) {
+	public void AddScoreToOthers (int playerInt, int scoreElementalType, int toAdd, bool isDelayed) {
 		for (int i = 0; i < allScores.GetLength(0); i++) {
 			if (i != playerInt) {
-				AddScore (i, scoreType, toAdd, isDelayed, false);
+				AddScore (i, scoreElementalType, toAdd, isDelayed, false);
 			}
 		}
 	}
 
-	public void AddScore (int playerInt, int scoreType, int toAdd, bool isDelayed) {
-		AddScore (playerInt, scoreType, toAdd, isDelayed, true);
+	public void AddScore (int playerInt, int scoreElementalType, int toAdd, bool isDelayed) {
+		AddScore (playerInt, scoreElementalType, toAdd, isDelayed, true);
 	}
 
-	public delegate void AddScoreDelegate (int playerInt, int scoreType, int toAdd, bool isDelayed, bool careGameTypes);
+	public delegate void AddScoreDelegate (int playerInt, int scoreElementalType, int toAdd, bool isDelayed, bool careGameTypes);
 	public AddScoreDelegate AddScoreHook;
 
-	public void AddScore (int playerInt, int scoreType, int toAdd, bool isDelayed, bool careGameTypes) {
+	public void AddScore (int playerInt, int scoreElementalType, int toAdd, bool isDelayed, bool careGameTypes) {
 		if (AddScoreHook != null)
-			AddScoreHook.Invoke (playerInt, scoreType, toAdd, isDelayed, careGameTypes);
+			AddScoreHook.Invoke (playerInt, scoreElementalType, toAdd, isDelayed, careGameTypes);
 
 		isDelayed = false;
 		char player = DataHandler.s.toChar (playerInt);
 
-		AddToScoreArray (playerInt, scoreType, toAdd, isDelayed);
+		AddToScoreArray (playerInt, scoreElementalType, toAdd, isDelayed);
 
 		if (careGameTypes) {
 			switch (GS.a.myGameType) {
@@ -186,12 +186,12 @@ public class ScoreBoardManager : MonoBehaviour {
 			case GameSettings.GameType.Two_Coop:
 			case GameSettings.GameType.TwoVTwo:
 				if (playerInt == 0 || playerInt == 1) {
-					AddToScoreArray (4, scoreType, toAdd, isDelayed);
-					DataHandler.s.SendScore (DataHandler.s.toChar (4), scoreType, allScores[4, scoreType], isDelayed);
+					AddToScoreArray (4, scoreElementalType, toAdd, isDelayed);
+					DataHandler.s.SendScore (DataHandler.s.toChar (4), scoreElementalType, allScores[4, scoreElementalType], isDelayed);
 					DataHandler.s.SendScore (DataHandler.s.toChar (4), 0, allScores[4, 0], isDelayed);
 				} else {
-					AddToScoreArray (5, scoreType, toAdd, isDelayed);
-					DataHandler.s.SendScore (DataHandler.s.toChar (5), scoreType, allScores[5, scoreType], isDelayed);
+					AddToScoreArray (5, scoreElementalType, toAdd, isDelayed);
+					DataHandler.s.SendScore (DataHandler.s.toChar (5), scoreElementalType, allScores[5, scoreElementalType], isDelayed);
 					DataHandler.s.SendScore (DataHandler.s.toChar (5), 0, allScores[5, 0], isDelayed);
 				}
 				break;
@@ -200,21 +200,21 @@ public class ScoreBoardManager : MonoBehaviour {
 
 		if (playerInt == DataHandler.s.myPlayerInteger) {
 			for (int i = 0; i < toAdd; i++) {
-				CharacterStuffController.s.ScoreAdded (scoreType);
+				CharacterStuffController.s.ScoreAdded (scoreElementalType);
 			}
 		}
 
-		DataHandler.s.SendScore (player, scoreType, allScores[playerInt, scoreType], isDelayed);
+		DataHandler.s.SendScore (player, scoreElementalType, allScores[playerInt, scoreElementalType], isDelayed);
 		DataHandler.s.SendScore (player, 0, allScores[playerInt, 0], isDelayed);
 
 		GameObjectiveFinishChecker.s.CheckReach ();
 	}
 
-	void AddToScoreArray (int id, int scoreType, int toAdd, bool isDelayed) {
-		allScores[id, scoreType] += toAdd;
-		allScores[id, scoreType] = (int)Mathf.Clamp (allScores[id, scoreType], 0, Mathf.Infinity);
+	void AddToScoreArray (int id, int scoreElementalType, int toAdd, bool isDelayed) {
+		allScores[id, scoreElementalType] += toAdd;
+		allScores[id, scoreElementalType] = (int)Mathf.Clamp (allScores[id, scoreElementalType], 0, Mathf.Infinity);
 
-		if (scoreType != 0 && scoreType <= 7) {
+		if (scoreElementalType != 0 && scoreElementalType <= 7) {
 			allScores[id, 0] += toAdd;
 			allScores[id, 0] = (int)Mathf.Clamp (allScores[id, 0], 0, Mathf.Infinity);
 		}

@@ -14,7 +14,7 @@
 //    limitations under the License.
 // </copyright>
 
-#if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
+#if UNITY_ANDROID
 
 namespace GooglePlayGames.Native.PInvoke
 {
@@ -51,7 +51,7 @@ namespace GooglePlayGames.Native.PInvoke
             Logger.d("Native Submitting score: " + score +
                 " for lb " + leaderboardId + " with metadata: " + metadata);
             C.LeaderboardManager_SubmitScore(mServices.AsHandle(), leaderboardId,
-                (ulong)score, metadata ?? "");
+                (ulong)score, metadata != null? metadata: "");
         }
 
         internal void ShowAllUI(Action<Status.UIStatus> callback)

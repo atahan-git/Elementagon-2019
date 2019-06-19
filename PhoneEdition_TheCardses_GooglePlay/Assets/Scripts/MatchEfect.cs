@@ -11,7 +11,7 @@ public class MatchEfect : BetweenCardsEffect {
 	// Use this for initialization
 
 	public override void SetUp (int playerID, bool isPowerUp, IndividualCard card1, IndividualCard card2) {
-		int type = card1.cBase.elementType;
+		int elementalType = card1.cBase.elementType;
 		Vector3[] places = new Vector3[2];
 		places[0] = card1.transform.position + (-Vector3.forward);
 		places[1] = card2.transform.position + (-Vector3.forward);
@@ -23,23 +23,40 @@ public class MatchEfect : BetweenCardsEffect {
 			targets.Add (ScoreBoardManager.s.powerGetTargets[1]);
 		}
 		foreach (ParticleSystem part in GetComponentsInChildren<ParticleSystem> ()) {
-			part.startColor = colors[type];
+			part.startColor = colors[elementalType];
 		}
 
-		GetComponentInChildren<LineRenderer> ().startColor = colors[type];
-		GetComponentInChildren<LineRenderer> ().endColor = colors[type];
+		GetComponentInChildren<LineRenderer> ().startColor = colors[elementalType];
+		GetComponentInChildren<LineRenderer> ().endColor = colors[elementalType];
 
 
 		GetComponentInChildren<DigitalRuby.LightningBolt.LightningBoltScript> ().StartPosition = places[0];
 		GetComponentInChildren<DigitalRuby.LightningBolt.LightningBoltScript> ().EndPosition = places[1];
 
-		IEnumerator<Transform> e = targets.GetEnumerator();
-		foreach (particleAttractorLinear att in GetComponentsInChildren<particleAttractorLinear> ()) {
-			e.MoveNext ();
-			att.target = e.Current;
+		try {
+			int n = 0;
+			foreach (particleAttractorLinear att in GetComponentsInChildren<particleAttractorLinear> ()) {
+				if (targets[n] == null)
+					n = IncrementN (n, targets);
+				if (targets[n] == null)
+					DataLogger.LogError ("Trying to set null match effect target!");
+				att.target = targets[n];
+				n = IncrementN (n, targets);
+			}
+		} catch (System.Exception e) {
+			DataLogger.LogError ("Cant set match effect target " + e.Message);
 		}
 
 		particles[0].transform.position = places[0];
 		particles[1].transform.position = places[1];
+	}
+
+	int IncrementN (int n, List<Transform> targets) {
+		n++;
+
+		if (n >= targets.Count)
+			n = 0;
+
+		return n;
 	}
 }

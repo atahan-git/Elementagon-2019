@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
   cards:
   - {fileID: 11400000, guid: 4798bdddcb992dd4e9d05de725b88d4b, type: 2}
   - {fileID: 11400000, guid: 70a8fb06afae61c40a5f8f5811d6310a, type: 2}
@@ -26,5 +27,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
   - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
   customSpawnChances:
-  - 2
-  - 2
+  - 4
+  - 4

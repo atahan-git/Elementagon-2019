@@ -54,10 +54,12 @@ public class ElementalArenaCustomScript : MonoBehaviour {
 	}
 
 	public void ActivateButtonOne () {
+		lastActiveButtonOne = true;
 		ActivatePup (pupOne);
 	}
 
 	public void ActivateButtonTwo () {
+		lastActiveButtonOne = false;
 		ActivatePup (pupTwo);
 	}
 
@@ -177,11 +179,12 @@ public class ElementalArenaCustomScript : MonoBehaviour {
 
 
 
-	void ScoreIsAdded (int playerInt, int scoreType, int toAdd, bool isDelayed, bool careGameTypes) {
+	void ScoreIsAdded (int playerInt, int scoreElementType, int toAdd, bool isDelayed, bool careGameTypes) {
 		if (playerInt == DataHandler.s.myPlayerInteger) {
-			if (scoreType > 7 && scoreType <=14) {
+			if (scoreElementType > 7 && scoreElementType <=14) {
 				if (pupOne == -1) {
-					SetButtonElement (true, scoreType);
+					SetButtonElement (true, scoreElementType);
+					pupOne = scoreElementType;
 
 					if (pupTwo == -1)
 						isFirstSetButtonOne = true;
@@ -189,10 +192,15 @@ public class ElementalArenaCustomScript : MonoBehaviour {
 						isFirstSetButtonOne = false;
 
 				} else if (pupTwo == -1) {
-					SetButtonElement (false, scoreType);
+					SetButtonElement (false, scoreElementType);
+					pupTwo = scoreElementType;
 
 				} else {
-					SetButtonElement (isFirstSetButtonOne, scoreType);
+					SetButtonElement (isFirstSetButtonOne, scoreElementType);
+					if (isFirstSetButtonOne)
+						pupOne = scoreElementType;
+					else
+						pupTwo = scoreElementType;
 
 					isFirstSetButtonOne = !isFirstSetButtonOne;
 				}

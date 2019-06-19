@@ -60,7 +60,7 @@ public class CardChecker : MonoBehaviour {
 
 
 											//gfxs
-											IndividualCard.MatchCards (myPlayerinteger, cardsToCheck[k],cardsToCheck[l]);
+											IndividualCard.MatchCards (myPlayerinteger, cardsToCheck[k], cardsToCheck[l]);
 
 											//networking
 											DataHandler.s.SendPlayerAction (cardsToCheck[k].x, cardsToCheck[k].y, CardHandler.CardActions.Match, cardsToCheck[l].x, cardsToCheck[l].y);

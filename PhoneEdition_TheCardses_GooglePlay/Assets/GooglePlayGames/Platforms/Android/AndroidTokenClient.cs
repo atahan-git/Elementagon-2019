@@ -28,22 +28,6 @@ namespace GooglePlayGames.Android
     {
         private const string TokenFragmentClass = "com.google.games.bridge.TokenFragment";
 
-        /*
-         * fetchToken(Activity parentActivity,
-                                           boolean requestAuthCode,
-                                           boolean requestEmail,
-                                           boolean requestIdToken,
-                                           String webClientId,
-                                           boolean forceRefreshToken,
-                                           String[] additionalScopes,
-                                           boolean hidePopups,
-                                           String accountName)
-         */
-        private const string FetchTokenSignature =
-            "(Landroid/app/Activity;ZZZLjava/lang/String;Z[Ljava/lang/String;ZLjava/lang/String;)Lcom/google/android/gms/common/api/PendingResult;";
-        
-        private const string FetchTokenMethod = "fetchToken";
-
         // These are the configuration values.
         private bool requestEmail;
         private bool requestAuthCode;
@@ -58,6 +42,13 @@ namespace GooglePlayGames.Android
         private string email;
         private string authCode;
         private string idToken;
+
+        public static AndroidJavaObject CreateInvisibleView() {
+            using (var jc = new AndroidJavaClass(TokenFragmentClass))
+            {
+                return jc.CallStatic<AndroidJavaObject>("createInvisibleView", GetActivity());
+            }
+        }
 
         public static AndroidJavaObject GetActivity()
         {
@@ -98,7 +89,7 @@ namespace GooglePlayGames.Android
             this.accountName = accountName;
         }
 
-        public void AddOauthScopes(string[] scopes)
+        public void AddOauthScopes(params string[] scopes)
         {
             if (scopes != null)
             {
@@ -120,69 +111,6 @@ namespace GooglePlayGames.Android
                 AndroidJavaClass cls = new AndroidJavaClass(TokenFragmentClass);
                 cls.CallStatic("signOut", GetActivity());
             });
-        }
-
-        public bool NeedsToRun()
-        {
-            return requestAuthCode ||
-                        requestEmail ||
-                        requestIdToken;
-        }
-
-        public void FetchTokens(Action<int> callback)
-        {
-            PlayGamesHelperObject.RunOnGameThread(() => DoFetchToken(callback));
-        }
-
-        internal void DoFetchToken(Action<int> callback)
-        {
-            object[] objectArray = new object[9];
-            jvalue[] jArgs = AndroidJNIHelper.CreateJNIArgArray(objectArray);
-
-            try
-            {
-                using (var bridgeClass = new AndroidJavaClass(TokenFragmentClass))
-                {
-                    using (var currentActivity = GetActivity())
-                    {
-                        // Unity no longer supports constructing an AndroidJavaObject using an IntPtr,
-                        // so I have to manually munge with JNI here.
-                        IntPtr methodId = AndroidJNI.GetStaticMethodID(bridgeClass.GetRawClass(),
-                                              FetchTokenMethod,
-                                              FetchTokenSignature);
-                        jArgs[0].l = currentActivity.GetRawObject();
-                        jArgs[1].z = requestAuthCode;
-                        jArgs[2].z = requestEmail;
-                        jArgs[3].z = requestIdToken;
-                        jArgs[4].l = AndroidJNI.NewStringUTF(webClientId);
-                        jArgs[5].z = forceRefresh;
-                        jArgs[6].l = AndroidJNIHelper.ConvertToJNIArray(oauthScopes.ToArray());
-                        jArgs[7].z = hidePopups;
-                        jArgs[8].l = AndroidJNI.NewStringUTF(accountName);
-
-                        IntPtr ptr =
-                            AndroidJNI.CallStaticObjectMethod(bridgeClass.GetRawClass(), methodId, jArgs);
-
-                        PendingResult<TokenResult> pr = new PendingResult<TokenResult>(ptr);
-                        pr.setResultCallback(new TokenResultCallback((rc, authCode, email, idToken) =>
-                        {
-                            this.authCode = authCode;
-                            this.email = email;
-                            this.idToken = idToken;
-                            callback(rc);
-                            }));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                OurUtils.Logger.e("Exception launching token request: " + e.Message);
-                OurUtils.Logger.e(e.ToString());
-            }
-            finally
-            {
-                AndroidJNIHelper.DeleteJNIArgArray(objectArray, jArgs);
-            }
         }
 
         /// <summary>Gets the email selected by the current player.</summary>
@@ -211,71 +139,118 @@ namespace GooglePlayGames.Android
             return idToken;
         }
 
-    }
-
-    class TokenResult : Google.Developers.JavaObjWrapper, Result
-    {
-        #region Result implementation
-
-        public TokenResult(IntPtr ptr)
-            : base(ptr)
+        public void FetchTokens(bool silent, Action<int> callback)
         {
+            PlayGamesHelperObject.RunOnGameThread(() => DoFetchToken(silent, callback));
         }
 
-        public Status getStatus()
+        private void DoFetchToken(bool silent, Action<int> callback)
         {
-            IntPtr obj = InvokeCall<IntPtr>("getStatus", "()Lcom/google/android/gms/common/api/Status;");
-            return new Status(obj);
+            try
+            {
+                using (var bridgeClass = new AndroidJavaClass(TokenFragmentClass))
+                {
+                    using (var currentActivity = GetActivity())
+                    {
+                        using (var pendingResult = bridgeClass.CallStatic<AndroidJavaObject>(
+                            "fetchToken",
+                            currentActivity,
+                            silent,
+                            requestAuthCode,
+                            requestEmail,
+                            requestIdToken, 
+                            webClientId,
+                            forceRefresh,
+                            oauthScopes.ToArray(),
+                            hidePopups,
+                            accountName))
+                        {
+                            pendingResult.Call("setResultCallback", new ResultCallbackProxy(
+                                tokenResult => {
+                                    authCode = tokenResult.Call<string>("getAuthCode");
+                                    email = tokenResult.Call<string>("getEmail");
+                                    idToken = tokenResult.Call<string>("getIdToken");
+                                    callback(tokenResult.Call<int>("getStatusCode"));
+                                }));
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                OurUtils.Logger.e("Exception launching token request: " + e.Message);
+                OurUtils.Logger.e(e.ToString());
+            }
+        }
+        
+        /// <summary>
+        /// Gets another server auth code.
+        /// </summary>
+        /// <remarks>This method should be called after authenticating, and exchanging
+        /// the initial server auth code for a token.  This is implemented by signing in
+        /// silently, which if successful returns almost immediately and with a new
+        /// server auth code.
+        /// </remarks>
+        /// <param name="reAuthenticateIfNeeded">Calls Authenticate if needed when
+        /// retrieving another auth code. </param>
+        /// <param name="callback">Callback.</param>
+        public void GetAnotherServerAuthCode(bool reAuthenticateIfNeeded, Action<string> callback)
+        {
+            PlayGamesHelperObject.RunOnGameThread(() => DoGetAnotherServerAuthCode(reAuthenticateIfNeeded, callback));
         }
 
-        #endregion
-
-        public int getStatusCode()
+        private void DoGetAnotherServerAuthCode(bool reAuthenticateIfNeeded, Action<string> callback)
         {
-            return InvokeCall<int>("getStatusCode", "()I");
-
+            try
+            {
+                using (var bridgeClass = new AndroidJavaClass(TokenFragmentClass))
+                {
+                    using (var currentActivity = GetActivity())
+                    {
+                        using (var pendingResult = bridgeClass.CallStatic<AndroidJavaObject>(
+                            "fetchToken",
+                            currentActivity,
+                            /* silent= */!reAuthenticateIfNeeded,
+                            /* requestAuthCode= */true,
+                            requestEmail,
+                            requestIdToken, 
+                            webClientId,
+                            /* forceRefresh= */false,
+                            oauthScopes.ToArray(),
+                            /* hidePopups= */true,
+                            accountName))
+                        {
+                            pendingResult.Call("setResultCallback", new ResultCallbackProxy(
+                                tokenResult => {
+                                    callback(tokenResult.Call<string>("getAuthCode"));
+                                }));
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                OurUtils.Logger.e("Exception launching token request: " + e.Message);
+                OurUtils.Logger.e(e.ToString());
+            }              
         }
 
-        public String getAuthCode()
+        private class ResultCallbackProxy : AndroidJavaProxy
         {
-            return InvokeCall<string>("getAuthCode", "()Ljava/lang/String;");
-        }
+            private Action<AndroidJavaObject> mCallback;
 
-        public String getEmail()
-        {
-            return InvokeCall<string>("getEmail", "()Ljava/lang/String;");
-        }
+            public ResultCallbackProxy(Action<AndroidJavaObject> callback) 
+            : base("com/google/android/gms/common/api/ResultCallback")
+            {
+                mCallback = callback;
+            }
 
-        public String getIdToken()
-        {
-            return InvokeCall<string>("getIdToken", "()Ljava/lang/String;");
-        }
-
-    }
-
-    class TokenResultCallback : ResultCallbackProxy<TokenResult>
-    {
-        private Action<int, string, string, string> callback;
-
-        public TokenResultCallback(Action<int, string, string, string> callback)
-        {
-            this.callback = callback;
-        }
-
-        public override void OnResult(TokenResult arg_Result_1)
-        {
-            if (callback != null) {
-                    callback(arg_Result_1.getStatusCode(),
-                             arg_Result_1.getAuthCode(),
-                             arg_Result_1.getEmail(),
-                             arg_Result_1.getIdToken());
+            public void onResult(AndroidJavaObject tokenResult)
+            {
+                mCallback(tokenResult);
             }
         }
 
-        public string toString()
-        {
-            return ToString();
-        }
     }
 }
 #endif

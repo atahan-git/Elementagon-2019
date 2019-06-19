@@ -15,19 +15,19 @@ MonoBehaviour:
   id: 13
   PresetName: Doran
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
-  cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
-  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  cardSet: {fileID: 11400000, guid: 22a56b077b0808442a73d9e7033d7dbc, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
+  myGameObjectiveType: 0
+  myGameType: 0
   objectiveText: 
   timer: -1
   turns: -1
   scoreReach: 9001
   killAllNPC: 0
   canCombo: 0
-  myGameType: 0
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
   levelShortName: Doran
   levelName: "Doran'\u0131n yeri"
@@ -41,11 +41,20 @@ MonoBehaviour:
   customObject: {fileID: 1794750411792320, guid: 6e50dd32686bb8a4ea19624b2f479532,
     type: 3}
   autoSetUpBoard: 1
-  defaultDropChance: 1
-  possibleDrops: []
-  customDropChances: []
-  itemTypesStartIndex: 7
+  dropChance: 1
+  farmModeDifficulty: 1
+  possibleDropsDGrade: []
+  possibleDropsCGrade: []
+  possibleDropsBGrade: []
+  possibleDropsAGrade: []
   myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
+  overrideEquipment: 0
+  equipment: {fileID: 0}
+  overridePotions: 0
+  potions: []
+  overridePower: 0
+  selectedElement: -1
+  elementLevel: 0
   nextStage: {fileID: 0}

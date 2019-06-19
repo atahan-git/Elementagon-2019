@@ -35,7 +35,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 			s = this;
 		}
 
-		Application.targetFrameRate = 45;
+		//Application.targetFrameRate = 30;
 
 		DontDestroyOnLoad (this.gameObject);
 	}
@@ -94,13 +94,16 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		if (isLoggingin)
 			return;
 
-		PlayGamesPlatform.Instance.Authenticate ((bool success) => {
+		
+		DataLogger.LogMessage ("Trying to login");
+		/*PlayGamesPlatform.Instance.Authenticate ((bool success) => {
 			if (success) {
 				DataLogger.LogMessage ("Login Successful");
 				canPlay = true;
 				VC_MultiplayerMenuController.s.UpdateMenu ();
 			} else {
 				if (Application.internetReachability != NetworkReachability.NotReachable) {
+					DataLogger.LogMessage ("Login failed");
 					DataLogger.LogMessage ("Login attempt " + n.ToString ());
 					n++;
 					//Invoke ("Login", 0.5f);
@@ -110,7 +113,9 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 				isOnline = false;
 				canPlay = false;
 			}
-		}, false);
+		}, false);*/
+		DataLogger.LogMessage ("LOGGING IN IS PERMANENTLY DISABLED FOR SOME TIME BECAUSE IT DOESNT WORK AT ALL");
+		DataLogger.LogMessage ("Check GoogleAPI.cs line 100 to see the commented out section");
 
 		if (PlayGamesPlatform.Instance.localUser.authenticated) {
 			canPlay = true;

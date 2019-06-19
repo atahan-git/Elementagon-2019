@@ -182,7 +182,7 @@ public class IndividualCard : MonoBehaviour {
 		SpawnEffectOnScoreBoard (cBase.onScoreBoard_MatchEffect != null ? cBase.onScoreBoard_MatchEffect : GS.a.gfxs.onScoreBoard_MatchEffect, playerID);
 		SpawnEffectOnEnemyScoreBoards (cBase.onEnemySbs_MatchEffect != null ? cBase.onEnemySbs_MatchEffect : GS.a.gfxs.onEnemySbs_MatchEffect, playerID);
 
-		cBase = null;
+		cBase = GS.a.cardSet.matchedCard;
 	}
 
 	void ReOpenCard () {
@@ -252,7 +252,7 @@ public class IndividualCard : MonoBehaviour {
 
 	public void PoisonCard () {
 		isPoison = true;
-		int poisonType = CardSets.posionTypeInt;
+		int poisonType = CardSets.posionTypeId;
 
 		if (DataHandler.s.myPlayerInteger != 0) {
 			DataHandler.s.SendCardType (x, y, poisonType);
@@ -288,7 +288,12 @@ public class IndividualCard : MonoBehaviour {
 
 	public void UpdateCardType (int type) {
 
-		cBase = CardTypeRandomizer.s.allCards[type];
+		if (type < CardTypeRandomizer.s.allCards.Length && type >= 0) {
+			cBase = CardTypeRandomizer.s.allCards[type];
+		} else {
+			DataLogger.LogError ("Illegal card type update request: " + type.ToString ());
+			cBase = GS.a.cardSet.defCard;
+		}
 		CancelInvoke ("RandomizeCardType");
 
 		if (DataHandler.s.myPlayerInteger == 0) {
@@ -321,7 +326,7 @@ public class IndividualCard : MonoBehaviour {
 		if (fx != null) {
 			GameObject myFx = Instantiate (fx);
 			if (myFx.GetComponent<BetweenCardsEffect> () != null)
-				myFx.GetComponent<BetweenCardsEffect> ().SetUp (playerID, card1.cBase.elementType > 7, card1, card2);
+				myFx.GetComponent<BetweenCardsEffect> ().SetUp (playerID, card1.cBase.isPowerUpRelated, card1, card2);
 			if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
 				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (card1.cBase.elementType);
 		}

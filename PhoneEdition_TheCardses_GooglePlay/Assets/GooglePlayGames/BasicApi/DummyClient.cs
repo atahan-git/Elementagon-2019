@@ -13,7 +13,7 @@
 //  See the License for the specific language governing permissions and
 //    limitations under the License.
 // </copyright>
-#if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
+#if UNITY_ANDROID
 
 namespace GooglePlayGames.BasicApi
 {
@@ -74,7 +74,6 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// Retrieves an id token, which can be verified server side, if they are logged in.
         /// </summary>
-        /// <param name="idTokenCallback">The callback invoked with the token</param>
         /// <returns>The identifier token.</returns>
         public string GetIdToken()
         {
@@ -98,6 +97,13 @@ namespace GooglePlayGames.BasicApi
         {
             LogUsage();
             return null;
+        }
+
+        public void GetAnotherServerAuthCode(bool reAuthenticateIfNeeded,
+                                             Action<string> callback)
+        {
+            LogUsage();
+            callback(null);
         }
 
         /// <summary>
@@ -173,17 +179,6 @@ namespace GooglePlayGames.BasicApi
             {
                 callback.Invoke(null);
             }
-        }
-
-        /// <summary>
-        /// Returns the achievement corresponding to the passed achievement identifier.
-        /// </summary>
-        /// <returns>The achievement.</returns>
-        /// <param name="achId">Achievement identifier.</param>
-        public Achievement GetAchievement(string achId)
-        {
-            LogUsage();
-            return null;
         }
 
         /// <summary>
@@ -380,7 +375,7 @@ namespace GooglePlayGames.BasicApi
         /// <summary>
         /// Returns a real-time multiplayer client.
         /// </summary>
-        /// <seealso cref="GooglePlayGames.Multiplayer.IRealTimeMultiplayerClient"></seealso>
+        /// <seealso cref="GooglePlayGames.BasicApi.Multiplayer.IRealTimeMultiplayerClient"></seealso>
         /// <returns>The rtmp client.</returns>
         public IRealTimeMultiplayerClient GetRtmpClient()
         {
@@ -413,16 +408,6 @@ namespace GooglePlayGames.BasicApi
         /// </summary>
         /// <returns>The events client.</returns>
         public GooglePlayGames.BasicApi.Events.IEventsClient GetEventsClient()
-        {
-            LogUsage();
-            return null;
-        }
-
-        /// <summary>
-        /// Gets the quests client.
-        /// </summary>
-        /// <returns>The quests client.</returns>
-        public GooglePlayGames.BasicApi.Quests.IQuestsClient GetQuestsClient()
         {
             LogUsage();
             return null;

@@ -7,7 +7,7 @@ public class MenuTriggerableStuffMaster : MonoBehaviour {
 	public Triggerable[] allTriggerables;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		for (int i = 0; i < allTriggerables.Length; i++) {
 			if (allTriggerables[i] != null)
 				allTriggerables[i].id = i;

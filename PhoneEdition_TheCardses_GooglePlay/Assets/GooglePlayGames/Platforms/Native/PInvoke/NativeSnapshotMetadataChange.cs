@@ -14,7 +14,7 @@
 //    limitations under the License.
 // </copyright>
 
-#if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
+#if UNITY_ANDROID
 
 namespace GooglePlayGames.Native.PInvoke
 {
@@ -24,6 +24,7 @@ namespace GooglePlayGames.Native.PInvoke
     using C = GooglePlayGames.Native.Cwrapper.SnapshotMetadataChange;
     using B = GooglePlayGames.Native.Cwrapper.SnapshotMetadataChangeBuilder;
     using GooglePlayGames.OurUtils;
+    using GooglePlayGames.BasicApi.SavedGame;
 
     internal class NativeSnapshotMetadataChange : BaseReferenceHolder
     {
@@ -81,6 +82,21 @@ namespace GooglePlayGames.Native.PInvoke
                 return this;
             }
 
+            internal Builder From(SavedGameMetadataUpdate update)
+            {
+                Builder retval = this;
+                if (update.IsDescriptionUpdated) {
+                    retval = retval.SetDescription (update.UpdatedDescription);
+                }
+                if (update.IsCoverImageUpdated) {
+                    retval = retval.SetCoverImageFromPngData (update.UpdatedPngCoverImage);
+                }
+                if (update.IsPlayedTimeUpdated) {
+                    retval = retval.SetPlayedTime ((ulong)update.UpdatedPlayedTime.Value.TotalMilliseconds);
+                }
+                return retval;
+            }
+
             internal NativeSnapshotMetadataChange Build()
             {
                 return FromPointer(B.SnapshotMetadataChange_Builder_Create(SelfPtr()));
@@ -89,4 +105,5 @@ namespace GooglePlayGames.Native.PInvoke
     }
 }
 
-#endif // (UNITY_ANDROID || UNITY_IPHONE)
+#endif //UNITY_ANDROID
+

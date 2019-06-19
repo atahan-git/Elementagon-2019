@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0614ed99e9dfd74288e949f874b5970, type: 3}
+  m_Name: CardSet_Elemental Arena
+  m_EditorClassIdentifier: 
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
+  cards:
+  - {fileID: 11400000, guid: 4798bdddcb992dd4e9d05de725b88d4b, type: 2}
+  - {fileID: 11400000, guid: 70a8fb06afae61c40a5f8f5811d6310a, type: 2}
+  - {fileID: 11400000, guid: 16a3bbe3ee21449438da89848b838505, type: 2}
+  - {fileID: 11400000, guid: ea29453d03540de4dbf47ae272e058f9, type: 2}
+  - {fileID: 11400000, guid: d30f8461c918a9a4d98b5b536994865f, type: 2}
+  - {fileID: 11400000, guid: 4d4fd00a04db92a4db0f8ad580fb2c77, type: 2}
+  - {fileID: 11400000, guid: 2c1468dfee22bce41a07e422a4ad9ae2, type: 2}
+  customSpawnChanceCards:
+  - {fileID: 11400000, guid: 3562e56e1d10a8043bd0ac1c5c433331, type: 2}
+  - {fileID: 11400000, guid: e609c1838641237469b2c083ddabb9b0, type: 2}
+  - {fileID: 11400000, guid: 897b68d6af1bb004f90f1c9134e0bcf8, type: 2}
+  - {fileID: 11400000, guid: c8593ae1a58bf6d4aac9234cd72a777a, type: 2}
+  - {fileID: 11400000, guid: fdc08f609c7de8b48ac5c3e53727593f, type: 2}
+  - {fileID: 11400000, guid: 79f5cd966d6f8b34aa5bd8a98cf2efc9, type: 2}
+  - {fileID: 11400000, guid: a71bd629b3d5d6348865aa71ec8a1b7d, type: 2}
+  customSpawnChances:
+  - 1.7
+  - 1.7
+  - 1.7
+  - 1.7
+  - 1.7
+  - 1.7
+  - 1.7

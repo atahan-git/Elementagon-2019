@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
   poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
   cards:
   - {fileID: 11400000, guid: aae2da1da01275c45a23e797e89fe370, type: 2}
   - {fileID: 11400000, guid: 9436f63871f238f48b310d76e4080e46, type: 2}

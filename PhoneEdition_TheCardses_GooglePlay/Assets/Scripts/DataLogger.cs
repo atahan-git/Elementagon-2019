@@ -93,8 +93,12 @@ public class DataLogger : MonoBehaviour {
 		if (isDebugMode) {
 			if (Input.touchCount > 3 || Input.GetKeyDown (KeyCode.H)) {
 				for (int i = 8; i <= 14; i++) {
-					if(ScoreBoardManager.s != null)
-					ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, i, 1, false);
+					if (ScoreBoardManager.s != null)
+						ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, i, 1, false);
+				}
+
+				for (int i = 0; i < SaveMaster.s.mySave.levelsCompleted.Length; i++) {
+					SaveMaster.s.mySave.levelsCompleted[i] = true;
 				}
 			}
 
@@ -138,9 +142,9 @@ public class DataLogger : MonoBehaviour {
 
 	public static void LogMessage (string log){
 		messageQueue.Enqueue (log);
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 		Debug.Log (log);
-#endif
+//#endif
 	}
 
 	
@@ -152,9 +156,9 @@ public class DataLogger : MonoBehaviour {
 	static Queue<string> errorQueue = new Queue<string>();
 	public static void LogError (string log) {
 		errorQueue.Enqueue (log);
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 		Debug.LogError (log);
-#endif
+//#endif
 	}
 
 	public Text version;

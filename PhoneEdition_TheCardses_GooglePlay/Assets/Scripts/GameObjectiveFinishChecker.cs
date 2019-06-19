@@ -36,6 +36,11 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 		timerText.text = minutes + ":" + seconds;
 
+		if (GS.a.timer > 0) {
+			isTimed = true;
+			timer = GS.a.timer;
+		}
+
 		UpdateObjectiveText ();
 	}
 
@@ -112,8 +117,6 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 
 			if (GS.a.timer > 0) {
 				objectiveString += ", before the timer runs out";
-				isTimed = true;
-				timer = GS.a.timer;
 			}
 			if (GS.a.turns > 0)
 				objectiveString += ", under " + turnCount.ToString () + "/" + GS.a.turns.ToString () + " turns";
@@ -240,7 +243,10 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 				if (turnCount >= GS.a.turns) {
 					switch (GS.a.myGameType) {
 					case GameSettings.GameType.Singleplayer:
-						EndGame (5);
+						if (GS.a.myGameObjectiveType != GameSettings.GameObjectiveTypes.Farm)
+							EndGame (5);
+						else
+							EndGame (4);
 						return;
 					default:
 						Debug.LogError ("Turn Limit not implemented for game type: " + GS.a.myGameType.ToString());

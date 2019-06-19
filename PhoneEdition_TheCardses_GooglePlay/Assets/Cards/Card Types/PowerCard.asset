@@ -15,9 +15,11 @@ MonoBehaviour:
   mySprite: {fileID: 21300000, guid: f8c5341dbf23d5f4ba3aefd3213e6203, type: 3}
   myAnim: {fileID: 0}
   elementType: 17
+  isAITargetable: 0
+  isPowerUpRelated: 1
   score: 1
   enemyScore: 0
-  cardType: 1
+  cardType: 11
   myItem: {fileID: 0}
   onCard_SelectEffect: {fileID: 7280119262584305602, guid: 1fde0c0bd1c21ef40bbc75edf7f6295e,
     type: 3}

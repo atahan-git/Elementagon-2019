@@ -14,9 +14,7 @@
 //    limitations under the License.
 // </copyright>
 
-#if (UNITY_ANDROID || (UNITY_IPHONE && !NO_GPGS))
-
-
+#if UNITY_ANDROID
 namespace GooglePlayGames.Native.PInvoke
 {
     using GooglePlayGames.OurUtils;
@@ -115,7 +113,7 @@ namespace GooglePlayGames.Native.PInvoke
 
         internal void Resolve(NativeSnapshotMetadata metadata,
                               NativeSnapshotMetadataChange metadataChange,
-                              string conflictId, Action<CommitResponse> callback)
+                              string conflictId, Action<OpenResponse> callback)
         {
             Misc.CheckNotNull(metadata);
             Misc.CheckNotNull(metadataChange);
@@ -123,11 +121,31 @@ namespace GooglePlayGames.Native.PInvoke
 
             C.SnapshotManager_ResolveConflict(
                 mServices.AsHandle(),
+                conflictId,
                 metadata.AsPointer(),
                 metadataChange.AsPointer(),
+                InternalOpenCallback,
+                Callbacks.ToIntPtr<OpenResponse>(callback, OpenResponse.FromPointer));
+        }
+
+        internal void Resolve(NativeSnapshotMetadata metadata,
+            NativeSnapshotMetadataChange metadataChange,
+            string conflictId, byte[] updatedData, Action<OpenResponse> callback)
+        {
+            Misc.CheckNotNull(metadata);
+            Misc.CheckNotNull(metadataChange);
+            Misc.CheckNotNull(conflictId);
+            Misc.CheckNotNull(updatedData);
+
+            C.SnapshotManager_ResolveConflict(
+                mServices.AsHandle(),
                 conflictId,
-                InternalCommitCallback,
-                Callbacks.ToIntPtr<CommitResponse>(callback, CommitResponse.FromPointer));
+                metadata.AsPointer(),
+                metadataChange.AsPointer(),
+                updatedData,
+                new UIntPtr((ulong)updatedData.Length),
+                InternalOpenCallback,
+                Callbacks.ToIntPtr<OpenResponse>(callback, OpenResponse.FromPointer));
         }
 
         [AOT.MonoPInvokeCallback(typeof(C.CommitCallback))]
@@ -417,4 +435,5 @@ namespace GooglePlayGames.Native.PInvoke
     }
 }
 
-#endif // (UNITY_ANDROID || UNITY_IPHONE)
+#endif //UNITY_ANDROID
+

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
   m_Name: level 12
   m_EditorClassIdentifier: 
-  id: 0
+  id: 25
   PresetName: Level 12
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
@@ -23,7 +23,7 @@ MonoBehaviour:
   myGameObjectiveType: 0
   myGameType: 0
   objectiveText: 
-  timer: 50
+  timer: 150
   turns: -1
   scoreReach: 20
   killAllNPC: 0

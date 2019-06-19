@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
   m_Name: level 5
   m_EditorClassIdentifier: 
-  id: 0
+  id: 18
   PresetName: Level 5
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
@@ -24,14 +24,14 @@ MonoBehaviour:
   myGameType: 0
   objectiveText: 
   timer: -1
-  turns: 17
+  turns: 100
   scoreReach: 20
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
   levelShortName: 5
   levelName: Level 5
-  levelDescription: Level 5
+  levelDescription: Description
   startingText: Level 5
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}

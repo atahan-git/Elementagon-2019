@@ -60,6 +60,7 @@ public class GS : MonoBehaviour {
 		a = null;
 		try {
 			a = allModes[id].Copy ();
+			activeGameMode = a.name;
 			DataLogger.LogMessage ("Active Game Settings: " + a.PresetName);
 		} catch {
 			DataLogger.LogError ("Unknown mode id: " + id.ToString());

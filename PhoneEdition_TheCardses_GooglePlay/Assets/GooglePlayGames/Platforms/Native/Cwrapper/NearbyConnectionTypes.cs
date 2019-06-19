@@ -16,8 +16,6 @@
 
 // Android only feature
 #if (UNITY_ANDROID)
-
-
 namespace GooglePlayGames.Native.Cwrapper
 {
     using System;
@@ -88,12 +86,6 @@ namespace GooglePlayGames.Native.Cwrapper
          /* from(size_t) */UIntPtr out_size);
 
         [DllImport(SymbolLocation.NativeSymbolLocation)]
-        internal static extern /* from(size_t) */ UIntPtr EndpointDetails_GetDeviceId(
-            HandleRef self,
-            [In, Out] /* from(char *) */byte[] out_arg,
-         /* from(size_t) */UIntPtr out_size);
-
-        [DllImport(SymbolLocation.NativeSymbolLocation)]
         internal static extern /* from(size_t) */ UIntPtr EndpointDetails_GetName(
             HandleRef self,
             [In, Out] /* from(char *) */byte[] out_arg,
@@ -111,12 +103,6 @@ namespace GooglePlayGames.Native.Cwrapper
 
         [DllImport(SymbolLocation.NativeSymbolLocation)]
         internal static extern /* from(size_t) */ UIntPtr ConnectionRequest_GetRemoteEndpointId(
-            HandleRef self,
-            [In, Out] /* from(char *) */byte[] out_arg,
-         /* from(size_t) */UIntPtr out_size);
-
-        [DllImport(SymbolLocation.NativeSymbolLocation)]
-        internal static extern /* from(size_t) */ UIntPtr ConnectionRequest_GetRemoteDeviceId(
             HandleRef self,
             [In, Out] /* from(char *) */byte[] out_arg,
          /* from(size_t) */UIntPtr out_size);
@@ -154,4 +140,5 @@ namespace GooglePlayGames.Native.Cwrapper
          /* from(size_t) */UIntPtr out_size);
     }
 }
-#endif // (UNITY_ANDROID || UNITY_IPHONE)
+#endif //UNITY_ANDROID
+

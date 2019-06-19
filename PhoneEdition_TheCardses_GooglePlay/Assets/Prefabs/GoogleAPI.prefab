@@ -354,7 +354,7 @@ RectTransform:
   - {fileID: 224583480528071140}
   - {fileID: 224545292479608870}
   m_Father: {fileID: 224403933558354950}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -819,24 +819,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 855b7909f8ef0334493101906bc5fc99, type: 2}
   - {fileID: 11400000, guid: 00ed4764168c11d4dbc9e8828198fa24, type: 2}
   - {fileID: 11400000, guid: 7df947ba67a83de41a024617e76d444f, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 59a7053d5ee745944acb9a6e3f42c86d, type: 2}
+  - {fileID: 11400000, guid: 1d532df1442847a47ab59e2ae1009d59, type: 2}
+  - {fileID: 11400000, guid: 2686869aa711dd54682bdfa11bb18ce9, type: 2}
+  - {fileID: 11400000, guid: 6181585e61526504ab48c7937390da92, type: 2}
+  - {fileID: 11400000, guid: 3e976c2f22abba74b9d403c24d656562, type: 2}
+  - {fileID: 11400000, guid: 3a2c55b43a5e2674ab377370869360fa, type: 2}
+  - {fileID: 11400000, guid: 16bbdd14d32d61a44b5f705649bf0e84, type: 2}
+  - {fileID: 11400000, guid: 009dbfed198403c4981fbebb27bc5abb, type: 2}
+  - {fileID: 11400000, guid: efd7de5f355068d448d10867847c3635, type: 2}
+  - {fileID: 11400000, guid: 13faa1a178b17034ea627d294ddc4a6a, type: 2}
+  - {fileID: 11400000, guid: a418da6133eef684ea803099cd479403, type: 2}
+  - {fileID: 11400000, guid: 32cbce632bb934440943fe3c97d8ed0a, type: 2}
+  - {fileID: 11400000, guid: 9832d6d5690de614b8bc0e107dbd8f4e, type: 2}
+  - {fileID: 11400000, guid: 3415dfb423faac149a9d406b2ff029d5, type: 2}
+  - {fileID: 11400000, guid: 4162e0987d02d8b44a70a6e3df187e02, type: 2}
+  - {fileID: 11400000, guid: 671df50b76ba7a04f9f7b758dd33976a, type: 2}
+  - {fileID: 11400000, guid: 61a2a485cec8c664385a75734f579988, type: 2}
+  - {fileID: 11400000, guid: 822ab16b34c36a54696daf3b12c2c29d, type: 2}
+  - {fileID: 11400000, guid: 54fc285625e48c0438a6fb1c682303b1, type: 2}
+  - {fileID: 11400000, guid: 3a805b20c4db4e14588dcb92fbf10b72, type: 2}
+  - {fileID: 11400000, guid: 4c1b9943e5cc1f144bcc2aedb76daa9f, type: 2}
+  - {fileID: 11400000, guid: 570393c6fb2945645a2ea830cdc0609e, type: 2}
+  - {fileID: 11400000, guid: 401d6ef013a5c194488b78752243dff1, type: 2}
+  - {fileID: 11400000, guid: bf35f82d454d9f041af98f340174cd92, type: 2}
+  - {fileID: 11400000, guid: c4af1872b5134024ebdcbfc0089a33bc, type: 2}
 --- !u!114 &114907591449571644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,7 +1275,7 @@ RectTransform:
   m_Children:
   - {fileID: 224740709488975326}
   m_Father: {fileID: 224403933558354950}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1475,6 +1482,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8249850706321327547}
   - {fileID: 224320215269464064}
   - {fileID: 224249866201484812}
   - {fileID: 224389190745923098}
@@ -1508,7 +1516,7 @@ MonoBehaviour:
   - {fileID: 1921693694146812}
   - {fileID: 0}
   visibilityState: 0
-  version: {fileID: 0}
+  version: {fileID: 3067922345545502698}
   versionText: {fileID: 4900000, guid: be8421a815ae0c64bbc5770aa7360350, type: 3}
 --- !u!1 &1823311394500320
 GameObject:
@@ -1814,7 +1822,7 @@ RectTransform:
   - {fileID: 224798161862945796}
   - {fileID: 224161217445741462}
   m_Father: {fileID: 224403933558354950}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -2013,3 +2021,82 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4105051322020560450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8249850706321327547}
+  - component: {fileID: 8708506635450621842}
+  - component: {fileID: 3067922345545502698}
+  m_Layer: 5
+  m_Name: Version Text
+  m_TagString: LogText
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8249850706321327547
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105051322020560450}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.75}
+  m_LocalScale: {x: 1.7842414, y: 1.7842414, z: 1.7842414}
+  m_Children: []
+  m_Father: {fileID: 224403933558354950}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -51.564575, y: 10.656891}
+  m_SizeDelta: {x: 57.9, y: 11.946}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8708506635450621842
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105051322020560450}
+  m_CullTransparentMesh: 0
+--- !u!114 &3067922345545502698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105051322020560450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 7
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 1.1.000.alpha

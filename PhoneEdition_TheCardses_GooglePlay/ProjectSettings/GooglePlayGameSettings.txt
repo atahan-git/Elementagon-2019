@@ -1,5 +1,5 @@
-lastUpgrade=00939
-proj.pluginVersion=0.9.39a
+lastUpgrade=00964
+proj.pluginVersion=0.9.64
 proj.AppId=199283871869
 and.BundleId=com.NovaStudios.TheCardses
 proj.classDir=Assets

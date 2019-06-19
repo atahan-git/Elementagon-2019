@@ -42,7 +42,8 @@ public class particleAttractorLinear : MonoBehaviour {
 		activeSpeed = 10;
 		for (int i = 0; i < numParticlesAlive; i++) {
 			activeSpeed = myCurve.Evaluate ((rnd [i] + (m_Particles [i].startLifetime - m_Particles [i].remainingLifetime)) * multiplier);
-			m_Particles [i].position = Vector3.MoveTowards(m_Particles[i].position, target.position, activeSpeed * Time.deltaTime);
+			if (target != null)
+				m_Particles[i].position = Vector3.MoveTowards (m_Particles[i].position, target.position, activeSpeed * Time.deltaTime);
 		}
 		ps.SetParticles(m_Particles, numParticlesAlive);
 	}

@@ -16,7 +16,6 @@
 
 // Android only feature
 #if (UNITY_ANDROID)
-
 namespace GooglePlayGames.Native
 {
     using System;
@@ -246,16 +245,6 @@ namespace GooglePlayGames.Native
             mManager.StopAllConnections();
         }
 
-        public string LocalEndpointId()
-        {
-            return mManager.LocalEndpointId();
-        }
-
-        public string LocalDeviceId()
-        {
-            return mManager.LocalDeviceId();
-        }
-
         public string GetAppBundleId()
         {
             return mManager.AppBundleId;
@@ -314,5 +303,5 @@ namespace GooglePlayGames.Native
         }
     }
 }
+#endif //UNITY_ANDROID
 
-#endif // #if (UNITY_ANDROID || UNITY_IPHONE)

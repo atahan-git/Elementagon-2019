@@ -25,6 +25,8 @@ public class SaveMaster : MonoBehaviour {
 
 		if (!Load ()) {
 			mySave = new SaveData ();
+			if (GS.s == null)
+				GS.s = GetComponent<GS> ();
 			mySave.levelsCompleted = new bool[GS.s.allModes.Length];
 			DataLogger.LogError ("Loading failed. creating new save");
 		} else {
