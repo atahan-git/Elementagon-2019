@@ -11,13 +11,10 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 	public CardBase itemBaseCard;
 
-	[SerializeField]
+	
 	int utilityCount;
-	[SerializeField]
 	int normalCardsCount;
-	[SerializeField]
 	int customSpawnChanceCardsCount;
-	[SerializeField]
 	int itemCount;
 
 
@@ -47,6 +44,16 @@ public class CardTypeRandomizer : MonoBehaviour {
 		}
 		for (int i = 0; i < customSpawnChanceCardsCount; i++) {
 			allCards[i + utilityCount + normalCardsCount] = GS.a.cardSet.customSpawnChanceCards[i];
+
+			//if the player doesnt have a power up or an equipment dont spawn that card!
+			//this need multiplayer support though
+			float notEquippedMultiplier = 1;
+			if (GS.a.cardSet.customSpawnChanceCards[i].elementType == 16 && !CharacterStuffController.s.isEquippedEquipment)
+				notEquippedMultiplier = 0;
+			if (GS.a.cardSet.customSpawnChanceCards[i].elementType == 17 && !CharacterStuffController.s.isEquippedPower)
+				notEquippedMultiplier = 0;
+
+			GS.a.cardSet.customSpawnChances[i] *= notEquippedMultiplier;
 		}
 
 		int itemCurStartIndex = 0;
@@ -61,37 +68,17 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 
 		if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm) {
-			DrawFarmBoard ();
+			try {
+				DrawFarmBoard ();
+			} catch (System.Exception e) {
+				DataLogger.LogError (this.name, e);
+				farmBoard.SetActive (false);
+			}
 		} else {
 			farmBoard.SetActive (false);
 		}
 
 		DataLogger.LogMessage ("Card Types initialized");
-
-		/*int[] lele = new int[allCards.Length];
-
-		for (int i = 0; i < 10000; i++) {
-
-			int type = GiveRandomCardType ();
-			//if (type >= allCards.Length)
-				//print (type);
-
-			//type = utilityCount + Random.Range (0, normalCardsCount);
-			if (type < lele.Length && type >= 0)
-				lele[type]++;
-			else
-				print (type);
-		}
-
-		print ("Random chances -*-*-*-*-*-*-*-*-*-*-");
-		for (int i = 0; i < lele.Length; i++) {
-			string keke = "";
-			for (int k = 0; k < lele[i] / 10; k++) {
-				keke += "|";
-			}
-			print (i.ToString() + keke);
-		}
-		print ("Random chances -*-*-*-*-*-*-*-*-*-*-");*/
 
 	}
 
@@ -112,10 +99,10 @@ public class CardTypeRandomizer : MonoBehaviour {
 		maxLength = Mathf.Max (GS.a.possibleDropsDGrade.Length, GS.a.possibleDropsCGrade.Length, GS.a.possibleDropsBGrade.Length, GS.a.possibleDropsAGrade.Length);
 		itemsDisps = new List<GameObject>[4];
 
-		DrawSection (GS.a.possibleDropsDGrade, 0, "D");
-		DrawSection (GS.a.possibleDropsCGrade, 1, "C");
-		DrawSection (GS.a.possibleDropsBGrade, 2, "B");
-		DrawSection (GS.a.possibleDropsAGrade, 3, "A");
+		DrawSection (GS.a.possibleDropsAGrade, 0, "A");
+		DrawSection (GS.a.possibleDropsBGrade, 1, "B");
+		DrawSection (GS.a.possibleDropsCGrade, 2, "C");
+		DrawSection (GS.a.possibleDropsDGrade, 3, "D");
 
 		UpdateFarmBoard ();
 	}
@@ -142,12 +129,16 @@ public class CardTypeRandomizer : MonoBehaviour {
 	[Tooltip ("Has 3% chance to drop")]
 	public ItemBase[] possibleDropsAGrade = new ItemBase[0];*/
 
-	float[] itChances = { 3f, 9f, 18f, 70f };
-
-	int itemFarmMultiplier = 1;
 	public int GiveRandomCardType () {
+		return GiveRandomCardType (true);
+	}
+
+	float[] itChances = { 3f, 9f, 18f, 100f };
+	float[] itMaxChances = { 15f, 20f, 30f, 100f };
+
+	public float itemFarmMultiplier = 1;
+	public int GiveRandomCardType (bool isVerbose) {
 		if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm) {
-			itemFarmMultiplier = Mathf.CeilToInt (ScoreBoardManager.s.allScores[0, 0] / (10 * GS.a.farmModeDifficulty));
 			try {
 				UpdateFarmBoard ();
 			} catch {
@@ -162,25 +153,29 @@ public class CardTypeRandomizer : MonoBehaviour {
 		int myType = -1;
 		if (thisRoll < GS.a.dropChance * itemFarmMultiplier) {
 
-			float itemRoll = Random.value;
+			float itemRoll = Random.value * 100;
 
+			int itemStartIndex = utilityCount + normalCardsCount + customSpawnChanceCardsCount;
 			int thisType = 0;
-			if (itemRoll < (itChances[0]) * itemFarmMultiplier && GS.a.possibleDropsAGrade.Length > 0) {
+			float[] calcChances = CalcItemChances ();
+			
+			if (itemRoll < calcChances[0] && GS.a.possibleDropsAGrade.Length > 0) {
 				thisType = Random.Range (0, GS.a.possibleDropsAGrade.Length);
-				myType = utilityCount + normalCardsCount + thisType + GS.a.possibleDropsDGrade.Length + GS.a.possibleDropsCGrade.Length + GS.a.possibleDropsBGrade.Length;
+				myType = itemStartIndex + thisType + GS.a.possibleDropsDGrade.Length + GS.a.possibleDropsCGrade.Length + GS.a.possibleDropsBGrade.Length;
 
-			} else if (itemRoll < (itChances[0] + itChances[1]) * itemFarmMultiplier && GS.a.possibleDropsBGrade.Length > 0) {
+			} else if (itemRoll < (calcChances[0] + calcChances[1]) && GS.a.possibleDropsBGrade.Length > 0) {
 				thisType = Random.Range (0, GS.a.possibleDropsBGrade.Length);
-				myType = utilityCount + normalCardsCount + thisType + GS.a.possibleDropsDGrade.Length + GS.a.possibleDropsCGrade.Length;
+				myType = itemStartIndex + thisType + GS.a.possibleDropsDGrade.Length + GS.a.possibleDropsCGrade.Length;
 
-			} else if (itemRoll < (itChances[0] + itChances[1] + itChances[2]) * itemFarmMultiplier && GS.a.possibleDropsCGrade.Length > 0) {
+			} else if (itemRoll < (calcChances[0] + calcChances[1] + calcChances[2]) && GS.a.possibleDropsCGrade.Length > 0) {
 				thisType = Random.Range (0, GS.a.possibleDropsCGrade.Length);
-				myType = utilityCount + normalCardsCount + thisType + GS.a.possibleDropsDGrade.Length;
+				myType = itemStartIndex + thisType + GS.a.possibleDropsDGrade.Length;
 
 			} else if (GS.a.possibleDropsDGrade.Length > 0) {
 				thisType = Random.Range (0, GS.a.possibleDropsDGrade.Length);
-				myType = utilityCount + normalCardsCount + thisType;
+				myType = itemStartIndex + thisType;
 			}
+			
 		}
 		if (myType >= allCards.Length)
 			DataLogger.LogError ("illegal item roll");
@@ -220,25 +215,72 @@ public class CardTypeRandomizer : MonoBehaviour {
 		return myType;
 	}
 
-	void UpdateFarmBoard () {
+	float[] CalcItemChances () {
+		itemFarmMultiplier = Mathf.CeilToInt ((ScoreBoardManager.s.allScores[0, 0] + 1) / (5 * GS.a.farmModeDifficulty));
+		float[] calcChances = new float[4];
+		calcChances[0] = Mathf.Min ((itChances[0]) * itemFarmMultiplier, (itMaxChances[0]));
+		calcChances[1] = Mathf.Min ((itChances[1]) * itemFarmMultiplier, (itMaxChances[1]));
+		calcChances[2] = Mathf.Min ((itChances[2]) * itemFarmMultiplier, (itMaxChances[2]));
+		calcChances[3] = Mathf.Min ((itChances[3]), 
+			(100f - (
+			GS.a.possibleDropsAGrade.Length > 0 ? calcChances[0] : 0 + 
+			GS.a.possibleDropsBGrade.Length > 0 ? calcChances[1] : 0 +
+			GS.a.possibleDropsCGrade.Length > 0 ? calcChances[2] : 0
+			)));
+
+		return calcChances;
+	}
+
+	public void UpdateFarmBoard () {
+		//print ("Updating farm board");
 		float runningChance = 0;
+		float[] calcChances = CalcItemChances ();
+
 		for (int i = 0; i < 4; i++) {
 			if (itemsDisps[i] != null) {
 				if (itemsDisps[i].Count > 0) {
 					for (int n = 0; n < itemsDisps[i].Count; n++) {
 						TextMeshProUGUI myText = itemsDisps[i][n].GetComponentInChildren<TextMeshProUGUI> ();
-						float thisChance = (itChances[i] / 100f) * itemFarmMultiplier;
-						float runnerUp = (thisChance + runningChance) - 100f;
-						if (runnerUp > 0)
-							thisChance -= runnerUp;
-						thisChance = Mathf.Min (thisChance, 0);
+						float thisChance = (calcChances[i] / 100f);
+						//print (thisChance.ToString () + " = " + "(" + calcChances[i].ToString () + "/ 100f)");
+						//print ((((GS.a.dropChance) * thisChance * itemFarmMultiplier) / itemsDisps[i].Count).ToString () + " = " +
+						//	"(((" + GS.a.dropChance.ToString ()+") * " + thisChance.ToString () + ") / " + itemsDisps[i].Count.ToString () + ")");
 						if (myText != null) {
-							myText.text = (((GS.a.dropChance / 100f) * itemFarmMultiplier * thisChance) / itemsDisps[i].Count).ToString (".xx") + "%";
+							myText.text = (((GS.a.dropChance) * thisChance * itemFarmMultiplier) / itemsDisps[i].Count).ToString ("F2") + "%";
 						}
 					}
 					runningChance += (itChances[i] / 100f) * itemFarmMultiplier;
 				}
 			}
 		}
+
+		//DebugPrintCardChances ();
+	}
+
+	public void DebugPrintCardChances () {
+		int[] lele = new int[allCards.Length];
+
+		for (int i = 0; i < 10000; i++) {
+
+			int type = GiveRandomCardType (false);
+			//if (type >= allCards.Length)
+			//print (type);
+
+			//type = utilityCount + Random.Range (0, normalCardsCount);
+			if (type < lele.Length && type >= 0)
+				lele[type]++;
+			else
+				print (type);
+		}
+
+		print ("Random chances -*-*-*-*-*-*-*-*-*-*-");
+		for (int i = 0; i < lele.Length; i++) {
+			string keke = "";
+			for (int k = 0; k < lele[i] / 10; k++) {
+				keke += "|";
+			}
+			print (i.ToString () + keke);
+		}
+		print ("Random chances -*-*-*-*-*-*-*-*-*-*-");
 	}
 }

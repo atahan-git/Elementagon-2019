@@ -41,7 +41,18 @@ public class ItemGainedScreen : MonoBehaviour {
 
 		if (itemGainedCall != null)
 			itemGainedCall.Invoke ();
+
+		if (LocalPlayerController.s != null) {
+			LocalPlayerController.s.canSelect = false;
+			playerFlag = true;
+		}
+		/*if (GameObjectiveFinishChecker.s != null && GS.a.myGameType == GameSettings.GameType.Singleplayer) {
+			GameObjectiveFinishChecker.s.isGamePlaying = false;
+			gameFlag = true;
+		}*/
 	}
+	bool playerFlag = false;
+	//bool gameFlag = false;
 
 
 	public myDelegate itemGainedScreenClosedCall;
@@ -51,5 +62,14 @@ public class ItemGainedScreen : MonoBehaviour {
 
 		if (itemGainedScreenClosedCall != null)
 			itemGainedScreenClosedCall.Invoke ();
+
+		if (LocalPlayerController.s != null && playerFlag) {
+			LocalPlayerController.s.canSelect = true;
+			playerFlag = false;
+		}
+		/*if (GameObjectiveFinishChecker.s != null && gameFlag) {
+			GameObjectiveFinishChecker.s.isGamePlaying = true;
+			gameFlag = false;
+		}*/
 	}
 }

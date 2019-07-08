@@ -54,9 +54,8 @@ public class GameStarter : MonoBehaviour {
 			myBg.SetSprite (GS.a.bgSprite);
 
 		CardTypeRandomizer.s = GetComponent<CardTypeRandomizer> ();
-		CardTypeRandomizer.s.Initialize ();
 
-		Invoke ("LateBegin", 0.1f);
+		Invoke ("LateBegin", 0.2f);
 
 		switch (GS.a.myGameType) {
 		case GameSettings.GameType.OneVOne:
@@ -88,10 +87,7 @@ public class GameStarter : MonoBehaviour {
 	}
 
 	void LateBegin () {
-		/*for (int i = 0; i < GS.a.startingHand.Length; i++) {
-			if(GS.a.startingHand[i] != 0)
-				ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, i, GS.a.startingHand[i], false);
-		}*/
+		CardTypeRandomizer.s.Initialize ();
 	}
 
 

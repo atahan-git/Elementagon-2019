@@ -57,6 +57,7 @@ public class DataLogger : MonoBehaviour {
 
 	float counter = 0f;
 
+	bool isCardDefRotChanged = false;
 	private void Update () {
 
 
@@ -89,50 +90,87 @@ public class DataLogger : MonoBehaviour {
 
 
 		//				CHEATS
-
+		string cheatEnabledMessage = "##CHEAT ACTIVATED: ";
 		if (isDebugMode) {
 			if (Input.touchCount > 3 || Input.GetKeyDown (KeyCode.H)) {
-				for (int i = 8; i <= 14; i++) {
+				/*for (int i = 8; i <= 14; i++) {
 					if (ScoreBoardManager.s != null)
 						ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, i, 1, false);
-				}
+				}*/
 
 				for (int i = 0; i < SaveMaster.s.mySave.levelsCompleted.Length; i++) {
 					SaveMaster.s.mySave.levelsCompleted[i] = true;
 				}
+
+				LogMessage (cheatEnabledMessage + "all leves completed");
 			}
 
 			if (Input.touchCount > 4 || Input.GetKeyDown (KeyCode.F)) {
 				if (ScoreBoardManager.s != null)
 					ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, 0, 30, false);
 
+				LogMessage (cheatEnabledMessage + "Score added");
+			}
+
+			if (Input.GetKeyDown (KeyCode.I)) {
+				CardTypeRandomizer.s.DebugPrintCardChances ();
+			}
+
+			if (Input.GetKeyDown (KeyCode.Y)) {
+				CardHandler.s.RandomizeAllCards ();
+				LogMessage (cheatEnabledMessage + "Cards randomized");
+			}
+
+			if (Input.GetKeyDown (KeyCode.U)) {
+				isCardDefRotChanged = !isCardDefRotChanged;
+				if (isCardDefRotChanged) 
+					CardAnimator.closeRotation = Quaternion.Euler (0, 0, 0);
+				 else 
+					CardAnimator.closeRotation = Quaternion.Euler (0, 180, 0);
+
+				foreach (IndividualCard card in CardHandler.s.allCards) {
+					card.transform.rotation = CardAnimator.closeRotation;
+				}
+				LogMessage (cheatEnabledMessage + "Card Rot Set");
 			}
 
 			if (Input.GetKeyDown (KeyCode.S)) {
 				if (SaveMaster.s != null)
 					SaveMaster.s.Save ();
+
+				LogMessage (cheatEnabledMessage + "saved");
 			}
 
 			if (Input.GetKeyDown (KeyCode.R)) {
 				SaveMaster.ResetProgress ();
+
+				LogMessage (cheatEnabledMessage + "progress reset");
 			}
 
 			if (Input.GetKeyDown (KeyCode.O)) {
 				SaveMaster.HardReset ();
+
+				LogMessage (cheatEnabledMessage + "hard reset");
 			}
 
 			if (Input.GetKeyDown (KeyCode.W)) {
 				if (GameObjectiveFinishChecker.s != null)
 					GameObjectiveFinishChecker.s.EndGame (DataHandler.s.myPlayerInteger);
+
+				LogMessage (cheatEnabledMessage + "game won");
 			}
 
 			if (Input.GetKeyDown (KeyCode.L)) {
 				if (GameObjectiveFinishChecker.s != null)
 					GameObjectiveFinishChecker.s.EndGame (4);
+
+				LogMessage (cheatEnabledMessage + "game lost");
 			}
 
 			if (Input.GetKeyDown (KeyCode.C)) {
 				InventoryMaster.s.ClearInventory ();
+
+				LogMessage (cheatEnabledMessage + "Inventory cleared");
 			}
 		}
 	}

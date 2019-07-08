@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4026346817260124}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &92327283
 SpriteRenderer:
@@ -108,7 +108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4026346817260124}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1409123078
 SpriteRenderer:
@@ -20548,7 +20548,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4026346817260124}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &212045854149288454
 SpriteRenderer:
@@ -42973,6 +42973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4343549388932306}
+  - {fileID: 5253260127054486644}
   - {fileID: 4654810701377042}
   - {fileID: 92327282}
   - {fileID: 1409123077}
@@ -43022,9 +43023,9 @@ MonoBehaviour:
   potionsParent: {fileID: 1398684149033738}
   gridItem: {fileID: 1285276988388716, guid: 146aa7608aec67e4e90b2e718f15f91a, type: 3}
   powerButton: {fileID: 114933060553890638}
-  isActivePower: 1
+  isEquippedPower: 0
   equipmentButton: {fileID: 114040117394123578}
-  isActiveEquipment: 0
+  isEquippedEquipment: 0
   noEquipmentSprite: {fileID: 21300000, guid: 1a8b2ece217a0b742a5e69a52272ee12, type: 3}
   isHijacked: 0
   curEquipmentChargeReq: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -43113,7 +43114,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 114761440184921842}
-  poitonPUps: []
+  potionPUps:
+  - {fileID: 2870648914373222353}
+  - {fileID: 5632138509267520496}
   genericColors:
   - {r: 0.21226418, g: 0.68803585, b: 1, a: 1}
   - {r: 0.990566, g: 0.521822, b: 0, a: 1}
@@ -43285,14 +43288,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allCards: []
   itemBaseCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
-  utilityCount: 0
-  normalCardsCount: 0
-  customSpawnChanceCardsCount: 0
-  itemCount: 0
   farmBoard: {fileID: 1138218073539537044}
   sectionParent: {fileID: 987050271758009707, guid: b45f3cdca90a5734ba45062d5c42c9e7,
     type: 3}
   eachItem: {fileID: 738341235963474125, guid: ac4edb6b400c5c743a4b3cf19d81a6fc, type: 3}
+  itemFarmMultiplier: 1
 --- !u!1 &1469196321739336
 GameObject:
   m_ObjectHideFlags: 0
@@ -56998,10 +56998,10 @@ RectTransform:
   m_Father: {fileID: 224603567236146490}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 42.625, y: 0}
-  m_SizeDelta: {x: 85.25, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &114074690686306560
 MonoBehaviour:
@@ -63817,7 +63817,7 @@ GameObject:
   - component: {fileID: 114983249813149796}
   - component: {fileID: 114761440184921842}
   m_Layer: 0
-  m_Name: Power Ups
+  m_Name: Power Ups Equipments
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63855,7 +63855,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -63878,7 +63877,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -63902,7 +63900,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -63926,7 +63923,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 1447147470737292, guid: 2f73766eb0797e341b04848604b5d6f7,
@@ -63950,7 +63946,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 1495670603235672, guid: 1cdc5051fdcae4442adfd0ddaa9c18d6,
@@ -63975,7 +63970,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 1148743285775826, guid: 5456bb4f44a632d43ad01b1d63c9fd44,
@@ -64000,7 +63994,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -64024,7 +64017,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -64049,7 +64041,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -64074,7 +64065,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -64097,7 +64087,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 0}
@@ -64120,7 +64109,6 @@ MonoBehaviour:
   isActive: 0
   power: -1
   amount: -1
-  elementalType: -1
   indicatorPrefab: {fileID: 0}
   indicatorScoreboardPrefab: {fileID: 0}
   activatePrefab: {fileID: 1136660905892758, guid: 3d6f2168be47ad7408bc7c0f23f5fd00,
@@ -64324,6 +64312,82 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!1 &1901725101599246340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5253260127054486644}
+  - component: {fileID: 2870648914373222353}
+  - component: {fileID: 5632138509267520496}
+  m_Layer: 0
+  m_Name: Power Ups Potions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5253260127054486644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901725101599246340}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4026346817260124}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2870648914373222353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901725101599246340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a794d663ebd299249b49a2816ac0892b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  myType: 0
+  pUpType: 1
+  isActive: 0
+  power: -1
+  amount: -1
+  indicatorPrefab: {fileID: 0}
+  indicatorScoreboardPrefab: {fileID: 0}
+  activatePrefab: {fileID: 0}
+  selectPrefab: {fileID: 0}
+--- !u!114 &5632138509267520496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901725101599246340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62598d6e2edee2b42a90df94accc4ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  myType: 0
+  pUpType: 1
+  isActive: 0
+  power: -1
+  amount: -1
+  indicatorPrefab: {fileID: 0}
+  indicatorScoreboardPrefab: {fileID: 0}
+  activatePrefab: {fileID: 0}
+  selectPrefab: {fileID: 0}
 --- !u!1001 &5793864626366407948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64455,6 +64519,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258377026261956752, guid: 7dac2e729f62fbf40a71e8572ed0e934,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dac2e729f62fbf40a71e8572ed0e934, type: 3}

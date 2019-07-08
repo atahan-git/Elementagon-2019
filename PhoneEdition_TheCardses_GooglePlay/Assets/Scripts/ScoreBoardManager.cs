@@ -168,6 +168,8 @@ public class ScoreBoardManager : MonoBehaviour {
 	public AddScoreDelegate AddScoreHook;
 
 	public void AddScore (int playerInt, int scoreElementalType, int toAdd, bool isDelayed, bool careGameTypes) {
+		//DataLogger.LogMessage ("Score Added to " + playerInt.ToString() + " with type: " + scoreElementalType.ToString() + " amount: " + toAdd.ToString());
+
 		if (AddScoreHook != null)
 			AddScoreHook.Invoke (playerInt, scoreElementalType, toAdd, isDelayed, careGameTypes);
 
@@ -208,11 +210,19 @@ public class ScoreBoardManager : MonoBehaviour {
 		DataHandler.s.SendScore (player, 0, allScores[playerInt, 0], isDelayed);
 
 		GameObjectiveFinishChecker.s.CheckReach ();
+		try {
+			if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm)
+				CardTypeRandomizer.s.UpdateFarmBoard ();
+		} catch {
+			DataLogger.LogError ("Cant update farm board from scoreboard manager");
+		}
 	}
 
 	void AddToScoreArray (int id, int scoreElementalType, int toAdd, bool isDelayed) {
-		allScores[id, scoreElementalType] += toAdd;
-		allScores[id, scoreElementalType] = (int)Mathf.Clamp (allScores[id, scoreElementalType], 0, Mathf.Infinity);
+		if (scoreElementalType > 0 && scoreElementalType < allScores.GetLength(1)) {
+			allScores[id, scoreElementalType] += toAdd;
+			allScores[id, scoreElementalType] = (int)Mathf.Clamp (allScores[id, scoreElementalType], 0, Mathf.Infinity);
+		}
 
 		if (scoreElementalType != 0 && scoreElementalType <= 7) {
 			allScores[id, 0] += toAdd;

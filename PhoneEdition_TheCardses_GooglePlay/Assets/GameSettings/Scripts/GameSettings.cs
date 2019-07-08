@@ -125,6 +125,12 @@ public class GameSettings : ScriptableObject {
 
 	public GameSettings Copy () {
 		GameSettings myCopy = Instantiate (this);
+		myCopy.gridSettings = Instantiate (gridSettings);
+		myCopy.cardSet = Instantiate (cardSet);
+		myCopy.gfxs = Instantiate (gfxs);
+		myCopy.playerSelectionSettings = Instantiate (playerSelectionSettings);
+		myCopy.powerUpSettings = Instantiate (powerUpSettings);
+
 		return myCopy;
 	}
 }

@@ -61,7 +61,9 @@ public class ComboDealer : MonoBehaviour {
 
 					GameObject myObj = Instantiate (toIns);
 					BetweenCardsEffect.AlignBetweenCards (myObj, card1, card2, BetweenCardsEffect.AlignMode.both);
-					float scale = 0.5f + ((isSame ? Mathf.CeilToInt (comboCount * 1.5f) : comboCount) * 0.2f);
+					//increase a lot until 8 then keep increasing but a bit more slowly so that we wont occupy the whole screen.
+					float scale = comboCount < 8 ? (isSame ? 1f : 0.5f + ((comboCount) * 0.15f)) :
+						(isSame ? 2.2f : 1.7f + ((comboCount - 8) * 0.05f));
 					myObj.transform.localScale = new Vector3 (scale, scale, scale);
 
 					try {

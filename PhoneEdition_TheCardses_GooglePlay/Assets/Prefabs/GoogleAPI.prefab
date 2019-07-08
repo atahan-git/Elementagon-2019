@@ -803,7 +803,7 @@ MonoBehaviour:
   activeGameMode: 
   defaultMode: {fileID: 11400000, guid: 169669b5fcc24014e96aeec3d98f4859, type: 2}
   isDebug: 0
-  debugMode: {fileID: 11400000, guid: 1747405e4236e084ea633991f9a53074, type: 2}
+  debugMode: {fileID: 11400000, guid: a418da6133eef684ea803099cd479403, type: 2}
   allModes:
   - {fileID: 11400000, guid: 169669b5fcc24014e96aeec3d98f4859, type: 2}
   - {fileID: 11400000, guid: 4c7b9e12d7e22664fa611808d3d16229, type: 2}
@@ -2055,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -51.564575, y: 10.656891}
+  m_AnchoredPosition: {x: -51.564575, y: 10.65686}
   m_SizeDelta: {x: 57.9, y: 11.946}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8708506635450621842

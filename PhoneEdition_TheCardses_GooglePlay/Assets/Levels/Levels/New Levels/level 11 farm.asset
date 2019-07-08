@@ -24,7 +24,7 @@ MonoBehaviour:
   myGameType: 0
   objectiveText: 
   timer: 0
-  turns: 120
+  turns: 200
   scoreReach: -1
   killAllNPC: 0
   canCombo: 1

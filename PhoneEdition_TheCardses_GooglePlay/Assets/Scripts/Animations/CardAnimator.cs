@@ -20,8 +20,8 @@ public class CardAnimator : MonoBehaviour {
 	public bool _isRevealed;
 
 
-	Quaternion openRotation = Quaternion.Euler (0, 0, 0);
-	Quaternion closeRotation = Quaternion.Euler (0, 180, 0);
+	public static Quaternion openRotation = Quaternion.Euler (0, 0, 0);
+	public static Quaternion closeRotation = Quaternion.Euler (0, 180, 0);
 
 	float openTime = 10f/60f;
 

@@ -1,5 +1,9 @@
-finish rest of the pups
-add a way to unlock all pups
+fix items
+fix crafting
+fix element arena level
+add the tower level
+
+
 add a console for cheats?
 
 start doing the story

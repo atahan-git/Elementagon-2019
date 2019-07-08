@@ -47,10 +47,10 @@ public class ItemGridDisplay : MonoBehaviour {
 
 			toolTip.transform.position = Input.mousePosition + offset;
 		} else {
-			if (isShowingTooltip) {
+			//if (isShowingTooltip) {
 				isShowingTooltip = false;
 				toolTip.SetActive (false);
-			}
+			//}
 		}
     }
 
@@ -76,6 +76,7 @@ public class ItemGridDisplay : MonoBehaviour {
 			ItemDetailsScreen.s.Show (myItem);
 		} else {
 			CharacterStuffController.s.ActivatePotion (myItem);
+			Destroy (gameObject);
 		}
 	}
 }

@@ -21,7 +21,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 
 
 	[Tooltip ("This determines which type of score \nwill be added when matching\n//--------CARD TYPES---------\n//-1 = don't change type\n// 0 = empty / already gotten\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	public int elementalType = -1;
+	protected int elementalType = -1;
 
 	[SerializeField]
 	[Tooltip ("Spawns when power up is enabled and covers the screen")]
@@ -86,6 +86,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 		if (myType == PowerUpTypes.active) {
 			PowerUpManager.s.canActivatePowerUp = true;
 		}
+		if(!CharacterStuffController.s.isPotionScreenOpen)
 		LocalPlayerController.s.canSelect = true;
 
 		PowerUpManager.s.PowerUpDisabledCallback ();

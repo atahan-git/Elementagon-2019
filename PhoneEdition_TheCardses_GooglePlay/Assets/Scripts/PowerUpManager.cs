@@ -12,7 +12,7 @@ public class PowerUpManager : MonoBehaviour {
 	public enum PUpTypes { equipment, potion};
 
 	public PowerUpBase[] equipmentPUps;
-	public PowerUpBase[] poitonPUps;
+	public PowerUpBase[] potionPUps;
 
 	PowerUpBase activePUp;
 
@@ -34,17 +34,30 @@ public class PowerUpManager : MonoBehaviour {
 
 
 	public void EnablePowerUp (PUpTypes type, int id, int elementalType, int power, float amount) {
-		if (LocalPlayerController.s.canSelect == false)
-			return;
+		DataLogger.LogMessage ("Activating pup: type:^"  + type.ToString() + " - id: " + id.ToString() + " - power: " + power.ToString() + " - amount: " + amount.ToString());
 		if (canActivatePowerUp == false)
 			return;
 
 		if (type == PUpTypes.equipment) {
-			equipmentPUps[id].Enable (elementalType, power, amount);
-			activePUp = equipmentPUps[id];
+			if (id < equipmentPUps.Length) {
+				if (potionPUps[id] != null) {
+					equipmentPUps[id].Enable (elementalType, power, amount);
+					activePUp = equipmentPUps[id];
+				} else
+					DataLogger.LogError ("Equipment pup with id " + id.ToString () + " is null!");
+			} else
+				DataLogger.LogError ("Equipment pup with id " + id.ToString () + " not enough Equipment pups! length:" + equipmentPUps.Length.ToString ());
+		} else if (type == PUpTypes.potion) {
+			if (id < potionPUps.Length) {
+				if (potionPUps[id] != null) {
+					potionPUps[id].Enable (elementalType, power, amount);
+					activePUp = potionPUps[id];
+				} else
+					DataLogger.LogError ("Potion pup with id " + id.ToString () + " is null!");
+			} else
+				DataLogger.LogError ("Potion pup with id " + id.ToString () + " not enough potion pups! length:" + potionPUps.Length.ToString());
 		} else {
-			poitonPUps[id].Enable (elementalType, power, amount);
-			activePUp = poitonPUps[id];
+			DataLogger.LogError ("Other pup types arent implemented/does not exist: " + type.ToString ());
 		}
 	}
 
@@ -105,7 +118,7 @@ public class PowerUpManager : MonoBehaviour {
 		if (type == PUpTypes.equipment) {
 			equipmentPUps[id].ReceiveAction (player, card,power,amount, action);
 		} else {
-			poitonPUps[id].ReceiveAction (player, card, power, amount, action);
+			potionPUps[id].ReceiveAction (player, card, power, amount, action);
 		}
 	}
 

@@ -46,7 +46,7 @@ public class CardHandler : MonoBehaviour {
 		//DataLogger.LogMessage("card grid done");
 		if (DataHandler.s.myPlayerInteger == 0 && GS.a.autoSetUpBoard) {
 			//DataLogger.LogMessage("initializing starting cards");
-			Invoke ("InitializeFirstStartingCards", 0.5f);
+			Invoke ("RandomizeAllCards", 0.5f);
 			//DataLogger.LogMessage("Card intialized succesfully");
 		} else {
 			Invoke ("RequestCardTypes",1f);
@@ -113,7 +113,7 @@ public class CardHandler : MonoBehaviour {
 		}
 	}
 
-	public void InitializeFirstStartingCards(){
+	public void RandomizeAllCards(){
 		foreach (IndividualCard card in allCards) {
 			card.RandomizeCardType ();
 		}

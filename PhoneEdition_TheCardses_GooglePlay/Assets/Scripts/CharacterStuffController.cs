@@ -12,15 +12,16 @@ public class CharacterStuffController : MonoBehaviour {
 	public GameObject gridItem;
 
 	public RadialChargeImage powerButton;
-	public bool isActivePower = true;
+	public bool isEquippedPower = false;
 	public RadialChargeImage equipmentButton;
-	public bool isActiveEquipment;
+	public bool isEquippedEquipment = false;
 
 	public Sprite noEquipmentSprite;
 
 	Equipment myEquipment;
 
 	public bool isHijacked = false;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -44,10 +45,7 @@ public class CharacterStuffController : MonoBehaviour {
 			return;
 
 		try {
-			foreach (InventoryMaster.InventoryPotion myItem in GS.a.overridePotions ? GS.a.potions.ConvertToInventory() : InventoryMaster.s.myPotions.ToArray()) {
-				if (myItem != null)
-					Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (myItem);
-			}
+			DrawPotionScreen ();
 
 			int elementLevel = GS.a.overridePower ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
 			int selectedElement = GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
@@ -55,25 +53,25 @@ public class CharacterStuffController : MonoBehaviour {
 				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = elementLevel;
 				maxPowerCharge = elementLevel;
 				powerButton.SetUp (GS.a.gfxs.cardSprites[selectedElement + 1 + 7], maxPowerCharge, "Power", selectedElement + 1);
-				isActivePower = true;
+				isEquippedPower = true;
 			} else {
 				powerButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
-				isActivePower = false;
+				isEquippedPower = false;
 			}
 			InventoryMaster.InventoryEquipment myEq = (GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
 			if (myEq != null) {
 				myEquipment = (Equipment)myEq.item;
 				maxEquipmentCharge = AddUpIntArray (myEquipment.chargeReq);
 				equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.elementalType);
-				isActiveEquipment = true;
+				isEquippedEquipment = true;
 
 				if (PowerUpManager.s.equipmentPUps[(int)myEquipment.myType] is IPassive) {
 					((IPassive)PowerUpManager.s.equipmentPUps[(int)myEquipment.myType]).Enable (myEquipment.elementalType, myEquipment.power);
-					isActiveEquipment = false;
+					isEquippedEquipment = false;
 				}
 
 			} else {
-				isActiveEquipment = false;
+				isEquippedEquipment = false;
 				equipmentButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
 			}
 
@@ -81,6 +79,17 @@ public class CharacterStuffController : MonoBehaviour {
 		} catch (System.Exception e) {
 			//DataLogger.LogMessage ("Data processing failed " + myCommand.ToString (), true);
 			DataLogger.LogError (this.name, e);
+		}
+	}
+
+	public void DrawPotionScreen () {
+		int childCount = potionsParent.transform.childCount;
+		for (int i = childCount-1; i >= 0; i--) {
+			Destroy (potionsParent.transform.GetChild(i).gameObject);
+		}
+		foreach (InventoryMaster.InventoryPotion myItem in GS.a.overridePotions ? GS.a.potions.ConvertToInventory () : InventoryMaster.s.myPotions.ToArray ()) {
+			if (myItem != null)
+				Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (myItem);
 		}
 	}
 
@@ -93,7 +102,7 @@ public class CharacterStuffController : MonoBehaviour {
 	}
 
 	public void ScoreAdded (int scoreType) {
-		print ("Score added: " + scoreType.ToString ());
+		//print ("Score added: " + scoreType.ToString ());
 		if (isHijacked)
 			return;
 
@@ -123,18 +132,19 @@ public class CharacterStuffController : MonoBehaviour {
 			return;
 		}
 
-		if (!equipmentButton.isActive && isActiveEquipment) {
+		if (!equipmentButton.isActive && isEquippedEquipment) {
 			bool canActivate = AddUpIntArray (curEquipmentChargeReq) <= 0;
 			equipmentButton.SetState (maxEquipmentCharge, maxEquipmentCharge - AddUpIntArray (curEquipmentChargeReq), canActivate, false);
 			equipmentButton.myReqs.SetUp (curEquipmentChargeReq);
 		}
-		if (!powerButton.isActive & isActivePower) {
+		if (!powerButton.isActive & isEquippedPower) {
 			bool canActivate = AddUpIntArray (curPowerChargeReq) <= 0;
 			powerButton.SetState (maxPowerCharge, maxPowerCharge - AddUpIntArray (curPowerChargeReq), canActivate, false);
 			powerButton.myReqs.SetUp (curPowerChargeReq);
 		}
 	}
 
+	public bool lastActivatedButton = false;
 	public bool isLastActivePower = false;
 	public void EnableEquipment () {
 		if (isHijacked) {
@@ -144,6 +154,7 @@ public class CharacterStuffController : MonoBehaviour {
 
 		if (equipmentButton.canActivate) {
 			isLastActivePower = false;
+			lastActivatedButton = true;
 			Equipment myEq = (Equipment)(GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment).item;
 			if (!DataLogger.isDebugMode)
 				(myEq).chargeReq.CopyTo (curEquipmentChargeReq, 0);
@@ -155,13 +166,7 @@ public class CharacterStuffController : MonoBehaviour {
 		}
 	}
 
-	// power to type mapping:
-	/* 0 -> 14
-	 * 1 -> 4
-	 * 
-	 * 
-	 * 
-	 */
+	
 	public void EnablePower () {
 		if (isHijacked) {
 			DataLogger.LogMessage ("Enable Power got hijacked");
@@ -170,6 +175,7 @@ public class CharacterStuffController : MonoBehaviour {
 
 		if (powerButton.canActivate) {
 			isLastActivePower = true;
+			lastActivatedButton = true;
 			if (!DataLogger.isDebugMode)
 				PowerChargeReq.CopyTo (curPowerChargeReq, 0);
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
@@ -179,12 +185,39 @@ public class CharacterStuffController : MonoBehaviour {
 		}
 	}
 
+	// 1 = Earth
+	// 2 = Fire
+	// 3 = Ice
+	// 4 = Light
+	// 5 = Nether
+	// 6 = Poison
+	// 7 = Shadow
+	// power to type mapping:
+	/* 1 -> 14 
+	 * 2 -> 4
+	 * 3 -> 15
+	 * 4 -> 9
+	 * 5 -> 16
+	 * 6 -> 7
+	 * 7 -> 17
+	 */
+	 //because the dragon powers may match to pups of different ids we must match them
 	public int ConverElementToType (int elementType) {
-		switch (elementType) {
-		case 0:
-			return 14;
+		switch (elementType+1) {
 		case 1:
+			return 14;
+		case 2:
 			return 4;
+		case 3:
+			return 15;
+		case 4:
+			return 9;
+		case 5:
+			return 16;
+		case 6:
+			return 7;
+		case 7:
+			return 17;
 		default:
 			return 4;
 		}
@@ -197,6 +230,8 @@ public class CharacterStuffController : MonoBehaviour {
 			buttonStateHijack.Invoke (_maxCharge, _curCharge, _canActivate, _isActive);
 		}
 		if (isHijacked)
+			return;
+		if (!lastActivatedButton)
 			return;
 
 		RadialChargeImage myButton = null;
@@ -220,8 +255,17 @@ public class CharacterStuffController : MonoBehaviour {
 	}
 
 	public void ActivatePotion (InventoryMaster.InventoryItem theItem) {
+		DataLogger.LogMessage ("Potion Activated! " + theItem.item.name);
 		if (isHijacked)
 			return;
+
+		Potion myPot = (Potion)theItem.item;
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.potion,
+				(int)myPot.myType,
+				myPot.elementalType,
+				-1,
+				myPot.amount);
+
 		if (!GS.a.overridePotions)
 			InventoryMaster.s.Remove (theItem);
 		else {
@@ -231,11 +275,12 @@ public class CharacterStuffController : MonoBehaviour {
 		}
 	}
 
-
+	public bool isPotionScreenOpen = false;
 	public void OpenPotionsScreen () {
 		if (isHijacked)
 			return;
 		potionsScreen.SetActive (true);
+		isPotionScreenOpen = true;
 		LocalPlayerController.s.canSelect = false;
 	}
 
@@ -243,6 +288,7 @@ public class CharacterStuffController : MonoBehaviour {
 		if (isHijacked)
 			return;
 		potionsScreen.SetActive (false);
+		isPotionScreenOpen = false;
 		LocalPlayerController.s.canSelect = true;
 	}
 }
