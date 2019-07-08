@@ -312,6 +312,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 			}
 		} else {
 			GameObjectiveFinishCheckerGfx.s.Endgame (finisherId);
+			InventoryMaster.s.ReduceEquipmentChargeLeft ();
 		}
 	}
 

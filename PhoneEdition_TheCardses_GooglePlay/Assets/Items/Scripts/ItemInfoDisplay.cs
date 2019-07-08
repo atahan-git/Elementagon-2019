@@ -14,6 +14,7 @@ public class ItemInfoDisplay : MonoBehaviour {
 	public Image icon;
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI descriptionText;
+	public TextMeshProUGUI amountLeftText;
 
 	[Space]
 	public Transform reqsParent;
@@ -27,7 +28,7 @@ public class ItemInfoDisplay : MonoBehaviour {
 		}
 	}
 
-	public void SetUp (Sprite _icon, string _name, string _description, int[] amounts,int[]reqs, Sprite[] reqsSprites) {
+	public void SetUp (Sprite _icon, string _name, string _description, int amountLeft, int[] amounts,int[]reqs, Sprite[] reqsSprites) {
 		if (icon != null)
 			icon.sprite = _icon;
 
@@ -36,6 +37,10 @@ public class ItemInfoDisplay : MonoBehaviour {
 
 		if (descriptionText != null)
 			descriptionText.text = _description;
+
+		if (amountLeftText != null) {
+			amountLeftText.text = amountLeft.ToString () + "x";
+		}
 
 		Clear ();
 		for (int i = 0; i < reqs.Length; i++) {
@@ -67,6 +72,10 @@ public class ItemInfoDisplay : MonoBehaviour {
 		Clear ();
 		if (descriptionText != null)
 			descriptionText.text = description;
+	}
+
+	public void SetUp (InventoryMaster.InventoryItem item) {
+		SetUp (item.item.sprite, item.item.name, item.item.description, item.chargesLeft, new int[0], new int[0], new Sprite[0]);
 	}
 
 	private void OnEnable () {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TESTING
   m_EditorClassIdentifier: 
   id: 0
-  PresetName: Default
+  PresetName: Testing
   gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   cardReOpenTime: 15
@@ -23,16 +23,16 @@ MonoBehaviour:
   myGameObjectiveType: 0
   myGameType: 0
   objectiveText: 
-  timer: -1
+  timer: 3
   turns: -1
   scoreReach: -1
   killAllNPC: 0
   canCombo: 1
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: Def
-  levelName: Default Level
-  levelDescription: Default level mostly for testing stuff
-  startingText: Default Level
+  levelShortName: Test
+  levelName: Testing level
+  levelDescription: Testing level for testing weird settings
+  startingText: Testing level
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}

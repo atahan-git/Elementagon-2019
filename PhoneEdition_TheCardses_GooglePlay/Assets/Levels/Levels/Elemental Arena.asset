@@ -22,8 +22,8 @@ MonoBehaviour:
     type: 2}
   myGameObjectiveType: 0
   myGameType: 0
-  objectiveText: 
-  timer: 120
+  objectiveText: Have fun trying dragon powers!
+  timer: -1
   turns: -1
   scoreReach: -1
   killAllNPC: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
   levelShortName: Arena
   levelName: Elemental Arena
   levelDescription: A level tailor made to simulate the old version of the game
-  startingText: Elemetal Arena!
+  startingText: Elemental Arena!
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
   bgSprite: {fileID: 0}

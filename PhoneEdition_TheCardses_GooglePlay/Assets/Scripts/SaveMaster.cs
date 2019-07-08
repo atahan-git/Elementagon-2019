@@ -94,7 +94,7 @@ public class SaveMaster : MonoBehaviour {
 	public static void HardReset () {
 		PlayerPrefs.DeleteAll ();
 		s.mySave = new SaveData ();
-		s.mySave.activeEquipment = new SaveData.SaveEquipment (-1, -1);
+		s.mySave.activeEquipment = "none";
 		s.Save ();
 		SceneMaster.s.LoadMenu ();
 
@@ -164,7 +164,7 @@ public class SaveData {
 	public SaveIngredient[] myIngredients = new SaveIngredient[0];
 	public SavePotion[] myPotions = new SavePotion[0];
 
-	public SaveEquipment activeEquipment = new SaveEquipment (-1, -1);
+	public string activeEquipment = "none";
 
 	public int selectedElement = -1;
 	public int elementLevel = -1;

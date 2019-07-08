@@ -16,6 +16,7 @@ public class ItemGridDisplay : MonoBehaviour {
 
     public Image myIcon;
 	public TextMeshProUGUI myName;
+	public TextMeshProUGUI myAmount;
 
     // Use this for initialization
     public void SetUp (InventoryMaster.InventoryItem _item) {
@@ -29,7 +30,8 @@ public class ItemGridDisplay : MonoBehaviour {
         toolTip.SetActive (false);
         myIcon.sprite = myItem.item.sprite;
 
-		myName.text = _item.item.name;
+		myName.text = myItem.item.name;
+		myAmount.text = myItem.chargesLeft.ToString() + "x";
 	}
 
 

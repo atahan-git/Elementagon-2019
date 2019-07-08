@@ -101,42 +101,37 @@ public class ElementalArenaCustomScript : MonoBehaviour {
 
 	public void ActivateEarth () {
 		DataLogger.LogMessage ("Activating earth");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType(0), 1, 4, 1);
 	}
 
 	public void ActivateFire () {
 		DataLogger.LogMessage ("Activating fire");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 4, 2, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (1), 2, 4, 1);
 	}
 	
 	public void ActivateIce () {
-		return;
 		DataLogger.LogMessage ("Activating ice");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (2), 1, 4, 1);
 	}
 
 	public void ActivateLight () {
-		return;
 		DataLogger.LogMessage ("Activating light");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (3), 1, 4, 1);
 	}
 
 	public void ActivateNether () {
-		return;
 		DataLogger.LogMessage ("Activating nether");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (4), 1, 4, 1);
 	}
 
 	public void ActivatePoison () {
-		return;
 		DataLogger.LogMessage ("Activating poison");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (5), 1, 4, 1);
 	}
 
 	public void ActivateShadow () {
-		return;
 		DataLogger.LogMessage ("Activating shadow");
-		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 14, 1, 4, 1);
+		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, CharacterStuffController.s.ConverElementToType (6), 1, 4, 1);
 	}
 
 	public void ButtonStateHiJack (float _maxCharge, float _curCharge, bool _canActivate, bool _isActive) {
@@ -156,27 +151,9 @@ public class ElementalArenaCustomScript : MonoBehaviour {
 	}
 
 	public void PowerUpDisabledCallback () {
-		StartCoroutine (ChargeUpButton (lastActiveButtonOne));
+		RadialChargeImage myButton = lastActiveButtonOne ? imgButtonOne : imgButtonTwo;
+		myButton.SetUp (CharacterStuffController.s.noEquipmentSprite, 1, "Not Equipped", 0);
 	}
-	
-
-	IEnumerator ChargeUpButton (bool isOne) {
-		float charge = 0;
-		RadialChargeImage myButton = isOne ? imgButtonOne : imgButtonTwo;
-
-		while (charge <= 1f) {
-			myButton.SetState (1, charge, false, false);
-			charge += Time.deltaTime / 5f;
-			yield return null;
-		}
-
-		myButton.SetState (1, 1, true, false);
-
-		yield return null;
-	}
-
-
-
 
 
 	void ScoreIsAdded (int playerInt, int scoreElementType, int toAdd, bool isDelayed, bool careGameTypes) {

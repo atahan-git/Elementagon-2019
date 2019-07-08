@@ -260,13 +260,13 @@ public class DialogDisplayer : MonoBehaviour {
 		}
 		switch (myClass) {
 		case 0:
-			InventoryMaster.s.Add (InventoryMaster.s.allEquipments[myItem]);
+			InventoryMaster.s.Add (InventoryMaster.s.allEquipments[myItem], 1);
 			break;
 		case 1:
-			InventoryMaster.s.Add (InventoryMaster.s.allIngredients[myItem]);
+			InventoryMaster.s.Add (InventoryMaster.s.allIngredients[myItem], 1);
 			break;
 		case 2:
-			InventoryMaster.s.Add (InventoryMaster.s.allPotions[myItem]);
+			InventoryMaster.s.Add (InventoryMaster.s.allPotions[myItem], 1);
 			break;
 		default:
 			DataLogger.LogError ("Unknown item class " + id[0]);

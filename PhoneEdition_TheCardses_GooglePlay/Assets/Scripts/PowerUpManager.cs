@@ -40,7 +40,7 @@ public class PowerUpManager : MonoBehaviour {
 
 		if (type == PUpTypes.equipment) {
 			if (id < equipmentPUps.Length) {
-				if (potionPUps[id] != null) {
+				if (equipmentPUps[id] != null) {
 					equipmentPUps[id].Enable (elementalType, power, amount);
 					activePUp = equipmentPUps[id];
 				} else

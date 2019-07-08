@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7709e3114ac5e3d478cde0ba51d646a7, type: 2}
   requiredAmounts: 05000000
   resultingItem: {fileID: 11400000, guid: 790afdd4a48691e498b533b2b41a6c60, type: 2}
-  resultingAmount: 1
+  resultingAmount: 2

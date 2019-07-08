@@ -92,7 +92,7 @@ public class ComboDealer : MonoBehaviour {
 		} else {
 			//we didnt get a card, but an item
 			DataLogger.LogMessage ("Got an item: " + card1.cBase.myItem.name);
-			InventoryMaster.s.Add (card1.cBase.myItem);
+			InventoryMaster.s.Add (card1.cBase.myItem, 1);
 		}
 	}
 

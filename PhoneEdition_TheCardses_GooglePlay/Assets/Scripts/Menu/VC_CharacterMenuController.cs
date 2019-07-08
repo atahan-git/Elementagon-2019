@@ -128,7 +128,7 @@ public class VC_CharacterMenuController : ViewController {
 
 			GameObject myCraftInfo = Instantiate (craftingInfoPrefab, craftingInfoParent);
 			myCraftInfo.GetComponent<ItemInfoDisplay> ().SetUp (
-				myRec.resultingItem.sprite, myRec.resultingItem.name, myRec.resultingItem.description,
+				myRec.resultingItem.sprite, myRec.resultingItem.name, myRec.resultingItem.description, myRec.resultingAmount,
 				curAmounts, myRec.requiredAmounts, reqSprites
 				);
 

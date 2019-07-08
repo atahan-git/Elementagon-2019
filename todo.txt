@@ -1,5 +1,3 @@
-fix items
-fix crafting
 fix element arena level
 add the tower level
 

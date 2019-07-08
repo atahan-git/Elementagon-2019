@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class ItemGainedScreen : MonoBehaviour {
+public class ItemDurabilityLossScreen : MonoBehaviour {
 
-	public static ItemGainedScreen s;
+	public static ItemDurabilityLossScreen s;
 
 	public GameObject myPanel;
 
 	public GameObject myDetailsPrefab;
 	GameObject myDetailsObject;
+	public TextMeshProUGUI beforeAmount;
+	public GameObject itemExplodedSprite;
 
 	int openScreensCount = 0;
 
@@ -25,8 +28,10 @@ public class ItemGainedScreen : MonoBehaviour {
 
 	public delegate void myDelegate ();
 	public myDelegate itemGainedCall;
-	public void ShowGainedItem (InventoryMaster.InventoryItem item) {
+	public void ShowDurabilityLoss (InventoryMaster.InventoryItem item) {
 
+		beforeAmount.text = (item.chargesLeft + 1).ToString () + "x";
+		itemExplodedSprite.SetActive (item.chargesLeft == 0);
 		myDetailsObject = Instantiate (myDetailsPrefab, myPanel.transform);
 		myDetailsObject.GetComponentInChildren<ItemInfoDisplay> ().SetUp (item);
 		myDetailsObject.SetActive (true);
