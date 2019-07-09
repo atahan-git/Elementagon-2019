@@ -73,19 +73,25 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 0a5d1a2f9da6cda40b1be7eb9f7fab23, type: 3}
     - {fileID: 2800000, guid: 993a183f0b87b484c9fe6f97092845a6, type: 3}
     - {fileID: 2800000, guid: b6e0845f4bfd4f64dbabc7742f02cec1, type: 3}
-    totalSpriteSurfaceArea: 4804712
+    - {fileID: 2800000, guid: 859e56d540f49284a98c13a2930e4090, type: 3}
+    - {fileID: 2800000, guid: de1438011d9834146943b07bee88f959, type: 3}
+    - {fileID: 2800000, guid: 7c3d08267d9f39945b7ac0ecaa9072fd, type: 3}
+    totalSpriteSurfaceArea: 5209712
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 38d9d600e4516de46b943f315a376d00, type: 3}
   - {fileID: 21300000, guid: 25404540f32c861409ee63db56034ddc, type: 3}
   - {fileID: 21300000, guid: d108c7b0d1233d54394ef50cbf960e0d, type: 3}
+  - {fileID: 21300000, guid: de1438011d9834146943b07bee88f959, type: 3}
   - {fileID: 21300000, guid: 35a30b7249488e545bb9fa2158ca1b65, type: 3}
   - {fileID: 21300000, guid: e514c3e21d5488e4c8678511d88298a7, type: 3}
   - {fileID: 21300000, guid: 00005b63dc66e9a48a192ad53a5e05b9, type: 3}
   - {fileID: 21300000, guid: 96aaba2460b852b4b82a08b2e6708edb, type: 3}
   - {fileID: 21300000, guid: 5c8c5154b89b7e443a7e7b9a08e54d8e, type: 3}
   - {fileID: 21300000, guid: 68091dc5a90a18745b5a6e7a63945326, type: 3}
+  - {fileID: 21300000, guid: 859e56d540f49284a98c13a2930e4090, type: 3}
+  - {fileID: 21300000, guid: 7c3d08267d9f39945b7ac0ecaa9072fd, type: 3}
   - {fileID: 21300000, guid: 996a9f46f801a8445b30afae8c508a64, type: 3}
   - {fileID: 21300000, guid: 3fa18c284a7d12a4d8531a4a21102c8a, type: 3}
   - {fileID: 21300000, guid: f0a8fd58c2053ca45ac0cf95bf3264d0, type: 3}
@@ -113,12 +119,15 @@ SpriteAtlas:
   - Ice
   - card back deneme5
   - Earth
+  - advanced card back
   - Earth maybe
   - shadow dragon ADVANCED
   - card back deneme1
   - card back deneme3
   - card back deneme6
   - poison dragon ADVANCED
+  - advanced card edge
+  - advanced card edge less saturated
   - Trap Card
   - black
   - light dragon ADVANCED
