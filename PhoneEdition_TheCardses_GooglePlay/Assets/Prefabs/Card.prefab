@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8eb58f2bead014fb0e6df3395d5d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myAnim: {fileID: 11400000, guid: 8f9b105ecb7f10d4bbceb394708c875e, type: 2}
+  myAnim: {fileID: 11400000, guid: 6d07c9e75e77c9a4e953e78ac4a20fd0, type: 2}
   startAtPlay: 1
   randomIndex: 1
   loop: 1

@@ -177,9 +177,12 @@ public class DataLogger : MonoBehaviour {
 
 
 	static Queue<string> messageQueue = new Queue<string>();
+	static List<string> messageBacklog = new List<string> ();
 
 	public static void LogMessage (string log){
+		log = Time.realtimeSinceStartup + " - " + log;
 		messageQueue.Enqueue (log);
+		messageBacklog.Add (log);
 //#if UNITY_EDITOR
 		Debug.Log (log);
 //#endif
@@ -192,9 +195,13 @@ public class DataLogger : MonoBehaviour {
 	}
 
 	static Queue<string> errorQueue = new Queue<string>();
+	static List<string> errorBacklog = new List<string> ();
+
 	public static void LogError (string log) {
+		log = Time.realtimeSinceStartup + " - " + log;
 		errorQueue.Enqueue (log);
-//#if UNITY_EDITOR
+		errorBacklog.Add (log);
+		//#if UNITY_EDITOR
 		Debug.LogError (log);
 //#endif
 	}
@@ -230,6 +237,39 @@ public class DataLogger : MonoBehaviour {
 			LogError (type.ToString () +" - "+ condition +" - " + stackTrace);
 #endif
 		}
+	}
+
+
+	public void Export () {
+		System.DateTime dt = System.DateTime.Now;
+		string datetime = dt.ToString ("yyyy-MM-dd\\THH-mm-ss\\Z");
+		string path = Application.persistentDataPath + "\\" + datetime + ".txt";
+		//System.IO.File.CreateText (path);
+		System.IO.StreamWriter writer = new System.IO.StreamWriter (path, true);
+
+		writer.WriteLine ("Version: " + version.text);
+		writer.WriteLine ("-*-*-*-*-*-*-*-*-*-*-*-");
+		writer.WriteLine ("");
+
+		writer.WriteLine ("Errors:");
+		writer.WriteLine ("-*-*-*-*-*-*-*-*-*-*-*-");
+		foreach (string log in errorBacklog) {
+			writer.WriteLine (log);
+		}
+
+		writer.WriteLine ("");
+		writer.WriteLine ("");
+		writer.WriteLine ("");
+		writer.WriteLine ("Messages:");
+		writer.WriteLine ("-*-*-*-*-*-*-*-*-*-*-*-");
+		foreach (string log in errorBacklog) {
+			writer.WriteLine (log);
+		}
+
+
+		writer.Close ();
+
+		DataLogger.LogMessage ("Succesfully exported: " + path);
 	}
 
 	public static void SetDebugSettings (bool state){

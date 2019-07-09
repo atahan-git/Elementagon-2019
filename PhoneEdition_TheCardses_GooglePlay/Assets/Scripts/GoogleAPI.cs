@@ -35,7 +35,7 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 			s = this;
 		}
 
-		//Application.targetFrameRate = 30;
+		Application.targetFrameRate = 60;
 
 		DontDestroyOnLoad (this.gameObject);
 	}

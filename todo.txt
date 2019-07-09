@@ -1,6 +1,8 @@
 fix element arena level
 add the tower level
 
+add export console
+optimize console
 
 add a console for cheats?
 
