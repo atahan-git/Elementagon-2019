@@ -16,6 +16,6 @@ MonoBehaviour:
   elementalType: 0
   name: Coal
   sprite: {fileID: 21300000, guid: c0fa0a382b8c11f439ab88b9d73f57b1, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 623586e5dcfa5564d876690f49c689b7, type: 3}
   description: 
   durability: 1

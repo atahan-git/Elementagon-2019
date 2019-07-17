@@ -273,6 +273,8 @@ public class CharacterStuffController : MonoBehaviour {
 			myPotions.Remove ((Potion)theItem.item);
 			GS.a.potions = myPotions.ToArray ();
 		}
+
+		DrawPotionScreen ();
 	}
 
 	public bool isPotionScreenOpen = false;

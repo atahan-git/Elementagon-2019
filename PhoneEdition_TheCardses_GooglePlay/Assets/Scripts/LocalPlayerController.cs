@@ -68,11 +68,10 @@ public class LocalPlayerController : MonoBehaviour {
 			return;
 		}
 		   
-		//if (GoogleAPI.gameMode == 0) {
-			if (Input.GetMouseButtonDown (0) && canSelect /*&& Input.mousePosition.x > Screen.width / 6.6f*/) {
+
+			if (Input.GetMouseButtonUp (0) && canSelect && !CardsScrollController.s.isScrolling/*&& Input.mousePosition.x > Screen.width / 6.6f*/) {
 				RaycastSelect ();
 			}
-		//} 
 	}
 
 	void RaycastSelect (){

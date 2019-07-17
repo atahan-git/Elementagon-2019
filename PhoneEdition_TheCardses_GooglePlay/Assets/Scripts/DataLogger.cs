@@ -18,6 +18,8 @@ public class DataLogger : MonoBehaviour {
 	public GameObject [] stuffToToggleVisibility;
 	public bool visibilityState = false;
 
+	public GameObject cheatsScreen;
+
 	// Use this for initialization
 	void Awake () {
 		if (s != null && s != this) {
@@ -45,6 +47,7 @@ public class DataLogger : MonoBehaviour {
 		}
 
 		SetLogstate (visibilityState);
+		CloseCheatScreen ();
 		UpdateDebugMode ();
 
 		/*CancelInvoke ("MessageLoggingTest");
@@ -90,87 +93,17 @@ public class DataLogger : MonoBehaviour {
 
 
 		//				CHEATS
-		string cheatEnabledMessage = "##CHEAT ACTIVATED: ";
 		if (isDebugMode) {
-			if (Input.touchCount > 3 || Input.GetKeyDown (KeyCode.H)) {
-				/*for (int i = 8; i <= 14; i++) {
-					if (ScoreBoardManager.s != null)
-						ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, i, 1, false);
-				}*/
-
-				for (int i = 0; i < SaveMaster.s.mySave.levelsCompleted.Length; i++) {
-					SaveMaster.s.mySave.levelsCompleted[i] = true;
-				}
-
-				LogMessage (cheatEnabledMessage + "all leves completed");
-			}
-
-			if (Input.touchCount > 4 || Input.GetKeyDown (KeyCode.F)) {
-				if (ScoreBoardManager.s != null)
-					ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, 0, 30, false);
-
-				LogMessage (cheatEnabledMessage + "Score added");
-			}
-
-			if (Input.GetKeyDown (KeyCode.I)) {
-				CardTypeRandomizer.s.DebugPrintCardChances ();
-			}
-
-			if (Input.GetKeyDown (KeyCode.Y)) {
-				CardHandler.s.RandomizeAllCards ();
-				LogMessage (cheatEnabledMessage + "Cards randomized");
+			if (Input.touchCount > 4 || Input.GetKeyDown (KeyCode.H)) {
+				OpenCheatScreen ();
 			}
 
 			if (Input.GetKeyDown (KeyCode.U)) {
-				isCardDefRotChanged = !isCardDefRotChanged;
-				if (isCardDefRotChanged) 
-					CardAnimator.closeRotation = Quaternion.Euler (0, 0, 0);
-				 else 
-					CardAnimator.closeRotation = Quaternion.Euler (0, 180, 0);
-
-				foreach (IndividualCard card in CardHandler.s.allCards) {
-					card.transform.rotation = CardAnimator.closeRotation;
-				}
-				LogMessage (cheatEnabledMessage + "Card Rot Set");
-			}
-
-			if (Input.GetKeyDown (KeyCode.S)) {
-				if (SaveMaster.s != null)
-					SaveMaster.s.Save ();
-
-				LogMessage (cheatEnabledMessage + "saved");
+				Cheat_RotateCards ();
 			}
 
 			if (Input.GetKeyDown (KeyCode.R)) {
-				SaveMaster.ResetProgress ();
-
-				LogMessage (cheatEnabledMessage + "progress reset");
-			}
-
-			if (Input.GetKeyDown (KeyCode.O)) {
-				SaveMaster.HardReset ();
-
-				LogMessage (cheatEnabledMessage + "hard reset");
-			}
-
-			if (Input.GetKeyDown (KeyCode.W)) {
-				if (GameObjectiveFinishChecker.s != null)
-					GameObjectiveFinishChecker.s.EndGame (DataHandler.s.myPlayerInteger);
-
-				LogMessage (cheatEnabledMessage + "game won");
-			}
-
-			if (Input.GetKeyDown (KeyCode.L)) {
-				if (GameObjectiveFinishChecker.s != null)
-					GameObjectiveFinishChecker.s.EndGame (4);
-
-				LogMessage (cheatEnabledMessage + "game lost");
-			}
-
-			if (Input.GetKeyDown (KeyCode.C)) {
-				InventoryMaster.s.ClearInventory ();
-
-				LogMessage (cheatEnabledMessage + "Inventory cleared");
+				Cheat_RandomizeCards ();
 			}
 		}
 	}
@@ -201,7 +134,7 @@ public class DataLogger : MonoBehaviour {
 		log = Time.realtimeSinceStartup + " - " + log;
 		errorQueue.Enqueue (log);
 		errorBacklog.Add (log);
-		//#if UNITY_EDITOR
+//#if UNITY_EDITOR
 		Debug.LogError (log);
 //#endif
 	}
@@ -312,5 +245,103 @@ public class DataLogger : MonoBehaviour {
 			if (obj != null)
 				obj.SetActive (state);
 		}
+	}
+
+
+
+
+	//------------------------------------------------ CHEATS
+	string cheatEnabledMessage = "##CHEAT ACTIVATED: ";
+
+	public void OpenCheatScreen () {
+		LogMessage (cheatEnabledMessage + "Cheat Screen Opened");
+		cheatsScreen.SetActive (true);
+	}
+
+	public void CloseCheatScreen () {
+		LogMessage (cheatEnabledMessage + "Cheat Screen Closed");
+		cheatsScreen.SetActive (false);
+	}
+
+	public void Cheat_AddScore () {
+		if (ScoreBoardManager.s != null)
+			ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, 0, 30, false);
+
+		LogMessage (cheatEnabledMessage + "Score added");
+	}
+
+	public void Cheat_CompleteAllLevels () {
+		for (int i = 0; i < SaveMaster.s.mySave.levelsCompleted.Length; i++) {
+			SaveMaster.s.mySave.levelsCompleted[i] = true;
+		}
+
+		LogMessage (cheatEnabledMessage + "all leves completed");
+	}
+
+	public void Cheat_PrintCardChances () {
+		CardTypeRandomizer.s.DebugPrintCardChances ();
+	}
+
+	public void Cheat_RandomizeCards () {
+		CardHandler.s.RandomizeAllCards ();
+		LogMessage (cheatEnabledMessage + "Cards randomized");
+	}
+
+	public void Cheat_RotateCards () {
+		isCardDefRotChanged = !isCardDefRotChanged;
+		if (isCardDefRotChanged)
+			CardAnimator.closeRotation = Quaternion.Euler (0, 0, 0);
+		else
+			CardAnimator.closeRotation = Quaternion.Euler (0, 180, 0);
+
+		foreach (IndividualCard card in CardHandler.s.allCards) {
+			card.transform.rotation = CardAnimator.closeRotation;
+		}
+		LogMessage (cheatEnabledMessage + "Card Rot Set");
+	}
+
+	public void Cheat_Save () {
+		if (SaveMaster.s != null)
+			SaveMaster.s.Save ();
+
+		LogMessage (cheatEnabledMessage + "saved");
+	}
+
+	public void Cheat_ResetProgress () {
+		SaveMaster.ResetProgress ();
+
+		LogMessage (cheatEnabledMessage + "progress reset");
+	}
+
+	public void Cheat_HardReset () {
+		SaveMaster.HardReset ();
+
+		LogMessage (cheatEnabledMessage + "hard reset");
+	}
+
+	public void Cheat_WinLevel () {
+		if (GameObjectiveFinishChecker.s != null)
+			GameObjectiveFinishChecker.s.EndGame (DataHandler.s.myPlayerInteger);
+
+		LogMessage (cheatEnabledMessage + "game won");
+	}
+
+	public void Cheat_LoseLevel () {
+		if (GameObjectiveFinishChecker.s != null)
+			GameObjectiveFinishChecker.s.EndGame (4);
+
+		LogMessage (cheatEnabledMessage + "game lost");
+	}
+
+	public void Cheat_ClearInventory () {
+		InventoryMaster.s.ClearInventory ();
+
+		LogMessage (cheatEnabledMessage + "Inventory cleared");
+	}
+
+	public void Cheat_CheatInventory () {
+		InventoryMaster.s.CheatInventory ();
+
+		LogMessage (cheatEnabledMessage + "Cheat Inventory Set");
 	}
 }

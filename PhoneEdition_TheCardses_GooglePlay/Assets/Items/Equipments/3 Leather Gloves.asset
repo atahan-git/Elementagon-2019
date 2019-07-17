@@ -16,7 +16,7 @@ MonoBehaviour:
   elementalType: 0
   name: Deri Eldiven
   sprite: {fileID: 21300000, guid: aef1ddbf21c85a74195257baa1632624, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: bd013576d3c5cc44cb6f12f2004816fb, type: 3}
   description: "Kartlar\u0131 e\u015Fle\u015Ftirmeden \xF6nce 1 tane daha a\xE7."
   durability: 1
   myType: 10

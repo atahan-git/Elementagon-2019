@@ -100,6 +100,7 @@ public abstract class NPCBase : MonoBehaviour {
 
 	public virtual void Die (bool isForced) {
 		SendNPCAction (-1, -1, NPCManager.ActionType.Die, isForced ? 1 : 0);
+		//if its not forced and we are not killable > dont die but get stunned or sth
 		if (!isKillable && !isForced) {
 			if (unkillableEffect != null)
 				Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);

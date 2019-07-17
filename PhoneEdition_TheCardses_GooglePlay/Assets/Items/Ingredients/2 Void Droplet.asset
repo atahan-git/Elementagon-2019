@@ -16,6 +16,6 @@ MonoBehaviour:
   elementalType: 5
   name: Void Droplet
   sprite: {fileID: 21300000, guid: 4ef9d73adf439cc44a1c6c20522cfe79, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 87f7200535512914cb39d885f0386d3e, type: 3}
   description: A droplet from the void monster
   durability: 1

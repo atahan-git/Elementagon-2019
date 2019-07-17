@@ -35,13 +35,13 @@ public class GS : MonoBehaviour {
 		activeGameMode = defaultMode.PresetName;
 		a = defaultMode.Copy();
 
-
+#if UNITY_EDITOR
 		if (isDebug) {
 			activeGameMode = debugMode.PresetName;
 			a = debugMode.Copy ();
 			isDebug = false;
 		}
-
+#endif
 
 		GetComponent<SceneMaster> ()._OnLevelWasLoaded += LevelWasLoaded;
 	}
@@ -89,12 +89,14 @@ public class GS : MonoBehaviour {
 	}
 
 	void Update (){
+#if UNITY_EDITOR
 		if (isDebug) {
 			activeGameMode = debugMode.PresetName;
 			a = debugMode.Copy();
 			isDebug = false;
 			CardTypeRandomizer.s.Initialize ();
 		}
+#endif
 	}
 		
 }

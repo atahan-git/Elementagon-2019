@@ -78,7 +78,7 @@ public class ItemGridDisplay : MonoBehaviour {
 			ItemDetailsScreen.s.Show (myItem);
 		} else {
 			CharacterStuffController.s.ActivatePotion (myItem);
-			Destroy (gameObject);
+			//Destroy (gameObject);
 		}
 	}
 }

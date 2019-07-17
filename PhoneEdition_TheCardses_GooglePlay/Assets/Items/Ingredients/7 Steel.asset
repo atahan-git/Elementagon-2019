@@ -16,6 +16,6 @@ MonoBehaviour:
   elementalType: 0
   name: Steel
   sprite: {fileID: 21300000, guid: 66cbe19d9ab579942a508f7c1b2ad92a, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 0c6d5e185c240f74e8214b17881c119a, type: 3}
   description: 
   durability: 1

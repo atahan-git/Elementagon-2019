@@ -16,7 +16,7 @@ MonoBehaviour:
   elementalType: 0
   name: "B\xFCy\xFCk K\u0131l\u0131\xE7"
   sprite: {fileID: 21300000, guid: c793d8e4475333945bc6a2841298bafc, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 75524f512d0a29c4c82a8d7ad54fb8e5, type: 3}
   description: "1 kere 5 kart\u0131 e\u015Fle\u015Ftir."
   durability: 1
   myType: 5

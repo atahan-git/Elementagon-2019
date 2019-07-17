@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   PresetName: Default
-  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  gridSettings: {fileID: 11400000, guid: bf38195ed9d8b604e912042ee67cc913, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
@@ -49,11 +49,11 @@ MonoBehaviour:
   myNPC: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
-  overrideEquipment: 1
+  overrideEquipment: 0
   equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
   overridePotions: 0
   potions: []
-  overridePower: 1
+  overridePower: 0
   selectedElement: 1
   elementLevel: 4
   nextStage: {fileID: 0}

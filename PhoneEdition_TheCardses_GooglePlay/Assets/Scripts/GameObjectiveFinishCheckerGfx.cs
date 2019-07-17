@@ -30,21 +30,9 @@ public class GameObjectiveFinishCheckerGfx : MonoBehaviour {
 		SceneMaster.s.LoadMenu ();
 	}
 
-	public void Endgame (int id) {
+	public void Endgame (int id, bool isWon) {
 		string name = "";
 		bool setCorrectly = false;
-
-
-		bool isWon = false;
-
-		if (id == DataHandler.s.myPlayerInteger)
-			isWon = true;
-
-		if ((DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1) && id == 4)
-			isWon = true;
-
-		if ((DataHandler.s.myPlayerInteger == 2 || DataHandler.s.myPlayerInteger == 3) && id == 5)
-			isWon = true;
 
 		try {
 			name = GoogleAPI.s.participants[id].DisplayName;
@@ -76,6 +64,9 @@ public class GameObjectiveFinishCheckerGfx : MonoBehaviour {
 					name = "Allies";
 				else
 					name = "Enemies";
+				break;
+			default:
+				name = "Game Ended";
 				break;
 			}
 		}

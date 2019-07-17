@@ -16,7 +16,7 @@ MonoBehaviour:
   elementalType: 6
   name: "Zehir B\u0131\xE7aklar\u0131"
   sprite: {fileID: 21300000, guid: 2a9333838199db84ebb7cf3940496fdb, type: 3}
-  cardSprite: {fileID: 0}
+  cardSprite: {fileID: 21300000, guid: 450df8fe7baeff549a944ef3f97e073e, type: 3}
   description: 3 kart zehirle.
   durability: 1
   myType: 6

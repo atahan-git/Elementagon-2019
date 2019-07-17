@@ -50,6 +50,7 @@ public class PowerUpManager : MonoBehaviour {
 		} else if (type == PUpTypes.potion) {
 			if (id < potionPUps.Length) {
 				if (potionPUps[id] != null) {
+					CharacterStuffController.s.lastActivatedButton = false;
 					potionPUps[id].Enable (elementalType, power, amount);
 					activePUp = potionPUps[id];
 				} else

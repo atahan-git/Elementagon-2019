@@ -257,7 +257,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 		}
 	}
 
-	int finisherId = 0;
+	int finisherId = -1;
 	public void EndGame (int id){
 		if (isFinished)
 			return;
@@ -269,17 +269,8 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 		LocalPlayerController.isActive = false;
 
 		NPCManager.s.StopAllNPCs ();
-		
-		bool isWon = false;
 
-		if (id == DataHandler.s.myPlayerInteger)
-			isWon = true;
-
-		if((DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1) && id == 4)
-			isWon = true;
-
-		if ((DataHandler.s.myPlayerInteger == 2 || DataHandler.s.myPlayerInteger == 3) && id == 5)
-			isWon = true;
+		bool isWon = CheckisWon ();
 
 		try {
 			/*if (_NPCBehaviour.activeNPC != null)
@@ -308,17 +299,36 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 				DialogTree.s.LoadFromAsset (GS.a.levelOutroDialog);
 				DialogTree.s.StartDialog ();
 			} else {
-				RestOffTheEndingStuff ();
+				RestOffTheEndingStuff (isWon);
 			}
 		} else {
-			GameObjectiveFinishCheckerGfx.s.Endgame (finisherId);
+			GameObjectiveFinishCheckerGfx.s.Endgame (finisherId, isWon);
 			InventoryMaster.s.ReduceEquipmentChargeLeft ();
 		}
 	}
 
-	void RestOffTheEndingStuff () {
+	public static bool CheckisWon () {
+		bool isWon = false;
+		int id = s.finisherId;
+
+		if (id == DataHandler.s.myPlayerInteger)
+			isWon = true;
+
+		if ((DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1) && id == 4)
+			isWon = true;
+
+		if ((DataHandler.s.myPlayerInteger == 2 || DataHandler.s.myPlayerInteger == 3) && id == 5)
+			isWon = true;
+
+		if (id == -1 && GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm)
+			isWon = true;
+
+		return isWon;
+	}
+
+	void RestOffTheEndingStuff (bool isWon) {
 		if (GS.a.nextStage == null) {
-			GameObjectiveFinishCheckerGfx.s.Endgame (finisherId);
+			GameObjectiveFinishCheckerGfx.s.Endgame (finisherId, isWon);
 		} else {
 			GameObjectiveFinishCheckerGfx.s.GetToNextStage ();
 		}
@@ -327,7 +337,7 @@ public class GameObjectiveFinishChecker : MonoBehaviour {
 	public void OutroDialogEnded () {
 		if (isFinished) {
 			DialogDisplayer.s.SetDialogScreenState (false);
-			RestOffTheEndingStuff ();
+			RestOffTheEndingStuff (CheckisWon());
 		}
 	}
 

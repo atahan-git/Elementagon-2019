@@ -60,36 +60,24 @@ public class InventoryMaster : MonoBehaviour {
 			}
 		}
 
-		if(!isThere)
+		if (!isThere)
 			SaveMaster.toSave += Save;
 
 		if (SaveMaster.s.mySave.activeEquipment != "none")
-			activeEquipment = myEquipments.Find(x => x.item.name == SaveMaster.s.mySave.activeEquipment);
+			activeEquipment = myEquipments.Find (x => x.item.name == SaveMaster.s.mySave.activeEquipment);
 		else
 			activeEquipment = null;
-		
+
 		selectedElement = SaveMaster.s.mySave.selectedElement;
 		elementLevel = SaveMaster.s.mySave.elementLevel;
 
-		if (!cheatInventory) {
-			myEquipments = new List<InventoryEquipment>(SaveMaster.s.mySave.myEquipments.ConvertToInventory ());
-			myPotions = new List<InventoryPotion> (SaveMaster.s.mySave.myPotions.ConvertToInventory ());
-		} else {
-			print ("copying all items");
-			foreach (Equipment equipment in allEquipments) {
-				if (equipment != null)
-					myEquipments.Add (new InventoryEquipment (equipment, 5));
-			}
-			foreach (Ingredient ingredient in allIngredients) {
-				if (ingredient != null) {
-					myIngredients.Add (new InventoryIngredient (ingredient, 5));
-				}
-			}
-			foreach (Potion potion in allPotions) {
-				if (potion != null)
-					myPotions.Add (new InventoryPotion (potion, 5));
-			}
+		LoadInventory ();
+
+#if UNITY_EDITOR
+		if (cheatInventory) {
+			CheatInventory ();
 		}
+#endif
 
 		/*if (SceneMaster.s.curScene == 0) {
 			MenuSwitchController.s.GetComponent<CharacterMenuController> ().SetEquipped ();
@@ -97,16 +85,40 @@ public class InventoryMaster : MonoBehaviour {
 		}*/
 	}
 
+	public void CheatInventory () {
+		print ("Cheat Inventory Activated");
+		myEquipments = new List<InventoryEquipment> ();
+		myPotions = new List<InventoryPotion> ();
+
+		foreach (Equipment equipment in allEquipments) {
+			if (equipment != null)
+				myEquipments.Add (new InventoryEquipment (equipment, 5));
+		}
+		foreach (Ingredient ingredient in allIngredients) {
+			if (ingredient != null) {
+				myIngredients.Add (new InventoryIngredient (ingredient, 5));
+			}
+		}
+		foreach (Potion potion in allPotions) {
+			if (potion != null)
+				myPotions.Add (new InventoryPotion (potion, 5));
+		}
+	}
+
 
 	//this is only done at the end of the game
 	public void ReduceEquipmentChargeLeft () {
-		DataLogger.LogMessage ("Reducing equipment charge");
-		if (activeEquipment != null) {
-			DataLogger.LogMessage ("Equipment " + activeEquipment.item.name + " charge reduced from "
-				+ (activeEquipment.chargesLeft).ToString () + " to "
-				+ (activeEquipment.chargesLeft-1).ToString ());
-			ItemDurabilityLossScreen.s.ShowDurabilityLoss (activeEquipment);
-			Remove (activeEquipment);
+		if (!GS.a.overrideEquipment) {
+			DataLogger.LogMessage ("Reducing equipment charge");
+			if (activeEquipment != null) {
+				activeEquipment.chargesLeft--;
+				DataLogger.LogMessage ("Equipment " + activeEquipment.item.name + " charge reduced from "
+					+ (activeEquipment.chargesLeft + 1).ToString () + " to "
+					+ (activeEquipment.chargesLeft).ToString ());
+				ItemDurabilityLossScreen.s.ShowDurabilityLoss (activeEquipment);
+				activeEquipment.chargesLeft++;
+				Remove (activeEquipment);
+			}
 		}
 	}
 
@@ -171,10 +183,10 @@ public class InventoryMaster : MonoBehaviour {
 	}
 
 	public void Remove (ItemBase toRemove, int amount) {
-		InventoryItem myInvItem;
+		//InventoryItem myInvItem;
 		if (toRemove is Equipment) {
 			InventoryEquipment myEq = myEquipments.Find (x => x.item.name == toRemove.name);
-			myInvItem = new InventoryEquipment ((Equipment)toRemove, toRemove.durability);
+			//myInvItem = new InventoryEquipment ((Equipment)toRemove, toRemove.durability);
 
 			bool didRemove = false;
 			if (myEq != null) {
@@ -194,7 +206,7 @@ public class InventoryMaster : MonoBehaviour {
 			}
 		} else if (toRemove is Ingredient) {
 			InventoryIngredient myIng = myIngredients.Find (x => x.item.name == toRemove.name);
-			myInvItem = new InventoryIngredient ((Ingredient)toRemove, toRemove.durability);
+			//myInvItem = new InventoryIngredient ((Ingredient)toRemove, toRemove.durability);
 			if (myIng != null) {
 				myIng.chargesLeft -= amount;
 				if (myIng.chargesLeft <= 0)
@@ -204,7 +216,7 @@ public class InventoryMaster : MonoBehaviour {
 			}
 		} else {
 			InventoryPotion myPot = myPotions.Find (x => x.item.name == toRemove.name);
-			myInvItem = new InventoryPotion ((Potion)toRemove, toRemove.durability);
+			//myInvItem = new InventoryPotion ((Potion)toRemove, toRemove.durability);
 			if (myPot != null) {
 				myPot.chargesLeft -= amount;
 				if (myPot.chargesLeft <= 0)
@@ -275,6 +287,12 @@ public class InventoryMaster : MonoBehaviour {
 		}
 
 		Save ();
+	}
+
+	public void LoadInventory () {
+		myEquipments = new List<InventoryEquipment> (SaveMaster.s.mySave.myEquipments.ConvertToInventory ());
+		myPotions = new List<InventoryPotion> (SaveMaster.s.mySave.myPotions.ConvertToInventory ());
+		myIngredients = new List<InventoryIngredient> (SaveMaster.s.mySave.myIngredients.ConvertToInventory ());
 	}
 
 	public void Save () {

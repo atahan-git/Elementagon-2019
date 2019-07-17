@@ -21,7 +21,7 @@ public class AnimatedSpriteController : MonoBehaviour {
 
 	bool isSprite;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		myRend = GetComponent<SpriteRenderer> ();
 		myImg = GetComponent<Image> ();
 
