@@ -48,7 +48,7 @@ public class NPC_BasicSelection : NPCBase {
 					if (curTarget.cBase == null)
 						break;
 					if (myCards[i].cBase != null) {
-						if (curTarget.cBase.cardType == myCards[i].cBase.cardType) {
+						if (curTarget.cBase.dynamicCardID == myCards[i].cBase.dynamicCardID) {
 							curTarget = myCards[i];
 							targetSet = true;
 							break;

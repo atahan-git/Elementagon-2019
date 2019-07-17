@@ -42,8 +42,8 @@ public class Tutorial_CardMatching : MonoBehaviour {
 				mycard.isSelectable = false;
 		}
 
-		CardHandler.s.allCards[4, 1].cBase.cardType = 2;
-		CardHandler.s.allCards[5, 1].cBase.cardType = 2;
+		CardHandler.s.allCards[4, 1].cBase.dynamicCardID = 2;
+		CardHandler.s.allCards[5, 1].cBase.dynamicCardID = 2;
 
 		yield return new WaitUntil (() => ScoreBoardManager.s.allScores[0,0] > 0);
 

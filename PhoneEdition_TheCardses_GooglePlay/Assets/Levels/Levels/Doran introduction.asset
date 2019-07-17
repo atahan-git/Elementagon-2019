@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
-  m_Name: Introduction
+  m_Name: Doran introduction
   m_EditorClassIdentifier: 
-  id: 12
-  PresetName: Introduction
-  gridSettings: {fileID: 11400000, guid: cd89dad6f93137d47ace07199478e584, type: 2}
+  id: 13
+  PresetName: Doran
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
   cardSet: {fileID: 11400000, guid: 22a56b077b0808442a73d9e7033d7dbc, type: 2}
   cardReOpenTime: 15
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
@@ -25,20 +25,20 @@ MonoBehaviour:
   objectiveText: 
   timer: -1
   turns: -1
-  scoreReach: 10
+  scoreReach: 9001
   killAllNPC: 0
-  canCombo: 1
+  canCombo: 0
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: Intro
-  levelName: Introduction
-  levelDescription: You should never be able to read this!
-  startingText: You should never be able to read this!
+  levelShortName: Doran
+  levelName: "Doran'\u0131n yeri"
+  levelDescription: doradoradoradoradora
+  startingText: Hadi test et!
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}
-  bgSprite: {fileID: 21300000, guid: b335ff1a9f331014888870a6e7ddd0c4, type: 3}
-  levelIntroDialog: {fileID: 11400000, guid: 766520ad4fb72a342ae190a1230331b4, type: 2}
+  bgSprite: {fileID: 21300000, guid: 7ef3351fdcd91f34ea16f76312c1d4b9, type: 3}
+  levelIntroDialog: {fileID: 11400000, guid: 333ecf37098c39c4780eb599c6ec1851, type: 2}
   levelOutroDialog: {fileID: 0}
-  customObject: {fileID: 1883392723245400, guid: 319fc20b2b8eddd408300906ac359983,
+  customObject: {fileID: 1794750411792320, guid: 6e50dd32686bb8a4ea19624b2f479532,
     type: 3}
   autoSetUpBoard: 1
   dropChance: 1

@@ -21,6 +21,7 @@ public class CardHandler : MonoBehaviour {
 	}
 
 	public bool debugDraw = false;
+	public GridSettings debugSettings;
 
 	void Awake(){
 		debugDraw = false;
@@ -30,7 +31,7 @@ public class CardHandler : MonoBehaviour {
 			FindObjectOfType<GS> ().Awake ();
 
 		if (GS.a.autoSetUpBoard)
-			SetUpGrid ();
+			SetUpGrid (GS.a.gridSettings);
 		//print (DataHandler.s);
 		//print (DataHandler.s.myPlayerinteger);
 
@@ -63,7 +64,7 @@ public class CardHandler : MonoBehaviour {
 
 	void Update (){
 		if(debugDraw){
-			SetUpGrid ();
+			SetUpGrid (debugSettings);
 		}
 	}
 
@@ -71,7 +72,11 @@ public class CardHandler : MonoBehaviour {
 
 	//--------------------------------------------------------Initialization Functions
 
-	public void SetUpGrid (){
+	public void SetUpGrid (GridSettings setting){
+
+		if (setting == null) {
+			DataLogger.LogError ("Trying to set up card grid with null settings!");
+		}
 
 		//first clean old cards if they exist
 		DeleteCards ();
@@ -80,30 +85,30 @@ public class CardHandler : MonoBehaviour {
 		if (GS.a == null)
 			FindObjectOfType<GS> ().Awake ();
 		//give us a better centered position
-		Vector3 center = new Vector3 (transform.position.x - GS.a.gridSettings.gridScaleX * ((float)GS.a.gridSettings.gridSizeX / 2f + GS.a.gridSettings.centerOffsetX), transform.position.y - GS.a.gridSettings.gridScaleY * ((float)GS.a.gridSettings.gridSizeY / 2f + GS.a.gridSettings.centerOffsetY), transform.position.z);
+		Vector3 center = new Vector3 (transform.position.x - setting.gridScaleX * ((float)setting.gridSizeX / 2f + setting.centerOffsetX), transform.position.y - setting.gridScaleY * ((float)setting.gridSizeY / 2f + setting.centerOffsetY), transform.position.z);
 
 		//set up arrays according to the sizes that are given to us
-		grid = new Vector3[GS.a.gridSettings.gridSizeX, GS.a.gridSettings.gridSizeY];
-		allCards = new IndividualCard[GS.a.gridSettings.gridSizeX, GS.a.gridSettings.gridSizeY];
+		grid = new Vector3[setting.gridSizeX, setting.gridSizeY];
+		allCards = new IndividualCard[setting.gridSizeX, setting.gridSizeY];
 
 		//set up grid positions
-		for (int i = 0; i < GS.a.gridSettings.gridSizeX; i++) {
-			for (int m = 0; m < GS.a.gridSettings.gridSizeY; m++) {
+		for (int i = 0; i < setting.gridSizeX; i++) {
+			for (int m = 0; m < setting.gridSizeY; m++) {
 
 				grid [i, m] = new Vector3 ();
-				grid [i, m] = center + new Vector3 (i * GS.a.gridSettings.gridScaleX, m * GS.a.gridSettings.gridScaleY, 0);
+				grid [i, m] = center + new Vector3 (i * setting.gridScaleX, m * setting.gridScaleY, 0);
 
 			}
 		}
 
 		//instantiate cards at correct positions
-		for (int i = 0; i < GS.a.gridSettings.gridSizeX; i++) {
-			for (int m = 0; m < GS.a.gridSettings.gridSizeY; m++) {
+		for (int i = 0; i < setting.gridSizeX; i++) {
+			for (int m = 0; m < setting.gridSizeY; m++) {
 
 				IndividualCard myCard = Instantiate (GS.a.gfxs.card, grid [i, m], Quaternion.identity).GetComponent<IndividualCard>();
 				myCard.transform.parent = transform;
 				myCard.transform.position = grid [i, m];
-				myCard.transform.localScale = new Vector3 (GS.a.gridSettings.scaleMultiplier, GS.a.gridSettings.scaleMultiplier, GS.a.gridSettings.scaleMultiplier);
+				myCard.transform.localScale = new Vector3 (setting.scaleMultiplier, setting.scaleMultiplier, setting.scaleMultiplier);
 				allCards [i, m] = myCard;
 				myCard.x = i;
 				myCard.y = m;
@@ -121,7 +126,7 @@ public class CardHandler : MonoBehaviour {
 
 	public void SendCardTypesAgain (int targetPlayer) {
 		foreach (IndividualCard card in allCards) {
-			DataHandler.s.SendCardType (targetPlayer, card.x, card.y, card.cBase.cardType);
+			DataHandler.s.SendCardType (targetPlayer, card.x, card.y, card.cBase.dynamicCardID);
 		}
 	}
 

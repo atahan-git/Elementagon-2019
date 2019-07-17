@@ -10,6 +10,10 @@ public class IntroductionCustomScript : MonoBehaviour {
 
 	public void Start () {
 
+		for (int x = 0; x < CardHandler.s.allCards.GetLength (0); x++) {
+			CardHandler.s.allCards[x, 0].UpdateCardType (GS.a.cardSet.cards[CardSets.UtilityCardsCount + x].dynamicCardID);
+		}
+
 		DialogTree.s.myCustomTriggers[0] += ShowSevenDragons;
 		DialogTree.s.myCustomTriggers[1] += ShowMatching;
 		DialogTree.s.myCustomTriggers[2] += EndLevel;
@@ -44,6 +48,8 @@ public class IntroductionCustomScript : MonoBehaviour {
 	public Text myText;
 
 
+	public GridSettings afterSettings;
+
 	void BeginCardSelecting () {
 		StartCoroutine (Tutorial ());
 	}
@@ -56,7 +62,12 @@ public class IntroductionCustomScript : MonoBehaviour {
 			}
 		}
 
+
 		yield return new WaitForSeconds(0.5f);
+
+		CardHandler.s.SetUpGrid (afterSettings);
+
+		yield return new WaitForSeconds (0.5f);
 		myPanel.SetActive (true);
 		LocalPlayerController.isActive = true;
 		cardSelectStuff.SetActive (true);

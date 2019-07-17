@@ -63,7 +63,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 		AddItems (GS.a.possibleDropsAGrade, ref itemCurStartIndex);
 
 		for (int i = 0; i < allCards.Length; i++) {
-			allCards[i].cardType = i;
+			allCards[i].dynamicCardID = i;
 		}
 
 

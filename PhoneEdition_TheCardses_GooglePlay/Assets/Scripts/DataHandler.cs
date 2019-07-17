@@ -358,7 +358,7 @@ public class DataHandler : MonoBehaviour {
 
 		int x = (int)myCard.x;
 		int y = (int)myCard.y;
-		int type = (int)myCard.cBase.cardType;
+		int type = (int)myCard.cBase.dynamicCardID;
 		int selectEffectID = (int)myCard.selectEffectID;
 		cardStates state = myCard.cardState;
 

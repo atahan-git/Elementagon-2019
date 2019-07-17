@@ -45,7 +45,7 @@ public class CardChecker : MonoBehaviour {
 						if (cardsToCheck [k] != null && cardsToCheck[l] != null) {
 							if (cardsToCheck[k].cBase != null && cardsToCheck[l].cBase != null) {
 								if (k != l) {
-									if (cardsToCheck [k].cBase.cardType == cardsToCheck [l].cBase.cardType) {
+									if (cardsToCheck [k].cBase.dynamicCardID == cardsToCheck [l].cBase.dynamicCardID) {
 
 										//Ultimate Poison Alert - player matched two poison cards
 										if (cardsToCheck [k].isPoison) {
@@ -102,7 +102,7 @@ public class CardChecker : MonoBehaviour {
 							if (cardsToCheck[k].cBase != null && cardsToCheck[l].cBase != null) {
 								if (k != l) {
 
-									if (cardsToCheck [k].cBase.cardType == cardsToCheck [l].cBase.cardType) {
+									if (cardsToCheck [k].cBase.dynamicCardID == cardsToCheck [l].cBase.dynamicCardID) {
 										//Ultimate Poison Alert - player matched two poison cards
 										if (cardsToCheck [k].isPoison) {
 											PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [k], "cardchecker");

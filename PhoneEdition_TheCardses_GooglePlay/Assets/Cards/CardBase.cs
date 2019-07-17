@@ -42,7 +42,7 @@ public class CardBase : ScriptableObject {
 	public int enemyScore = 0;
 
 	[HideInInspector]
-	public int cardType = -1;  //dynamically allocated per level basis.
+	public int dynamicCardID = -1;  //dynamically allocated per level basis.
 	public bool isItem { get { return myItem != null; } }
 	[HideInInspector]
 	public ItemBase myItem; //dynamically allocated per level basis.
