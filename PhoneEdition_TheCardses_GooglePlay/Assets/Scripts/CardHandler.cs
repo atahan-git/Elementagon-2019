@@ -24,7 +24,6 @@ public class CardHandler : MonoBehaviour {
 	public GridSettings debugSettings;
 
 	void Awake(){
-		debugDraw = false;
 		s = this;
 
 		if (GS.a == null)
@@ -34,8 +33,6 @@ public class CardHandler : MonoBehaviour {
 			SetUpGrid (GS.a.gridSettings);
 		//print (DataHandler.s);
 		//print (DataHandler.s.myPlayerinteger);
-
-
 	}
 	
 
@@ -62,10 +59,17 @@ public class CardHandler : MonoBehaviour {
 		}
 	}
 
-	void Update (){
-		if(debugDraw){
+	void Update () {
+#if UNITY_EDITOR
+		if (Input.GetKeyDown (KeyCode.R)) {
+			RandomizeAllCards ();
+		}
+
+		if (debugDraw){
+			debugDraw = false;
 			SetUpGrid (debugSettings);
 		}
+#endif
 	}
 
 
@@ -122,6 +126,15 @@ public class CardHandler : MonoBehaviour {
 		foreach (IndividualCard card in allCards) {
 			card.RandomizeCardType ();
 		}
+
+		if (CardTypeRandomizer.s.forceSpawnCardsCount > 0) {
+			var randCards = GetRandomizedSelectabeCardList ();
+
+			for (int i = 0; i < CardTypeRandomizer.s.forceSpawnCardsCount; i++) {
+				randCards[i * 2].SetCardType (CardTypeRandomizer.s.forceSpawnStartIndex + i);
+				randCards[(i * 2) + 1].SetCardType (CardTypeRandomizer.s.forceSpawnStartIndex + i);
+			}
+		}
 	}
 
 	public void SendCardTypesAgain (int targetPlayer) {
@@ -173,7 +186,7 @@ public class CardHandler : MonoBehaviour {
 	}
 
 	public void UpdateCardType (int x, int y, int type){
-		allCards [x, y].UpdateCardType (type);
+		allCards [x, y].SetCardType (type);
 	}
 
 	public List<IndividualCard> GetAllCards () {

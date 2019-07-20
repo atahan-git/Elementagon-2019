@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "GameSetting", menuName = "GameSettings/GameSetting", order = -1)]
+[CreateAssetMenu (fileName = "New Game Settings", menuName = "GameSettings/GameSetting", order = -1)]
 public class GameSettings : ScriptableObject {
 
 	[HideInInspector]
 	public int id = -1;
 
-	public string PresetName = "Default";
+	public string PresetName = "New Game Settings";
 
 	[Header ("Card & Grid Settings")]
 
@@ -29,21 +29,21 @@ public class GameSettings : ScriptableObject {
 
 	[Header ("Gameplay Settings")]
 
-	public GameObjectiveTypes myGameObjectiveType = GameObjectiveTypes.Standard;
-	public GameType myGameType = GameType.Singleplayer;
-	public enum GameObjectiveTypes { Standard, Haggle, Health, Farm }
-	public enum GameType { Singleplayer, Two_Coop, OneVOne, TwoVTwo, Three_FreeForAll, Four_FreeForAll };
-
-	[Tooltip ("Leave empty if you want it to be auto generated based on the other settings")]
-	public string objectiveText = "";
-
-	[Header ("Put -1 if you dont want to limit")]
-	public float timer = -1;
-	public int turns = -1;
-	public int scoreReach = 30;
-	public bool killAllNPC = false;
-
+	public GameRuleTypes myGameRuleType = GameRuleTypes.Standard;
+	public GamePlayerTypes myGamePlayerType = GamePlayerTypes.Singleplayer;
+	public enum GameRuleTypes { Standard, Farm }
+	public enum GamePlayerTypes { Singleplayer, Two_Coop, OneVOne, TwoVTwo, Three_FreeForAll, Four_FreeForAll };
 	public bool canCombo = true;
+
+	[Space]
+	public Objective[] winObjectives;
+	public Objective[] loseObjectives;
+	[Space]
+
+	public ItemBase[] winDrops;
+	[Tooltip("Leave empty or 0 for dropping exactly one item")]
+	public int[] windDropAmounts;
+
 
 	[Header ("Power Up Settings")]
 

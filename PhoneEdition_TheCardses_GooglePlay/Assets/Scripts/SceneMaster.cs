@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +38,7 @@ public class SceneMaster : MonoBehaviour {
 
 	public const int menuId = 0;
 	public void LoadMenu (){
+		SaveMaster.s.Save ();
 		if(GoogleAPI.s.gameInProgress)
 			GoogleAPI.s.LeaveGame ();
 		LoadLevel (menuId);

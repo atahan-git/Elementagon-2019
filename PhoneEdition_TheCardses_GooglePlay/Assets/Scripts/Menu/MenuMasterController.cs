@@ -43,6 +43,7 @@ public class MenuMasterController : MonoBehaviour {
 
 	public void GoToPlace (ViewController vc) {
 		//add cool animations?
+		print ("Menu is going to " + vc.name);
 		GoToPlace (new List<int> (vc.myId));
 	}
 
@@ -78,9 +79,11 @@ public class MenuMasterController : MonoBehaviour {
 
 	void HideAll (ViewController[] views) {
 		for (int i = 0; i < views.Length; i++) {
-			views[i].Hide ();
-			if (views[i].children.Length > 0)
-				HideAll (views[i].children);
+			if (views[i] != null) {
+				views[i].Hide ();
+				if (views[i].children.Length > 0)
+					HideAll (views[i].children);
+			}
 		}
 	}
 

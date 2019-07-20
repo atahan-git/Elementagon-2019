@@ -11,12 +11,19 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 	public CardBase itemBaseCard;
 
-	
-	int utilityCount;
-	int normalCardsCount;
-	int customSpawnChanceCardsCount;
-	int itemCount;
+	[Header("Auto Assigned")]
+	public int utilityStartIndex;
+	public int normalCardStartIndex;
+	public int customSpawnChanceStartIndex;
+	public int forceSpawnStartIndex;
+	public int itemStartIndex;
 
+	public int utilityCount;
+	public int normalCardsCount;
+	public int customSpawnChanceCardsCount;
+	public int forceSpawnCardsCount;
+	public int itemCount;
+	[Space]
 
 	public GameObject farmBoard;
 	public GameObject sectionParent;
@@ -28,6 +35,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 		utilityCount = CardSets.UtilityCardsCount;
 		normalCardsCount = GS.a.cardSet.cards.Length;
 		customSpawnChanceCardsCount = GS.a.cardSet.customSpawnChanceCards.Length;
+		forceSpawnCardsCount = GS.a.cardSet.forceSpawnInPairAtStartCards.Length;
 		itemCount = 0;
 		itemCount += GS.a.possibleDropsDGrade.Length;
 		itemCount += GS.a.possibleDropsCGrade.Length;
@@ -35,15 +43,31 @@ public class CardTypeRandomizer : MonoBehaviour {
 		itemCount += GS.a.possibleDropsAGrade.Length;
 		allCards = new CardBase[utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCount];
 
+		utilityStartIndex = 0;
+		normalCardStartIndex = utilityCount;
+		customSpawnChanceStartIndex = normalCardStartIndex + normalCardsCount;
+		forceSpawnStartIndex = customSpawnChanceStartIndex + customSpawnChanceCardsCount;
+		itemStartIndex = forceSpawnStartIndex + forceSpawnCardsCount;
+
 		allCards[CardSets.defTypeId] = GS.a.cardSet.defCard;
 		allCards[CardSets.posionTypeId] = GS.a.cardSet.poisonCard;
 		allCards[CardSets.matchedTypeId] = GS.a.cardSet.matchedCard;
 
+
+		//Normal cards
 		for (int i = 0; i < normalCardsCount; i++) {
-			allCards[i + utilityCount] = GS.a.cardSet.cards[i];
+			allCards[i + normalCardStartIndex] = GS.a.cardSet.cards[i];
 		}
+
+
+		//force spawn cards
+		for (int i = 0; i < forceSpawnCardsCount; i++) {
+			allCards[i + forceSpawnStartIndex] = GS.a.cardSet.forceSpawnInPairAtStartCards[i];
+		}
+
+		//custom spawn chance cards
 		for (int i = 0; i < customSpawnChanceCardsCount; i++) {
-			allCards[i + utilityCount + normalCardsCount] = GS.a.cardSet.customSpawnChanceCards[i];
+			allCards[i + customSpawnChanceStartIndex] = GS.a.cardSet.customSpawnChanceCards[i];
 
 			//if the player doesnt have a power up or an equipment dont spawn that card!
 			//this need multiplayer support though
@@ -56,18 +80,23 @@ public class CardTypeRandomizer : MonoBehaviour {
 			GS.a.cardSet.customSpawnChances[i] *= notEquippedMultiplier;
 		}
 
+
+		//items
 		int itemCurStartIndex = 0;
 		AddItems (GS.a.possibleDropsDGrade, ref itemCurStartIndex);
 		AddItems (GS.a.possibleDropsCGrade, ref itemCurStartIndex);
 		AddItems (GS.a.possibleDropsBGrade, ref itemCurStartIndex);
 		AddItems (GS.a.possibleDropsAGrade, ref itemCurStartIndex);
 
+
+		//setting up
 		for (int i = 0; i < allCards.Length; i++) {
 			allCards[i].dynamicCardID = i;
 		}
 
 
-		if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm) {
+		//farm stuff
+		if (GS.a.myGameRuleType == GameSettings.GameRuleTypes.Farm) {
 			try {
 				DrawFarmBoard ();
 			} catch (System.Exception e) {
@@ -84,10 +113,10 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 	void AddItems (ItemBase[] toAdd, ref int itemCurStartIndex) {
 		for (int i = 0; i < toAdd.Length; i++) {
-			allCards[i + utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCurStartIndex] = Instantiate (itemBaseCard);
-			allCards[i + utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCurStartIndex].mySprite = toAdd[i].cardSprite != null ? toAdd[i].cardSprite: toAdd[i].sprite;
-			allCards[i + utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCurStartIndex].myAnim = null;
-			allCards[i + utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCurStartIndex].myItem = toAdd[i];
+			allCards[i + itemStartIndex] = Instantiate (itemBaseCard);
+			allCards[i + itemStartIndex].mySprite = toAdd[i].cardSprite != null ? toAdd[i].cardSprite: toAdd[i].sprite;
+			allCards[i + itemStartIndex].myAnim = null;
+			allCards[i + itemStartIndex].myItem = toAdd[i];
 		}
 		itemCurStartIndex += toAdd.Length;
 	}
@@ -138,7 +167,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 	public float itemFarmMultiplier = 1;
 	public int GiveRandomCardType (bool isVerbose) {
-		if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm) {
+		if (GS.a.myGameRuleType == GameSettings.GameRuleTypes.Farm) {
 			try {
 				UpdateFarmBoard ();
 			} catch {
@@ -155,7 +184,6 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 			float itemRoll = Random.value * 100;
 
-			int itemStartIndex = utilityCount + normalCardsCount + customSpawnChanceCardsCount;
 			int thisType = 0;
 			float[] calcChances = CalcItemChances ();
 			
@@ -188,7 +216,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 			foreach (float chance in GS.a.cardSet.customSpawnChances) {
 				curPercent += chance;
 				if (cardTypeReRoll < curPercent) {
-					myType = utilityCount +normalCardsCount+ i;
+					myType = customSpawnChanceStartIndex + i;
 					break;
 				}
 				i++;
@@ -198,7 +226,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 			DataLogger.LogError ("illegal special roll");
 
 		if (myType == -1) {
-			myType = utilityCount + Random.Range (0, normalCardsCount);
+			myType = normalCardStartIndex + Random.Range (0, normalCardsCount);
 		}
 		if (myType >= allCards.Length)
 			DataLogger.LogError ("illegal normal roll");

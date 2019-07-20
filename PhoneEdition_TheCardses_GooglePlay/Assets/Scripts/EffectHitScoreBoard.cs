@@ -63,6 +63,11 @@ public class EffectHitScoreBoard : BetweenCardsEffect {
 
 
 	public override void SetUp (int playerID, bool isPowerUp, IndividualCard card1, IndividualCard card2) {
+		/*if (card1.cBase.score == 0) {
+			Destroy (gameObject);
+			return;
+		}*/
+
 		AlignBetweenCards (card1, card2, AlignMode.position);
 
 		unifier1.transform.position = card1.transform.position - Vector3.forward * 0.1f;

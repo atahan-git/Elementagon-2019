@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 4a4c9746e165940428075f26af059709
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mySprite: {fileID: 21300000, guid: f1825e88f9601b04184f04c5aff0dc28, type: 3}
+  - myAnim: {instanceID: 0}
+  - myItem: {instanceID: 0}
+  - onCard_SelectEffect: {instanceID: 0}
+  - onScoreBoard_SelectEffect: {instanceID: 0}
+  - onEnemySbs_SelectEffect: {instanceID: 0}
+  - onCard_MatchEffectBetweenCards: {instanceID: 0}
+  - onScoreBoard_MatchEffectBetweenCards: {instanceID: 0}
+  - onEnemySbs_MatchEffectBetweenCards: {instanceID: 0}
+  - onCard_MatchEffect: {instanceID: 0}
+  - onScoreBoard_MatchEffect: {instanceID: 0}
+  - onEnemySbs_MatchEffect: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

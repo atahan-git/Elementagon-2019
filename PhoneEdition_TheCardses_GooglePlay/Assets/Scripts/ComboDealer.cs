@@ -19,6 +19,7 @@ public class ComboDealer : MonoBehaviour {
 
 	public void NotMatched () {
 		comboCount = 1;
+		lastCardType = -1;
 	}
 
 	//combo numbers >>
@@ -31,7 +32,7 @@ public class ComboDealer : MonoBehaviour {
 
 		int elementalType = card1.cBase.elementType;
 
-		//print ("Adding with combo check");
+		print ("Adding with combo check");
 		if (!card1.cBase.isItem) {
 			//we got a card
 			int scoreToAdd = card1.cBase.score;
@@ -40,8 +41,10 @@ public class ComboDealer : MonoBehaviour {
 			if (GS.a.canCombo && playerId == DataHandler.s.myPlayerInteger) {
 				bool isSame = false;
 
+				print ("Combo count: " + comboCount.ToString());
+
 				if (scoreToAdd == 0 && enemyScoreToAdd == 0) {
-					lastCardType = elementalType;
+					lastCardType = -1;
 					return;
 				}
 

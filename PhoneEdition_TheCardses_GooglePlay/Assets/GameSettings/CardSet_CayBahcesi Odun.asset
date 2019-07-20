@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0614ed99e9dfd74288e949f874b5970, type: 3}
+  m_Name: CardSet_CayBahcesi Odun
+  m_EditorClassIdentifier: 
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
+  cards:
+  - {fileID: 11400000, guid: c84d6bdf8de379444a1e447a738c0060, type: 2}
+  - {fileID: 11400000, guid: b5e901f8d3c8d6d4dae5f2af4dd3724e, type: 2}
+  - {fileID: 11400000, guid: 3919e8135da53d04b85c52856632ac19, type: 2}
+  - {fileID: 11400000, guid: c46a089b4ee38c244b1ce13d86522787, type: 2}
+  - {fileID: 11400000, guid: 8dd3651eb37819b459167f84f2653ea0, type: 2}
+  customSpawnChanceCards:
+  - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
+  - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
+  customSpawnChances:
+  - 4
+  - 4

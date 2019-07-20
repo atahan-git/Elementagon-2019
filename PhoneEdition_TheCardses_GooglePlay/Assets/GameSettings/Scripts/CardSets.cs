@@ -20,4 +20,6 @@ public class CardSets : ScriptableObject {
 	public CardBase[] customSpawnChanceCards;
 	[Tooltip ("x% chance to spawn, if left zero or null the default drop chance will be used")]
 	public float[] customSpawnChances = new float[0];
+
+	public CardBase[] forceSpawnInPairAtStartCards;
 }

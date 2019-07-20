@@ -3,7 +3,22 @@ guid: 08a397a117899ad48aed9a17c0ba7a5c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  - cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
+  - gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  - playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+      type: 2}
+  - powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  - startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  - bgAnimation: {instanceID: 0}
+  - bgSprite: {instanceID: 0}
+  - levelIntroDialog: {instanceID: 0}
+  - levelOutroDialog: {instanceID: 0}
+  - customObject: {instanceID: 0}
+  - myNPC: {instanceID: 0}
+  - equipment: {instanceID: 0}
+  - nextStage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

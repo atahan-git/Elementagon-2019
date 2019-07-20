@@ -7,7 +7,10 @@ public class ScoreBoardManager : MonoBehaviour {
 
 	public static ScoreBoardManager s;
 
-	public int[,] allScores = new int[6, 32]; //0-3 player scores, 4-5 team scores, 3 is enemy score in modes that have enemies
+	//[playerId, scoreType]
+	//scoretypes: 0 > all added, 1-7 sth, 8-14 sth, #pleaseAddThisLater
+	//playerIds: 0-3 player scores, 4-5 team scores, 3 is NPC score in modes that have NPCs
+	public int[,] allScores = new int[6, 32]; 
 
 	public int npcid { get { return DataHandler.NPCInteger; } }
 
@@ -32,19 +35,19 @@ public class ScoreBoardManager : MonoBehaviour {
 			scoreBoards = new GameObject[6];
 			allScores = new int[6, 32];
 
-			switch (GS.a.myGameObjectiveType) {
-			case GameSettings.GameObjectiveTypes.Health:
+			/*switch (GS.a.myGameRuleType) {
+			case GameSettings.GameRuleTypes.Health:
 				for (int i = 0; i < 6; i++)
 					ScoreBoardManager.s.allScores[i, 0] = GS.a.scoreReach;
 				break;
-			}
+			}*/
 
 			for (int i = 0; i < scoreBoards.Length; i++) {
 				scoreBoards[i] = null;
 			}
 			SetUpPlayerScoreboardPanels ();
 
-			SmartScoreboard.s.UpdateScore (0, false);
+			//SmartScoreboard.s.UpdateScore (0, false);
 		} catch (System.Exception e) {
 			DataLogger.LogError ("Scoreboard creation failed error: ",e);
 		}
@@ -87,14 +90,14 @@ public class ScoreBoardManager : MonoBehaviour {
 			n++;
 		}
 
-		if (GS.a.myGameType == GameSettings.GameType.Two_Coop) {
+		if (GS.a.myGamePlayerType == GameSettings.GamePlayerTypes.Two_Coop) {
 			DataLogger.LogMessage ("Creating Players' Team scoreboard");
 			scoreBoards[4] = (GameObject)Instantiate (scoreboardPrefab, scoreboardParent);
 			scoreBoards[4].transform.ResetTransformation ();
 			scoreBoards[4].GetComponent<ScorePanel> ().SetValues (4, "Allies", false);
 			DataLogger.LogMessage ("Players' Team scoreboard created");
 
-		} else if (GS.a.myGameType == GameSettings.GameType.TwoVTwo) {
+		} else if (GS.a.myGamePlayerType == GameSettings.GamePlayerTypes.TwoVTwo) {
 			bool isTeamBlue = DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1;
 			DataLogger.LogMessage ("Creating Team Blue scoreboard");
 			scoreBoards[4] = (GameObject)Instantiate (scoreboardPrefab, scoreboardParent);
@@ -108,24 +111,24 @@ public class ScoreBoardManager : MonoBehaviour {
 			DataLogger.LogMessage ("Team Red scoreboard created");
 		}
 
-		switch (GS.a.myGameType) {
-		case GameSettings.GameType.Singleplayer:
-		case GameSettings.GameType.OneVOne:
-		case GameSettings.GameType.Three_FreeForAll:
-		case GameSettings.GameType.Four_FreeForAll:
+		/*switch (GS.a.myGamePlayerType) {
+		case GameSettings.GamePlayerTypes.Singleplayer:
+		case GameSettings.GamePlayerTypes.OneVOne:
+		case GameSettings.GamePlayerTypes.Three_FreeForAll:
+		case GameSettings.GamePlayerTypes.Four_FreeForAll:
 			SmartScoreboard.s.myPlayer = DataHandler.s.myPlayerInteger;
 			break;
-		case GameSettings.GameType.Two_Coop:
+		case GameSettings.GamePlayerTypes.Two_Coop:
 			SmartScoreboard.s.myPlayer = 4;
 			break;
-		case GameSettings.GameType.TwoVTwo:
+		case GameSettings.GamePlayerTypes.TwoVTwo:
 			if (DataHandler.s.myPlayerInteger == 0 || DataHandler.s.myPlayerInteger == 1) {
 				SmartScoreboard.s.myPlayer = 4;
 			} else {
 				SmartScoreboard.s.myPlayer = 5;
 			}
 			break;
-		}
+		}*/
 
 		if (GS.a.isNPCEnabled) {
 			scoreBoards[3] = (GameObject)Instantiate (GS.a.gfxs.npcScoreboard, scoreboardParent);
@@ -140,7 +143,8 @@ public class ScoreBoardManager : MonoBehaviour {
 				scoreGetTargets[i] = scoreBoards[i].transform.Find ("Score Get Target");
 			}
 		}
-		scoreGetTargets[DataHandler.s.myPlayerInteger] = SmartScoreboard.s.transform.Find ("Score Get Target");
+		//scoreGetTargets[DataHandler.s.myPlayerInteger] = SmartScoreboard.s.transform.Find ("Score Get Target");
+		scoreGetTargets[DataHandler.s.myPlayerInteger] = GameObjectiveMaster.s.winObjParent.transform;
 	}
 
 	void UpdatePanels () {
@@ -168,7 +172,9 @@ public class ScoreBoardManager : MonoBehaviour {
 	public AddScoreDelegate AddScoreHook;
 
 	public void AddScore (int playerInt, int scoreElementalType, int toAdd, bool isDelayed, bool careGameTypes) {
-		//DataLogger.LogMessage ("Score Added to " + playerInt.ToString() + " with type: " + scoreElementalType.ToString() + " amount: " + toAdd.ToString());
+		DataLogger.LogMessage ("Score Added to " + playerInt.ToString() + " with type: " + scoreElementalType.ToString() + " amount: " + toAdd.ToString());
+		if (scoreElementalType == 0)
+			scoreElementalType = 1;
 
 		if (AddScoreHook != null)
 			AddScoreHook.Invoke (playerInt, scoreElementalType, toAdd, isDelayed, careGameTypes);
@@ -179,14 +185,14 @@ public class ScoreBoardManager : MonoBehaviour {
 		AddToScoreArray (playerInt, scoreElementalType, toAdd, isDelayed);
 
 		if (careGameTypes) {
-			switch (GS.a.myGameType) {
-			case GameSettings.GameType.Singleplayer:
-			case GameSettings.GameType.OneVOne:
-			case GameSettings.GameType.Three_FreeForAll:
-			case GameSettings.GameType.Four_FreeForAll:
+			switch (GS.a.myGamePlayerType) {
+			case GameSettings.GamePlayerTypes.Singleplayer:
+			case GameSettings.GamePlayerTypes.OneVOne:
+			case GameSettings.GamePlayerTypes.Three_FreeForAll:
+			case GameSettings.GamePlayerTypes.Four_FreeForAll:
 				break;
-			case GameSettings.GameType.Two_Coop:
-			case GameSettings.GameType.TwoVTwo:
+			case GameSettings.GamePlayerTypes.Two_Coop:
+			case GameSettings.GamePlayerTypes.TwoVTwo:
 				if (playerInt == 0 || playerInt == 1) {
 					AddToScoreArray (4, scoreElementalType, toAdd, isDelayed);
 					DataHandler.s.SendScore (DataHandler.s.toChar (4), scoreElementalType, allScores[4, scoreElementalType], isDelayed);
@@ -209,9 +215,9 @@ public class ScoreBoardManager : MonoBehaviour {
 		DataHandler.s.SendScore (player, scoreElementalType, allScores[playerInt, scoreElementalType], isDelayed);
 		DataHandler.s.SendScore (player, 0, allScores[playerInt, 0], isDelayed);
 
-		GameObjectiveFinishChecker.s.CheckReach ();
+		//GameObjectiveMaster.s.CheckReach ();
 		try {
-			if (GS.a.myGameObjectiveType == GameSettings.GameObjectiveTypes.Farm)
+			if (GS.a.myGameRuleType == GameSettings.GameRuleTypes.Farm)
 				CardTypeRandomizer.s.UpdateFarmBoard ();
 		} catch {
 			DataLogger.LogError ("Cant update farm board from scoreboard manager");
@@ -236,7 +242,7 @@ public class ScoreBoardManager : MonoBehaviour {
 	void UpdateSBoard (int id, bool isDelayed) {
 
 		//if (id == SmartScoreboard.s.myPlayer)
-		SmartScoreboard.s.UpdateScore (allScores[SmartScoreboard.s.myPlayer, 0], isDelayed);
+		//SmartScoreboard.s.UpdateScore (allScores[SmartScoreboard.s.myPlayer, 0], isDelayed);
 
 		GameObject sBoard = scoreBoards[id];
 		if (sBoard != null) {
@@ -259,7 +265,7 @@ public class ScoreBoardManager : MonoBehaviour {
 			}*/
 
 			UpdateSBoard (playerInt, isDelayed);
-			GameObjectiveFinishChecker.s.CheckReach ();
+			//GameObjectiveMaster.s.CheckReach ();
 		} catch (System.Exception e) {
 			DataLogger.LogMessage (e.Message + " - " + e.StackTrace);
 		}

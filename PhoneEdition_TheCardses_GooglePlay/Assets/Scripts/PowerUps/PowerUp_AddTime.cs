@@ -16,7 +16,7 @@ public class PowerUp_AddTime : PowerUp_Active_Instant {
 		int n = 0;
 		while (n < _amount) {
 
-			GameObjectiveFinishChecker.s.timer -= GS.a.timer > 0 ? -1f : 1f;
+			GameObjectiveMaster.s.timer -= 1f;
 
 			yield return new WaitForSeconds (0.1f);
 

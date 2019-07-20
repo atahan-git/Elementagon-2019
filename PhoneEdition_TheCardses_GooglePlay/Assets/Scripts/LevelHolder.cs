@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LevelHolder : MonoBehaviour {
 
 	public GameSettings mySettings;
 	public GameSettings unlockReq;
+	public GameSettings unlockReqAlt;
+
+	[Tooltip("Leave -1 for not checking")]
+	public int questDecisionLockId = -1;
+	public float questDecisionReqValue = -1;
+
+	[Space]
 
 	public Button myButton;
-	public Text myText;
+	public TextMeshProUGUI myText;
 	public Image mybutImg;
 
 
@@ -54,12 +62,32 @@ public class LevelHolder : MonoBehaviour {
 		}
 
 		if (unlockReq != null) {
-			int unlockReqId = GS.s.GetGameModeId (unlockReq);
+			bool isAlt = true;
+			if (unlockReqAlt != null) {
+				isAlt = SaveMaster.isLevelDone (unlockReqAlt);
+			}
 
-			if (!SaveMaster.isLevelDone (unlockReq)) {
+			if (!SaveMaster.isLevelDone (unlockReq) || !isAlt) {
 				myButton.interactable = false;
 				isUnlocked = false;
 				mybutImg.sprite = lockedButImg;
+			}
+		}
+
+		if (questDecisionLockId != -1) {
+			try {
+				if (SaveMaster.s.mySave.questDecisions.Length < questDecisionLockId) {
+					float[] temp = SaveMaster.s.mySave.questDecisions;
+					SaveMaster.s.mySave.questDecisions = new float[questDecisionLockId];
+					temp.CopyTo (SaveMaster.s.mySave.questDecisions, 0);
+				}
+				if (SaveMaster.s.mySave.questDecisions[questDecisionLockId] != questDecisionReqValue) {
+					myButton.interactable = false;
+					isUnlocked = false;
+					mybutImg.sprite = lockedButImg;
+				}
+			} catch {
+				DataLogger.LogError ("Problem Checking Quest Decision Choice " + questDecisionLockId.ToString());
 			}
 		}
 		isInitialized = true;

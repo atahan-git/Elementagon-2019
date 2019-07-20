@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "New Potion", menuName = "Item/Potion")]
 public class Potion : ItemBase {
 
-    public enum Type {timePotion, scorePotion, healingPotion, damagingPotion, chargePotion}
+    public enum Type {timePotion, scorePotion, healingPotion, damagingPotion, chargePotion, cureDeadlyPoison}
 
     public Type myType;
 

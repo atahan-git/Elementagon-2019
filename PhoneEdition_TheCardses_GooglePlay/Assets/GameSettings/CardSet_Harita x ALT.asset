@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0614ed99e9dfd74288e949f874b5970, type: 3}
+  m_Name: CardSet_Harita x ALT
+  m_EditorClassIdentifier: 
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
+  cards:
+  - {fileID: 11400000, guid: 3442721ca08a41841a647952755adc98, type: 2}
+  - {fileID: 11400000, guid: 06c222e1f897fce4f8a1138ac85141a5, type: 2}
+  - {fileID: 11400000, guid: 0187ec0fa77031d40bca7014363ca3f3, type: 2}
+  - {fileID: 11400000, guid: 87d064852b8ef354eaaef634fa5ab1ca, type: 2}
+  - {fileID: 11400000, guid: 3f8ec6ba6763c9842a84f8d8a8896a74, type: 2}
+  - {fileID: 11400000, guid: 8d0ff3c29d131694a9d5e5b015b3c6b5, type: 2}
+  - {fileID: 11400000, guid: 33007609267df6a4799ba716c2c01b3e, type: 2}
+  customSpawnChanceCards:
+  - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
+  - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
+  customSpawnChances:
+  - 4
+  - 4
+  forceSpawnInPairAtStartCards:
+  - {fileID: 11400000, guid: 304d5ae4314551842afb930961f6455f, type: 2}

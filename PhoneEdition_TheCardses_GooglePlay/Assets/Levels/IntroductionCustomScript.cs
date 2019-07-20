@@ -9,10 +9,7 @@ public class IntroductionCustomScript : MonoBehaviour {
 	GridSettings normalGrid;*/
 
 	public void Start () {
-
-		for (int x = 0; x < CardHandler.s.allCards.GetLength (0); x++) {
-			CardHandler.s.allCards[x, 0].UpdateCardType (GS.a.cardSet.cards[CardSets.UtilityCardsCount + x].dynamicCardID);
-		}
+		Invoke ("LateBegin", 0.5f);
 
 		DialogTree.s.myCustomTriggers[0] += ShowSevenDragons;
 		DialogTree.s.myCustomTriggers[1] += ShowMatching;
@@ -21,6 +18,14 @@ public class IntroductionCustomScript : MonoBehaviour {
 		myPanel.SetActive (false);
 		GameObject dialogScreen = DialogDisplayer.s.gameObject;
 		dialogScreen.GetComponentInChildren<Image> ().color = new Color (1, 1, 1, 0);
+
+		GameObjectiveMaster.s.StartGame ();
+	}
+
+	void LateBegin () {
+		for (int x = 0; x < CardHandler.s.allCards.GetLength (0); x++) {
+			CardHandler.s.allCards[x, 0].SetCardType (CardTypeRandomizer.s.normalCardStartIndex + x);
+		}
 	}
 
 	public void ShowSevenDragons () {

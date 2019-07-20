@@ -98,6 +98,7 @@ MonoBehaviour:
   myIcon: {fileID: 114799416044135618}
   myName: {fileID: 114739599085981570}
   myAmount: {fileID: 8124643557004250406}
+  questItemColor: {r: 0.93372107, g: 1, b: 0, a: 1}
 --- !u!1 &1318224981367114
 GameObject:
   m_ObjectHideFlags: 0

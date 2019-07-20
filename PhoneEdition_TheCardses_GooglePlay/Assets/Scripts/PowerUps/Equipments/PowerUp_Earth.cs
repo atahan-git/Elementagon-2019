@@ -4,7 +4,10 @@ using UnityEngine;
 
 class PowerUp_Earth : PowerUp_Active_Select {
 	public override void Enable (int _elementalType, int _power, float _amount) {
-		_amount = _power * 2;
+		if (_amount == 1) {
+			_amount = _power * 2;
+			_power = 2;
+		}
 		base.Enable (_elementalType, _power, _amount);
 
 		counter = 0;
@@ -17,6 +20,7 @@ class PowerUp_Earth : PowerUp_Active_Select {
 		base.Activate (myCard);
 
 		Select (myCard);
+		if(counter <= power)
 		Select (GetRandomizedOccupiedOrSelectabeCardList()[0],true);
 
 		counter++;

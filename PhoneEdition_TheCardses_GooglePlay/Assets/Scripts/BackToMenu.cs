@@ -6,7 +6,7 @@ public class BackToMenu : MonoBehaviour {
 
 	public void Back (){
 		//make us lose the game
-		GameObjectiveFinishChecker.s.EndGame (-1);
+		GameObjectiveMaster.s.EndGame (-1);
 		//SceneMaster.s.LoadMenu ();
 	}
 

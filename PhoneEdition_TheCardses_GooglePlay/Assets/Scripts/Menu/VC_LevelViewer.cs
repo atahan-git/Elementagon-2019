@@ -57,7 +57,7 @@ public class VC_LevelViewer : ViewController {
 		levelName.text = settings.levelName;
 		levelDesc.text = settings.levelDescription;
 
-		if (selected.myGameType != GameSettings.GameType.Singleplayer) {
+		if (selected.myGamePlayerType != GameSettings.GamePlayerTypes.Singleplayer) {
 			if (GoogleAPI.s.isOnline) {
 				SetButtonStates ();
 				waitForOnline = false;
@@ -98,37 +98,37 @@ public class VC_LevelViewer : ViewController {
 		myButs[1].gameObject.SetActive (true);
 		myButs[2].gameObject.SetActive (false);
 		myButs[2].GetComponentInChildren<Text> ().text = "Play";
-		switch (selected.myGameType) {
-		case GameSettings.GameType.Singleplayer:
+		switch (selected.myGamePlayerType) {
+		case GameSettings.GamePlayerTypes.Singleplayer:
 			Instantiate (allyPrefab, playerCountParent);
 			myButs[0].gameObject.SetActive (false);
 			myButs[1].gameObject.SetActive (false);
 			myButs[2].gameObject.SetActive (true);
 			break;
-		case GameSettings.GameType.Two_Coop:
+		case GameSettings.GamePlayerTypes.Two_Coop:
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (allyPrefab, playerCountParent);
 			GoogleAPI.playerCount = 2;
 			break;
-		case GameSettings.GameType.OneVOne:
+		case GameSettings.GamePlayerTypes.OneVOne:
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			GoogleAPI.playerCount = 2;
 			break;
-		case GameSettings.GameType.TwoVTwo:
+		case GameSettings.GamePlayerTypes.TwoVTwo:
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			GoogleAPI.playerCount = 4;
 			break;
-		case GameSettings.GameType.Three_FreeForAll:
+		case GameSettings.GamePlayerTypes.Three_FreeForAll:
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			GoogleAPI.playerCount = 3;
 			break;
-		case GameSettings.GameType.Four_FreeForAll:
+		case GameSettings.GamePlayerTypes.Four_FreeForAll:
 			Instantiate (allyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);
 			Instantiate (enemyPrefab, playerCountParent);

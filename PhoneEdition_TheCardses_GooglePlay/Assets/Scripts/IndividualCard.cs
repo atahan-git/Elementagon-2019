@@ -64,12 +64,6 @@ public class IndividualCard : MonoBehaviour {
 		isSelectable = true;
 	}
 
-	void Update (){
-		if (Input.GetKeyDown (KeyCode.R)) {
-			RandomizeCardType ();
-		}
-	}
-
 	//-----------------------------------------Card Matching Functions
 	public DataHandler.cardStates cardState = DataHandler.cardStates.close;
 
@@ -257,7 +251,7 @@ public class IndividualCard : MonoBehaviour {
 		if (DataHandler.s.myPlayerInteger != 0) {
 			DataHandler.s.SendCardType (x, y, poisonType);
 		}
-		UpdateCardType (poisonType);
+		SetCardType (poisonType);
 	}
 
 	//-----------------------------------------Utility Functions
@@ -286,7 +280,7 @@ public class IndividualCard : MonoBehaviour {
 		}
 	}
 
-	public void UpdateCardType (int type) {
+	public void SetCardType (int type) {
 
 		if (type < CardTypeRandomizer.s.allCards.Length && type >= 0) {
 			cBase = CardTypeRandomizer.s.allCards[type];
@@ -311,7 +305,7 @@ public class IndividualCard : MonoBehaviour {
 
 
 	public void RandomizeCardType () {
-		UpdateCardType (CardTypeRandomizer.s.GiveRandomCardType());   
+		SetCardType (CardTypeRandomizer.s.GiveRandomCardType());   
 	}
 
 	void SpawnEffect (GameObject fx,int playerID) {

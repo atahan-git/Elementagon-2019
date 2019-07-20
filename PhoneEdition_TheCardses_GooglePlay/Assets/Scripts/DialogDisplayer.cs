@@ -174,6 +174,10 @@ public class DialogDisplayer : MonoBehaviour {
 				case "trigger":
 					DialogTree.s.TriggerCommand (values[1]);
 					break;
+				case "triggerChoice":
+					DialogDecisionMaster.s.ShowDecisionScreen (values[1]);
+					yield return new WaitUntil (() => DialogDecisionMaster.s.IsDecisionDone());
+					break;
 				default:
 					//this is not a command we recognize, but a command TextMeshPro recognizes, so do add it to the text
 					_text += "<" + command + ">";

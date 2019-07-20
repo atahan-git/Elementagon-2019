@@ -18,6 +18,8 @@ public class ItemGridDisplay : MonoBehaviour {
 	public TextMeshProUGUI myName;
 	public TextMeshProUGUI myAmount;
 
+	public Color questItemColor;
+
     // Use this for initialization
     public void SetUp (InventoryMaster.InventoryItem _item) {
 		myItem = _item;
@@ -32,6 +34,13 @@ public class ItemGridDisplay : MonoBehaviour {
 
 		myName.text = myItem.item.name;
 		myAmount.text = myItem.chargesLeft.ToString() + "x";
+
+		if (myItem.item is Ingredient) {
+			if (((Ingredient)myItem.item).isQuestItem) {
+				if(GetComponent<Image>())
+				GetComponent<Image> ().color = questItemColor;
+			}
+		}
 	}
 
 

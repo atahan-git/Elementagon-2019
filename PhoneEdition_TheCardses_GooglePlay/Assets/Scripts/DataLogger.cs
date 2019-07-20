@@ -320,15 +320,15 @@ public class DataLogger : MonoBehaviour {
 	}
 
 	public void Cheat_WinLevel () {
-		if (GameObjectiveFinishChecker.s != null)
-			GameObjectiveFinishChecker.s.EndGame (DataHandler.s.myPlayerInteger);
+		if (GameObjectiveMaster.s != null)
+			GameObjectiveMaster.s.EndGame (DataHandler.s.myPlayerInteger);
 
 		LogMessage (cheatEnabledMessage + "game won");
 	}
 
 	public void Cheat_LoseLevel () {
-		if (GameObjectiveFinishChecker.s != null)
-			GameObjectiveFinishChecker.s.EndGame (4);
+		if (GameObjectiveMaster.s != null)
+			GameObjectiveMaster.s.EndGame (4);
 
 		LogMessage (cheatEnabledMessage + "game lost");
 	}
@@ -343,5 +343,15 @@ public class DataLogger : MonoBehaviour {
 		InventoryMaster.s.CheatInventory ();
 
 		LogMessage (cheatEnabledMessage + "Cheat Inventory Set");
+	}
+
+	public void Cheat_PrintScores () {
+		for (int x = 0; x < ScoreBoardManager.s.allScores.GetLength (0); x++) {
+			string line = x.ToString () + ": ";
+			for (int y = 0; y < ScoreBoardManager.s.allScores.GetLength (1); y++) {
+				line += ScoreBoardManager.s.allScores[x, y] + " - ";
+			}
+			LogMessage (line);
+		}
 	}
 }

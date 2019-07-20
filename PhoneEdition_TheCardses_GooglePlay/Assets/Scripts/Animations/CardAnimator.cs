@@ -35,7 +35,34 @@ public class CardAnimator : MonoBehaviour {
 		aud = GetComponent<AudioPlayer> ();
 		card = GetComponent<IndividualCard> ();
 		transform.rotation = isOpen ? openRotation : closeRotation;
+
+		//print ("Start Called");
+		//StartCoroutine (FloatAround());
 	}
+
+	/*Vector3 DefPos;
+	IEnumerator FloatAround () {
+		DefPos = transform.position;
+
+		int random = Random.Range (0, 10000);
+
+		yield return new WaitForSeconds (Random.Range(0, 2f));
+
+		while (true) {
+			Vector3 goToPos = Random.insideUnitSphere/5f + DefPos;
+			//Vector3 goToPos = new Vector3 (temp.x, temp.y, DefPos.z) + DefPos;
+
+			float timer = Random.Range(1f,3f);
+			float driftSpeed = Random.Range (0.01f, 0.05f);
+			//print ("Card going to: " + goToPos.ToString());
+			while (timer > 0) {
+				transform.position = Vector3.MoveTowards (transform.position, goToPos, driftSpeed * Time.deltaTime);
+				timer -= Time.deltaTime;
+				yield return null;
+			}
+			yield return null;
+		}
+	}*/
 
 	public void SetOpenState (bool state) {
 		aud = GetComponent<AudioPlayer> ();

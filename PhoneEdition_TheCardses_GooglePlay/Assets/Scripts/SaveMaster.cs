@@ -172,6 +172,7 @@ public class SaveData {
 	public int[] unlockedElementLevels = new int[7];
 
 	public bool[] triggeredEvents = new bool[5];
+	public float[] questDecisions = new float[128];
 
 	[Serializable]
 	public class SavePotion {

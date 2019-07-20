@@ -12,7 +12,7 @@ public class DownPanelReferenceHolder : MonoBehaviour {
 	public GameObject timer;
 	public GameObject objective;
 	public GameObject pause;
-	public GameObject score;
+	//public GameObject score;
 	public GameObject backToMenu;
 
 	private void Awake () {

@@ -49,7 +49,7 @@ public class NPCManager : MonoBehaviour {
 		NPCBase myNPC = SpawnNPCAtLocation (myCard);
 
 		GS.a.npcSpawnCount--;
-		if (GS.a.npcSpawnCount != 0 && !GameObjectiveFinishChecker.s.isFinished)
+		if (GS.a.npcSpawnCount != 0 && !GameObjectiveMaster.s.isFinished)
 			Invoke ("SpawnNPCPeriodic", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
 	}
 

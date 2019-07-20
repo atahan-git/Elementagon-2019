@@ -150,6 +150,11 @@ public class InventoryMaster : MonoBehaviour {
 			} else {
 				myEquipments.Add ((InventoryEquipment)myInvItem);
 			}
+
+			if (activeEquipment == null) {
+				EquipItem((InventoryEquipment)myInvItem);
+			}
+
 		} else if (toAdd is Ingredient) {
 			InventoryIngredient myIng = myIngredients.Find (x => x.item.name == toAdd.name);
 			myInvItem = new InventoryIngredient ((Ingredient)toAdd, amount);

@@ -23,7 +23,7 @@ public class CardChecker : MonoBehaviour {
 		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.ToArray ().Clone ();
 
 		if (playerId == DataHandler.s.myPlayerInteger)
-			GameObjectiveFinishChecker.s.turnCount++;
+			CHE_TurnChecker.turnCount++;
 
 		//empty our original array
 		EmptyArray (cardsToCheck);

@@ -92,7 +92,7 @@ public abstract class NPCBase : MonoBehaviour {
 	}
 
 	private void Update () {
-		if (GameObjectiveFinishChecker.s.isFinished)
+		if (GameObjectiveMaster.s.isFinished)
 			StopCoroutine ("MainLoop");
 	}
 

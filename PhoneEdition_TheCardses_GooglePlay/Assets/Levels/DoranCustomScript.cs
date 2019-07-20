@@ -106,7 +106,7 @@ public class DoranCustomScript : MonoBehaviour {
 		if (_maxCharge == -5) {
 			_maxCharge = myButton.maxCharge;
 			tutPanel.SetActive (false);
-			GameObjectiveFinishChecker.s.isGamePlaying = true;
+			GameObjectiveMaster.s.isGamePlaying = true;
 		}
 
 
@@ -159,7 +159,7 @@ public class DoranCustomScript : MonoBehaviour {
 		tutPanel.SetActive (false);
 		LocalPlayerController.isActive = false;
 		decidePanel.SetActive (true);
-		GameObjectiveFinishChecker.s.isGamePlaying = false;
+		GameObjectiveMaster.s.isGamePlaying = false;
 	}
 
 	//1 = earth, 2 = fire

@@ -326,8 +326,8 @@ public class GoogleAPI : MonoBehaviour, RealTimeMultiplayerListener {
 		canPlay = true;
 
 		if (SceneMaster.GetSceneID () != SceneMaster.menuId) {
-			if (GameObjectiveFinishChecker.s != null)
-				GameObjectiveFinishChecker.s.DisconnectedFromGame ();
+			if (GameObjectiveMaster.s != null)
+				GameObjectiveMaster.s.DisconnectedFromGame ();
 			else
 				SceneMaster.s.LoadMenu ();
 		} else {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +34,7 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 			PlayerPrefs.SetInt ("isCombo", 1);
 
 			LocalPlayerController.isActive = false;
-			GameObjectiveFinishChecker.s.isGamePlaying = false;
+			GameObjectiveMaster.s.isGamePlaying = false;
 
 			myPanel.SetActive (true);
 
@@ -43,7 +43,7 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 			yield return new WaitUntil (() => Input.GetMouseButtonDown(0));
 
 			LocalPlayerController.isActive = true;
-			GameObjectiveFinishChecker.s.isGamePlaying = true;
+			GameObjectiveMaster.s.isGamePlaying = true;
 
 			myPanel.SetActive (false);
 		}
@@ -61,7 +61,7 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 			PlayerPrefs.SetInt ("isNoPointCard", 1);
 
 			LocalPlayerController.isActive = false;
-			GameObjectiveFinishChecker.s.isGamePlaying = false;
+			GameObjectiveMaster.s.isGamePlaying = false;
 
 			myPanel.SetActive (true);
 
@@ -70,7 +70,7 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 			yield return new WaitUntil (() => Input.GetMouseButtonDown (0));
 
 			LocalPlayerController.isActive = true;
-			GameObjectiveFinishChecker.s.isGamePlaying = true;
+			GameObjectiveMaster.s.isGamePlaying = true;
 
 			myPanel.SetActive (false);
 		}

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +23,6 @@ public class Tower_Script: MonoBehaviour {
 	void EndGame (){
 		LocalPlayerController.s.canSelect = false;
 		PowerUpManager.s.canActivatePowerUp = false;
-		GameObjectiveFinishCheckerGfx.s.Endgame ("The Tower", false);
+		GameEndScreen.s.Endgame ("The Tower", false);
 	}
 }

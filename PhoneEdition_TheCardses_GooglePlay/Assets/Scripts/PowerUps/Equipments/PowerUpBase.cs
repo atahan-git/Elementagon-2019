@@ -86,6 +86,8 @@ public abstract class PowerUpBase : MonoBehaviour {
 		if (myType == PowerUpTypes.active) {
 			PowerUpManager.s.canActivatePowerUp = true;
 		}
+
+		UnSelectSelectedCards ();
 		if(!CharacterStuffController.s.isPotionScreenOpen)
 		LocalPlayerController.s.canSelect = true;
 

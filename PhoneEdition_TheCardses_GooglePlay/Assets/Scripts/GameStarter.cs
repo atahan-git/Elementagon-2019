@@ -57,16 +57,16 @@ public class GameStarter : MonoBehaviour {
 
 		Invoke ("LateBegin", 0.2f);
 
-		switch (GS.a.myGameType) {
-		case GameSettings.GameType.OneVOne:
-		case GameSettings.GameType.Two_Coop:
+		switch (GS.a.myGamePlayerType) {
+		case GameSettings.GamePlayerTypes.OneVOne:
+		case GameSettings.GamePlayerTypes.Two_Coop:
 			readyPlayers = new bool[2];
 			break;
-		case GameSettings.GameType.TwoVTwo:
-		case GameSettings.GameType.Four_FreeForAll:
+		case GameSettings.GamePlayerTypes.TwoVTwo:
+		case GameSettings.GamePlayerTypes.Four_FreeForAll:
 			readyPlayers = new bool[4];
 			break;
-		case GameSettings.GameType.Three_FreeForAll:
+		case GameSettings.GamePlayerTypes.Three_FreeForAll:
 			readyPlayers = new bool[3];
 			break;
 		}
@@ -168,7 +168,7 @@ public class GameStarter : MonoBehaviour {
 
 	void ActivateTheOthers (){
 		try {
-			GameObjectiveFinishChecker.s.StartGame ();
+			GameObjectiveMaster.s.StartGame ();
 
 			if (LevelBeginCall != null)
 				LevelBeginCall.Invoke ();
