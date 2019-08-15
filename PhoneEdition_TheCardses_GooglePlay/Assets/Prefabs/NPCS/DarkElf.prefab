@@ -45,23 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Dark Elf Thug
-  myColor: {r: 1, g: 0, b: 0, a: 1}
-  isFrozen: 0
-  isKillable: 1
+  myColor: {r: 0.8584906, g: 0, b: 0.630068, a: 1}
   movementSpeed: 0.2
   AIStrength: 0.5
   poisonImmune: 0
-  power: 1
-  activatePrefab: {fileID: 0}
-  selectPrefab: {fileID: 114363390147330600, guid: 4cdb1d671527161438d36ffa28f1cf4e,
-    type: 3}
-  diePrefab: {fileID: 1769001268774204, guid: 8349d5c526dee2140b257d314523eed2, type: 3}
-  myCurrentOccupation: {fileID: 0}
-  myUnkillableType: 0
+  isFrozen: 0
+  myDeathType: 0
   unkillableEffect: {fileID: 1797926292880366, guid: c365112a76585e24590736e7e303d5b1,
     type: 3}
   isStunned: 0
   stunTime: 5
+  activatePrefab: {fileID: 0}
+  selectPrefab: {fileID: 114453662845736484, guid: 6caba5279032d3c49917c7143004e382,
+    type: 3}
+  diePrefab: {fileID: 1769001268774204, guid: 8349d5c526dee2140b257d314523eed2, type: 3}
+  myCurrentOccupation: {fileID: 0}
   selectionDeniedEffect: {fileID: 1797926292880366, guid: 0a5e61dfa282ea74388f48bcddfae3a0,
     type: 3}
   selectionTooManyDeniedEffect: {fileID: 1797926292880366, guid: 240d76430f36d3d4f89f39249b2ff827,

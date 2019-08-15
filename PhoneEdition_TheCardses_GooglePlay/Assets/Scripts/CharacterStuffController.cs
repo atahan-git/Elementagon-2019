@@ -44,11 +44,11 @@ public class CharacterStuffController : MonoBehaviour {
 		if (isHijacked)
 			return;
 
-		try {
+		
 			DrawPotionScreen ();
 
-			int elementLevel = GS.a.overridePower ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
-			int selectedElement = GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
+			int elementLevel = GS.a.customCharacterLevel ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
+			int selectedElement = GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
 			if (elementLevel > 0) {
 				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = elementLevel;
 				maxPowerCharge = elementLevel;
@@ -58,15 +58,16 @@ public class CharacterStuffController : MonoBehaviour {
 				powerButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
 				isEquippedPower = false;
 			}
-			InventoryMaster.InventoryEquipment myEq = (GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
+
+			InventoryMaster.InventoryEquipment myEq = (GS.a.customCharacterLevel ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
 			if (myEq != null) {
 				myEquipment = (Equipment)myEq.item;
 				maxEquipmentCharge = AddUpIntArray (myEquipment.chargeReq);
-				equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.elementalType);
+				equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.effectColor);
 				isEquippedEquipment = true;
 
 				if (PowerUpManager.s.equipmentPUps[(int)myEquipment.myType] is IPassive) {
-					((IPassive)PowerUpManager.s.equipmentPUps[(int)myEquipment.myType]).Enable (myEquipment.elementalType, myEquipment.power);
+					((IPassive)PowerUpManager.s.equipmentPUps[(int)myEquipment.myType]).Enable (myEquipment.power, myEquipment.effectColor);
 					isEquippedEquipment = false;
 				}
 
@@ -76,10 +77,7 @@ public class CharacterStuffController : MonoBehaviour {
 			}
 
 			UpdateChargeReqs ();
-		} catch (System.Exception e) {
-			//DataLogger.LogMessage ("Data processing failed " + myCommand.ToString (), true);
-			DataLogger.LogError (this.name, e);
-		}
+		
 	}
 
 	public void DrawPotionScreen () {
@@ -87,9 +85,24 @@ public class CharacterStuffController : MonoBehaviour {
 		for (int i = childCount-1; i >= 0; i--) {
 			Destroy (potionsParent.transform.GetChild(i).gameObject);
 		}
-		foreach (InventoryMaster.InventoryPotion myItem in GS.a.overridePotions ? GS.a.potions.ConvertToInventory () : InventoryMaster.s.myPotions.ToArray ()) {
-			if (myItem != null)
-				Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (myItem);
+		if (!GS.a.customCharacterLevel) {
+			foreach (InventoryMaster.InventoryPotion myItem in InventoryMaster.s.myPotions.ToArray ()) {
+				if (myItem != null)
+					Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (myItem);
+			}
+		} else {
+			for (int i = 0; i < GS.a.potions.Length; i++) {
+				int amount = 1;
+				if (i < GS.a.potionsAmounts.Length)
+					amount = GS.a.potionsAmounts[i] >= 0 ? amount : GS.a.potionsAmounts[i];
+				else {
+					int[] temp = new int[GS.a.potions.Length];
+					GS.a.potionsAmounts.CopyTo (temp, 0);
+					GS.a.potionsAmounts = temp;
+				}
+				if (amount > 0)
+					Instantiate (gridItem, potionsParent.transform).GetComponent<ItemGridDisplay> ().SetUp (new InventoryMaster.InventoryPotion (GS.a.potions[i], amount));
+			}
 		}
 	}
 
@@ -101,19 +114,19 @@ public class CharacterStuffController : MonoBehaviour {
 		return total;
 	}
 
-	public void ScoreAdded (int scoreType) {
+	public void PowerUpRelatedCardMatched (int specialTypeID) {
 		//print ("Score added: " + scoreType.ToString ());
 		if (isHijacked)
 			return;
 
-		if (curEquipmentChargeReq[scoreType] > 0) {
-			curEquipmentChargeReq[scoreType]--;
+		if (curEquipmentChargeReq[specialTypeID] > 0) {
+			curEquipmentChargeReq[specialTypeID]--;
 		} else if (curEquipmentChargeReq[0] > 0) {
 			curEquipmentChargeReq[0]--;
 		}
 
-		if (curPowerChargeReq[scoreType] > 0) {
-			curPowerChargeReq[scoreType]--;
+		if (curPowerChargeReq[specialTypeID] > 0) {
+			curPowerChargeReq[specialTypeID]--;
 		} else if (curPowerChargeReq[0] > 0) {
 			curPowerChargeReq[0]--;
 		}
@@ -155,14 +168,14 @@ public class CharacterStuffController : MonoBehaviour {
 		if (equipmentButton.canActivate) {
 			isLastActivePower = false;
 			lastActivatedButton = true;
-			Equipment myEq = (Equipment)(GS.a.overrideEquipment ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment).item;
+			Equipment myEq = (Equipment)(GS.a.customCharacterLevel ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment).item;
 			if (!DataLogger.isDebugMode)
 				(myEq).chargeReq.CopyTo (curEquipmentChargeReq, 0);
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
-				(int)myEq.myType, 
-				myEq.elementalType, 
+				(int)myEq.myType,  
 				myEq.power, 
-				myEq.amount);
+				myEq.amount,
+				myEq.effectColor);
 		}
 	}
 
@@ -179,9 +192,9 @@ public class CharacterStuffController : MonoBehaviour {
 			if (!DataLogger.isDebugMode)
 				PowerChargeReq.CopyTo (curPowerChargeReq, 0);
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
-				ConverElementToType(GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement),
-				(GS.a.overridePower ? GS.a.selectedElement : InventoryMaster.s.selectedElement) + 1,
-				GS.a.overridePower ? GS.a.elementLevel : InventoryMaster.s.elementLevel, 1);
+				ConverElementToType(GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement),
+				GS.a.customCharacterLevel? GS.a.elementLevel : InventoryMaster.s.elementLevel, 1,
+				PowerUpManager.s.dragonColors[(GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement)]);
 		}
 	}
 
@@ -262,16 +275,16 @@ public class CharacterStuffController : MonoBehaviour {
 		Potion myPot = (Potion)theItem.item;
 		PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.potion,
 				(int)myPot.myType,
-				myPot.elementalType,
 				-1,
-				myPot.amount);
+				myPot.amount,
+				myPot.effectColor);
 
-		if (!GS.a.overridePotions)
+		if (!GS.a.customCharacterLevel)
 			InventoryMaster.s.Remove (theItem);
 		else {
 			List<Potion> myPotions = new List<Potion> (GS.a.potions);
-			myPotions.Remove ((Potion)theItem.item);
-			GS.a.potions = myPotions.ToArray ();
+			int myIndex = myPotions.IndexOf (myPot);
+			GS.a.potionsAmounts[myIndex]--;
 		}
 
 		DrawPotionScreen ();

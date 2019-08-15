@@ -4696,7 +4696,7 @@ MonoBehaviour:
   activeGameModeID: 0
   defaultMode: {fileID: 11400000, guid: 169669b5fcc24014e96aeec3d98f4859, type: 2}
   isDebug: 0
-  debugMode: {fileID: 11400000, guid: eba32359de28c73428f0ebaad6e4886a, type: 2}
+  debugMode: {fileID: 11400000, guid: 90ec9b27106077a45aa8e71bee97a5e7, type: 2}
   allModes:
   - {fileID: 11400000, guid: 169669b5fcc24014e96aeec3d98f4859, type: 2}
   - {fileID: 11400000, guid: 4c7b9e12d7e22664fa611808d3d16229, type: 2}
@@ -4742,11 +4742,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4612c8795e0a7d941a031ff35bc19b8e, type: 2}
   - {fileID: 11400000, guid: eba32359de28c73428f0ebaad6e4886a, type: 2}
   - {fileID: 11400000, guid: c35571ee6ae206e46b8270e2ab75092c, type: 2}
-  - {fileID: 11400000, guid: bb3df09396f4b344e8b16388aea78732, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 66bf786ac6eb6f34eb27420013e0d46d, type: 2}
   - {fileID: 11400000, guid: 51525d241a20e62408b75c4140e1c06c, type: 2}
   - {fileID: 11400000, guid: dd3f2f93db37ec745abefcf01f8db4bf, type: 2}
   - {fileID: 11400000, guid: 90ec9b27106077a45aa8e71bee97a5e7, type: 2}
+  - {fileID: 11400000, guid: 0197de6680ffd734791799f8d2f8083c, type: 2}
+  - {fileID: 11400000, guid: dd52c5493bf4c654eb739ef8a9d369c3, type: 2}
+  - {fileID: 11400000, guid: 43542a43df51b1f4d9feb88905b6336a, type: 2}
+  - {fileID: 11400000, guid: 812cb71f12784ac43b9251fcf94c53ea, type: 2}
   levelChains:
   - LevelChain:
     - {fileID: 11400000, guid: 41944b4b102491f4bb2f6af98fc0da00, type: 2}
@@ -4755,10 +4759,15 @@ MonoBehaviour:
   - LevelChain:
     - {fileID: 11400000, guid: eba32359de28c73428f0ebaad6e4886a, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: bb3df09396f4b344e8b16388aea78732, type: 2}
+    - {fileID: 11400000, guid: c35571ee6ae206e46b8270e2ab75092c, type: 2}
     - {fileID: 11400000, guid: 66bf786ac6eb6f34eb27420013e0d46d, type: 2}
     - {fileID: 11400000, guid: 51525d241a20e62408b75c4140e1c06c, type: 2}
     - {fileID: 11400000, guid: dd3f2f93db37ec745abefcf01f8db4bf, type: 2}
+  - LevelChain:
+    - {fileID: 11400000, guid: 0197de6680ffd734791799f8d2f8083c, type: 2}
+    - {fileID: 11400000, guid: dd52c5493bf4c654eb739ef8a9d369c3, type: 2}
+    - {fileID: 11400000, guid: 43542a43df51b1f4d9feb88905b6336a, type: 2}
+    - {fileID: 11400000, guid: 812cb71f12784ac43b9251fcf94c53ea, type: 2}
 --- !u!114 &114907591449571644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4978,6 +4987,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 790afdd4a48691e498b533b2b41a6c60, type: 2}
   - {fileID: 11400000, guid: cf8ee69f3e482cd46be797e10a37cfde, type: 2}
   - {fileID: 11400000, guid: 9f0d83ceb8ca05e49b5802841c967b2f, type: 2}
+  - {fileID: 11400000, guid: f2c993a994a79524281bd83db3a95e55, type: 2}
   allRecipes:
   - {fileID: 11400000, guid: 343004a9e5a831e41b9126dea8f471cd, type: 2}
   - {fileID: 11400000, guid: 30adba9de435ffa4e805aaba1c7295c3, type: 2}

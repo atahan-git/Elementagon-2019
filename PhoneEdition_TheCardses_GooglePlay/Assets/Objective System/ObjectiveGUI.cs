@@ -31,6 +31,7 @@ public class ObjectiveGUI : MonoBehaviour {
 	Slider slider;
 	Toggle toggle;
 	Image image;
+	TextDynamicChangingEffects numText;
 	TextMeshProUGUI text;
 
 	GameObject toSpawn;
@@ -69,6 +70,7 @@ public class ObjectiveGUI : MonoBehaviour {
 			GameObject spawned = (GameObject)Instantiate (toSpawn, transform);
 			slider = spawned.GetComponent<Slider> ();
 			toggle = spawned.GetComponent<Toggle> ();
+			numText = spawned.GetComponentInChildren<TextDynamicChangingEffects> ();
 		}
 
 		image = GetComponent<Image> ();
@@ -79,15 +81,17 @@ public class ObjectiveGUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 		if (toggle) {
-			if (myObjective.myObjectiveChecker.GetValue() == 1)
+			if (myObjective.myObjectiveChecker.GetValue () == 1)
 				toggle.isOn = true;
 			else
 				toggle.isOn = false;
 		} else if (slider) {
 			slider.maxValue = myObjective.requiredValue;
 			slider.value = myObjective.myObjectiveChecker.GetValue ();
+		} else if (numText) {
+			numText.text = myObjective.myObjectiveChecker.GetValue ().ToString();
 		}
 
 		if (myObjective.isDone)

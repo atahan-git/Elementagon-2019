@@ -40,6 +40,9 @@ public class CardsScrollController : MonoBehaviour {
 
 		if (GS.a.gridSettings.gridSizeX <= 9 && GS.a.gridSettings.gridSizeY <= 3) {
 			isScrollEnabled = false;
+		} else {
+			isScrollEnabled = true;
+			Tutorial_FirstTimeStuff.ZoomableMap ();
 		}
 	}
 
@@ -135,6 +138,10 @@ public class CardsScrollController : MonoBehaviour {
 				oldTouchDistance = newTouchDistance;
 			}
 		}
+
+#if UNITY_EDITOR
+		myCam.Translate (new Vector3 (Input.GetAxis ("Horizontal")*10f*Time.deltaTime, Input.GetAxis ("Vertical")*10f*Time.deltaTime, 0));
+#endif
 
 		myCam.position = new Vector3( Mathf.Clamp (myCam.position.x, cameraMinLimits.x, cameraMaxLimits.x),
 			 Mathf.Clamp (myCam.position.y, cameraMinLimits.y, cameraMaxLimits.y),

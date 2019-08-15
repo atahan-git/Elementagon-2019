@@ -80,14 +80,27 @@ public class GameStarter : MonoBehaviour {
 			readyPlayersInOtherStage = new bool[readyPlayers.Length];
 		}
 
-		if (GS.a.customObject != null)
-			Instantiate (GS.a.customObject);
+		foreach (GameObject ob in GS.a.customObjects) {
+			if(ob != null)
+				Instantiate (ob);
+		}
 
 		DataLogger.LogMessage ("GameStarter setup complete");
 	}
 
 	void LateBegin () {
 		CardTypeRandomizer.s.Initialize ();
+		if (GS.a.startingScore != 0) {
+			int scoreToAdd = GS.a.startingScore;
+			if (GS.a.autoTransferHealthAcrossLevels) {
+				if (GS.a.nonCompoundLastStage != null) {
+					int oldStageHealth = PlayerPrefs.GetInt (GS.a.nonCompoundLastStage.name + GameSettings.autoTransferHealthAcrossLevelsPlayerPrefString, -1);
+					if (oldStageHealth != -1)
+						scoreToAdd = oldStageHealth;
+				}
+			}
+			ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, 0, scoreToAdd, false);
+		}
 	}
 
 
@@ -110,7 +123,7 @@ public class GameStarter : MonoBehaviour {
 			DialogTree.s.LoadFromAsset (GS.a.levelIntroDialog);
 			DialogTree.s.StartDialog ();
 		} else {
-			print ("No opening dialog detected -> " + GS.a.PresetName);
+			print ("No opening dialog detected -> " + GS.a.name);
 			IntroDialogEnd ();
 		}
 	}
@@ -119,7 +132,17 @@ public class GameStarter : MonoBehaviour {
 		if (isOpeningFinished)
 			return;
 
+		if (GS.a.customCharacterLevel)
+			ShowCustomCharcterStats ();
+		else
+			CustomCharacterStatsShowEnd ();
+	}
 
+	public void ShowCustomCharcterStats () {
+		CustomCharacterStartScreen.s.EnableScreen ();
+	}
+
+	public void CustomCharacterStatsShowEnd () {
 		if (GoogleAPI.s.gameInProgress) {
 			DataHandler.s.SendDialogEnd ();
 			readyPlayers[DataHandler.s.myPlayerInteger] = true;

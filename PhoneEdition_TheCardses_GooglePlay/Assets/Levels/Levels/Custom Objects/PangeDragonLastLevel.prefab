@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6289225792941088221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4852217542056003894}
+  - component: {fileID: 2200173085820893050}
+  m_Layer: 0
+  m_Name: PangeDragonLastLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4852217542056003894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289225792941088221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.149436, y: 0.44966558, z: -35.612843}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2200173085820893050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289225792941088221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff21dc5186b1e24580a9053b8964fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockGolemPrefab: {fileID: 8807317528294045608, guid: 33b189ce3a761a94dbf74cb8973fd9fd,
+    type: 3}
+  entPrefab: {fileID: 8807317528294045608, guid: 25fbdfe6b8aef3d47a17ce6e57004a38,
+    type: 3}
+  dragonPrefab: {fileID: 8807317528294045608, guid: e92a18082d23e4943af97fdad3f497c8,
+    type: 3}

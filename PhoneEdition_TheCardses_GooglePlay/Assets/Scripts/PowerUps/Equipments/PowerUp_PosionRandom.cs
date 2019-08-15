@@ -5,8 +5,8 @@ using UnityEngine;
 class PowerUp_PosionRandom : PowerUp_Active_Instant {
 	public float poisonWaitAmount = 1f;
 
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 
 		StartCoroutine (_Enable (power, amount));
 	}

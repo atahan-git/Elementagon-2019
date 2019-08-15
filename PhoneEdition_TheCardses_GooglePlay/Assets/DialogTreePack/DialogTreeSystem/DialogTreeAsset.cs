@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu (fileName = "Empty DialogTree", menuName = "DialogTree", order = 4)]
 public class DialogTreeAsset : ScriptableObject {
-	public string dialogName = "New Dialog";
 	public bool isSkipable = true;
 	public DialogObject[] dialogs = new DialogObject[0];
 }
@@ -15,6 +14,7 @@ public class DialogObject {
 	public string tag;
 
 	[TextArea]
+	[Tooltip("<delay='waitSeconds'>,\n <wait='click/enabled'>,\n <give='itemType'-'itemId'>,\n <trigger='commandID'>,\n <triggerChoice='questChoiceID'>")]
 	public string text;
 	public bool clearImage = true;
 	public Sprite image;

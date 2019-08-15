@@ -46,6 +46,11 @@ public class Objective {
 			return _myObjectiveChecker;
 		}
 	}
+
+	[Tooltip("Some checkers (like CHE_ElementalScoreChecker) can use this to set themselves")]
+	public string checkerSetting = "none";
+
+	public GameObject customGUIObject;
 }
 
 

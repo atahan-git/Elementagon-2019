@@ -95,7 +95,7 @@ public class DialogTree : MonoBehaviour {
 	void UpdateMyAsset () {
 		return;
 		if (myAsset != null) {
-			myAsset.dialogName = dialogName;
+			myAsset.name = dialogName;
 			myAsset.dialogs = new DialogObject[dialogs.Length];
 
 			for (int i = 0; i < dialogs.Length; i++) {
@@ -153,13 +153,16 @@ public class DialogTree : MonoBehaviour {
 			return;
 
 		myAsset = asset;
-		dialogName = myAsset.dialogName;
+		dialogName = myAsset.name;
 		gameObject.name = "-" + dialogName + "- Dialog";
 
 		Dialog[] myChild = GetComponentsInChildren<Dialog> ();
 		for (int i = 0; i < myChild.Length; i++) {
+			myChild[i].StopAllCoroutines ();
 			DestroyImmediate (myChild[i].gameObject);
 		}
+		DialogDisplayer.s.StopAllCoroutines ();
+		DialogDisplayer.s.Clear ();
 
 		foreach (DialogObject dia in myAsset.dialogs) {
 			GameObject myPoint = (GameObject)Instantiate (dialogPrefab, transform.position, transform.rotation);

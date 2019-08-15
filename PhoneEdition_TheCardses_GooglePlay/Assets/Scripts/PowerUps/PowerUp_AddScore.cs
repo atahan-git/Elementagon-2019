@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp_AddScore : PowerUp_Active_Instant {
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 
 		StartCoroutine (_Enable (power, amount));
 	}
@@ -16,7 +16,7 @@ public class PowerUp_AddScore : PowerUp_Active_Instant {
 		int n = 0;
 		while (n < _amount) {
 
-			ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, elementalType, 1, false);
+			ScoreBoardManager.s.AddScore (DataHandler.s.myPlayerInteger, 0, 1, false);
 
 			yield return new WaitForSeconds (0.3f);
 

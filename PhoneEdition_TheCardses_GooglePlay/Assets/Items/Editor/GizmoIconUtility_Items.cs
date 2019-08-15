@@ -7,7 +7,7 @@ public class GizmoIconUtility_Items {
 
     [DidReloadScripts]
     static GizmoIconUtility_Items () {
-        EditorApplication.projectWindowItemOnGUI = ItemOnGUI;
+        EditorApplication.projectWindowItemOnGUI += ItemOnGUI;
     }
 
     static void ItemOnGUI (string guid, Rect rect) {
@@ -19,11 +19,10 @@ public class GizmoIconUtility_Items {
             rect.height = 65f;
             rect.width = rect.height;
 
-            GUI.DrawTexture (rect, (Texture2D)AssetDatabase.LoadAssetAtPath ("Assets/Items/Icons/bg.psd", typeof (Texture2D)));
+            //GUI.DrawTexture (rect, (Texture2D)AssetDatabase.LoadAssetAtPath ("Assets/Items/Icons/bg.psd", typeof (Texture2D)));
             GUI.DrawTexture (rect, (Texture2D)AssetDatabase.LoadAssetAtPath ("Assets/Items/Icons/bg.psd", typeof (Texture2D)));
 
             if (obj.sprite != null) {
-               
                 GUI.DrawTexture (rect, obj.sprite.texture);
             }
 

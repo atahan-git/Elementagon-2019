@@ -18,6 +18,10 @@ public class GameEndScreen : MonoBehaviour {
 
 	public GameObject nextLevelButton;
 
+
+	public GameObject finalEndButtons;
+	public GameObject beforeFinalEndingDialogStoryButtons;
+
 	// Use this for initialization
 	void Start () {
 		s = this;
@@ -42,7 +46,7 @@ public class GameEndScreen : MonoBehaviour {
 		SceneMaster.s.LoadMenu ();
 	}
 
-	public void Endgame (int id, bool isWon) {
+	public void Endgame (int id, bool isWon, bool isFinalEnd) {
 		string name = "";
 		bool setCorrectly = false;
 
@@ -67,7 +71,7 @@ public class GameEndScreen : MonoBehaviour {
 				if (!GS.a.isNPCEnabled) {
 					name = "Yellow Player";
 				} else {
-					name = GS.a.myNPC.name;
+					name = GS.a.myNPCPrefab.name;
 				}
 				break;
 			case 4:
@@ -83,18 +87,31 @@ public class GameEndScreen : MonoBehaviour {
 			}
 		}
 
-
-		nextLevelButton.SetActive (isWon);
+		
 		if (isWon) {
-			statusText.text = "You Win!";
+			statusText.text = GS.a.winText.Length > 0 ? GS.a.winText : "You Win!";
 			winEffects.SetActive (true);
 		} else {
-			statusText.text = "You Lose";
+			statusText.text = GS.a.loseText.Length > 0 ? GS.a.loseText : "You Lose";
 			lostEffects.SetActive (true);
+			nextLevelButton.SetActive (false);
 		}
 		nameText.text = "Winner: " + name;
 
+		if (isFinalEnd) {
+			finalEndButtons.SetActive (true);
+			beforeFinalEndingDialogStoryButtons.SetActive (false);
+		} else {
+			finalEndButtons.SetActive (false);
+			beforeFinalEndingDialogStoryButtons.SetActive (true);
+		}
+
 		endGameScreen.SetActive (true);
+	}
+
+	public void TriggerEndingDialog () {
+		endGameScreen.SetActive (false);
+		GameObjectiveMaster.s.TriggerEndingDialog ();
 	}
 
 
@@ -112,7 +129,6 @@ public class GameEndScreen : MonoBehaviour {
 		lostEffects.SetActive (true);
 
 		nameText.text = "We are sorry for the connection issue :( /nUnfortunatelly reconnecting isn't possible";
-
 	} 
 
 	public void Endgame (string name, bool isWon){

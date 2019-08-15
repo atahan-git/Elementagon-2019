@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0614ed99e9dfd74288e949f874b5970, type: 3}
+  m_Name: CardSet_Earthy_HealthNPCOnly
+  m_EditorClassIdentifier: 
+  defCard: {fileID: 11400000, guid: 4b9325ffe3fd9644899c93c2cc5f45bb, type: 2}
+  poisonCard: {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
+  matchedCard: {fileID: 11400000, guid: ff43576bb3ec1a941b3f0fc0352004bb, type: 2}
+  cards:
+  - {fileID: 11400000, guid: bf0ce73d5d63e684f91583438e4c9f69, type: 2}
+  - {fileID: 11400000, guid: 31fe177fb93db444aa5375fca36c4e0c, type: 2}
+  - {fileID: 11400000, guid: d930feab6e07fb8439e0f08426713f09, type: 2}
+  - {fileID: 11400000, guid: 2adbbb69c49edae469b9ceee21375a83, type: 2}
+  - {fileID: 11400000, guid: 3635f8115110c994f83c7e11a6ffe044, type: 2}
+  - {fileID: 11400000, guid: d3a28e7bb9224cb4694313aa12bcf1eb, type: 2}
+  - {fileID: 11400000, guid: 32821896ae8cb3b4e86c91ed0b843338, type: 2}
+  customSpawnChanceCards:
+  - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
+  - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
+  customSpawnChances:
+  - 4
+  - 4
+  forceSpawnAtStartCards: []
+  forceSpawnCounts: 

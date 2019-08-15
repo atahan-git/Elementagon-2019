@@ -11,8 +11,6 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 	public Text myText;
 
 
-	bool isCombo = false;
-	bool isNoPointCard = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,8 +19,11 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 
 		isCombo = PlayerPrefs.GetInt ("isCombo", 0) == 1;
 		isNoPointCard = PlayerPrefs.GetInt ("isNoPointCard", 0) == 1;
+		isZoomableMap = PlayerPrefs.GetInt ("isZoomableMap", 0) == 1;
+
 	}
 
+	bool isCombo = false;
 	public static void ComboCheck () {
 		if (s != null)
 			s.StartCoroutine (s._ComboCheck ());
@@ -50,6 +51,7 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 	}
 
 
+	bool isNoPointCard = false;
 	public static void NoPointCards () {
 		if (s != null)
 			s.StartCoroutine(s._NoPointCards ());
@@ -66,6 +68,34 @@ public class Tutorial_FirstTimeStuff : MonoBehaviour {
 			myPanel.SetActive (true);
 
 			myText.text = "Bazı kartlar eşleştirince puan vermezler. Ama yine de puan veren kartları bulmak için onları eşleştirebilirsin.";
+
+			yield return new WaitUntil (() => Input.GetMouseButtonDown (0));
+
+			LocalPlayerController.isActive = true;
+			GameObjectiveMaster.s.isGamePlaying = true;
+
+			myPanel.SetActive (false);
+		}
+	}
+
+
+	bool isZoomableMap = false;
+	public static void ZoomableMap () {
+		if (s != null)
+			s.StartCoroutine (s._ZoomableMap ());
+	}
+
+	IEnumerator _ZoomableMap () {
+		if (!isZoomableMap) {
+			isZoomableMap = true;
+			PlayerPrefs.SetInt ("isZoomableMap", 1);
+
+			LocalPlayerController.isActive = false;
+			GameObjectiveMaster.s.isGamePlaying = false;
+
+			myPanel.SetActive (true);
+
+			myText.text = "Bazı bölümlerde harita ekrana sığmak için fazla büyük. Bu bölümlerde parmağını kullanarak kartları sürükleyebilir ve büyütüp küçültebilirsin.";
 
 			yield return new WaitUntil (() => Input.GetMouseButtonDown (0));
 

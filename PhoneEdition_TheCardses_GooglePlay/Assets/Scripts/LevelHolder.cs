@@ -10,9 +10,12 @@ public class LevelHolder : MonoBehaviour {
 	public GameSettings unlockReq;
 	public GameSettings unlockReqAlt;
 
+	[Space]
 	[Tooltip("Leave -1 for not checking")]
 	public int questDecisionLockId = -1;
-	public float questDecisionReqValue = -1;
+	[Tooltip ("0 is for undecided quests")]
+	public int questDecisionReqValue = -1;
+
 
 	[Space]
 

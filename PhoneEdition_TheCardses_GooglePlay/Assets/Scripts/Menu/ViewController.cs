@@ -8,7 +8,7 @@ public class ViewController : MonoBehaviour {
 
 	public ViewController[] children;
 
-	//[HideInInspector]
+	[HideInInspector]
 	public int[] myId;
 
 	public bool isShown = false;

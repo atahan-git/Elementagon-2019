@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ddb21caa616c0488b6c8eded113fc8, type: 3}
+  m_Name: "7 Bitki \xC7ay\u0131"
+  m_EditorClassIdentifier: 
+  ID: 7
+  effectColor: {r: 0, g: 0, b: 0, a: 0}
+  name: "Bitki \xC7ay\u0131"
+  sprite: {fileID: 21300000, guid: 552b1fb3e2e65724e9c4702d6e30159e, type: 3}
+  cardSprite: {fileID: 21300000, guid: 4d1be4537df185240b37f0d32c2cc8c8, type: 3}
+  description: 5 Can Kazan
+  myType: 1
+  amount: 5

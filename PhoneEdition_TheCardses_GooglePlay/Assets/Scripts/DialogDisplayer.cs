@@ -107,6 +107,8 @@ public class DialogDisplayer : MonoBehaviour {
 		StartCoroutine (ShowDialog(text,delay));
 	}
 
+
+	//Commands cheat sheet: <delay='waitSeconds'>, <wait='click/enabled'>, <give='itemType'-'itemId'>, <trigger='commandID'>, <triggerChoice='questChoiceID'>
 	public string curText;
 	List<string> itemsToGive;
 	IEnumerator ShowDialog (string text, float delay) {

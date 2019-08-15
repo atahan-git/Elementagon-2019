@@ -19,7 +19,7 @@ public class CardChecker : MonoBehaviour {
 		CheckCards (DataHandler.s.myPlayerInteger, new List<IndividualCard> (cardsToCheck), isInstant);
 	}
 
-	public void CheckCards (int playerId,List<IndividualCard> cardsToCheck, bool isInstant) {
+	public void CheckCards (int playerId, List<IndividualCard> cardsToCheck, bool isInstant) {
 		IndividualCard[] _cardsToCheck = (IndividualCard[])cardsToCheck.ToArray ().Clone ();
 
 		if (playerId == DataHandler.s.myPlayerInteger)
@@ -39,17 +39,17 @@ public class CardChecker : MonoBehaviour {
 		int totalMatched = 0;
 		//check Cards
 		for (int l = 0; l < cardsToCheck.Length; l++) {
-			if (cardsToCheck [l] != null) {
+			if (cardsToCheck[l] != null) {
 				if (cardsToCheck[l].cBase != null) {
-					for (int k = l+1; k < cardsToCheck.Length; k++) {
-						if (cardsToCheck [k] != null && cardsToCheck[l] != null) {
+					for (int k = l + 1; k < cardsToCheck.Length; k++) {
+						if (cardsToCheck[k] != null && cardsToCheck[l] != null) {
 							if (cardsToCheck[k].cBase != null && cardsToCheck[l].cBase != null) {
 								if (k != l) {
-									if (cardsToCheck [k].cBase.dynamicCardID == cardsToCheck [l].cBase.dynamicCardID) {
+									if (cardsToCheck[k].cBase.dynamicCardID == cardsToCheck[l].cBase.dynamicCardID) {
 
 										//Ultimate Poison Alert - player matched two poison cards
-										if (cardsToCheck [k].isPoison) {
-											PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [k], "cardchecker");
+										if (cardsToCheck[k].cBase.isPoison) {
+											PoisonMaster.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck[k], "cardchecker");
 											//PowerUpManager.s.ChoosePoisonCard (cardsToCheck [l]);
 											ScoreBoardManager.s.AddScore (myPlayerinteger, 0, -GS.a.powerUpSettings.poison_combo, false); //this is just poison score
 										} else {
@@ -73,8 +73,8 @@ public class CardChecker : MonoBehaviour {
 					}
 
 					//normal poison alert - just one poison card
-					if (cardsToCheck [l].isPoison) {
-						PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [l], "cardchecker"); //this is just poison score
+					if (cardsToCheck[l].cBase.isPoison) {
+						PoisonMaster.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck[l], "cardchecker"); //this is just poison score
 					}
 				}
 			}
@@ -95,17 +95,17 @@ public class CardChecker : MonoBehaviour {
 		int totalMatched = 0;
 		//check Cards
 		for (int l = 0; l < cardsToCheck.Length; l++) {
-			if (cardsToCheck [l] != null) {
-				if (cardsToCheck [l].cBase != null) {
+			if (cardsToCheck[l] != null) {
+				if (cardsToCheck[l].cBase != null) {
 					for (int k = 1; k < cardsToCheck.Length; k++) {
 						if (cardsToCheck[k] != null && cardsToCheck[l] != null) {
 							if (cardsToCheck[k].cBase != null && cardsToCheck[l].cBase != null) {
 								if (k != l) {
 
-									if (cardsToCheck [k].cBase.dynamicCardID == cardsToCheck [l].cBase.dynamicCardID) {
+									if (cardsToCheck[k].cBase.dynamicCardID == cardsToCheck[l].cBase.dynamicCardID) {
 										//Ultimate Poison Alert - player matched two poison cards
-										if (cardsToCheck [k].isPoison) {
-											PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [k], "cardchecker");
+										if (cardsToCheck[k].cBase.isPoison) {
+											PoisonMaster.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck[k], "cardchecker");
 											//PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [l]);
 											ScoreBoardManager.s.AddScore (myPlayerinteger, 0, -GS.a.powerUpSettings.poison_combo, false);
 										} else {
@@ -128,8 +128,8 @@ public class CardChecker : MonoBehaviour {
 					}
 
 					//check for poison
-					if (cardsToCheck [l].isPoison) {
-						PowerUpManager.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck [l], "cardchecker");
+					if (cardsToCheck[l].cBase.isPoison) {
+						PoisonMaster.s.ChoosePoisonCard (myPlayerinteger, cardsToCheck[l], "cardchecker");
 					}
 				}
 			}

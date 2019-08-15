@@ -125,22 +125,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: High Elf Shipmaster
   myColor: {r: 1, g: 0.9771172, b: 0.5424528, a: 1}
-  isFrozen: 0
-  isKillable: 0
   movementSpeed: 0.1
   AIStrength: 0.8
   poisonImmune: 0
-  power: 1
+  isFrozen: 0
+  myDeathType: 1
+  unkillableEffect: {fileID: 1797926292880366, guid: b4b5f01ae3489764e824abe703ffdd3a,
+    type: 3}
+  isStunned: 0
+  stunTime: 5
   activatePrefab: {fileID: 0}
   selectPrefab: {fileID: 114873342120503888, guid: f344f307f5a4b2d40beadcccb686d179,
     type: 3}
   diePrefab: {fileID: 1769001268774204, guid: 8349d5c526dee2140b257d314523eed2, type: 3}
   myCurrentOccupation: {fileID: 0}
-  myUnkillableType: 0
-  unkillableEffect: {fileID: 1797926292880366, guid: b4b5f01ae3489764e824abe703ffdd3a,
-    type: 3}
-  isStunned: 0
-  stunTime: 5
   selectionDeniedEffect: {fileID: 1797926292880366, guid: 0a5e61dfa282ea74388f48bcddfae3a0,
     type: 3}
   selectionTooManyDeniedEffect: {fileID: 1797926292880366, guid: 240d76430f36d3d4f89f39249b2ff827,

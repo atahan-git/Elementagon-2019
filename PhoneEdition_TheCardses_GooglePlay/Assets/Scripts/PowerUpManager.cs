@@ -21,7 +21,7 @@ public class PowerUpManager : MonoBehaviour {
 
 
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	public Color[] genericColors = new Color[32];
+	public Color[] dragonColors = new Color[32];
 	public GameObject genericIndicatorPrefab;
 	public GameObject indicatorScoreboardPrefab;
 
@@ -33,7 +33,7 @@ public class PowerUpManager : MonoBehaviour {
 	}
 
 
-	public void EnablePowerUp (PUpTypes type, int id, int elementalType, int power, float amount) {
+	public void EnablePowerUp (PUpTypes type, int id, int power, float amount, Color effectColor) {
 		DataLogger.LogMessage ("Activating pup: type:^"  + type.ToString() + " - id: " + id.ToString() + " - power: " + power.ToString() + " - amount: " + amount.ToString());
 		if (canActivatePowerUp == false)
 			return;
@@ -41,7 +41,7 @@ public class PowerUpManager : MonoBehaviour {
 		if (type == PUpTypes.equipment) {
 			if (id < equipmentPUps.Length) {
 				if (equipmentPUps[id] != null) {
-					equipmentPUps[id].Enable (elementalType, power, amount);
+					equipmentPUps[id].Enable (power, amount, effectColor);
 					activePUp = equipmentPUps[id];
 				} else
 					DataLogger.LogError ("Equipment pup with id " + id.ToString () + " is null!");
@@ -51,7 +51,7 @@ public class PowerUpManager : MonoBehaviour {
 			if (id < potionPUps.Length) {
 				if (potionPUps[id] != null) {
 					CharacterStuffController.s.lastActivatedButton = false;
-					potionPUps[id].Enable (elementalType, power, amount);
+					potionPUps[id].Enable (power, amount, effectColor);
 					activePUp = potionPUps[id];
 				} else
 					DataLogger.LogError ("Potion pup with id " + id.ToString () + " is null!");
@@ -132,19 +132,5 @@ public class PowerUpManager : MonoBehaviour {
 
 	public void SendPowerUpAction (int x, int y, PUpTypes pUpType, int id, int power, float amount, ActionType action) {
 		DataHandler.s.SendPowerUpAction (x, y, pUpType, id, power, amount, action);
-	}
-
-	/// <summary>
-	/// This is used when locally selecting a posion card. Network posioning goes through the poison power up script, not here.
-	/// </summary>
-	/// <param name="myPlayerinteger"></param>
-	/// <param name="myCard"></param>
-	/// <param name="message"></param>
-	public void ChoosePoisonCard (int myPlayerinteger, IndividualCard myCard, string message){
-		   
-		if (myCard.isPoison) {
-			//pPoison.ChoosePoisonCard (myPlayerinteger, myCard, message);
-			myCard.isPoison = false;
-		}
 	}
 }

@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
   m_Name: -2a Kervan- Dialog
   m_EditorClassIdentifier: 
-  dialogName: 2a Kervan
   isSkipable: 1
   dialogs:
   - tag: 
-    text: "Wowowo Kervan bulduk <i>Kahraman</i> Reiz <wait=click><triggerChoice=[\"Kervana
-      napcan Reiz?\";0;1,\"Yard\u0131m Et\":2,\"G\xF6rev Reiz Daha \xD6nemli\"]>"
+    text: "Wowowo Kervan bulduk <i>Kahraman</i> Reiz! <wait=click><triggerChoice=[\"Kervana
+      napcan Reiz?\";0;1,\"Yard\u0131m Et\":2,\"G\xF6rev Reiz Daha \xD6nemli\"]>.
+      Helal Len m\xFCkimmel bir karar!"
     clearImage: 0
     image: {fileID: 0}
     bigSpriteAction: 
     bigSpriteSlot: 
     bigSprite: []
-    delay: 0
+    delay: 0.3
     breakAutoChain: 0

@@ -32,12 +32,24 @@ public class CardBase : ScriptableObject {
 	public SpriteAnimationHolder myAnim;
 	public bool isAnimated { get { return myAnim != null; } }
 
-	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-    public int elementType = 0;
+	[Tooltip("leave at 0 alpha to use default color")]
+	public Color effectColor;
+
+	[Space]
+	[Tooltip (" -1> normal card\n 1> power card\n 2> item card")]
+	public int specialTypeID = -1;
 
 	public bool isAITargetable = true;
+	[Tooltip("If this is not null, npcs will use the values in this card to figure out the resulting match score result. Note that overriding is not network ready and will only override score and match gfx properties")]
+	public CardBase npcMatchOverride;
 	public bool isPowerUpRelated = false;
+	[Space]
+	public bool isPoison = false;
+	public enum PoisonTypes { /*ScorePoison,*/ DeadlyPoison, PoisonCure }
+	public PoisonTypes myPoisonType = PoisonTypes.DeadlyPoison;
+	public int poisonAmount = 15;
 
+	[Space]
 	public int score = 1;
 	public int enemyScore = 0;
 

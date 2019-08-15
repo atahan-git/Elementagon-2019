@@ -65,7 +65,7 @@ public class GS : MonoBehaviour {
 		a = mode.Copy ();
 		activeGameMode = a.name;
 		activeGameModeID = a.id;
-		DataLogger.LogMessage ("Active Game Settings: " + a.PresetName);
+		DataLogger.LogMessage ("Active Game Settings: " + a.name);
 	}
 
 	public void ChangeGameMode (int id) {

@@ -1,9 +1,5 @@
-fix element arena level
-add the tower level
-
-add export console
-optimize console
-
-add a console for cheats?
-
-start doing the story
+Potions doesnt work (you can spam potions to get multiple)
+also their counter doesnt work
+getting score should have a nicer animation
+Objectives should have cool animations
+better scoreboard score location

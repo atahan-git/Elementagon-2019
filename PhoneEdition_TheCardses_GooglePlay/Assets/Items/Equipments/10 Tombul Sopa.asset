@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: 10 Tombul Sopa
   m_EditorClassIdentifier: 
   ID: 10
-  elementalType: 1
+  effectColor: {r: 0.6981132, g: 0.38490903, b: 0, a: 1}
   name: Tombul Sopa
   sprite: {fileID: 21300000, guid: 2366e6cd474aa854a974ff0a806bad08, type: 3}
   cardSprite: {fileID: 0}
   description: "Geli\u015Fig\xFCzel 1 kart daha a\xE7"
-  durability: 1
   myType: 14
   power: 0
   amount: 2

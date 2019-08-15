@@ -37,12 +37,14 @@ public class GameObjectiveMaster : MonoBehaviour {
 		for(int i = 0; i < winObjectives.Length; i++){
 			Objective myObjective = winObjectives[i];
 			myObjective.myObjectiveChecker.Initialize (myObjective);
-			Instantiate (objGUIPrefab, winObjParent.transform).GetComponent<ObjectiveGUI> ().SetUpObjectiveGUI (myObjective);
+			Instantiate (myObjective.customGUIObject != null ? myObjective.customGUIObject : objGUIPrefab, winObjParent.transform)
+				.GetComponent<ObjectiveGUI> ().SetUpObjectiveGUI (myObjective);
 		}
 		for (int i = 0; i < loseObjectives.Length; i++) {
 			Objective myObjective = loseObjectives[i];
 			myObjective.myObjectiveChecker.Initialize (myObjective);
-			Instantiate (objGUIPrefab, loseObjParent.transform).GetComponent<ObjectiveGUI> ().SetUpObjectiveGUI (myObjective);
+			Instantiate (myObjective.customGUIObject != null ? myObjective.customGUIObject : objGUIPrefab, loseObjParent.transform)
+				.GetComponent<ObjectiveGUI> ().SetUpObjectiveGUI (myObjective);
 		}
 	}
 
@@ -187,7 +189,7 @@ public class GameObjectiveMaster : MonoBehaviour {
 	}
 
 
-	int WinnerID (bool isWon) {
+	public int WinnerID (bool isWon) {
 		switch (GS.a.myGamePlayerType) {
 		case GameSettings.GamePlayerTypes.Singleplayer:
 		case GameSettings.GamePlayerTypes.OneVOne:
@@ -263,14 +265,21 @@ public class GameObjectiveMaster : MonoBehaviour {
 			}
 
 			if (GS.a.levelOutroDialog != null) {
-				DialogDisplayer.s.SetDialogScreenState (true);
-				DialogTree.s.LoadFromAsset (GS.a.levelOutroDialog);
-				DialogTree.s.StartDialog ();
+				GameEndScreen.s.Endgame (finisherId, isWon, false);
 			} else {
 				RestOffTheEndingStuff (isWon);
 			}
+
+			if (GS.a.autoTransferHealthAcrossLevels) {
+				int oldHealth = PlayerPrefs.GetInt (GS.a.name + GameSettings.autoTransferHealthAcrossLevelsPlayerPrefString, -1);
+				int curHealth = ScoreBoardManager.s.allScores[DataHandler.s.myPlayerInteger, 0];
+				if (curHealth > oldHealth)
+					PlayerPrefs.SetInt (GS.a.name + GameSettings.autoTransferHealthAcrossLevelsPlayerPrefString, curHealth);
+
+				print ("Health saved as " + curHealth.ToString() + " to " + GS.a.name + GameSettings.autoTransferHealthAcrossLevelsPlayerPrefString);
+			}
 		} else {
-			GameEndScreen.s.Endgame (finisherId, isWon);
+			GameEndScreen.s.Endgame (finisherId, isWon, true);
 			InventoryMaster.s.ReduceEquipmentChargeLeft ();
 		}
 	}
@@ -294,9 +303,15 @@ public class GameObjectiveMaster : MonoBehaviour {
 		return isWon;
 	}
 
+	public void TriggerEndingDialog () {
+		DialogDisplayer.s.SetDialogScreenState (true);
+		DialogTree.s.LoadFromAsset (GS.a.levelOutroDialog);
+		DialogTree.s.StartDialog ();
+	}
+
 	void RestOffTheEndingStuff (bool isWon) {
 		if (GS.a.nextStage == null) {
-			GameEndScreen.s.Endgame (finisherId, isWon);
+			GameEndScreen.s.Endgame (finisherId, isWon, true);
 		} else {
 			GameEndScreen.s.GetToNextStage ();
 		}

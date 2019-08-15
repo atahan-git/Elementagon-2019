@@ -9,26 +9,27 @@ public class NPCManager : MonoBehaviour {
 
 	public List<NPCBase> ActiveNPCS = new List<NPCBase> ();
 
+	//List<NPCBase> spawnableNPCs = new List<NPCBase> ();
+
 	// Start is called before the first frame update
 	void Awake () {
 		s = this;
-		foreach (NPCBase npc in ActiveNPCS) {
-			if (npc != null)
-				npc.Die (true);
-		}
-		ActiveNPCS.Clear ();
 
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+		KillAllNPCs ();
 	}
 
 	public void SpawnNPCPeriodic () {
 		if (DataHandler.s.myPlayerInteger != 0)
 			return;
 
+		SpawnNPC (GS.a.myNPCPrefab);
+
+		GS.a.npcSpawnCount--;
+		if (GS.a.npcSpawnCount != 0 && !GameObjectiveMaster.s.isFinished)
+			Invoke ("SpawnNPCPeriodic", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
+	}
+
+	public void SpawnNPC (NPCBase myNPCPrefab) {
 		int y = Random.Range (0, CardHandler.s.allCards.GetLength (1));
 		int x = 0;
 		IndividualCard myCard = CardHandler.s.allCards[x, y];
@@ -46,15 +47,17 @@ public class NPCManager : MonoBehaviour {
 			trials++;
 		}
 
-		NPCBase myNPC = SpawnNPCAtLocation (myCard);
+		NPCBase myNPC = SpawnNPCAtLocation (myCard, myNPCPrefab);
 
-		GS.a.npcSpawnCount--;
-		if (GS.a.npcSpawnCount != 0 && !GameObjectiveMaster.s.isFinished)
-			Invoke ("SpawnNPCPeriodic", GS.a.npcSpawnDelay * Random.Range (0.9f, 1.1f));
 	}
 
-	NPCBase SpawnNPCAtLocation (IndividualCard myCard) {
-		NPCBase myNPC = Instantiate (GS.a.myNPC.gameObject, npcSpawnPos.position, Quaternion.identity).GetComponent<NPCBase> ();
+	NPCBase SpawnNPCAtLocation (IndividualCard myCard, NPCBase myNPCPrefab) {
+		if (myNPCPrefab == null) {
+			DataLogger.LogError ("Trying to spawn null npc");
+			return null;
+		}
+
+		NPCBase myNPC = Instantiate (myNPCPrefab.gameObject, npcSpawnPos.position, Quaternion.identity).GetComponent<NPCBase> ();
 		myNPC.transform.localScale = new Vector3 (1, 1, 1) * GS.a.gridSettings.scaleMultiplier;
 		myNPC.Spawn (myCard);
 
@@ -64,6 +67,14 @@ public class NPCManager : MonoBehaviour {
 		}
 
 		return myNPC;
+	}
+
+	public void KillAllNPCs () {
+		foreach (NPCBase npc in ActiveNPCS) {
+			if (npc != null)
+				npc.Die (true);
+		}
+		ActiveNPCS.Clear ();
 	}
 
 	public void StopAllNPCs () {
@@ -94,7 +105,8 @@ public class NPCManager : MonoBehaviour {
 
 			switch (action) {
 			case ActionType.Spawn:
-				myNPC = SpawnNPCAtLocation (card);
+				DataLogger.LogError ("Customs NPCs are not implemented to spawn yet! Spawning default level npc");
+				myNPC = SpawnNPCAtLocation (card, GS.a.myNPCPrefab);
 				ActiveNPCS.SetIndex (index, myNPC);
 				break;
 			case ActionType.Die:

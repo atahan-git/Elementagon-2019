@@ -1,0 +1,2 @@
+0 -> kervan quest => 1> help 2>ignore
+1 -> Doran element select => 1>fire 2>earth

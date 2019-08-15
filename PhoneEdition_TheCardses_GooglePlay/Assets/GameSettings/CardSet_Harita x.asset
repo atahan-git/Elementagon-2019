@@ -30,5 +30,6 @@ MonoBehaviour:
   customSpawnChances:
   - 4
   - 4
-  - 2
-  forceSpawnInPairAtStartCards: []
+  - 4
+  forceSpawnAtStartCards: []
+  forceSpawnCounts: 

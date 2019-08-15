@@ -21,5 +21,8 @@ public class CardSets : ScriptableObject {
 	[Tooltip ("x% chance to spawn, if left zero or null the default drop chance will be used")]
 	public float[] customSpawnChances = new float[0];
 
-	public CardBase[] forceSpawnInPairAtStartCards;
+	[Space]
+	public CardBase[] forceSpawnAtStartCards;
+	[Tooltip ("what amount to spawn, if 0 or null 2 will be spawned")]
+	public int[] forceSpawnCounts = new int[0];
 }

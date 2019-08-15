@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Doran - 2f
+  m_EditorClassIdentifier: 
+  id: 47
+  gridSettings: {fileID: 11400000, guid: 27da3e59b087815498862ba227a21040, type: 2}
+  cardSet: {fileID: 11400000, guid: 9af1b8721979bfc4a86ae9da010d127f, type: 2}
+  cardReOpenTime: 5
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  myGameRuleType: 0
+  myGamePlayerType: 0
+  canCombo: 1
+  startingScore: 0
+  winObjectives:
+  - isDone: 0
+    name: "Yolculuk i\xE7in tekerlek topla"
+    type: 6
+    requiredValue: 10
+    myChecker:
+      _classRef: CHE_ScoreChecker, Assembly-CSharp
+    checkerSetting: none
+  loseObjectives:
+  - isDone: 0
+    name: "Zaman\u0131n Bitmeden"
+    type: 6
+    requiredValue: 120
+    myChecker:
+      _classRef: CHE_TimeChecker, Assembly-CSharp
+    checkerSetting: none
+  winDrops: []
+  windDropAmounts: 
+  winText: 
+  loseText: 
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: 2f
+  levelName: 2f
+  levelDescription: "B\xFCy\xFCc\xFCy\xFC bul"
+  startingText: "b\xFCy\xFC b\xFCy\xFC"
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  bgAnimation: {fileID: 0}
+  bgSprite: {fileID: 0}
+  levelIntroDialog: {fileID: 0}
+  levelOutroDialog: {fileID: 0}
+  customObjects: []
+  autoSetUpBoard: 1
+  dropChance: 1
+  farmModeDifficulty: 1
+  possibleDropsDGrade: []
+  possibleDropsCGrade: []
+  possibleDropsBGrade: []
+  possibleDropsAGrade: []
+  questItemDefiniteDrops: []
+  myNPCPrefab: {fileID: 0}
+  npcSpawnCount: 1
+  npcSpawnDelay: 5
+  customCharacterLevel: 0
+  charSprite: {fileID: 0}
+  charName: 
+  charDescription: 
+  equipment: {fileID: 0}
+  potions: []
+  potionsAmounts: 
+  selectedElement: -1
+  elementLevel: 0
+  nextStage: {fileID: 0}
+  nonCompoundNextStage: {fileID: 0}
+  nonCompoundLastStage: {fileID: 0}
+  autoTransferHealthAcrossLevels: 0

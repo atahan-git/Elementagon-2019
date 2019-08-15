@@ -57,7 +57,11 @@ public class NPC_BasicSelection : NPCBase {
 				}
 			} 
 			if (!targetSet) {
-				curTarget = GetRandomizedMoveableCardList ()[0];
+				do {
+					myCards = GetRandomizedMoveableCardList ();
+					yield return new WaitForSeconds (0.5f);
+				} while (myCards.Count == 0);
+				curTarget = myCards[0];
 			}
 
 			yield return MoveToPosition (curTarget);

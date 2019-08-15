@@ -26,12 +26,17 @@ public class RadialChargeImage : MonoBehaviour {
 
 	ParticleSystem[] myActiveParticles = new ParticleSystem[0];
 
+
+	public void SetUp (Sprite mySprite, float _maxCharge, string _name, int dragonID) {
+		SetUp (mySprite, _maxCharge, _name, PowerUpManager.s.dragonColors[dragonID]);
+	}
+
 	// Use this for initialization
-	public void SetUp (Sprite mySprite, float _maxCharge, string _name, int elementalId) {
+	public void SetUp (Sprite mySprite, float _maxCharge, string _name, Color myColor) {
 		myActiveParticles = GetComponentsInChildren<ParticleSystem> ();
 		foreach (ParticleSystem sys in myActiveParticles) {
 			if (sys != null)
-				sys.startColor = PowerUpManager.s.genericColors[elementalId];
+				sys.startColor = myColor;
 		}
 
 		myImg.sprite = mySprite;

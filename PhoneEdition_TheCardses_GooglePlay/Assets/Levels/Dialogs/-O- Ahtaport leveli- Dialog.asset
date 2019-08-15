@@ -4,14 +4,14 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
   m_Name: -O- Ahtaport leveli- Dialog
   m_EditorClassIdentifier: 
-  dialogName: O- Ahtaport leveli
   isSkipable: 1
   dialogs:
   - tag: 
@@ -21,5 +21,5 @@ MonoBehaviour:
     bigSpriteAction: 
     bigSpriteSlot: 
     bigSprite: []
-    delay: 0
+    delay: 0.3
     breakAutoChain: 0

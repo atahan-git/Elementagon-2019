@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySprite: {fileID: 21300000, guid: 25404540f32c861409ee63db56034ddc, type: 3}
   myAnim: {fileID: 0}
-  elementType: 16
+  effectColor: {r: 0.21226418, g: 0.68803585, b: 1, a: 1}
+  specialTypeID: 2
   isAITargetable: 0
+  npcMatchOverride: {fileID: 0}
   isPowerUpRelated: 1
-  score: 1
+  isPoison: 0
+  myPoisonType: 0
+  poisonAmount: 15
+  score: 0
   enemyScore: 0
-  cardType: 10
+  dynamicCardID: 10
   myItem: {fileID: 0}
   onCard_SelectEffect: {fileID: 375051682390056077, guid: e8ed32f383ff09e4a9993ef4607416cf,
     type: 3}

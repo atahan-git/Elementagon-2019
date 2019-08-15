@@ -108,7 +108,7 @@ public class InventoryMaster : MonoBehaviour {
 
 	//this is only done at the end of the game
 	public void ReduceEquipmentChargeLeft () {
-		if (!GS.a.overrideEquipment) {
+		if (!GS.a.customCharacterLevel) {
 			DataLogger.LogMessage ("Reducing equipment charge");
 			if (activeEquipment != null) {
 				activeEquipment.chargesLeft--;

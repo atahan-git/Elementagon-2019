@@ -23,6 +23,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 	public int customSpawnChanceCardsCount;
 	public int forceSpawnCardsCount;
 	public int itemCount;
+	public int forceSpawnItemCount;
 	[Space]
 
 	public GameObject farmBoard;
@@ -31,17 +32,19 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 	public List<GameObject>[] itemsDisps;
 
-	public void Initialize () {
+	public void Initialize  () {
 		utilityCount = CardSets.UtilityCardsCount;
 		normalCardsCount = GS.a.cardSet.cards.Length;
 		customSpawnChanceCardsCount = GS.a.cardSet.customSpawnChanceCards.Length;
-		forceSpawnCardsCount = GS.a.cardSet.forceSpawnInPairAtStartCards.Length;
+		forceSpawnCardsCount = GS.a.cardSet.forceSpawnAtStartCards.Length;
 		itemCount = 0;
 		itemCount += GS.a.possibleDropsDGrade.Length;
 		itemCount += GS.a.possibleDropsCGrade.Length;
 		itemCount += GS.a.possibleDropsBGrade.Length;
 		itemCount += GS.a.possibleDropsAGrade.Length;
-		allCards = new CardBase[utilityCount + normalCardsCount + customSpawnChanceCardsCount + itemCount];
+		forceSpawnItemCount = GS.a.questItemDefiniteDrops.Length;
+		itemCount += forceSpawnItemCount;
+		allCards = new CardBase[utilityCount + normalCardsCount + customSpawnChanceCardsCount + forceSpawnCardsCount + itemCount];
 
 		utilityStartIndex = 0;
 		normalCardStartIndex = utilityCount;
@@ -62,7 +65,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 
 		//force spawn cards
 		for (int i = 0; i < forceSpawnCardsCount; i++) {
-			allCards[i + forceSpawnStartIndex] = GS.a.cardSet.forceSpawnInPairAtStartCards[i];
+			allCards[i + forceSpawnStartIndex] = GS.a.cardSet.forceSpawnAtStartCards[i];
 		}
 
 		//custom spawn chance cards
@@ -72,9 +75,9 @@ public class CardTypeRandomizer : MonoBehaviour {
 			//if the player doesnt have a power up or an equipment dont spawn that card!
 			//this need multiplayer support though
 			float notEquippedMultiplier = 1;
-			if (GS.a.cardSet.customSpawnChanceCards[i].elementType == 16 && !CharacterStuffController.s.isEquippedEquipment)
+			if (GS.a.cardSet.customSpawnChanceCards[i].specialTypeID == 2 && !CharacterStuffController.s.isEquippedEquipment)
 				notEquippedMultiplier = 0;
-			if (GS.a.cardSet.customSpawnChanceCards[i].elementType == 17 && !CharacterStuffController.s.isEquippedPower)
+			if (GS.a.cardSet.customSpawnChanceCards[i].specialTypeID == 1 && !CharacterStuffController.s.isEquippedPower)
 				notEquippedMultiplier = 0;
 
 			GS.a.cardSet.customSpawnChances[i] *= notEquippedMultiplier;
@@ -87,6 +90,7 @@ public class CardTypeRandomizer : MonoBehaviour {
 		AddItems (GS.a.possibleDropsCGrade, ref itemCurStartIndex);
 		AddItems (GS.a.possibleDropsBGrade, ref itemCurStartIndex);
 		AddItems (GS.a.possibleDropsAGrade, ref itemCurStartIndex);
+		AddItems (GS.a.questItemDefiniteDrops, ref itemCurStartIndex);
 
 
 		//setting up

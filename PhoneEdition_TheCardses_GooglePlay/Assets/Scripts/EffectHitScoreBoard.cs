@@ -68,6 +68,8 @@ public class EffectHitScoreBoard : BetweenCardsEffect {
 			return;
 		}*/
 
+		//print ("Trying to spawn and align effect: " + name);
+
 		AlignBetweenCards (card1, card2, AlignMode.position);
 
 		unifier1.transform.position = card1.transform.position - Vector3.forward * 0.1f;

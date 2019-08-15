@@ -75,6 +75,7 @@ public class ItemInfoDisplay : MonoBehaviour {
 	}
 
 	public void SetUp (InventoryMaster.InventoryItem item) {
+		if(item!= null)
 		SetUp (item.item.sprite, item.item.name, item.item.description, item.chargesLeft, new int[0], new int[0], new Sprite[0]);
 	}
 

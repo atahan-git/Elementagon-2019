@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e47823205abe5f4598d2fa827f1ad65, type: 3}
+  m_Name: -After 2f Fire- Dialog
+  m_EditorClassIdentifier: 
+  isSkipable: 1
+  dialogs:
+  - tag: 
+    text: "Hel\xE2l len evlat. Ben bir s\xFCredir <i>seni</i> izliyorum. "
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Benim ad\u0131m Terry ve \u015Fuan bir surat\u0131m yok \xE7\xFCnk\xFC
+      hen\xFCz \xE7izmediler."
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Evet benden \xE7ok bahsetmi\u015Fken sana \u015Funu s\xF6yliyim: Aferin
+      evlat, bak\u0131yorum ki <color=\"red\">ate\u015F</color>i se\xE7mi\u015Fsin,
+      Mavi Kale k\xFCt\xFCphanesinden ate\u015F b\xFCy\xFClerini daha iyi \xF6\u011Frenebilirsin"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0
+  - tag: 
+    text: "Oray\u0131 da kendin bul art\u0131k :D"
+    clearImage: 0
+    image: {fileID: 0}
+    bigSpriteAction: 
+    bigSpriteSlot: 
+    bigSprite: []
+    delay: 0.3
+    breakAutoChain: 0

@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonVCOpener : MenuTriggerableStuffMaster.Triggerable {
+public class ButtonVCOpener : MonoBehaviour {
 
 	public ViewController myVC;
 
+	public enum DisableMode { Disable, SayLocked }
+	[Space]
+	[Space]
+	public DisableMode myDisMode = DisableMode.Disable;
 	public GameSettings unlockReq;
 
-	public GameSettings lOpenOnFirstClick;
+	[Space]
+	[Tooltip ("Leave -1 for not checking")]
+	public int questDecisionLockId = -1;
+	[Tooltip ("0 is for undecided quests")]
+	public int questDecisionReqValue = -1;
 
-	public DialogTreeAsset dOpenOnFirstClick;
+	[Space]
+	public GameSettings completeLevelBeforeOpeningMenu;
 
 	Button myBut;
 
@@ -19,23 +28,20 @@ public class ButtonVCOpener : MenuTriggerableStuffMaster.Triggerable {
 	void Start () {
 		myBut = GetComponent<Button> ();
 
-		if (lOpenOnFirstClick != null) {
-			if (!SaveMaster.isLevelDone (lOpenOnFirstClick)) {
+		if (completeLevelBeforeOpeningMenu != null) {
+			if (!SaveMaster.isLevelDone (completeLevelBeforeOpeningMenu)) {
 				myBut.onClick.RemoveAllListeners ();
-				myBut.onClick.AddListener (() => SceneMaster.s.LoadPlayingLevel (lOpenOnFirstClick.id));
+				myBut.onClick.AddListener (() => SceneMaster.s.LoadPlayingLevel (completeLevelBeforeOpeningMenu.id));
 			}
 		}
 
-		if (dOpenOnFirstClick != null) {
-			if (!MenuTriggerableStuffMaster.IsTriggerDone (this)) {
-				myBut.onClick.RemoveAllListeners ();
-				myBut.onClick.AddListener (() => SceneMaster.s.LoadPlayingLevel (lOpenOnFirstClick.id));
-			}
-		}
-
-		if (unlockReq != null) {
-			if (!SaveMaster.isLevelDone (unlockReq)) {
+		if (!UnlockRequirementKeeper.isUnlocked (unlockReq, questDecisionLockId, questDecisionReqValue)) {
+			if (myDisMode == DisableMode.Disable) {
 				gameObject.SetActive (false);
+			} else {
+				try {
+					GetComponent<TMPro.TextMeshProUGUI> ().text = "Locked";
+				} catch { }
 			}
 		}
 	}

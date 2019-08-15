@@ -7,7 +7,7 @@ public class GizmoIconUtility_Cards {
 
     [DidReloadScripts]
     static GizmoIconUtility_Cards () {
-        EditorApplication.projectWindowItemOnGUI = ItemOnGUI;
+        EditorApplication.projectWindowItemOnGUI += ItemOnGUI;
     }
 
     static void ItemOnGUI (string guid, Rect rect) {
@@ -16,8 +16,9 @@ public class GizmoIconUtility_Cards {
 		CardBase obj = AssetDatabase.LoadAssetAtPath (assetPath, typeof (CardBase)) as CardBase;
 
         if (obj != null) {
-            rect.height = 65f;
-            rect.width = rect.height;
+            rect.height = 55f;
+            rect.width = 55f/1.5f;
+			rect.center += new Vector2 (20, 15);
 
             if (obj.mySprite != null) {
                

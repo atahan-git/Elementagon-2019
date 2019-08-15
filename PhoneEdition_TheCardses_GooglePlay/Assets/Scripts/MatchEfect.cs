@@ -11,15 +11,18 @@ public class MatchEfect : BetweenCardsEffect {
 	// Use this for initialization
 
 	public override void SetUp (int playerID, bool isPowerUp, IndividualCard card1, IndividualCard card2) {
-		int elementalType = card1.cBase.elementType;
+		Color myColor = card1.cBase.effectColor;
+		if (myColor.a <= 0.5f)
+			myColor = PowerUpManager.s.dragonColors[0];
+
 
 		//-----------------------------lightning bolt
 		Vector3[] places = new Vector3[2];
 		places[0] = card1.transform.position + (-Vector3.forward);
 		places[1] = card2.transform.position + (-Vector3.forward);
 
-		GetComponentInChildren<LineRenderer> ().startColor = colors[elementalType];
-		GetComponentInChildren<LineRenderer> ().endColor = colors[elementalType];
+		GetComponentInChildren<LineRenderer> ().startColor = myColor;
+		GetComponentInChildren<LineRenderer> ().endColor = myColor;
 
 
 		GetComponentInChildren<DigitalRuby.LightningBolt.LightningBoltScript> ().StartPosition = places[0];
@@ -36,7 +39,7 @@ public class MatchEfect : BetweenCardsEffect {
 				targets.Add (ScoreBoardManager.s.powerGetTargets[1]);
 			}
 			foreach (ParticleSystem part in GetComponentsInChildren<ParticleSystem> ()) {
-				part.startColor = colors[elementalType];
+				part.startColor = myColor;
 			}
 			try {
 				int n = 0;

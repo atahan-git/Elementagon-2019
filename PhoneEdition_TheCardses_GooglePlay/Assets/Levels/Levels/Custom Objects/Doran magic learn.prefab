@@ -2035,6 +2035,8 @@ MonoBehaviour:
   decidePanel: {fileID: 1713129399911818}
   youCanExitHerePanel: {fileID: 1603251924272790}
   doranLevel: {fileID: 11400000, guid: 4612c8795e0a7d941a031ff35bc19b8e, type: 2}
+  doranLevelAlreadyDoneDialog: {fileID: 11400000, guid: 12de67c255b596740a7ccbd90072c299,
+    type: 2}
 --- !u!1 &1882384832961354
 GameObject:
   m_ObjectHideFlags: 0

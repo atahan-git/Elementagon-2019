@@ -20,10 +20,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5e901f8d3c8d6d4dae5f2af4dd3724e, type: 2}
   - {fileID: 11400000, guid: 3919e8135da53d04b85c52856632ac19, type: 2}
   - {fileID: 11400000, guid: c46a089b4ee38c244b1ce13d86522787, type: 2}
-  - {fileID: 11400000, guid: aa0726ba64c76554c92ae892f94d9467, type: 2}
   customSpawnChanceCards:
   - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
   - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
+  - {fileID: 11400000, guid: aa0726ba64c76554c92ae892f94d9467, type: 2}
   customSpawnChances:
   - 4
   - 4
+  - 40
+  forceSpawnAtStartCards: []
+  forceSpawnCounts: 

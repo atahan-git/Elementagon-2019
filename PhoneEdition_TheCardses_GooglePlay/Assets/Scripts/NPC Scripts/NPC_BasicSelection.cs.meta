@@ -3,7 +3,21 @@ guid: 5834ee08b95d43044bfe344e03999760
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - unkillableEffect: {fileID: 1797926292880366, guid: b4b5f01ae3489764e824abe703ffdd3a,
+      type: 3}
+  - activatePrefab: {instanceID: 0}
+  - selectPrefab: {fileID: 114453662845736484, guid: 6caba5279032d3c49917c7143004e382,
+      type: 3}
+  - diePrefab: {fileID: 1769001268774204, guid: 8349d5c526dee2140b257d314523eed2,
+      type: 3}
+  - myCurrentOccupation: {instanceID: 0}
+  - selectionDeniedEffect: {fileID: 1797926292880366, guid: 0a5e61dfa282ea74388f48bcddfae3a0,
+      type: 3}
+  - selectionTooManyDeniedEffect: {fileID: 1797926292880366, guid: 240d76430f36d3d4f89f39249b2ff827,
+      type: 3}
+  - selectionHintEffect: {fileID: 1797926292880366, guid: 483529696b4021e4f9e05d58c89107c2,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

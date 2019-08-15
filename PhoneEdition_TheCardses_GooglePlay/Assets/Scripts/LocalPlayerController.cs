@@ -67,11 +67,11 @@ public class LocalPlayerController : MonoBehaviour {
 		if (!isActive) {
 			return;
 		}
-		   
 
-			if (Input.GetMouseButtonUp (0) && canSelect && !CardsScrollController.s.isScrolling/*&& Input.mousePosition.x > Screen.width / 6.6f*/) {
-				RaycastSelect ();
-			}
+
+		if (Input.GetMouseButtonUp (0) && canSelect && !CardsScrollController.s.isScrolling/*&& Input.mousePosition.x > Screen.width / 6.6f*/) {
+			RaycastSelect ();
+		}
 	}
 
 	void RaycastSelect (){
@@ -109,12 +109,12 @@ public class LocalPlayerController : MonoBehaviour {
 
 	public void SelectCard (IndividualCard myCardS) {
 		canSelect = false;
-		if (myCardS.isPoison && !canSelect) {
+		if (myCardS.cBase.isPoison && !canSelect) {
 			CardChecker.s.UnSelectCards (mem_Cards);
 			CardChecker.s.EmptyArray (mem_Cards);
 
 			canSelect = true;
-			PowerUpManager.s.ChoosePoisonCard (DataHandler.s.myPlayerInteger, myCardS, "local player");
+			PoisonMaster.s.ChoosePoisonCard (DataHandler.s.myPlayerInteger, myCardS, "local player");
 			return;
 		}
 

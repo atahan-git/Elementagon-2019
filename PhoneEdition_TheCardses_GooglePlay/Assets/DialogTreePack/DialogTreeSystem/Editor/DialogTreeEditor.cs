@@ -24,7 +24,7 @@ public class DialogTreeEditor : Editor {
 				shouldCreateNew = true;
 			}
 			asset.dialogs = new DialogObject[myTarget.dialogs.Length];
-			asset.dialogName = myTarget.dialogName;
+			asset.name = myTarget.dialogName;
 
 			for (int i = 0; i < myTarget.dialogs.Length; i++) {
 				if (myTarget.dialogs[i] != null) {
@@ -77,7 +77,7 @@ public class DialogTreeEditor : Editor {
 				}
 
 				//myTarget.myAsset = null;
-				myTarget.dialogName = myTarget.myAsset.dialogName;
+				myTarget.dialogName = myTarget.myAsset.name;
 				myTarget.updateAssetRealtime = true;
 			}
 		}

@@ -132,8 +132,8 @@ public class ScoreBoardManager : MonoBehaviour {
 
 		if (GS.a.isNPCEnabled) {
 			scoreBoards[3] = (GameObject)Instantiate (GS.a.gfxs.npcScoreboard, scoreboardParent);
-			scoreBoards[3].GetComponent<ScorePanel> ().SetValues (DataHandler.NPCInteger, GS.a.myNPC.name, false, GS.a.myNPC.myColor);
-			DataLogger.LogMessage (GS.a.myNPC.name + " scoreboard created");
+			scoreBoards[3].GetComponent<ScorePanel> ().SetValues (DataHandler.NPCInteger, GS.a.myNPCPrefab.name, false, GS.a.myNPCPrefab.myColor);
+			DataLogger.LogMessage (GS.a.myNPCPrefab.name + " scoreboard created");
 		}
 
 
@@ -206,11 +206,11 @@ public class ScoreBoardManager : MonoBehaviour {
 			}
 		}
 
-		if (playerInt == DataHandler.s.myPlayerInteger) {
+		/*if (playerInt == DataHandler.s.myPlayerInteger) {
 			for (int i = 0; i < toAdd; i++) {
 				CharacterStuffController.s.ScoreAdded (scoreElementalType);
 			}
-		}
+		}*/
 
 		DataHandler.s.SendScore (player, scoreElementalType, allScores[playerInt, scoreElementalType], isDelayed);
 		DataHandler.s.SendScore (player, 0, allScores[playerInt, 0], isDelayed);
@@ -230,7 +230,7 @@ public class ScoreBoardManager : MonoBehaviour {
 			allScores[id, scoreElementalType] = (int)Mathf.Clamp (allScores[id, scoreElementalType], 0, Mathf.Infinity);
 		}
 
-		if (scoreElementalType != 0 && scoreElementalType <= 7) {
+		if (scoreElementalType != 0) {
 			allScores[id, 0] += toAdd;
 			allScores[id, 0] = (int)Mathf.Clamp (allScores[id, 0], 0, Mathf.Infinity);
 		}

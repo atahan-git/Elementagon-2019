@@ -19,9 +19,8 @@ public abstract class PowerUpBase : MonoBehaviour {
 	[HideInInspector]
 	public float amount = -1;
 
-
-	[Tooltip ("This determines which type of score \nwill be added when matching\n//--------CARD TYPES---------\n//-1 = don't change type\n// 0 = empty / already gotten\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
-	protected int elementalType = -1;
+	//this is setup while activating and determines what color the effects are displayed at
+	protected Color effectColor = Color.blue;
 
 	[SerializeField]
 	[Tooltip ("Spawns when power up is enabled and covers the screen")]
@@ -43,9 +42,9 @@ public abstract class PowerUpBase : MonoBehaviour {
 
 	//-----------------------------------------------------------------------------------------------Main Functions
 
-	public virtual void Enable (int _elementalType, int _power, float _amount) {
+	public virtual void Enable (int _power, float _amount, Color _effectColor) {
 		print ("Activating " + this.GetType().ToString());
-		elementalType = _elementalType;
+		effectColor = _effectColor;
 		power = _power;
 		amount = _amount;
 		isActive = true;
@@ -72,7 +71,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 		if (activatePrefab != null) {
 			activateEffect = Instantiate (activatePrefab, myCard.transform.position, Quaternion.identity);
 			if (activateEffect.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-				activateEffect.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (elementalType);
+				activateEffect.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 		}
 	}
 
@@ -142,7 +141,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 		if (isActivateEffectToo && activatePrefab != null) {
 			activateEffect = Instantiate (activatePrefab, card.transform.position, Quaternion.identity);
 			if (activateEffect.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-				activateEffect.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (elementalType);
+				activateEffect.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 		}
 	}
 
@@ -185,7 +184,8 @@ public abstract class PowerUpBase : MonoBehaviour {
 	protected void PoisonSelectedCards () {
 		//the card itself will send its poison status across the network
 		foreach (IndividualCard card in mem_Cards) {
-			card.PoisonCard ();
+			DataLogger.LogMessage ("Poison cards pup not implemented yet!");
+			//card.PoisonCard ();
 		}
 	}
 
@@ -223,7 +223,7 @@ public abstract class PowerUpBase : MonoBehaviour {
 			indicator.transform.ResetTransformation ();
 
 			if (indicator.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-				indicator.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (elementalType);
+				indicator.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 		}
 	}
 
@@ -380,8 +380,8 @@ public abstract class PowerUpBase : MonoBehaviour {
 //-----------------------------------------------------------------------------------------------Archetypes
 
 public abstract class PowerUp_Active_Instant : PowerUpBase, IActivatable {
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 
 		ShowIndicator ();
 
@@ -392,8 +392,8 @@ public abstract class PowerUp_Active_Instant : PowerUpBase, IActivatable {
 public abstract class PowerUp_Active_Select : PowerUpBase, IActivatable, ICardSelectable, IIndicator {
 	public bool isHooked = false;
 
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 
 		ShowIndicator ();
 
@@ -427,8 +427,8 @@ public abstract class PowerUp_Active_Select : PowerUpBase, IActivatable, ICardSe
 }
 
 public abstract class PowerUp_Active_Effect : PowerUpBase, IActivatable, IIndicator {
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 
 		CharacterStuffController.s.SetActiveButtonState (_amount, _amount, false, true);
 	}
@@ -441,8 +441,8 @@ public abstract class PowerUp_Active_Effect : PowerUpBase, IActivatable, IIndica
 }
 
 public abstract class PowerUp_Active_Periodic : PowerUpBase, IActivatable, IIndicator, IPeriodic {
-	public override void Enable (int _elementalType, int _power, float _amount) {
-		base.Enable (_elementalType, _power, _amount);
+	public override void Enable (int _power, float _amount, Color _effectColor) {
+		base.Enable (_power, _amount, _effectColor);
 	}
 
 	public void HookSelf (PeriodicActivateTypes type, float amount) {
@@ -455,17 +455,16 @@ public abstract class PowerUp_Active_Periodic : PowerUpBase, IActivatable, IIndi
 }
 
 public abstract class PowerUp_Passive_Always : PowerUpBase, IPassive {
-
-	public virtual void Enable (int _elementalType, int _power) {
-		base.Enable (_elementalType, _power, -1);
+	public virtual void Enable (int _power, Color _effectColor) {
+		base.Enable (_power, -1, _effectColor);
 	}
 }
 
 
 public abstract class PowerUp_Passive_Periodic : PowerUpBase, IPassive, IPeriodic {
 
-	public virtual void Enable (int _elementalType, int _power) {
-		base.Enable (_elementalType, _power, -1);
+	public virtual void Enable (int _power, Color _effectColor) {
+		base.Enable (_power, -1, _effectColor);
 	}
 
 	public void HookSelf (PeriodicActivateTypes type, float amount) {
@@ -489,7 +488,7 @@ public interface ICardSelectable {
 
 public interface IActivatable {
 
-	void Enable (int _elementalType, int _power, float _amount);
+	void Enable (int _power, float _amount, Color _effectColor);
 }
 
 public interface IIndicator {
@@ -498,7 +497,7 @@ public interface IIndicator {
 
 public interface IPassive {
 
-	void Enable (int _elementalType, int _power);
+	void Enable (int _power, Color _effectColor);
 }
 
 public interface IPeriodic {

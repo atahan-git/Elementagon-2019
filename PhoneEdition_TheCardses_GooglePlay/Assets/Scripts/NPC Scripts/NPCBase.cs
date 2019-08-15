@@ -14,9 +14,6 @@ public abstract class NPCBase : MonoBehaviour {
 		}
 	}
 
-	[HideInInspector]
-	public bool isFrozen = false;
-	public bool isKillable = true;
 
 	//----------------------------------values
 	float timeRandomPercent = 0.2f;
@@ -32,7 +29,18 @@ public abstract class NPCBase : MonoBehaviour {
 	public float AIStrength = 0.5f;
 	public bool poisonImmune = false;
 
+	[HideInInspector]
+	public bool isFrozen = false;
 
+	public enum NPCDeathTypes { Killable, Stun, Invulnerable }
+	[Space]
+	public NPCDeathTypes myDeathType = NPCDeathTypes.Killable;
+	public GameObject unkillableEffect;
+	[Space]
+	public bool isStunned = false;
+	public float stunTime = 5f;
+
+	[Space]
 	[SerializeField]
 	[Tooltip ("Spawns over card and gets destroyed after a while")]
 	private GameObject activatePrefab;
@@ -47,15 +55,11 @@ public abstract class NPCBase : MonoBehaviour {
 	List<IndividualCard> mem_Cards = new List<IndividualCard> ();
 	protected int SelectedCardCount { get { return mem_Cards.Count; } }
 
+	[Space]
 	public IndividualCard myCurrentOccupation;
 	bool isSpawned = false;
 
-	public enum UnKillableTypes { Stun, Invulnerable }
-	public UnKillableTypes myUnkillableType = UnKillableTypes.Stun;
-	public GameObject unkillableEffect;
-	public bool isStunned = false;
-	public float stunTime = 5f;
-
+	[Space]
 	public GameObject selectionDeniedEffect;
 	public GameObject selectionTooManyDeniedEffect;
 	public GameObject selectionHintEffect;
@@ -101,10 +105,10 @@ public abstract class NPCBase : MonoBehaviour {
 	public virtual void Die (bool isForced) {
 		SendNPCAction (-1, -1, NPCManager.ActionType.Die, isForced ? 1 : 0);
 		//if its not forced and we are not killable > dont die but get stunned or sth
-		if (!isKillable && !isForced) {
+		if (myDeathType != NPCDeathTypes.Killable && !isForced) {
 			if (unkillableEffect != null)
 				Instantiate (unkillableEffect, transform.position, unkillableEffect.transform.rotation);
-			if (myUnkillableType == UnKillableTypes.Stun) {
+			if (myDeathType == NPCDeathTypes.Stun) {
 				isStunned = true;
 				Invoke ("UnStun", stunTime);
 			}

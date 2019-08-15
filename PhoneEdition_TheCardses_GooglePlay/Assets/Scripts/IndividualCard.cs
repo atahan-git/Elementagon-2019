@@ -23,25 +23,6 @@ public class IndividualCard : MonoBehaviour {
 	public int x = -1;
 	public int y = -1;
 
-	public static int poisonCount = 0;
-
-	[SerializeField]
-	bool _isPoison = false;
-	public bool isPoison{
-		get{
-			return _isPoison;
-		}
-		set{
-			if (_isPoison) {
-				poisonCount++;
-			} else{
-				poisonCount--;
-			}
-			_isPoison = value;
-			//UpdateGraphics ();
-		}
-	}
-
 	
 	[HideInInspector]
 	public bool isSelectable = true;
@@ -88,9 +69,9 @@ public class IndividualCard : MonoBehaviour {
 		//CancelInvoke ();
 
 		cardState = DataHandler.cardStates.open;
-		SpawnEffect (cBase.onCard_SelectEffect != null ? cBase.onCard_SelectEffect : GS.a.gfxs.onCard_SelectEffect, playerID);
-		SpawnEffectOnScoreBoard (cBase.onScoreBoard_SelectEffect != null ? cBase.onScoreBoard_SelectEffect : GS.a.gfxs.onScoreBoard_SelectEffect, playerID);
-		SpawnEffectOnEnemyScoreBoards (cBase.onEnemySbs_SelectEffect != null ? cBase.onEnemySbs_SelectEffect : GS.a.gfxs.onEnemySbs_SelectEffect, playerID);
+		SpawnEffect (cBase.onCard_SelectEffect != null ? cBase.onCard_SelectEffect : GS.a.gfxs.onCard_SelectEffect, playerID, cBase.effectColor);
+		SpawnEffectOnScoreBoard (cBase.onScoreBoard_SelectEffect != null ? cBase.onScoreBoard_SelectEffect : GS.a.gfxs.onScoreBoard_SelectEffect, playerID, cBase.effectColor);
+		SpawnEffectOnEnemyScoreBoards (cBase.onEnemySbs_SelectEffect != null ? cBase.onEnemySbs_SelectEffect : GS.a.gfxs.onEnemySbs_SelectEffect, playerID, cBase.effectColor);
 	}
 
 	void ForceDeselectCard (){
@@ -136,19 +117,28 @@ public class IndividualCard : MonoBehaviour {
 	}
 
 	static public void MatchCards (int playerID, IndividualCard card1, IndividualCard card2) {
-		SpawnEffectBetweenCards (card1.cBase.onCard_MatchEffectBetweenCards != null ? 
-			card1.cBase.onCard_MatchEffectBetweenCards : GS.a.gfxs.onCard_MatchEffectBetweenCards, 
-			-1, card1, card2);
+		CardBase cbase = card1.cBase;
+		if (playerID == DataHandler.NPCInteger) {
+			if(cbase.npcMatchOverride != null)
+			cbase = card1.cBase.npcMatchOverride;
+		}
 
-		SpawnEffectBetweenCards (card1.cBase.onScoreBoard_MatchEffectBetweenCards != null ? 
-			card1.cBase.onScoreBoard_MatchEffectBetweenCards : GS.a.gfxs.onScoreBoard_MatchEffectBetweenCards,
-			playerID, card1, card2);
+		if (cbase.onCard_MatchEffectBetweenCards != null)
+			SpawnEffectBetweenCards (cbase.onCard_MatchEffectBetweenCards, playerID, card1, card2, cbase.effectColor);
+		else
+			SpawnEffectBetweenCards (GS.a.gfxs.onCard_MatchEffectBetweenCards, playerID, card1, card2, new Color ());
+
+		if (cbase.onScoreBoard_MatchEffectBetweenCards != null)
+			SpawnEffectBetweenCards (cbase.onScoreBoard_MatchEffectBetweenCards, playerID, card1, card2, cbase.effectColor);
+		else
+			SpawnEffectBetweenCards (GS.a.gfxs.onScoreBoard_MatchEffectBetweenCards, playerID, card1, card2, new Color ());
 
 		for (int i = 0; i < ScoreBoardManager.s.scoreGetTargets.Length; i++) {
 			if (i != playerID && ScoreBoardManager.s.scoreGetTargets[i] != null) {
-				SpawnEffectBetweenCards (card1.cBase.onEnemySbs_MatchEffectBetweenCards != null ? 
-					card1.cBase.onEnemySbs_MatchEffectBetweenCards : GS.a.gfxs.onEnemySbs_MatchEffectBetweenCards,
-					i, card1, card2);
+				if (cbase.onEnemySbs_MatchEffectBetweenCards != null)
+					SpawnEffectBetweenCards (cbase.onEnemySbs_MatchEffectBetweenCards, i, card1, card2, cbase.effectColor);
+				else
+					SpawnEffectBetweenCards (GS.a.gfxs.onEnemySbs_MatchEffectBetweenCards, i, card1, card2, new Color ());
 			}
 		}
 		card1.MatchCard (playerID);
@@ -156,6 +146,13 @@ public class IndividualCard : MonoBehaviour {
 	}
 
 	public void NetworkCorrectMatch () {
+		MatchCard (-1);
+	}
+
+	/// <summary>
+	/// You shouldn't normally call this method from elsewhere, use the double method up there
+	/// </summary>
+	public void MatchCard () {
 		MatchCard (-1);
 	}
 
@@ -167,15 +164,30 @@ public class IndividualCard : MonoBehaviour {
 		isSelectable = false;
 		isUnselectable = false;
 		currentSelectingPlayer = -1;
-		_isPoison = false;
 		DestroySelectedEfect ();
 		Invoke ("ReOpenCard", GS.a.cardReOpenTime);
 		   
 		cardState = DataHandler.cardStates.matched;
-		SpawnEffect (cBase.onCard_MatchEffect != null ? cBase.onCard_MatchEffect : GS.a.gfxs.onCard_MatchEffect, playerID);
-		SpawnEffectOnScoreBoard (cBase.onScoreBoard_MatchEffect != null ? cBase.onScoreBoard_MatchEffect : GS.a.gfxs.onScoreBoard_MatchEffect, playerID);
-		SpawnEffectOnEnemyScoreBoards (cBase.onEnemySbs_MatchEffect != null ? cBase.onEnemySbs_MatchEffect : GS.a.gfxs.onEnemySbs_MatchEffect, playerID);
+		if (playerID == DataHandler.NPCInteger) {
+			if (cBase.npcMatchOverride != null)
+				_cBase = cBase.npcMatchOverride;
+		}
 
+		if(cBase.onCard_MatchEffect != null)
+		SpawnEffect (cBase.onCard_MatchEffect, playerID, cBase.effectColor);
+		else
+			SpawnEffect (GS.a.gfxs.onCard_MatchEffect, playerID, new Color());
+
+		if (cBase.onScoreBoard_MatchEffect != null)
+			SpawnEffectOnScoreBoard (cBase.onScoreBoard_MatchEffect, playerID, cBase.effectColor);
+		else
+			SpawnEffectOnScoreBoard (GS.a.gfxs.onScoreBoard_MatchEffect, playerID, new Color ());
+
+		if (cBase.onEnemySbs_MatchEffect != null)
+			SpawnEffectOnEnemyScoreBoards (cBase.onEnemySbs_MatchEffect, playerID, cBase.effectColor);
+		else
+			SpawnEffectOnEnemyScoreBoards (GS.a.gfxs.onEnemySbs_MatchEffect, playerID, new Color ());
+		
 		cBase = GS.a.cardSet.matchedCard;
 	}
 
@@ -197,7 +209,6 @@ public class IndividualCard : MonoBehaviour {
 		isSelectable = false;
 		isUnselectable = false;
 		currentSelectingPlayer = -1;
-		_isPoison = false;
 		anim.TriggerJustRotate ();
 		Invoke ("RandomizeCardType", 0.35f);
 		Invoke ("ReEnableSelection", 0.5f);
@@ -212,7 +223,6 @@ public class IndividualCard : MonoBehaviour {
 		isSelectable = false;
 		isUnselectable = false;
 		currentSelectingPlayer = -1;
-		_isPoison = false;
 		DestroySelectedEfect ();
 		Invoke ("RandomizeCardType", 0.35f);
 		Invoke ("ReEnableSelection", 0.5f);
@@ -239,21 +249,7 @@ public class IndividualCard : MonoBehaviour {
 		anim.isRevealed = false;
 		isRevealed = false;
 	}
-
-	public void PoisonProtect () {
-
-	}
-
-	public void PoisonCard () {
-		isPoison = true;
-		int poisonType = CardSets.posionTypeId;
-
-		if (DataHandler.s.myPlayerInteger != 0) {
-			DataHandler.s.SendCardType (x, y, poisonType);
-		}
-		SetCardType (poisonType);
-	}
-
+	
 	//-----------------------------------------Utility Functions
 
 	public void DestroySelectedEfect (){
@@ -308,42 +304,54 @@ public class IndividualCard : MonoBehaviour {
 		SetCardType (CardTypeRandomizer.s.GiveRandomCardType());   
 	}
 
-	void SpawnEffect (GameObject fx,int playerID) {
+	void SpawnEffect (GameObject fx, int playerID, Color effectColor) {
+		if (effectColor.a <= 0.5f)
+			effectColor = PowerUpManager.s.dragonColors[0];
+
 		if (fx != null) {
 			GameObject myFx = Instantiate (fx, transform.position, Quaternion.identity);
 			if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (cBase.elementType);
+				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 		}
 	}
 
-	static void SpawnEffectBetweenCards (GameObject fx, int playerID, IndividualCard card1, IndividualCard card2) {
+	static void SpawnEffectBetweenCards (GameObject fx, int playerID, IndividualCard card1, IndividualCard card2, Color effectColor) {
+		if (card1.cBase.effectColor.a <= 0.5f)
+			card1.cBase.effectColor = PowerUpManager.s.dragonColors[0];
+
 		if (fx != null) {
 			GameObject myFx = Instantiate (fx);
-			if (myFx.GetComponent<BetweenCardsEffect> () != null)
+			if (myFx.GetComponent<BetweenCardsEffect> () != null) 
 				myFx.GetComponent<BetweenCardsEffect> ().SetUp (playerID, card1.cBase.isPowerUpRelated, card1, card2);
 			if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (card1.cBase.elementType);
+				myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (card1.cBase.effectColor);
 		}
 	}
 
-	void SpawnEffectOnScoreBoard (GameObject fx, int playerID) {
+	void SpawnEffectOnScoreBoard (GameObject fx, int playerID, Color effectColor) {
+		if (effectColor.a <= 0.5f)
+			effectColor = PowerUpManager.s.dragonColors[0];
+
 		if (fx != null) {
 			if (ScoreBoardManager.s.scoreGetTargets[playerID] != null) {
 				GameObject myFx = Instantiate (fx, ScoreBoardManager.s.scoreGetTargets[playerID].position, Quaternion.identity);
 				if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-					myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (cBase.elementType);
+					myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 			}
 		}
 	}
 
-	void SpawnEffectOnEnemyScoreBoards (GameObject fx, int playerID) {
+	void SpawnEffectOnEnemyScoreBoards (GameObject fx, int playerID, Color effectColor) {
+		if (effectColor.a <= 0.5f)
+			effectColor = PowerUpManager.s.dragonColors[0];
+
 		if (fx != null) {
 			for (int i = 0; i < ScoreBoardManager.s.scoreGetTargets.Length; i++) {
 				if (i != playerID) {
 					if (ScoreBoardManager.s.scoreGetTargets[i] != null) {
 						GameObject myFx = Instantiate (fx, ScoreBoardManager.s.scoreGetTargets[i].position, Quaternion.identity);
 						if (myFx.GetComponent<ElementalTypeSpriteColorChanger> () != null)
-							myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (cBase.elementType);
+							myFx.GetComponent<ElementalTypeSpriteColorChanger> ().ChangeColor (effectColor);
 					}
 				}
 			}
@@ -363,6 +371,7 @@ public abstract class BetweenCardsEffect : MonoBehaviour {
 	}
 	 
 	public static void AlignBetweenCards (GameObject obj, IndividualCard card1, IndividualCard card2, AlignMode mode) {
+		print ("Aligning between " + card1.transform.position.ToString() + " and " + card2.transform.position.ToString());
 		Vector3 pos1 = card1.transform.position;
 		Vector3 pos2 = card2.transform.position;
 		if (pos1.x == pos2.x) {

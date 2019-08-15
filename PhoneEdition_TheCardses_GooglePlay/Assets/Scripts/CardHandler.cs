@@ -127,12 +127,33 @@ public class CardHandler : MonoBehaviour {
 			card.RandomizeCardType ();
 		}
 
+		//definite drops
+		var randCards = GetRandomizedSelectabeCardList ();
+		int n = 0;
 		if (CardTypeRandomizer.s.forceSpawnCardsCount > 0) {
-			var randCards = GetRandomizedSelectabeCardList ();
-
 			for (int i = 0; i < CardTypeRandomizer.s.forceSpawnCardsCount; i++) {
-				randCards[i * 2].SetCardType (CardTypeRandomizer.s.forceSpawnStartIndex + i);
-				randCards[(i * 2) + 1].SetCardType (CardTypeRandomizer.s.forceSpawnStartIndex + i);
+				int count = 2;
+				if (i < GS.a.cardSet.forceSpawnCounts.Length)
+					if (GS.a.cardSet.forceSpawnCounts[i] != 0)
+						count = GS.a.cardSet.forceSpawnCounts[i];
+
+				for (int m = 0; m < count; m++) {
+					randCards[n].SetCardType (CardTypeRandomizer.s.forceSpawnStartIndex + i);
+					DataLogger.LogMessage ("The Card " + randCards[n].x.ToString() + "," + randCards[n].y.ToString() + " is custom set as a pair: " + (CardTypeRandomizer.s.forceSpawnStartIndex + i).ToString());
+					n++;
+				}
+			}
+		}
+
+		if (CardTypeRandomizer.s.forceSpawnItemCount > 0) {
+			for (int i = 0; i < CardTypeRandomizer.s.forceSpawnItemCount; i++) {
+				int count = 2;
+
+				for (int m = 0; m < count; m++) {
+					randCards[n].SetCardType (CardTypeRandomizer.s.itemStartIndex + CardTypeRandomizer.s.itemCount - i - 1);
+					DataLogger.LogMessage ("The Card " + randCards[n].x.ToString () + "," + randCards[n].y.ToString () + " is custom set as a pair: " + (CardTypeRandomizer.s.itemStartIndex + CardTypeRandomizer.s.itemCount - i - 1).ToString ());
+					n++; 
+				}
 			}
 		}
 	}
@@ -221,7 +242,7 @@ public class CardHandler : MonoBehaviour {
 	public List<IndividualCard> GetPosionCards () {
 		List<IndividualCard> myList = new List<IndividualCard> ();
 		foreach (IndividualCard myCard in allCards) {
-			if (myCard.isPoison)
+			if (myCard.cBase.isPoison)
 				myList.Add (myCard);
 		}
 

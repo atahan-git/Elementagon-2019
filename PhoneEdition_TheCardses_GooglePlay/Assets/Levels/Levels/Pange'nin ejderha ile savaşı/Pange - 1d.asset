@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a397a117899ad48aed9a17c0ba7a5c, type: 3}
+  m_Name: Pange - 1d
+  m_EditorClassIdentifier: 
+  id: 52
+  gridSettings: {fileID: 11400000, guid: 73a1c91125597d44a8ec06d1f540efb8, type: 2}
+  cardSet: {fileID: 11400000, guid: 747c5b0d5250c9543a27f8e2e50418ef, type: 2}
+  cardReOpenTime: 15
+  gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
+  playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
+    type: 2}
+  myGameRuleType: 0
+  myGamePlayerType: 0
+  canCombo: 1
+  startingScore: 50
+  winObjectives:
+  - isDone: 0
+    name: "Ejderiyay\u0131 \xF6ld\xFCr!"
+    type: 0
+    requiredValue: 1
+    myChecker:
+      _classRef: CHE_PangeLastLevelDragonChecker, Assembly-CSharp
+    checkerSetting: 
+    customGUIObject: {fileID: 0}
+  - isDone: 0
+    name: "Toprak E\u015Fle\u015Ftir"
+    type: 6
+    requiredValue: 3
+    myChecker:
+      _classRef: CHE_ScoreChecker, Assembly-CSharp
+    checkerSetting: 
+    customGUIObject: {fileID: 0}
+  loseObjectives:
+  - isDone: 0
+    name: "\xD6lme sak\u0131n!"
+    type: 7
+    requiredValue: 0
+    myChecker:
+      _classRef: CHE_ScoreChecker, Assembly-CSharp
+    checkerSetting: none
+    customGUIObject: {fileID: 158978, guid: 718c7cf4e6390bf4eb43ded852bd8ce4, type: 3}
+  winDrops: []
+  windDropAmounts: 
+  winText: 
+  loseText: 
+  powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
+  levelShortName: 4
+  levelName: Pange 4
+  levelDescription: "Da\u011Fa t\u0131rmand\u0131n\u0131z ama birden..."
+  startingText: "Sald\u0131rrrrrrr!"
+  startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
+  bgAnimation: {fileID: 0}
+  bgSprite: {fileID: 0}
+  levelIntroDialog: {fileID: 11400000, guid: 94e42de6215f2d849ad5aeeb20107dd3, type: 2}
+  levelOutroDialog: {fileID: 0}
+  customObjects:
+  - {fileID: 6289225792941088221, guid: 17d88d6abbb7b5d47b307f4a5a998fac, type: 3}
+  autoSetUpBoard: 1
+  dropChance: 1
+  farmModeDifficulty: 1
+  possibleDropsDGrade: []
+  possibleDropsCGrade: []
+  possibleDropsBGrade: []
+  possibleDropsAGrade: []
+  questItemDefiniteDrops: []
+  myNPCPrefab: {fileID: 0}
+  npcSpawnCount: 1
+  npcSpawnDelay: 5
+  customCharacterLevel: 1
+  charSprite: {fileID: 0}
+  charName: Pange
+  charDescription: "Eski zamanlar\u0131n ulu sava\u015F\xE7\u0131s\u0131"
+  equipment: {fileID: 11400000, guid: 8ca11848fffa33446a928b6443070372, type: 2}
+  potions:
+  - {fileID: 11400000, guid: f2c993a994a79524281bd83db3a95e55, type: 2}
+  potionsAmounts: 05000000
+  selectedElement: 0
+  elementLevel: 4
+  nextStage: {fileID: 0}
+  nonCompoundNextStage: {fileID: 0}
+  nonCompoundLastStage: {fileID: 11400000, guid: 43542a43df51b1f4d9feb88905b6336a,
+    type: 2}
+  autoTransferHealthAcrossLevels: 1

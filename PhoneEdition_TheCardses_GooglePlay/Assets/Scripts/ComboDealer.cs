@@ -29,14 +29,21 @@ public class ComboDealer : MonoBehaviour {
 
 		/*if (myCardType < GS.a.cardSettings.cardScores.Length)
 			CardMatchCoolEffect.s.MatchTwo (myPlayerinteger, cardsToCheck[k], cardsToCheck[l], GS.a.cardSettings.cardScores[myCardType]);*/
+		CardBase cbase1 = card1.cBase;
+		CardBase cbase2 = card2.cBase;
 
-		int elementalType = card1.cBase.elementType;
+		if (playerId == DataHandler.NPCInteger) {
+			if (card1.cBase.npcMatchOverride != null) {
+				cbase1 = card1.cBase.npcMatchOverride;
+				cbase2 = card2.cBase.npcMatchOverride;
+			}
+		}
 
 		print ("Adding with combo check");
-		if (!card1.cBase.isItem) {
+		if (!cbase1.isItem) {
 			//we got a card
-			int scoreToAdd = card1.cBase.score;
-			int enemyScoreToAdd = card1.cBase.enemyScore;
+			int scoreToAdd = cbase1.score;
+			int enemyScoreToAdd = cbase1.enemyScore;
 
 			if (GS.a.canCombo && playerId == DataHandler.s.myPlayerInteger) {
 				bool isSame = false;
@@ -45,10 +52,13 @@ public class ComboDealer : MonoBehaviour {
 
 				if (scoreToAdd == 0 && enemyScoreToAdd == 0) {
 					lastCardType = -1;
+					if (cbase1.isPowerUpRelated) {
+						CharacterStuffController.s.PowerUpRelatedCardMatched (cbase1.specialTypeID);
+					}
 					return;
 				}
 
-				if (elementalType != lastCardType) {
+				if (card1.cBase.dynamicCardID != lastCardType) {
 					scoreToAdd *= comboCount;
 					enemyScoreToAdd *= comboCount;
 				} else {
@@ -76,7 +86,7 @@ public class ComboDealer : MonoBehaviour {
 					}
 				}
 
-				lastCardType = elementalType;
+				lastCardType = card1.cBase.dynamicCardID;
 				comboCount++;
 			}
 
@@ -85,12 +95,12 @@ public class ComboDealer : MonoBehaviour {
 				DelayedScoreboard.s.UpdateScoreReach ();
 			}*/
 			if (scoreToAdd != 0)
-				ScoreBoardManager.s.AddScore (playerId, elementalType, scoreToAdd, isdelayed);
+				ScoreBoardManager.s.AddScore (playerId, card1.cBase.dynamicCardID, scoreToAdd, isdelayed);
 			else
 				Tutorial_FirstTimeStuff.NoPointCards ();
 
 			if (enemyScoreToAdd != 0) {
-				ScoreBoardManager.s.AddScoreToOthers (playerId, elementalType, enemyScoreToAdd, isdelayed);
+				ScoreBoardManager.s.AddScoreToOthers (playerId, card1.cBase.dynamicCardID, enemyScoreToAdd, isdelayed);
 			}
 		} else {
 			//we didnt get a card, but an item
