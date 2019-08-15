@@ -7,7 +7,15 @@ using TMPro;
 public class RadialChargeImage : MonoBehaviour {
 
 	public Image myImg;
+	public Image myImgRadialMask;
 	public Image myBg;
+
+	[Space]
+
+	public Image radialEdgeIn;
+	public Image radialEdgeMask;
+
+	[Space]
 
 	public Color activeColor;
 	public Color unactiveColor;
@@ -78,8 +86,14 @@ public class RadialChargeImage : MonoBehaviour {
 		UpdateGraphics ();
 	}
 	public float fillSpeed = 2f;
+	float fillAmount = 0f;
 	private void Update () {
-		myImg.fillAmount = Mathf.MoveTowards (myImg.fillAmount, (float)curCharge / (float)maxCharge, fillSpeed * Time.deltaTime);
+		fillAmount = Mathf.MoveTowards (fillAmount, (float)curCharge / (float)maxCharge, fillSpeed * Time.deltaTime);
+		if (myImgRadialMask != null)
+			myImgRadialMask.fillAmount = fillAmount;
+		else
+			myImg.fillAmount = fillAmount;
+		SetRadialEdge (fillAmount);
 
 		if (isActive && timedActive) {
 			curCharge -= Time.deltaTime;
@@ -112,6 +126,19 @@ public class RadialChargeImage : MonoBehaviour {
 				if (sys != null)
 					sys.Stop ();
 			}
+		}
+	}
+
+	public void SetRadialEdge (float val) {
+		if (radialEdgeIn != null) {
+			if(val != 1f)
+				radialEdgeIn.fillAmount = 1f - val + 0.025f;
+			else
+				radialEdgeIn.fillAmount = 1f - val;
+
+		}
+		if (radialEdgeMask != null) {
+			radialEdgeMask.fillAmount = val;
 		}
 	}
 }

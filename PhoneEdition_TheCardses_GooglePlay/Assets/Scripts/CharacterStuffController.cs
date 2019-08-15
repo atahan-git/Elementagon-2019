@@ -30,7 +30,7 @@ public class CharacterStuffController : MonoBehaviour {
 		Invoke ("SetUpButtons", 0.1f);
 	}
 
-	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
+	/*[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
 	public int[] curEquipmentChargeReq = new int[32];
 	public int maxEquipmentCharge;
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
@@ -38,46 +38,58 @@ public class CharacterStuffController : MonoBehaviour {
 	[Tooltip ("//--------CARD TYPES---------\n// 0 = any type\n// 1-7 = normal cards\n// 8-14 = dragons\n//---------------------------\n// 1 = Earth\n// 2 = Fire\n// 3 = Ice\n// 4 = Light\n// 5 = Nether\n// 6 = Poison\n// 7 = Shadow\n//---------------------------\n// 8 = Earth Dragon\n// 9 = Fire Dragon\n//10 = Ice Dragon\n//11 = Light Dragon\n//12 = Nether Dragon\n//13 = Poison Dragon\n//14 = Shadow Dragon\n//---------------------------")]
 	public int[] curPowerChargeReq = new int[32];
 	
-	public int maxPowerCharge;
+	public int maxPowerCharge;*/
+
+	public float powerTimer = 10f;
+	public float equipmentTimer = 10f;
 
 	public void SetUpButtons () {
 		if (isHijacked)
 			return;
 
-		
-			DrawPotionScreen ();
 
-			int elementLevel = GS.a.customCharacterLevel ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
-			int selectedElement = GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
-			if (elementLevel > 0) {
-				PowerChargeReq[/*InventoryMaster.s.selectedElement + 1*/17] = elementLevel;
-				maxPowerCharge = elementLevel;
-				powerButton.SetUp (GS.a.gfxs.cardSprites[selectedElement + 1 + 7], maxPowerCharge, "Power", selectedElement + 1);
-				isEquippedPower = true;
-			} else {
-				powerButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
-				isEquippedPower = false;
-			}
+		DrawPotionScreen ();
 
-			InventoryMaster.InventoryEquipment myEq = (GS.a.customCharacterLevel ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
-			if (myEq != null) {
-				myEquipment = (Equipment)myEq.item;
-				maxEquipmentCharge = AddUpIntArray (myEquipment.chargeReq);
-				equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.effectColor);
-				isEquippedEquipment = true;
+		int elementLevel = GS.a.customCharacterLevel ? GS.a.elementLevel : InventoryMaster.s.elementLevel;
+		int selectedElement = GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement;
+		if (elementLevel > 0) {
+			//Old charge system
+			/*PowerChargeReq[/*InventoryMaster.s.selectedElement + 1* /17] = elementLevel;
+			maxPowerCharge = elementLevel;
+			powerButton.SetUp (GS.a.gfxs.cardSprites[selectedElement + 1 + 7], maxPowerCharge, "Power", selectedElement + 1);*/
+			//New timed system
+			powerButton.SetUp (GS.a.gfxs.cardSprites[selectedElement + 1 + 7], 1f, "Power", selectedElement + 1);
 
-				if (PowerUpManager.s.equipmentPUps[(int)myEquipment.myType] is IPassive) {
-					((IPassive)PowerUpManager.s.equipmentPUps[(int)myEquipment.myType]).Enable (myEquipment.power, myEquipment.effectColor);
-					isEquippedEquipment = false;
-				}
+			isEquippedPower = true;
 
-			} else {
+		} else {
+			powerButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
+			isEquippedPower = false;
+		}
+
+		InventoryMaster.InventoryEquipment myEq = (GS.a.customCharacterLevel ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment);
+		if (myEq != null) {
+			myEquipment = (Equipment)myEq.item;
+			//Old charge system
+			/*maxEquipmentCharge = AddUpIntArray (myEquipment.chargeReq);
+			equipmentButton.SetUp (myEquipment.sprite, maxEquipmentCharge, myEquipment.name, myEquipment.effectColor);*/
+			//New timed system
+			equipmentButton.SetUp (myEquipment.sprite, 1f, myEquipment.name, myEquipment.effectColor);
+
+			isEquippedEquipment = true;
+
+			if (PowerUpManager.s.equipmentPUps[(int)myEquipment.myType] is IPassive) {
+				((IPassive)PowerUpManager.s.equipmentPUps[(int)myEquipment.myType]).Enable (myEquipment.power, myEquipment.effectColor);
 				isEquippedEquipment = false;
-				equipmentButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
 			}
 
-			UpdateChargeReqs ();
-		
+		} else {
+			isEquippedEquipment = false;
+			equipmentButton.SetUp (noEquipmentSprite, 1, "Not Equipped", 0);
+		}
+
+		UpdateChargeReqs ();
+
 	}
 
 	public void DrawPotionScreen () {
@@ -118,7 +130,8 @@ public class CharacterStuffController : MonoBehaviour {
 		//print ("Score added: " + scoreType.ToString ());
 		if (isHijacked)
 			return;
-
+		//Old charge system
+		/*
 		if (curEquipmentChargeReq[specialTypeID] > 0) {
 			curEquipmentChargeReq[specialTypeID]--;
 		} else if (curEquipmentChargeReq[0] > 0) {
@@ -131,13 +144,14 @@ public class CharacterStuffController : MonoBehaviour {
 			curPowerChargeReq[0]--;
 		}
 
-		UpdateChargeReqs ();
+		UpdateChargeReqs ();*/
 	}
 
 	public void InstantActivate () {
-		curEquipmentChargeReq = new int[32];
+		//Old charge system
+		/*curEquipmentChargeReq = new int[32];
 		curPowerChargeReq = new int[32];
-		UpdateChargeReqs ();
+		UpdateChargeReqs ();*/
 	}
 
 	public void UpdateChargeReqs () {
@@ -145,6 +159,8 @@ public class CharacterStuffController : MonoBehaviour {
 			return;
 		}
 
+		//Old charge system
+		/*
 		if (!equipmentButton.isActive && isEquippedEquipment) {
 			bool canActivate = AddUpIntArray (curEquipmentChargeReq) <= 0;
 			equipmentButton.SetState (maxEquipmentCharge, maxEquipmentCharge - AddUpIntArray (curEquipmentChargeReq), canActivate, false);
@@ -154,7 +170,7 @@ public class CharacterStuffController : MonoBehaviour {
 			bool canActivate = AddUpIntArray (curPowerChargeReq) <= 0;
 			powerButton.SetState (maxPowerCharge, maxPowerCharge - AddUpIntArray (curPowerChargeReq), canActivate, false);
 			powerButton.myReqs.SetUp (curPowerChargeReq);
-		}
+		}*/
 	}
 
 	public bool lastActivatedButton = false;
@@ -169,8 +185,11 @@ public class CharacterStuffController : MonoBehaviour {
 			isLastActivePower = false;
 			lastActivatedButton = true;
 			Equipment myEq = (Equipment)(GS.a.customCharacterLevel ? new InventoryMaster.InventoryEquipment (GS.a.equipment, 1) : InventoryMaster.s.activeEquipment).item;
-			if (!DataLogger.isDebugMode)
-				(myEq).chargeReq.CopyTo (curEquipmentChargeReq, 0);
+
+			//Old charge system
+			/*if (!DataLogger.isDebugMode)
+				(myEq).chargeReq.CopyTo (curEquipmentChargeReq, 0);*/
+
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
 				(int)myEq.myType,  
 				myEq.power, 
@@ -189,8 +208,10 @@ public class CharacterStuffController : MonoBehaviour {
 		if (powerButton.canActivate) {
 			isLastActivePower = true;
 			lastActivatedButton = true;
-			if (!DataLogger.isDebugMode)
-				PowerChargeReq.CopyTo (curPowerChargeReq, 0);
+			//Old charge system
+			/*if (!DataLogger.isDebugMode)
+				PowerChargeReq.CopyTo (curPowerChargeReq, 0);*/
+
 			PowerUpManager.s.EnablePowerUp (PowerUpManager.PUpTypes.equipment, 
 				ConverElementToType(GS.a.customCharacterLevel ? GS.a.selectedElement : InventoryMaster.s.selectedElement),
 				GS.a.customCharacterLevel? GS.a.elementLevel : InventoryMaster.s.elementLevel, 1,
@@ -247,11 +268,7 @@ public class CharacterStuffController : MonoBehaviour {
 		if (!lastActivatedButton)
 			return;
 
-		RadialChargeImage myButton = null;
-		if (isLastActivePower)
-			myButton = powerButton;
-		else
-			myButton = equipmentButton;
+		RadialChargeImage myButton = isLastActivePower ? powerButton : equipmentButton;
 
 		if (_maxCharge == -5) 
 			_maxCharge = myButton.maxCharge;
@@ -265,6 +282,31 @@ public class CharacterStuffController : MonoBehaviour {
 	public void PowerUpDisabledCallback () {
 		if (powerUpDisabledCallback != null)
 			powerUpDisabledCallback.Invoke ();
+
+		//New timer system
+		StartCoroutine (ChargeUpButton (isLastActivePower));
+	}
+
+	IEnumerator ChargeUpButton (bool isLastActivePower) {
+		float charge = 0;
+		RadialChargeImage myButton = isLastActivePower ? powerButton : equipmentButton;
+		float myTimer = 1f;
+		if (!DataLogger.isDebugMode)
+			myTimer = isLastActivePower ? powerTimer : equipmentTimer;
+
+		while (charge <= 1f) {
+			myButton.SetState (1, charge, false, false);
+			charge += Time.deltaTime / myTimer;
+
+			if (DataLogger.isDebugMode)
+				break;
+
+			yield return null;
+		}
+
+		myButton.SetState (1, 1, true, false);
+
+		yield return null;
 	}
 
 	public void ActivatePotion (InventoryMaster.InventoryItem theItem) {

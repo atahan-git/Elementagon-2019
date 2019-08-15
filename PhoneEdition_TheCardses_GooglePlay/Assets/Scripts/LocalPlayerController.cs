@@ -69,7 +69,7 @@ public class LocalPlayerController : MonoBehaviour {
 		}
 
 
-		if (Input.GetMouseButtonUp (0) && canSelect && !CardsScrollController.s.isScrolling/*&& Input.mousePosition.x > Screen.width / 6.6f*/) {
+		if (Input.GetMouseButtonUp (0) && canSelect && !CardsScrollController.s.isScrolling && Input.mousePosition.y > Screen.height / 4.36f) {
 			RaycastSelect ();
 		}
 	}
