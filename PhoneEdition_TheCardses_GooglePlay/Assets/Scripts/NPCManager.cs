@@ -70,9 +70,9 @@ public class NPCManager : MonoBehaviour {
 	}
 
 	public void KillAllNPCs () {
-		foreach (NPCBase npc in ActiveNPCS) {
-			if (npc != null)
-				npc.Die (true);
+		for (int i = ActiveNPCS.Count-1; i>= 0; i--) {
+			if (ActiveNPCS[i] != null)
+				ActiveNPCS[i].Die (true);
 		}
 		ActiveNPCS.Clear ();
 	}

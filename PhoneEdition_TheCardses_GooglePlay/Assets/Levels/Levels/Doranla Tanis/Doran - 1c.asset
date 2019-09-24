@@ -21,7 +21,7 @@ MonoBehaviour:
     type: 2}
   myGameRuleType: 0
   myGamePlayerType: 0
-  canCombo: 1
+  canCombo: 0
   startingScore: 0
   winObjectives: []
   loseObjectives: []

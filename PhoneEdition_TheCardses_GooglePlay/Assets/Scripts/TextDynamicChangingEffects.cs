@@ -25,8 +25,11 @@ public class TextDynamicChangingEffects : MonoBehaviour {
 	}
 
 	public string text {
-		get { return myText.text; }
+		get {
+            //print("that called");
+            return myText.text; }
 		set {
+            //print("this called");
 			if (myText != null) {
 				if (!value.Equals (myText.text)) {
 					EngageAnimation ();
@@ -41,7 +44,7 @@ public class TextDynamicChangingEffects : MonoBehaviour {
 	int n = 0;
 	int maxCount = 50;
 	void EngageAnimation () {
-		DataLogger.LogMessage ("Spawning text changed animation");
+		//DataLogger.LogMessage ("Spawning text changed animation");
 		if(n < maxCount)
 		StartCoroutine (Animate (Instantiate (stuffToSpawn, myText.transform)));
 	}
@@ -49,7 +52,7 @@ public class TextDynamicChangingEffects : MonoBehaviour {
 	IEnumerator Animate (GameObject myObj) {
 		myObj.GetComponent<TextMeshProUGUI> ().text = myText.text;
 		myObj.SetActive (true);
-		myObj.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+		//myObj.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
 		TextMeshProUGUI fadeText = myObj.GetComponent<TextMeshProUGUI> ();
 		n++;
 		float timer = 0;

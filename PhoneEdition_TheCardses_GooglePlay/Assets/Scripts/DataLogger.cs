@@ -95,7 +95,7 @@ public class DataLogger : MonoBehaviour {
 		//				CHEATS
 		if (isDebugMode) {
 			if (Input.touchCount > 4 || Input.GetKeyDown (KeyCode.H)) {
-				OpenCheatScreen ();
+				ToggleCheatScreen ();
 			}
 
 			if (Input.GetKeyDown (KeyCode.U)) {
@@ -124,6 +124,7 @@ public class DataLogger : MonoBehaviour {
 	
 
 	public static void LogError (string log, Exception e) {
+		log = Time.realtimeSinceStartup + " - " + log;
 		LogError (log +" - "+ e.ToString());
 	}
 
@@ -253,14 +254,16 @@ public class DataLogger : MonoBehaviour {
 	//------------------------------------------------ CHEATS
 	string cheatEnabledMessage = "##CHEAT ACTIVATED: ";
 
-	public void OpenCheatScreen () {
+	public void ToggleCheatScreen () {
 		LogMessage (cheatEnabledMessage + "Cheat Screen Opened");
-		cheatsScreen.SetActive (true);
+		cheatsScreen.SetActive (!cheatsScreen.activeSelf);
+		LocalPlayerController.s.canSelect = !cheatsScreen.activeSelf;
 	}
 
 	public void CloseCheatScreen () {
 		LogMessage (cheatEnabledMessage + "Cheat Screen Closed");
 		cheatsScreen.SetActive (false);
+		LocalPlayerController.s.canSelect = true;
 	}
 
 	public void Cheat_AddScore () {
@@ -353,5 +356,35 @@ public class DataLogger : MonoBehaviour {
 			}
 			LogMessage (line);
 		}
+	}
+
+	public void Cheat_ChangeCardBack (int n) {
+		int toSet = CardGraphicsHolder.s.cardBackID + n;
+
+		if (toSet >= CardGraphicsHolder.s.cardBacks.Length) {
+			toSet = 0;
+		}
+		if (toSet <0) {
+			toSet = CardGraphicsHolder.s.cardBacks.Length-1;
+		}
+
+		CardGraphicsHolder.s.SetCardBack(toSet);
+
+		LogMessage(cheatEnabledMessage + "Card Back Changed");
+	}
+
+	public void Cheat_ChangeCardBorder (int n) {
+		int toSet = CardGraphicsHolder.s.cardBorderID + n;
+
+		if (toSet >= CardGraphicsHolder.s.cardBorders.Length) {
+			toSet = 0;
+		}
+		if (toSet < 0) {
+			toSet = CardGraphicsHolder.s.cardBorders.Length - 1;
+		}
+
+		CardGraphicsHolder.s.SetCardBorder(toSet);
+
+		LogMessage(cheatEnabledMessage + "Card Back Changed");
 	}
 }

@@ -31,8 +31,8 @@ public class ObjectiveGUI : MonoBehaviour {
 	Slider slider;
 	Toggle toggle;
 	Image image;
-	TextDynamicChangingEffects numText;
-	TextMeshProUGUI text;
+    public TextDynamicChangingEffects numText;
+    public TextMeshProUGUI text;
 
 	GameObject toSpawn;
 
@@ -87,11 +87,23 @@ public class ObjectiveGUI : MonoBehaviour {
 				toggle.isOn = true;
 			else
 				toggle.isOn = false;
-		} else if (slider) {
+		}
+        if (slider) {
 			slider.maxValue = myObjective.requiredValue;
 			slider.value = myObjective.myObjectiveChecker.GetValue ();
-		} else if (numText) {
-			numText.text = myObjective.myObjectiveChecker.GetValue ().ToString();
+		}
+        if (numText) {
+            switch (myObjective.myDisplayType) {
+                case Objective.displayType.justValue:
+                    numText.text = ((int)myObjective.myObjectiveChecker.GetValue()).ToString();
+                    break;
+                case Objective.displayType.fraction:
+                    numText.text = ((int)myObjective.myObjectiveChecker.GetValue()).ToString() + "/" + myObjective.requiredValue.ToString();
+                    break;
+                case Objective.displayType.countdown:
+                    numText.text = GameObjectiveMaster.TimeToString(((int)myObjective.requiredValue - (int)myObjective.myObjectiveChecker.GetValue()));
+                    break;
+            }
 		}
 
 		if (myObjective.isDone)

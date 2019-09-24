@@ -18,9 +18,7 @@ MonoBehaviour:
   cards:
   - {fileID: 11400000, guid: aae2da1da01275c45a23e797e89fe370, type: 2}
   - {fileID: 11400000, guid: 9436f63871f238f48b310d76e4080e46, type: 2}
-  customSpawnChanceCards:
-  - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
-  - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
-  customSpawnChances:
-  - 2
-  - 2
+  customSpawnChanceCards: []
+  customSpawnChances: []
+  forceSpawnAtStartCards: []
+  forceSpawnCounts: 

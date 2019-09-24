@@ -172,7 +172,7 @@ public class GameObjectiveMaster : MonoBehaviour {
 		}
 	}
 
-	string TimeToString (float _timer) {
+	public static string TimeToString (float _timer) {
 		string minutes = Mathf.Floor (_timer / 60).ToString ("00");
 		string seconds = Mathf.Floor (_timer % 60).ToString ("00"); 
 

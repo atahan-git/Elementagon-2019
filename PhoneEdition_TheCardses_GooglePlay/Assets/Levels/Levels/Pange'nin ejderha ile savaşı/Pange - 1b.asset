@@ -21,12 +21,13 @@ MonoBehaviour:
     type: 2}
   myGameRuleType: 0
   myGamePlayerType: 0
-  canCombo: 1
+  canCombo: 0
   startingScore: 50
   winObjectives:
   - isDone: 0
     name: "3 Kere toprak e\u015Fle\u015Ftir!"
     type: 6
+    myDisplayType: 0
     requiredValue: 3
     myChecker:
       _classRef: CHE_ElementalScoreChecker, Assembly-CSharp
@@ -36,6 +37,7 @@ MonoBehaviour:
   - isDone: 0
     name: "\xD6lme sak\u0131n!"
     type: 7
+    myDisplayType: 0
     requiredValue: 0
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
@@ -46,8 +48,8 @@ MonoBehaviour:
   winText: 
   loseText: 
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 2
-  levelName: Pange 2
+  levelShortName: 1b
+  levelName: Pange 1b
   levelDescription: "Da\u011Fa t\u0131rman\u0131yorsunuz ama birden..."
   startingText: "Sald\u0131rrrrrrr!"
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}

@@ -22,6 +22,14 @@ public class Objective {
 	}
 	public conditionType type = conditionType.ifLessThanOrEqual;
 
+    public enum displayType{
+        justValue,
+        fraction,
+        countdown
+    }
+
+    public displayType myDisplayType = displayType.justValue;
+
 	[Tooltip("Use 0 and 1 for booleans")]
 	public float requiredValue = 1;
 	/*[Tooltip ("Doesn't matter for booleans")]
@@ -47,7 +55,7 @@ public class Objective {
 		}
 	}
 
-	[Tooltip("Some checkers (like CHE_ElementalScoreChecker) can use this to set themselves")]
+	[Tooltip("Some checkers (like CHE_ElementalScoreChecker) can use this to configure themselves")]
 	public string checkerSetting = "none";
 
 	public GameObject customGUIObject;

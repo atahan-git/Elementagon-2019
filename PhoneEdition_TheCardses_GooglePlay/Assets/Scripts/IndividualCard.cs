@@ -358,7 +358,19 @@ public class IndividualCard : MonoBehaviour {
 		}
 	}
 
-	
+
+	public SpriteRenderer cardBack;
+	public SpriteRenderer cardBorder;
+	private void Start () {
+		UpdateCardBackAndBorder();
+		CardGraphicsHolder.s.cardSpriteChangedCallback += UpdateCardBackAndBorder;
+	}
+
+	void UpdateCardBackAndBorder () {
+		cardBack.sprite = CardGraphicsHolder.s.GetCardBack();
+		cardBorder.sprite = CardGraphicsHolder.s.GetCardBorder();
+	}
+
 }
 
 

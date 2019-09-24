@@ -24,7 +24,7 @@ public class TriggerDialogAfterEvent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		bool isNotTriggeredYet, isLevelDone, isNotQuestSwapped, isQuestDone;
-		isNotQuestSwapped = questDecisionReqValue != -1;
+		isNotQuestSwapped = questDecisionReqValue == -1;
 
 		//Check if this event was triggered before
 		if (SaveMaster.s.mySave.triggeredEvents.Length <= eventId) {
@@ -47,8 +47,10 @@ public class TriggerDialogAfterEvent : MonoBehaviour {
 			}
 
 			if (isNotQuestSwapped) {
-				//check if the quest requirements are met
-				isQuestDone = SaveMaster.s.mySave.questDecisions[questDecisionLockId] == questDecisionReqValue;
+                //check if the quest requirements are met
+                isQuestDone = true;
+                if(questDecisionLockId != -1 && questDecisionLockId < SaveMaster.s.mySave.questDecisions.Length)
+				    isQuestDone = SaveMaster.s.mySave.questDecisions[questDecisionLockId] == questDecisionReqValue;
 
 				if (isQuestDone) {
 					DialogTree.s.LoadFromAsset (myDialog);

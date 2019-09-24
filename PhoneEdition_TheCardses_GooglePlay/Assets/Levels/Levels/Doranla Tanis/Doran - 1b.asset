@@ -27,10 +27,12 @@ MonoBehaviour:
   - isDone: 0
     name: "Ak\u015Fam Hava So\u011Fuk... 3 Odun Topla!"
     type: 6
+    myDisplayType: 0
     requiredValue: 3
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   loseObjectives: []
   winDrops:
   - {fileID: 11400000, guid: 0d36a1bea8e955a4aa105974f54591b0, type: 2}

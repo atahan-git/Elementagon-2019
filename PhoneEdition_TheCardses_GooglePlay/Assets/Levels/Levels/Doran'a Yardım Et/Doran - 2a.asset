@@ -27,26 +27,30 @@ MonoBehaviour:
   - isDone: 0
     name: "Haritay\u0131 bul"
     type: 6
+    myDisplayType: 0
     requiredValue: 1
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   loseObjectives:
   - isDone: 0
     name: "Zaman\u0131n bitmeden"
     type: 6
+    myDisplayType: 2
     requiredValue: 120
     myChecker:
       _classRef: CHE_TimeChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   winDrops: []
   windDropAmounts: 
   winText: "Helal len haritay\u0131 buldun"
   loseText: 
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
-  levelShortName: 2a
-  levelName: 2a
-  levelDescription: find mappu
+  levelShortName: 2a - old
+  levelName: 2a - old
+  levelDescription: "find mappu, k\xFC\xE7\xE7\xFCk mappo"
   startingText: MAPPU
   startingImage: {fileID: 21300000, guid: b66b04eee4e62c14c9629d860e07f98a, type: 3}
   bgAnimation: {fileID: 0}

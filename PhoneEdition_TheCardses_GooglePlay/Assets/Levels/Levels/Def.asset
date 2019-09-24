@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Def
   m_EditorClassIdentifier: 
   id: 0
-  PresetName: Default
   gridSettings: {fileID: 11400000, guid: bf38195ed9d8b604e912042ee67cc913, type: 2}
   cardSet: {fileID: 11400000, guid: 35b4e07a109ea804bb3ee83012f251ea, type: 2}
   cardReOpenTime: 15
@@ -23,22 +22,31 @@ MonoBehaviour:
   myGameRuleType: 0
   myGamePlayerType: 0
   canCombo: 1
+  startingScore: 0
   winObjectives:
   - isDone: 0
     name: Get Score
     type: 6
+    myDisplayType: 0
     requiredValue: 30
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
+    checkerSetting: none
+    customGUIObject: {fileID: 0}
   loseObjectives:
   - isDone: 0
     name: Before Time
     type: 6
-    requiredValue: 120
+    myDisplayType: 2
+    requiredValue: 1200
     myChecker:
       _classRef: CHE_TimeChecker, Assembly-CSharp
+    checkerSetting: none
+    customGUIObject: {fileID: 0}
   winDrops: []
   windDropAmounts: 
+  winText: 
+  loseText: 
   powerUpSettings: {fileID: 11400000, guid: 6872bce5809478b4bb6516eccaf1e2cd, type: 2}
   levelShortName: Def
   levelName: Default Level
@@ -49,7 +57,7 @@ MonoBehaviour:
   bgSprite: {fileID: 0}
   levelIntroDialog: {fileID: 0}
   levelOutroDialog: {fileID: 0}
-  customObject: {fileID: 0}
+  customObjects: []
   autoSetUpBoard: 1
   dropChance: 1
   farmModeDifficulty: 1
@@ -57,14 +65,20 @@ MonoBehaviour:
   possibleDropsCGrade: []
   possibleDropsBGrade: []
   possibleDropsAGrade: []
-  myNPC: {fileID: 0}
+  questItemDefiniteDrops: []
+  myNPCPrefab: {fileID: 0}
   npcSpawnCount: 1
   npcSpawnDelay: 10
-  overrideEquipment: 0
+  customCharacterLevel: 0
+  charSprite: {fileID: 0}
+  charName: 
+  charDescription: 
   equipment: {fileID: 11400000, guid: cb1145b0c261ece4bae39d0837124574, type: 2}
-  overridePotions: 0
   potions: []
-  overridePower: 0
+  potionsAmounts: 
   selectedElement: 1
   elementLevel: 4
   nextStage: {fileID: 0}
+  nonCompoundNextStage: {fileID: 0}
+  nonCompoundLastStage: {fileID: 0}
+  autoTransferHealthAcrossLevels: 0

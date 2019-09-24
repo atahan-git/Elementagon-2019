@@ -24,14 +24,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87d064852b8ef354eaaef634fa5ab1ca, type: 2}
   - {fileID: 11400000, guid: 3f8ec6ba6763c9842a84f8d8a8896a74, type: 2}
   customSpawnChanceCards:
-  - {fileID: 11400000, guid: c3c9104d5c8d5d2428ed9877c0535d0a, type: 2}
-  - {fileID: 11400000, guid: 221e6fdde865c9449a81547a0ed28a1f, type: 2}
   - {fileID: 11400000, guid: bbd0e86a1f7444f439d6346dd01481f2, type: 2}
   - {fileID: 11400000, guid: 77bbc4bc5c4ac2648b8b08abfd60d640, type: 2}
   - {fileID: 11400000, guid: dde18f877a5145843a1255d113f2492d, type: 2}
   customSpawnChances:
-  - 4
-  - 4
   - 8
   - 10
   - 30

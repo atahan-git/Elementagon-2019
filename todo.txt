@@ -1,5 +1,5 @@
-Potions doesnt work (you can spam potions to get multiple)
-also their counter doesnt work
-getting score should have a nicer animation
-Objectives should have cool animations
-better scoreboard score location
+better objective text
+better npc card select effects
+card arkasi fazla renkli
+npc match effects fazla
+card selection card border renklenebilir

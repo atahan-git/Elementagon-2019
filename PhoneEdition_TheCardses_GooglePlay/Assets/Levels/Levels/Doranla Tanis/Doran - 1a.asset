@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 39
   gridSettings: {fileID: 11400000, guid: a246b63983d8ea04db4f52d1263f181e, type: 2}
   cardSet: {fileID: 11400000, guid: 58404eeb4ce57614ca6eb356cf4e84a8, type: 2}
-  cardReOpenTime: 5
+  cardReOpenTime: 3
   gfxs: {fileID: 11400000, guid: 108e0df90e3c04d46b0fcbc9c1589c6b, type: 2}
   playerSelectionSettings: {fileID: 11400000, guid: a1f55a86727897a4b8b4badcd00f249d,
     type: 2}
@@ -27,10 +27,12 @@ MonoBehaviour:
   - isDone: 0
     name: "3 \xC7ay Malzemesi Topla"
     type: 6
+    myDisplayType: 0
     requiredValue: 3
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   loseObjectives: []
   winDrops:
   - {fileID: 11400000, guid: cf8ee69f3e482cd46be797e10a37cfde, type: 2}

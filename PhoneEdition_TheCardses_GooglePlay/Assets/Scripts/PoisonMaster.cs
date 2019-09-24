@@ -19,25 +19,29 @@ public class PoisonMaster : MonoBehaviour
 	Queue<DeadlyRoutineHolder> ActivatedDeadlyPoisons = new Queue<DeadlyRoutineHolder> ();
 	//This is used when locally selecting a posion card. Network poisoning happens differently+
 	public void ChoosePoisonCard (int myPlayerinteger, IndividualCard myCard, string message) {
-		DataLogger.LogMessage ("Player: " + myPlayerinteger.ToString () + " picked Poison card!" + myCard.cBase.myPoisonType + " - " + message);
+		DataLogger.LogMessage("Player: " + myPlayerinteger.ToString() + " picked Poison card!" + myCard.cBase.myPoisonType + " - " + message);
 
 		switch (myCard.cBase.myPoisonType) {
 		case CardBase.PoisonTypes.DeadlyPoison:
-			DeadlyRoutineHolder myHolder = new DeadlyRoutineHolder (myCard);
-			Coroutine myRout = StartCoroutine (DeadlyPoisonCard (myPlayerinteger, myCard, myHolder));
+			DeadlyRoutineHolder myHolder = new DeadlyRoutineHolder(myCard);
+			Coroutine myRout = StartCoroutine(DeadlyPoisonCard(myPlayerinteger, myCard, myHolder));
 			myHolder.routine = myRout;
-			ActivatedDeadlyPoisons.Enqueue (myHolder);
-			findTheCureUIEffect.SetActive (true);
+			ActivatedDeadlyPoisons.Enqueue(myHolder);
+			findTheCureUIEffect.SetActive(true);
 			break;
 		case CardBase.PoisonTypes.PoisonCure:
-			myCard.SelectCard (myPlayerinteger);
-			myCard.Invoke ("MatchCard", 1f);
-			CureDeadlyPoison ();
+			if (CureDeadlyPoison()) {
+				myCard.SelectCard(myPlayerinteger);
+				myCard.Invoke("MatchCard", 1f);
+			} else {
+				myCard.SelectCard(myPlayerinteger);
+				myCard.Invoke("UnSelectCard", 1f);
+			}
 			break;
 		}
 	}
 
-	public void CureDeadlyPoison () {
+	public bool CureDeadlyPoison () {
 		if (ActivatedDeadlyPoisons.Count > 0) {
 			DeadlyRoutineHolder toCure = ActivatedDeadlyPoisons.Dequeue ();
 			StopCoroutine (toCure.routine);
@@ -45,6 +49,10 @@ public class PoisonMaster : MonoBehaviour
 			toCure.card.Invoke ("MatchCard", 1f);
 			if (ActivatedDeadlyPoisons.Count == 0)
 				findTheCureUIEffect.SetActive (false);
+
+			return true;
+		} else {
+			return false;
 		}
 	}
 

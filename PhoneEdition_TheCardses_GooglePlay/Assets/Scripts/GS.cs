@@ -112,9 +112,11 @@ public class GS : MonoBehaviour {
 		DataLogger.LogMessage ("Trying to find next level in chain");
 		if (activeGameModeID != defaultMode.id) {
 			int theIndex = -1;
+			int n = 0;
 			foreach (GameSettingsArray arr in levelChains) {
 				for (int i = 0; i < arr.LevelChain.Length; i++) {
 					if (arr.LevelChain[i] != null)
+						print(arr.LevelChain[i].name + "-" + arr.LevelChain[i].id.ToString() + "---" + activeGameMode + "-" + activeGameModeID.ToString());
 						if (arr.LevelChain[i].id == activeGameModeID)
 							theIndex = i;
 				}
@@ -122,14 +124,20 @@ public class GS : MonoBehaviour {
 				if (theIndex != -1) {
 					if (theIndex + 1 < arr.LevelChain.Length) {
 						if (arr.LevelChain[theIndex + 1] != null) {
-							DataLogger.LogMessage ("Next Level in chain found");
+							DataLogger.LogMessage("Next Level in chain found! " + n.ToString() + " - " + theIndex.ToString());
 							return arr.LevelChain[theIndex + 1];
-						}
+						} 
 					}
+
+					//we found our level but the next level is not set
+					DataLogger.LogMessage("Next Level in chain NOT FOUND " + activeGameMode);
+					return null;
 				}
+				n++;
 			}
 		}
 
+		//we didnt find our level
 		DataLogger.LogMessage ("Next Level in chain NOT FOUND " + activeGameMode);
 		return null;
 	}

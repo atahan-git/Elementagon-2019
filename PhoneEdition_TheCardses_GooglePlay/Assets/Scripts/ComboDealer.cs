@@ -39,7 +39,7 @@ public class ComboDealer : MonoBehaviour {
 			}
 		}
 
-		print ("Adding with combo check");
+		//print ("Adding with combo check");
 		if (!cbase1.isItem) {
 			//we got a card
 			int scoreToAdd = cbase1.score;
@@ -48,7 +48,7 @@ public class ComboDealer : MonoBehaviour {
 			if (GS.a.canCombo && playerId == DataHandler.s.myPlayerInteger) {
 				bool isSame = false;
 
-				print ("Combo count: " + comboCount.ToString());
+				DataLogger.LogMessage ("Combo count: " + comboCount.ToString());
 
 				if (scoreToAdd == 0 && enemyScoreToAdd == 0) {
 					lastCardType = -1;
@@ -82,7 +82,7 @@ public class ComboDealer : MonoBehaviour {
 					try {
 						myObj.GetComponentInChildren<TMPro.TextMeshPro> ().text = (isSame ? ("Same Type Combo! x" + (Mathf.CeilToInt (comboCount * 1.5f)).ToString ()) : ("Combo! x" + (comboCount).ToString ()));
 					} catch {
-						print ("Combo text not found");
+						DataLogger.LogError ("Combo text not found");
 					}
 				}
 

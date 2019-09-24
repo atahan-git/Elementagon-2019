@@ -27,18 +27,22 @@ MonoBehaviour:
   - isDone: 0
     name: "Yolculuk i\xE7in tekerlek topla"
     type: 6
-    requiredValue: 10
+    myDisplayType: 0
+    requiredValue: 6
     myChecker:
       _classRef: CHE_ScoreChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   loseObjectives:
   - isDone: 0
     name: "Zaman\u0131n Bitmeden"
     type: 6
+    myDisplayType: 0
     requiredValue: 120
     myChecker:
       _classRef: CHE_TimeChecker, Assembly-CSharp
     checkerSetting: none
+    customGUIObject: {fileID: 0}
   winDrops: []
   windDropAmounts: 
   winText: 

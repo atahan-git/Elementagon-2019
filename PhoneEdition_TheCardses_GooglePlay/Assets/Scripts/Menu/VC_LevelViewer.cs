@@ -17,7 +17,7 @@ public class VC_LevelViewer : ViewController {
 	Button[] myButs;
 	// Use this for initialization
 	void Awake () {
-		myButs = GetComponentsInChildren<Button> ();
+		myButs = GetComponentsInChildren<Button> (true);
 		myButs[0].onClick.AddListener (Invite);
 		myButs[1].onClick.AddListener (Quick);
 		myButs[2].onClick.AddListener (SinglePlay);
